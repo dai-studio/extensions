@@ -10,8 +10,8 @@ colors:
   stroke: '#00A4A6'
 bpmnType: bpmn:SubProcess
 isExpanded: true
-defaultWidth: 800
-defaultHeight: 560
+defaultWidth: 600
+defaultHeight: 400
 license: free
 form:
   - key: name

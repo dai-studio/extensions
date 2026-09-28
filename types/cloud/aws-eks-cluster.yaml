@@ -1,7 +1,7 @@
 # dai.types.cloud.aws-eks-cluster
-name: Amazon EKS Cluster
+name: AWS EKS Cluster
 version: 1.0.0
-description: An Amazon Elastic Kubernetes Service cluster. Put it inside a VPC or Region; it contains the workloads that run on it.
+description: An AWS Elastic Kubernetes Service cluster. Put it inside a VPC or Region; it contains the workloads that run on it.
 icon: ▢
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-5l4 -2l4 2v5l-4 2l-4 -2" /><path d="M8 11v-5l4 -2l4 2v5" /><path d="M12 13l4 -2l4 2v5l-4 2l-4 -2" /></svg>
 order: 90
@@ -10,8 +10,8 @@ colors:
   stroke: '#ED7100'
 bpmnType: bpmn:SubProcess
 isExpanded: true
-defaultWidth: 400
-defaultHeight: 260
+defaultWidth: 250
+defaultHeight: 150
 license: free
 form:
   - key: name

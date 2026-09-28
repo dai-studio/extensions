@@ -1,5 +1,5 @@
 # dai.types.cloud.aws-api-gateway
-name: Amazon API Gateway
+name: AWS API Gateway
 version: 1.0.0
 description: "An API Gateway REST, HTTP or WebSocket API."
 icon: ▣
