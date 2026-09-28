@@ -1,0 +1,56 @@
+# dai.types.cloud.aws-subnet
+name: AWS Subnet
+version: 1.0.0
+description: "A range of IP addresses in a VPC, bound to one Availability Zone. Put it inside an AWS VPC or Availability Zone; it contains instances, databases and other resources."
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /></svg>
+order: 60
+colors:
+  fill: '#EFF6FA'
+  stroke: '#147EBA'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 280
+defaultHeight: 200
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Subnet name
+  - key: subnetId
+    label: Subnet ID
+    type: text
+    placeholder: subnet-0123456789abcdef0
+  - key: subnetTier
+    label: Tier
+    type: select
+    options:
+      - value: public
+        label: Public
+      - value: private
+        label: Private
+      - value: isolated
+        label: Isolated
+  - key: cidrBlock
+    label: IPv4 CIDR
+    type: text
+    placeholder: 10.0.1.0/24
+  - key: availabilityZone
+    label: Availability Zone
+    type: text
+    placeholder: us-east-1a
+  - key: mapPublicIpOnLaunch
+    label: Auto-assign public IP
+    type: boolean
+  - key: routeTable
+    label: Route table
+    type: text
+    placeholder: rtb-0123456789abcdef0
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: "Describe routing, NACLs and what runs in this subnet."

@@ -1,0 +1,42 @@
+# dai.types.cloud.aws-transit-gateway
+name: AWS Transit Gateway
+version: 1.0.0
+description: "A regional network hub that connects VPCs, VPNs and Direct Connect."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4" /><path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5" /></svg>
+order: 230
+colors:
+  fill: '#F7F3FF'
+  stroke: '#8C4FFF'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Transit Gateway name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: transitGatewayId
+    label: Transit gateway ID
+    type: text
+    placeholder: tgw-0123456789abcdef0
+  - key: asn
+    label: Amazon side ASN
+    type: number
+    defaultValue: 64512
+    min: 64512
+    max: 4294967294
+  - key: attachments
+    label: Attachments
+    type: list
+    placeholder: vpc-… / vpn-… / dxgw-…
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the route tables and segmentation.

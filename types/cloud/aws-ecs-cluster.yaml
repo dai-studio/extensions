@@ -1,0 +1,46 @@
+# dai.types.cloud.aws-ecs-cluster
+name: Amazon ECS Cluster
+version: 1.0.0
+description: An Amazon Elastic Container Service cluster. Put it inside a VPC or Region; it contains ECS Services.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2l0 -10" /><path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" /></svg>
+order: 80
+colors:
+  fill: '#FEF5ED'
+  stroke: '#ED7100'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 400
+defaultHeight: 260
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: ECS Cluster name
+  - key: clusterArn
+    label: Cluster ARN
+    type: text
+    placeholder: "arn:aws:ecs:…:cluster/…"
+  - key: capacityProvider
+    label: Capacity provider
+    type: select
+    options:
+      - value: FARGATE
+        label: Fargate
+      - value: FARGATE_SPOT
+        label: Fargate Spot
+      - value: EC2
+        label: EC2
+      - value: mixed
+        label: Mixed
+  - key: containerInsights
+    label: Container Insights
+    type: boolean
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the workloads and capacity strategy.

@@ -1,0 +1,66 @@
+# dai.types.cloud.aws-auto-scaling-group
+name: AWS Auto Scaling Group
+version: 1.0.0
+description: An EC2 Auto Scaling group that keeps a fleet of instances at the desired size. Put it inside a Subnet (or a VPC for groups that span AZs); it contains EC2 Instances.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></svg>
+order: 70
+colors:
+  fill: '#FEF5ED'
+  stroke: '#ED7100'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 260
+defaultHeight: 160
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Auto Scaling Group name
+  - key: minSize
+    label: Min size
+    type: number
+    min: 0
+  - key: maxSize
+    label: Max size
+    type: number
+    min: 0
+  - key: desiredCapacity
+    label: Desired capacity
+    type: number
+    min: 0
+  - key: launchTemplate
+    label: Launch template
+    type: text
+    placeholder: lt-0123456789abcdef0
+  - key: healthCheckType
+    label: Health check
+    type: select
+    defaultValue: EC2
+    options:
+      - value: EC2
+        label: EC2
+      - value: ELB
+        label: ELB
+  - key: scalingPolicy
+    label: Scaling policy
+    type: select
+    options:
+      - value: none
+        label: None
+      - value: target-tracking
+        label: Target tracking
+      - value: step
+        label: Step
+      - value: scheduled
+        label: Scheduled
+      - value: predictive
+        label: Predictive
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the scaling triggers and instance mix.

@@ -1,0 +1,58 @@
+# dai.types.cloud.aws-ebs-volume
+name: Amazon EBS Volume
+version: 1.0.0
+description: An Amazon EBS block storage volume attached to an EC2 instance.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+order: 310
+colors:
+  fill: '#F6F8EF'
+  stroke: '#7AA116'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: EBS Volume name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: volumeType
+    label: Volume type
+    type: select
+    defaultValue: gp3
+    options:
+      - value: gp3
+        label: gp3
+      - value: gp2
+        label: gp2
+      - value: io2
+        label: io2
+      - value: io1
+        label: io1
+      - value: st1
+        label: st1
+      - value: sc1
+        label: sc1
+  - key: sizeGiB
+    label: Size (GiB)
+    type: number
+    min: 1
+    max: 65536
+  - key: iops
+    label: IOPS
+    type: number
+    min: 0
+  - key: encrypted
+    label: Encrypted
+    type: boolean
+    defaultValue: true
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Notes about this volume.

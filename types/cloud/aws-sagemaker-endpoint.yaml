@@ -1,0 +1,52 @@
+# dai.types.cloud.aws-sagemaker-endpoint
+name: Amazon SageMaker Endpoint
+version: 1.0.0
+description: An Amazon SageMaker AI endpoint that serves a model for inference.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4" /><path d="M12 2v2" /><path d="M9 12v9" /><path d="M15 12v9" /><path d="M5 16l4 -2" /><path d="M15 14l4 2" /><path d="M9 18h6" /><path d="M10 8v.01" /><path d="M14 8v.01" /></svg>
+order: 810
+colors:
+  fill: '#EDF9F7'
+  stroke: '#01A88D'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: SageMaker Endpoint name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: endpointType
+    label: Endpoint type
+    type: select
+    defaultValue: real-time
+    options:
+      - value: real-time
+        label: Real-time
+      - value: serverless
+        label: Serverless
+      - value: asynchronous
+        label: Asynchronous
+  - key: instanceType
+    label: Instance type
+    type: text
+    placeholder: ml.g5.xlarge
+  - key: instanceCount
+    label: Instances
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: modelName
+    label: Model
+    type: text
+    placeholder: Model name or ARN
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: "Describe the model, its inputs and outputs, and the scaling policy."

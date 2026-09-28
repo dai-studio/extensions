@@ -3,3 +3,4 @@ dist/
 *.jwk
 *.private.json
 .env
+.kilo

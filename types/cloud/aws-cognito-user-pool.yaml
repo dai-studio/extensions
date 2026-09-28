@@ -1,0 +1,47 @@
+# dai.types.cloud.aws-cognito-user-pool
+name: Amazon Cognito User Pool
+version: 1.0.0
+description: An Amazon Cognito user directory for app sign-up and sign-in.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+order: 630
+colors:
+  fill: '#FDF1F2'
+  stroke: '#DD344C'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cognito User Pool name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: signInAttributes
+    label: Sign-in attributes
+    type: list
+    placeholder: email / phone_number / username
+  - key: mfa
+    label: MFA
+    type: select
+    defaultValue: optional
+    options:
+      - value: "off"
+        label: "Off"
+      - value: optional
+        label: Optional
+      - value: required
+        label: Required
+  - key: federatedIdps
+    label: Federated identity providers
+    type: list
+    placeholder: "Google / SAML: Okta"
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the app clients and user flows.

@@ -1,0 +1,61 @@
+# dai.types.cloud.aws-load-balancer
+name: Elastic Load Balancer
+version: 1.0.0
+description: "An Elastic Load Balancing load balancer (Application, Network or Gateway)."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /><path d="M21 7h-8l-3.495 5" /><path d="M18 10l3 -3l-3 -3" /><path d="M18 20l3 -3l-3 -3" /></svg>
+order: 250
+colors:
+  fill: '#F7F3FF'
+  stroke: '#8C4FFF'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Load Balancer name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: lbType
+    label: Type
+    type: select
+    defaultValue: application
+    options:
+      - value: application
+        label: Application (ALB)
+      - value: network
+        label: Network (NLB)
+      - value: gateway
+        label: Gateway (GWLB)
+  - key: lbScheme
+    label: Scheme
+    type: select
+    defaultValue: internet-facing
+    options:
+      - value: internet-facing
+        label: Internet-facing
+      - value: internal
+        label: Internal
+  - key: listeners
+    label: Listeners
+    type: list
+    placeholder: "HTTPS:443 → tg-web"
+  - key: targetGroups
+    label: Target groups
+    type: list
+    placeholder: "tg-web (instance, HTTP:80)"
+  - key: securityGroups
+    label: Security groups
+    type: list
+    placeholder: sg-0123456789abcdef0
+    hint: Security groups attached to this resource. Model each one as an AWS Security Group node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the routing rules and health checks.

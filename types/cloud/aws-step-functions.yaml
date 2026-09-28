@@ -1,0 +1,42 @@
+# dai.types.cloud.aws-step-functions
+name: AWS Step Functions State Machine
+version: 1.0.0
+description: An AWS Step Functions state machine that orchestrates a workflow.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4v4h-4l0 -4" /><path d="M3 17h4v4h-4l0 -4" /><path d="M17 17h4v4h-4l0 -4" /><path d="M7 17l5 -4l5 4" /><path d="M12 7l0 6" /></svg>
+order: 540
+colors:
+  fill: '#FDEFF6'
+  stroke: '#E7157B'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Step Functions State Machine name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: workflowType
+    label: Workflow type
+    type: select
+    defaultValue: standard
+    options:
+      - value: standard
+        label: Standard
+      - value: express
+        label: Express
+  - key: definition
+    label: Definition (ASL)
+    type: code
+    placeholder: "{ \"StartAt\": \"…\", \"States\": { … } }"
+    rows: 12
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the workflow and how it handles errors.

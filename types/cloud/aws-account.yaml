@@ -1,0 +1,68 @@
+# dai.types.cloud.aws-account
+name: AWS Account
+version: 1.0.0
+description: "An AWS account, the boundary for billing, IAM and resource isolation. Put it inside an AWS Organization; it contains AWS Regions."
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0" /><path d="M9 8l1 0" /><path d="M9 12l1 0" /><path d="M9 16l1 0" /><path d="M14 8l1 0" /><path d="M14 12l1 0" /><path d="M14 16l1 0" /><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" /></svg>
+order: 20
+colors:
+  fill: '#FDEFF6'
+  stroke: '#E7157B'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 900
+defaultHeight: 620
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Account name
+  - key: accountId
+    label: Account ID
+    type: text
+    placeholder: "123456789012"
+    hint: The 12-digit AWS account ID.
+  - key: accountPurpose
+    label: Purpose
+    type: select
+    options:
+      - value: management
+        label: Management
+      - value: security
+        label: Security / audit
+      - value: log-archive
+        label: Log archive
+      - value: shared-services
+        label: Shared services
+      - value: workload
+        label: Workload
+      - value: sandbox
+        label: Sandbox
+      - value: other
+        label: Other
+  - key: environment
+    label: Environment
+    type: select
+    options:
+      - value: development
+        label: Development
+      - value: staging
+        label: Staging
+      - value: production
+        label: Production
+      - value: testing
+        label: Testing
+      - value: other
+        label: Other
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Team or person accountable for this account
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what runs in this account and who has access.
