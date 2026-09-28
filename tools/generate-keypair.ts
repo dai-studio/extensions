@@ -5,9 +5,9 @@
  *   - Public key  → keys/<kid>.json (commit this; also add it to
  *                   ws-dai-studio/editor-src/src/lib/types/publicKeys.ts)
  *   - Private key → <kid>.private.jwk in the repo root (git-ignored).
- *                   Paste it into the GitHub `publish` environment secret
- *                   DAI_SIGNING_JWK, set DAI_SIGNING_KID=<kid>, then DELETE
- *                   the local file.
+ *                   Store it as the GitHub environment SECRET DAI_SIGNING_JWK,
+ *                   set the environment VARIABLE DAI_SIGNING_KID to the text
+ *                   <kid> (the id, not a key), then DELETE the local file.
  */
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -32,5 +32,10 @@ mkdirSync(path.dirname(pubFile), { recursive: true });
 writeFileSync(pubFile, JSON.stringify(pub, null, 2) + '\n');
 writeFileSync(privFile, JSON.stringify(privateJwk) + '\n', { mode: 0o600 });
 
-console.log(`public key  → ${path.relative(ROOT, pubFile)} (commit)`);
-console.log(`private key → ${path.relative(ROOT, privFile)} (git-ignored; move to the GitHub secret DAI_SIGNING_JWK, then delete)`);
+console.log(`public key  → ${path.relative(ROOT, pubFile)} (commit; also add to the editor's publicKeys.ts under '${kid}')`);
+console.log(`private key → ${path.relative(ROOT, privFile)} (git-ignored)`);
+console.log('');
+console.log('For each GitHub environment (publish-dev, publish-prod):');
+console.log(`  gh secret   set DAI_SIGNING_JWK --env <env> < ${path.relative(ROOT, privFile)}`);
+console.log(`  gh variable set DAI_SIGNING_KID --env <env> --body ${kid}`);
+console.log(`Then delete ${path.relative(ROOT, privFile)}.`);

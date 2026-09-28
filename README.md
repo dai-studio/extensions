@@ -74,8 +74,22 @@ values by `key` and `storage`. CI rejects any change that would break an existin
 1. `npm run keygen -- ci-2026-09` writes `keys/ci-2026-09.json` (public) and `ci-2026-09.private.jwk` (git-ignored).
 2. Commit the public key. Add the same JWK under the same kid to
    `ws-dai-studio/editor-src/src/lib/types/publicKeys.ts` and deploy the editor.
-3. Create the GitHub environments `publish-dev` and `publish-prod` (see `.github/workflows/publish.yml`).
-   Store the private JWK as `DAI_SIGNING_JWK` and set `DAI_SIGNING_KID=ci-2026-09`.
+3. Create the GitHub environments `publish-dev` and `publish-prod` (see `.github/workflows/publish.yml`)
+   and set on **each**:
+
+   | Name | Kind | Value |
+   | --- | --- | --- |
+   | `DAI_SIGNING_JWK` | secret | the whole one-line contents of `ci-2026-09.private.jwk` (the private key; contains `"d"`) |
+   | `DAI_SIGNING_KID` | variable | just the text `ci-2026-09` — the key **id**, not a key |
+   | `CLOUDFLARE_API_TOKEN` | secret | R2 Object Read & Write token scoped to that environment's bucket |
+   | `CLOUDFLARE_ACCOUNT_ID` | variable | your Cloudflare account id |
+   | `R2_BUCKET` | variable | `dev-dai-studio-data` / `dai-studio-data` |
+
+   ```bash
+   gh secret   set DAI_SIGNING_JWK --env publish-dev < ci-2026-09.private.jwk
+   gh variable set DAI_SIGNING_KID --env publish-dev --body ci-2026-09
+   ```
+
    Restrict `publish-prod` to `catalog-v*` tags.
 4. Delete the local private key file.
 

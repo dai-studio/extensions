@@ -4,8 +4,10 @@ name: Publish
 # tag catalog-vX.Y.Z    → sign + publish to the prod bucket (dai.studio)
 #
 # Required GitHub environments (Settings → Environments):
-#   publish-dev   secrets: DAI_SIGNING_JWK, CLOUDFLARE_API_TOKEN
-#                 vars:    DAI_SIGNING_KID, CLOUDFLARE_ACCOUNT_ID, R2_BUCKET=dev-dai-studio-data
+#   publish-dev   secrets: DAI_SIGNING_JWK (private JWK, contents of <kid>.private.jwk),
+#                          CLOUDFLARE_API_TOKEN
+#                 vars:    DAI_SIGNING_KID (just the id text, e.g. ci-2026-09 — not a key),
+#                          CLOUDFLARE_ACCOUNT_ID, R2_BUCKET=dev-dai-studio-data
 #   publish-prod  same names, R2_BUCKET=dai-studio-data; restrict to tags catalog-v*
 #                 and (recommended) require a reviewer.
 # CLOUDFLARE_API_TOKEN should be an R2 "Object Read & Write" token scoped to
