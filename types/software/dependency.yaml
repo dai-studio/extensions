@@ -1,0 +1,51 @@
+# dai.types.software.dependency
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/dependency.ts
+name: Dependency
+version: 1.1.0
+description: An external library, package, service, API, or resource the project relies on. Documents the source, version, type, and license for dependency management and compliance.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.785 6l8.215 8.215l-2.054 2.054a5.81 5.81 0 1 1 -8.215 -8.215l2.054 -2.054" /><path d="M4 20l3.5 -3.5" /><path d="M15 4l-3.5 3.5" /><path d="M20 9l-3.5 3.5" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: dependency
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000003
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: e.g. react, stripe-node, @company/ui
+  - key: package
+    label: Package
+    type: text
+    placeholder: npm package, pip module, or repo URL
+  - key: version
+    label: Version
+    type: text
+    placeholder: e.g. ^18.2.0, >=3.10, 2.1.4
+  - key: dependencyType
+    label: Type
+    type: select
+    options:
+      - value: runtime
+        label: Runtime
+      - value: dev
+        label: Dev
+      - value: peer
+        label: Peer
+      - value: optional
+        label: Optional
+  - key: license
+    label: License
+    type: text
+    placeholder: e.g. MIT, Apache 2.0, GPL-3.0
+  - key: purpose
+    label: Purpose
+    type: textarea
+    placeholder: Why is this dependency needed? What does it provide?
+  - key: notes
+    label: Notes
+    type: textarea

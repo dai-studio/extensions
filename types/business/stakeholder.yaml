@@ -1,0 +1,47 @@
+# dai.types.business.stakeholder
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/business/stakeholder.ts
+name: Stakeholder
+version: 1.0.0
+description: A person, role, or organisation with interest or influence in the project outcome. Documents their level of engagement and how to manage the relationship.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 11l.01 0" /><path d="M14.5 11l.01 0" /><path d="M9.5 15a3.5 3.5 0 0 0 5 0" /><path d="M7 5h1v-2h8v2h1a3 3 0 0 1 3 3v9a3 3 0 0 1 -3 3v1h-10v-1a3 3 0 0 1 -3 -3v-9a3 3 0 0 1 3 -3" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+stepType: stakeholder
+license: free
+aliases:
+  - a1b2c3d4-0003-0001-0001-000000000005
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Stakeholder name or role
+  - key: interest
+    label: Interest
+    type: select
+    options:
+      - value: low
+        label: Low
+      - value: medium
+        label: Medium
+      - value: high
+        label: High
+  - key: influence
+    label: Influence
+    type: select
+    options:
+      - value: low
+        label: Low
+      - value: medium
+        label: Medium
+      - value: high
+        label: High
+  - key: engagementStrategy
+    label: Engagement Strategy
+    type: textarea
+    placeholder: How should this stakeholder be kept informed, involved, or managed?
+  - key: notes
+    label: Notes
+    type: textarea

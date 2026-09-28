@@ -1,0 +1,23 @@
+# dai.types.bpmn.gateway-exclusive
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/gateway-exclusive.ts
+name: Decision
+version: 1.0.0
+description: Exclusive gateway — only one outgoing path is taken based on conditions.
+icon: ◇
+iconClass: bpmn-icon-gateway-xor
+order: 130
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:ExclusiveGateway
+license: free
+aliases:
+  - a1b2c3d4-0001-0004-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Decision name
+  - key: notes
+    label: Description
+    type: textarea

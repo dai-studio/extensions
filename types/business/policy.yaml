@@ -1,0 +1,52 @@
+# dai.types.business.policy
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/business/policy.ts
+name: Policy
+version: 1.0.0
+description: An organisational or regulatory policy that governs how work is done. Distinct from a project-scoped Rule or Requirement — a Policy is org-level, typically externally mandated or board-approved, and applies across initiatives.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" /><path d="M9 12h6" /><path d="M9 16h6" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+stepType: policy
+license: free
+aliases:
+  - a1b2c3d4-0003-0001-0001-000000000010
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Policy name
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: e.g. Legal, Compliance, Board
+  - key: authority
+    label: Authority
+    type: text
+    placeholder: e.g. ISO 27001, GDPR, internal board resolution
+  - key: scope
+    label: Scope
+    type: select
+    options:
+      - value: org
+        label: Organisation — applies company-wide
+      - value: department
+        label: Department
+      - value: team
+        label: Team
+      - value: project
+        label: Project
+  - key: enforcementLevel
+    label: Enforcement
+    type: select
+    options:
+      - value: mandatory
+        label: Mandatory — must comply
+      - value: advisory
+        label: Advisory — recommended
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the policy, its rationale, and any exceptions or exemptions.

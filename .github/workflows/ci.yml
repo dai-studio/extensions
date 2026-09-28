@@ -1,0 +1,28 @@
+name: CI
+
+# Runs on every PR (including forks) with NO secrets: `pull_request`, never
+# `pull_request_target`. Signing happens only in publish.yml.
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      # Validate + additive-only compatibility against what main last published.
+      - run: npm run build -- --against https://dev.dai.studio/api/catalog
+      # Sign with a throwaway key and re-verify, proving the pipeline end to end.
+      - run: npm run dry-run

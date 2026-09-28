@@ -1,0 +1,43 @@
+# dai.types.product.roadmap
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/product/roadmap.ts
+name: Roadmap
+version: 1.0.0
+description: A release or roadmap container that sequences Epics, Features, and Milestones over a planning horizon. Use as a group to show what ships when and in what order.
+icon: □
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l4 -14" /><path d="M16 5l4 14" /><path d="M12 8v-2" /><path d="M12 13v-2" /><path d="M12 18v-2" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:SubProcess
+stepType: roadmap
+isExpanded: true
+license: free
+aliases:
+  - a1b2c3d4-0005-0001-0001-000000000005
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Roadmap name
+  - key: horizon
+    label: Horizon
+    type: text
+    placeholder: e.g. H1 2026, Q3–Q4 2025
+  - key: theme
+    label: Theme
+    type: text
+    placeholder: e.g. Growth, Platform stability
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: draft
+        label: Draft
+      - value: active
+        label: Active
+      - value: archived
+        label: Archived
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the goals and constraints of this roadmap period.

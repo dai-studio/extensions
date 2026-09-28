@@ -1,0 +1,23 @@
+# dai.types.bpmn.gateway-parallel
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/gateway-parallel.ts
+name: Parallel
+version: 1.0.0
+description: Parallel gateway — all outgoing paths are taken simultaneously.
+icon: ◇
+iconClass: bpmn-icon-gateway-parallel
+order: 140
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:ParallelGateway
+license: free
+aliases:
+  - a1b2c3d4-0001-0004-0001-000000000002
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Gateway name
+  - key: notes
+    label: Description
+    type: textarea

@@ -1,0 +1,43 @@
+# dai.types.software.model
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/model.ts
+name: Model
+version: 1.1.0
+description: A data schema or structured type definition. Documents the shape of data flowing through the system and the notation used.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h5v4h-5l0 -4" /><path d="M15 10h5v4h-5l0 -4" /><path d="M5 18h5v4h-5l0 -4" /><path d="M5 10h5v4h-5l0 -4" /><path d="M10 12h5" /><path d="M7.5 6v4" /><path d="M7.5 14v4" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: model
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000004
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Model name (e.g. "User", "OrderPayload")
+  - key: modelFormat
+    label: Format
+    type: select
+    options:
+      - value: typescript
+        label: TypeScript
+      - value: json-schema
+        label: JSON Schema
+      - value: sql
+        label: SQL
+      - value: protobuf
+        label: Protobuf
+      - value: avro
+        label: Avro
+      - value: plain
+        label: Plain
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: What does this model represent? How is it used?
+  - key: properties
+    label: Properties
+    type: key-value

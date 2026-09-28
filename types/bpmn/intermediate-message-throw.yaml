@@ -1,0 +1,24 @@
+# dai.types.bpmn.intermediate-message-throw
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/intermediate-message-throw.ts
+name: Message Throw
+version: 1.0.0
+description: Sends a message to another participant or process.
+icon: ○
+iconClass: bpmn-icon-intermediate-event-throw-message
+order: 100
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:IntermediateThrowEvent
+eventDefinitionType: bpmn:MessageEventDefinition
+license: free
+aliases:
+  - a1b2c3d4-0001-0003-0001-000000000003
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Event name
+  - key: notes
+    label: Description
+    type: textarea

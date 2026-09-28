@@ -1,0 +1,24 @@
+# dai.types.bpmn.start-event-message
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/start-event-message.ts
+name: Message Start
+version: 1.0.0
+description: Process starts when a specific message is received.
+icon: ○
+iconClass: bpmn-icon-start-event-message
+order: 30
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:StartEvent
+eventDefinitionType: bpmn:MessageEventDefinition
+license: free
+aliases:
+  - a1b2c3d4-0001-0001-0001-000000000002
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Event name
+  - key: notes
+    label: Description
+    type: textarea

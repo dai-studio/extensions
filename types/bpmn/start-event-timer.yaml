@@ -1,0 +1,28 @@
+# dai.types.bpmn.start-event-timer
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/start-event-timer.ts
+name: Timer Start
+version: 1.0.0
+description: Process starts at a specific time or after a delay.
+icon: ○
+iconClass: bpmn-icon-start-event-timer
+order: 20
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:StartEvent
+eventDefinitionType: bpmn:TimerEventDefinition
+license: free
+aliases:
+  - a1b2c3d4-0001-0001-0001-000000000003
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Event name
+  - key: timerDefinition
+    label: Timer Definition
+    type: text
+    placeholder: e.g. PT1H or 2024-01-01T00:00:00Z
+  - key: notes
+    label: Description
+    type: textarea

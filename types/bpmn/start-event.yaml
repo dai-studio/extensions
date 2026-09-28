@@ -1,0 +1,24 @@
+# dai.types.bpmn.start-event
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/start-event.ts
+name: Start
+version: 1.0.0
+description: Marks the beginning of a process flow. Every diagram starts here.
+icon: ○
+iconClass: bpmn-icon-start-event-none
+order: 10
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:StartEvent
+license: free
+aliases:
+  - a1b2c3d4-0001-0001-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Start event name
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: Describe when or how this process starts.

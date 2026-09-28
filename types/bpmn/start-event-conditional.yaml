@@ -1,0 +1,28 @@
+# dai.types.bpmn.start-event-conditional
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/start-event-conditional.ts
+name: Conditional Start
+version: 1.0.0
+description: Process starts when a condition becomes true.
+icon: ○
+iconClass: bpmn-icon-start-event-condition
+order: 40
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:StartEvent
+eventDefinitionType: bpmn:ConditionalEventDefinition
+license: free
+aliases:
+  - a1b2c3d4-0001-0001-0001-000000000004
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Event name
+  - key: condition
+    label: Condition
+    type: text
+    placeholder: e.g. ${variable == true}
+  - key: notes
+    label: Description
+    type: textarea

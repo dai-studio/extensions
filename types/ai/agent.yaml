@@ -1,0 +1,72 @@
+# dai.types.ai.agent
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/agent.ts
+name: Agent
+version: 1.0.0
+description: An autonomous AI agent. Contains Tools, Skills, Rules, and Prompts as child elements. Agents can be nested to compose multi-agent systems.
+icon: □
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M3 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M10 5a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M6 5a1 1 0 1 0 -2 0a1 1 0 0 0 2 0" /><path d="M18 5a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M4 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M11 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M18 12a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /><path d="M11 19a1 1 0 1 0 2 0a1 1 0 0 0 -2 0" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:SubProcess
+stepType: agent
+isExpanded: true
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000013
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Agent name
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: What does this agent do?
+  - key: agentRole
+    label: Role
+    type: text
+    placeholder: e.g. "Research analyst", "Code reviewer"
+  - key: defaultModel
+    label: Model
+    type: model-selector
+  - key: agentType
+    label: Agent Type
+    type: select
+    options:
+      - value: autonomous
+        label: Autonomous
+      - value: supervised
+        label: Supervised
+      - value: reactive
+        label: Reactive
+      - value: collaborative
+        label: Collaborative
+  - key: memoryType
+    label: Memory
+    type: select
+    options:
+      - value: none
+        label: None
+      - value: in-context
+        label: In-context
+      - value: persistent
+        label: Persistent
+      - value: external
+        label: External store
+  - key: maxIterations
+    label: Max Iterations
+    type: number
+    min: 1
+    placeholder: e.g. 10
+  - key: stopCondition
+    label: Stop Condition
+    type: textarea
+    placeholder: When should this agent stop?
+  - key: outputSchema
+    label: Output Schema
+    type: code
+    placeholder: JSON schema for the agent output
+  - key: properties
+    label: Inputs
+    type: key-value

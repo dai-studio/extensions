@@ -1,0 +1,57 @@
+# dai.types.ai.prompt
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/prompt.ts
+name: Prompt
+version: 1.1.0
+description: A reusable prompt template with system instructions, a user message, and an expected output format. Makes prompt engineering first-class — version, reuse, and compose prompts across workflows.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7l5 5l-5 5" /><path d="M13 17l6 0" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+stepType: prompt
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000012
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Prompt name
+  - key: systemPrompt
+    label: System Message
+    type: textarea
+    placeholder: Instructions that set the AI's role and behaviour for this step.
+  - key: userPrompt
+    label: User Message
+    type: textarea
+    placeholder: The user-facing prompt. Use {{variable}} syntax for template variables.
+  - key: outputFormat
+    label: Output Format
+    type: select
+    options:
+      - value: text
+        label: Text
+      - value: json
+        label: JSON
+      - value: markdown
+        label: Markdown
+      - value: code
+        label: Code
+      - value: list
+        label: List
+      - value: table
+        label: Table
+  - key: defaultModel
+    label: Model
+    type: model-selector
+  - key: temperature
+    label: Temperature
+    type: range
+    min: 0
+    max: 1
+    step: 0.1
+    hint: 0 = deterministic, 1 = most creative
+  - key: notes
+    label: Notes
+    type: textarea

@@ -1,0 +1,43 @@
+# dai.types.software.environment
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/software/environment.ts
+name: Environment
+version: 1.0.0
+description: A deployment environment — dev, staging, production, or any named runtime target. Use as a container to group the services, databases, and components that exist within it.
+icon: □
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.504 9.426l3 -1.714a1 1 0 0 1 .992 0l3 1.714a1 1 0 0 1 .504 .868v3.411a1 1 0 0 1 -.504 .868l-3 1.715a1 1 0 0 1 -.992 0l-3 -1.715a1 1 0 0 1 -.504 -.868v-3.41a1 1 0 0 1 .504 -.869" /><path d="M15.75 9.964l-3.75 2.036" /><path d="M12 12l-3.75 -2.036" /><path d="M12 12v4.071" /><path d="M3 7v-2a2 2 0 0 1 2 -2h2" /><path d="M3 17v2a2 2 0 0 0 2 2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M17 21h2a2 2 0 0 0 2 -2v-2" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:SubProcess
+stepType: environment
+isExpanded: true
+license: free
+aliases:
+  - a1b2c3d4-0006-0001-0001-000000000005
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Environment name
+  - key: envType
+    label: Type
+    type: select
+    options:
+      - value: development
+        label: Development
+      - value: staging
+        label: Staging
+      - value: production
+        label: Production
+      - value: testing
+        label: Testing
+      - value: other
+        label: Other
+  - key: url
+    label: URL
+    type: text
+    placeholder: e.g. https://staging.example.com
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe this environment, its purpose, and any access requirements.

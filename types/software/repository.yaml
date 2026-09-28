@@ -1,0 +1,56 @@
+# dai.types.software.repository
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/software/repository.ts
+name: Repository
+version: 1.0.0
+description: A source control repository. Documents the URL, hosting platform, primary branch, and visibility to make the code location explicit alongside components and services that depend on it.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2l0 -14" /><path d="M5 10h14" /><path d="M9 13v3" /><path d="M9 6v1" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: repository
+license: free
+aliases:
+  - a1b2c3d4-0006-0001-0001-000000000007
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Repository name
+  - key: url
+    label: URL
+    type: text
+    placeholder: e.g. https://github.com/org/repo
+  - key: platform
+    label: Platform
+    type: select
+    options:
+      - value: github
+        label: GitHub
+      - value: gitlab
+        label: GitLab
+      - value: bitbucket
+        label: Bitbucket
+      - value: azure
+        label: Azure DevOps
+      - value: other
+        label: Other
+  - key: branch
+    label: Primary Branch
+    type: text
+    placeholder: main
+  - key: visibility
+    label: Visibility
+    type: select
+    options:
+      - value: public
+        label: Public
+      - value: private
+        label: Private
+      - value: internal
+        label: Internal
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe this repository, its contents, and any access requirements.

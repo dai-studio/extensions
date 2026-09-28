@@ -1,0 +1,49 @@
+# dai.types.product.feature
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/product/feature.ts
+name: Feature
+version: 1.0.0
+description: A discrete product capability that delivers value to users. The core unit of product delivery — sits above user stories and below epics in the agile hierarchy.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 12.5l-5 -3l5 -3l5 3v5.5l-5 3l0 -5.5" /><path d="M11 9.5v5.5l5 3" /><path d="M16 12.545l5 -3.03" /><path d="M7 9h-5" /><path d="M7 12h-3" /><path d="M7 15h-1" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+stepType: feature
+license: free
+aliases:
+  - a1b2c3d4-0005-0001-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Feature name
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: idea
+        label: Idea
+      - value: planned
+        label: Planned
+      - value: in-progress
+        label: In Progress
+      - value: shipped
+        label: Shipped
+      - value: deprecated
+        label: Deprecated
+  - key: valueStatement
+    label: Value Statement
+    type: textarea
+    placeholder: This feature enables users to…
+  - key: acceptanceCriteria
+    label: Acceptance Criteria
+    type: textarea
+    placeholder: What conditions must be true for this feature to be considered complete?
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Product owner or team
+  - key: notes
+    label: Notes
+    type: textarea

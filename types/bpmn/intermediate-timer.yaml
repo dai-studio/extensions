@@ -1,0 +1,28 @@
+# dai.types.bpmn.intermediate-timer
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/intermediate-timer.ts
+name: Timer
+version: 1.0.0
+description: Pauses the flow for a defined duration or until a specific time.
+icon: ○
+iconClass: bpmn-icon-intermediate-event-catch-timer
+order: 80
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:IntermediateCatchEvent
+eventDefinitionType: bpmn:TimerEventDefinition
+license: free
+aliases:
+  - a1b2c3d4-0001-0003-0001-000000000004
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Event name
+  - key: timerDefinition
+    label: Timer Definition
+    type: text
+    placeholder: e.g. PT30M
+  - key: notes
+    label: Description
+    type: textarea

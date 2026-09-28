@@ -1,0 +1,60 @@
+# dai.types.product.feedback
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/product/feedback.ts
+name: Feedback
+version: 1.0.0
+description: User feedback or insight as a distinct input artifact. Feeds into Personas, Stories, and Experiments — captures what users said, felt, or did as a first-class node in the product process.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20l1.3 -3.9c-2.324 -3.437 -1.426 -7.872 2.1 -10.374c3.526 -2.501 8.59 -2.296 11.845 .48c3.255 2.777 3.695 7.266 1.029 10.501c-2.666 3.235 -7.615 4.215 -11.574 2.293l-4.7 1" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+stepType: feedback
+license: free
+aliases:
+  - a1b2c3d4-0005-0001-0001-000000000006
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Feedback name or theme
+  - key: source
+    label: Source
+    type: select
+    options:
+      - value: user-interview
+        label: User Interview
+      - value: survey
+        label: Survey
+      - value: support-ticket
+        label: Support Ticket
+      - value: analytics
+        label: Analytics
+      - value: social
+        label: Social / Review
+      - value: other
+        label: Other
+  - key: sentiment
+    label: Sentiment
+    type: select
+    options:
+      - value: positive
+        label: Positive
+      - value: negative
+        label: Negative
+      - value: neutral
+        label: Neutral
+      - value: mixed
+        label: Mixed
+  - key: persona
+    label: Persona
+    type: text
+    placeholder: Which user or persona segment?
+  - key: theme
+    label: Theme
+    type: text
+    placeholder: e.g. onboarding friction, missing feature
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Summarise the feedback and any direct quotes.

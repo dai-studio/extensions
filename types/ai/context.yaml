@@ -1,0 +1,68 @@
+# dai.types.ai.context
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/context.ts
+name: Context
+version: 1.1.0
+description: Background knowledge, grounding data, or reference material that informs downstream steps. Does not produce output itself — it shapes how the AI reasons.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6l0 13" /><path d="M12 6l0 13" /><path d="M21 6l0 13" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+stepType: context
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000002
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Context name
+  - key: source
+    label: Source
+    type: select
+    options:
+      - value: manual
+        label: Manual
+      - value: file
+        label: File
+      - value: url
+        label: URL
+      - value: database
+        label: Database
+      - value: api
+        label: API
+      - value: previous-step
+        label: Previous Step
+  - key: format
+    label: Format
+    type: select
+    options:
+      - value: text
+        label: Text
+      - value: json
+        label: JSON
+      - value: markdown
+        label: Markdown
+      - value: csv
+        label: CSV
+      - value: code
+        label: Code
+      - value: html
+        label: HTML
+  - key: scope
+    label: Scope
+    type: select
+    options:
+      - value: global
+        label: Global — applies to all steps
+      - value: local
+        label: Local — applies to connected steps only
+  - key: content
+    label: Content
+    type: textarea
+    placeholder: Paste or write the context content here. This is the actual grounding data the AI will use.
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what this context provides and how downstream steps should use it.

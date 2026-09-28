@@ -1,0 +1,56 @@
+# dai.types.business.risk-item
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/business/risk-item.ts
+name: Risk
+version: 1.0.0
+description: A potential threat or uncertainty that could negatively affect the project or outcome. Tracks probability, impact, and mitigation.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10.941c2.333 -3.308 .167 -7.823 -1 -8.941c0 3.395 -2.235 5.299 -3.667 6.706c-1.43 1.408 -2.333 3.294 -2.333 5.588c0 3.704 3.134 6.706 7 6.706c3.866 0 7 -3.002 7 -6.706c0 -1.712 -1.232 -4.403 -2.333 -5.588c-2.084 3.353 -3.257 3.353 -4.667 2.235" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+stepType: risk
+license: free
+aliases:
+  - a1b2c3d4-0003-0001-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Risk name
+  - key: probability
+    label: Probability
+    type: select
+    options:
+      - value: low
+        label: Low
+      - value: medium
+        label: Medium
+      - value: high
+        label: High
+      - value: critical
+        label: Critical
+  - key: impact
+    label: Impact
+    type: select
+    options:
+      - value: low
+        label: Low
+      - value: medium
+        label: Medium
+      - value: high
+        label: High
+      - value: critical
+        label: Critical
+  - key: mitigation
+    label: Mitigation Strategy
+    type: textarea
+    placeholder: How will this risk be reduced or avoided?
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Responsible person or team
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Additional context or details.

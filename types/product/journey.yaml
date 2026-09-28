@@ -1,0 +1,48 @@
+# dai.types.product.journey
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/product/journey.ts
+name: Journey
+version: 1.0.0
+description: A user journey map — the sequence of steps a persona takes to achieve a goal. Documents touchpoints, pain points, and opportunities to improve the experience.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l6 -3l6 3l6 -3v13l-6 3l-6 -3l-6 3v-13" /><path d="M9 12v.01" /><path d="M6 13v.01" /><path d="M17 15l-4 -4" /><path d="M13 15l4 -4" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+stepType: journey
+license: free
+aliases:
+  - a1b2c3d4-0005-0001-0001-000000000003
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Journey name (e.g. "New user onboarding")
+  - key: persona
+    label: Persona
+    type: text
+    placeholder: Which persona takes this journey?
+    hint: Type the name of a Persona, or draw a connection from a Persona element on canvas to this Journey to link them.
+  - key: goal
+    label: Goal
+    type: text
+    placeholder: What is the persona trying to achieve?
+  - key: steps
+    label: Steps
+    type: textarea
+    placeholder: |-
+      1. Discovers the product via search
+      2. Visits landing page
+      3. Signs up for trial
+      …
+  - key: painPoints
+    label: Pain Points
+    type: textarea
+    placeholder: Where does the experience break down or frustrate the user?
+  - key: opportunities
+    label: Opportunities
+    type: textarea
+    placeholder: Where can the experience be improved or delightful moments created?
+  - key: notes
+    label: Notes
+    type: textarea

@@ -1,0 +1,58 @@
+name: Publish
+
+# push to main          → sign + publish to the dev bucket  (dev.dai.studio)
+# tag catalog-vX.Y.Z    → sign + publish to the prod bucket (dai.studio)
+#
+# Required GitHub environments (Settings → Environments):
+#   publish-dev   secrets: DAI_SIGNING_JWK, CLOUDFLARE_API_TOKEN
+#                 vars:    DAI_SIGNING_KID, CLOUDFLARE_ACCOUNT_ID, R2_BUCKET=dev-dai-studio-data
+#   publish-prod  same names, R2_BUCKET=dai-studio-data; restrict to tags catalog-v*
+#                 and (recommended) require a reviewer.
+# CLOUDFLARE_API_TOKEN should be an R2 "Object Read & Write" token scoped to
+# that environment's bucket only.
+on:
+  push:
+    branches: [main]
+    tags: ['catalog-v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-${{ github.ref_type }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_type == 'tag' && 'publish-prod' || 'publish-dev' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Tags must point at a commit on main
+        if: github.ref_type == 'tag'
+        run: git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm test
+
+      - name: Validate + build (compat against the target environment)
+        run: npm run build -- --against "${{ github.ref_type == 'tag' && 'https://dai.studio/api/catalog' || 'https://dev.dai.studio/api/catalog' }}"
+
+      - name: Sign
+        run: npm run sign
+        env:
+          DAI_SIGNING_JWK: ${{ secrets.DAI_SIGNING_JWK }}
+          DAI_SIGNING_KID: ${{ vars.DAI_SIGNING_KID }}
+
+      - name: Upload to R2 (current.json last)
+        run: npm run publish:r2 -- --bucket "${{ vars.R2_BUCKET }}"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}

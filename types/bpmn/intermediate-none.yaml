@@ -1,0 +1,23 @@
+# dai.types.bpmn.intermediate-none
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/intermediate-none.ts
+name: Intermediate
+version: 1.0.0
+description: An intermediate event that occurs mid-flow without a specific trigger type.
+icon: ○
+iconClass: bpmn-icon-intermediate-event-none
+order: 70
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:IntermediateThrowEvent
+license: free
+aliases:
+  - a1b2c3d4-0001-0003-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Event name
+  - key: notes
+    label: Description
+    type: textarea

@@ -1,0 +1,48 @@
+# dai.types.software.pipeline
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/software/pipeline.ts
+name: Pipeline
+version: 1.0.0
+description: A CI/CD or release pipeline. Documents the stages, trigger, toolchain, and target environment for a build, test, or deployment process.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h8" /><path d="M4 4v5a6 6 0 0 0 6 6h3a1 1 0 0 1 1 1v4" /><path d="M10 4v4a1 1 0 0 0 1 1h3a6 6 0 0 1 6 6v5" /><path d="M13 20h8" /><path d="M12 9v6" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: pipeline
+license: free
+aliases:
+  - a1b2c3d4-0006-0001-0001-000000000006
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Pipeline name
+  - key: trigger
+    label: Trigger
+    type: select
+    options:
+      - value: push
+        label: Push
+      - value: pr
+        label: Pull Request
+      - value: schedule
+        label: Schedule
+      - value: manual
+        label: Manual
+  - key: tool
+    label: Tool
+    type: text
+    placeholder: e.g. GitHub Actions, Jenkins, CircleCI
+  - key: stages
+    label: Stages
+    type: textarea
+    placeholder: List the pipeline stages, e.g. lint → test → build → deploy
+  - key: targetEnvironment
+    label: Target Environment
+    type: text
+    placeholder: e.g. staging, production
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Additional context, dependencies, or failure handling.

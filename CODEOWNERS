@@ -1,0 +1,9 @@
+# Every contribution is reviewed by a maintainer before it can be signed.
+# Replace with the maintainers' GitHub handles / team.
+*                    @dai-studio/maintainers
+
+# Trust-critical paths: signing, publishing, validation rules, public keys.
+/tools/              @dai-studio/maintainers
+/schema/             @dai-studio/maintainers
+/keys/               @dai-studio/maintainers
+/.github/            @dai-studio/maintainers

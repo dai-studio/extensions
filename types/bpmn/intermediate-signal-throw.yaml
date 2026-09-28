@@ -1,0 +1,24 @@
+# dai.types.bpmn.intermediate-signal-throw
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/intermediate-signal-throw.ts
+name: Signal Throw
+version: 1.0.0
+description: Broadcasts a signal to all listening processes.
+icon: ○
+iconClass: bpmn-icon-intermediate-event-throw-signal
+order: 120
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:IntermediateThrowEvent
+eventDefinitionType: bpmn:SignalEventDefinition
+license: free
+aliases:
+  - a1b2c3d4-0001-0003-0001-000000000006
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Event name
+  - key: notes
+    label: Description
+    type: textarea

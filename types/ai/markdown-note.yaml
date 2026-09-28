@@ -1,0 +1,36 @@
+# dai.types.ai.markdown-note
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/markdown-note.ts
+name: Markdown
+version: 1.0.0
+description: A freeform note with markdown content rendered on canvas. Use for documentation, context, or instructions that travel with the diagram.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /><path d="M7 15v-6l2 2l2 -2v6" /><path d="M14 13l2 2l2 -2m-2 2v-6" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+stepType: markdown-note
+defaultWidth: 240
+defaultHeight: 160
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000018
+form:
+  - key: markdown
+    label: Content
+    type: markdown
+    placeholder: |-
+      # Heading
+
+      Write your note here...
+  - key: agent_ignore
+    label: Ignore in Agent Context
+    type: boolean
+    defaultValue: true
+  - key: zoom
+    label: Text Zoom
+    type: range
+    min: 50
+    max: 200
+    step: 10
+    defaultValue: 100

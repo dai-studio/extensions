@@ -1,0 +1,55 @@
+# dai.types.business.kpi-metric
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/business/kpi-metric.ts
+name: KPI
+version: 1.0.0
+description: A Key Performance Indicator — defines a measurable target used to evaluate the success of a process or initiative.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19.875 12c.621 0 1.125 .512 1.125 1.143v5.714c0 .631 -.504 1.143 -1.125 1.143h-15.875a1 1 0 0 1 -1 -1v-5.857c0 -.631 .504 -1.143 1.125 -1.143h15.75" /><path d="M9 12v2" /><path d="M6 12v3" /><path d="M12 12v3" /><path d="M18 12v3" /><path d="M15 12v2" /><path d="M3 3v4" /><path d="M3 5h18" /><path d="M21 3v4" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+stepType: kpi
+license: free
+aliases:
+  - a1b2c3d4-0003-0001-0001-000000000003
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: KPI name
+  - key: target
+    label: Target Value
+    type: number
+    placeholder: '100'
+    min: 0
+  - key: unit
+    label: Unit
+    type: text
+    placeholder: e.g. %, $, count, ms
+  - key: formula
+    label: Formula / Calculation
+    type: code
+    placeholder: e.g. (completed / total) * 100
+  - key: frequency
+    label: Reporting Frequency
+    type: select
+    options:
+      - value: daily
+        label: Daily
+      - value: weekly
+        label: Weekly
+      - value: monthly
+        label: Monthly
+      - value: quarterly
+        label: Quarterly
+      - value: annually
+        label: Annually
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Responsible person or team
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: What does this KPI measure and why does it matter?

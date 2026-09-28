@@ -1,0 +1,23 @@
+# dai.types.bpmn.end-event
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/end-event.ts
+name: End
+version: 1.0.0
+description: Marks the termination of a process flow path.
+icon: ○
+iconClass: bpmn-icon-end-event-none
+order: 60
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:EndEvent
+license: free
+aliases:
+  - a1b2c3d4-0001-0002-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: End event name
+  - key: notes
+    label: Description
+    type: textarea

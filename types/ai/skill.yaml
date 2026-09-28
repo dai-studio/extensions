@@ -1,0 +1,37 @@
+# dai.types.ai.skill
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/skill.ts
+name: Skill
+version: 1.1.0
+description: An autonomous capability the AI can invoke when it judges the context appropriate. Describes behaviour rather than a concrete implementation.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21l15 -15l-3 -3l-15 15l3 3" /><path d="M15 6l3 3" /><path d="M9 3a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /><path d="M19 13a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+stepType: skill
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000007
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Skill name
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: What can the AI do with this skill? Describe the capability and when it applies.
+  - key: trigger
+    label: Trigger
+    type: text
+    placeholder: When should the AI apply this skill? (e.g. "Whenever asked to summarise or condense content")
+  - key: examples
+    label: Examples
+    type: textarea
+    placeholder: |-
+      Input: "Explain quantum entanglement to a 10-year-old"
+      Output: "Imagine you have two magic dice…"
+
+      Input: …
+      Output: …

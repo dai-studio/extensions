@@ -1,0 +1,62 @@
+# dai.types.business.objective
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/business/objective.ts
+name: Objective
+version: 1.0.0
+description: A strategic goal or OKR — a time-bound target the team aims to achieve. Pairs with KPIs to define what success looks like and how it will be measured.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 7a5 5 0 1 0 5 5" /><path d="M13 3.055a9 9 0 1 0 7.941 7.945" /><path d="M15 6v3h3l3 -3h-3v-3l-3 3" /><path d="M15 9l-3 3" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+stepType: objective
+license: free
+aliases:
+  - a1b2c3d4-0003-0001-0001-000000000004
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Objective name
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: draft
+        label: Draft
+      - value: active
+        label: Active
+      - value: achieved
+        label: Achieved
+      - value: missed
+        label: Missed
+  - key: timeframe
+    label: Timeframe
+    type: select
+    options:
+      - value: q1
+        label: Q1
+      - value: q2
+        label: Q2
+      - value: q3
+        label: Q3
+      - value: q4
+        label: Q4
+      - value: annual
+        label: Annual
+      - value: custom
+        label: Custom
+  - key: keyResults
+    label: Key Results
+    type: textarea
+    placeholder: |-
+      1. Increase NPS from 42 to 55
+      2. Reduce churn to below 3%
+      3. Launch in 2 new markets
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Responsible person or team
+  - key: notes
+    label: Notes
+    type: textarea

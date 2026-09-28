@@ -1,0 +1,23 @@
+# dai.types.bpmn.group-category
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/group-category.ts
+name: Category
+version: 1.0.0
+description: A visual boundary group for categorising related elements (does not affect execution).
+icon: □
+iconClass: bpmn-icon-group
+order: 170
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:Group
+license: free
+aliases:
+  - a1b2c3d4-0001-0008-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Category name
+  - key: notes
+    label: Description
+    type: textarea

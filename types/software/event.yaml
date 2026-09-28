@@ -1,0 +1,61 @@
+# dai.types.software.event
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/software/event.ts
+name: Event
+version: 1.0.0
+description: A domain event in an event-driven or microservice architecture — its producer, consumers, payload schema, and broker. Documents the async contracts between services.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M10 20h-6" /><path d="M14 20h6" /><path d="M12 15l-2 -2h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-3l-2 2" /><path d="M12 6v2" /><path d="M12 11v.01" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: event
+license: free
+aliases:
+  - a1b2c3d4-0006-0001-0001-000000000004
+form:
+  - key: name
+    label: Event Name
+    type: text
+    placeholder: e.g. "order.created", "user.signup.completed"
+  - key: producer
+    label: Producer
+    type: text
+    placeholder: Which service or component emits this event?
+  - key: consumers
+    label: Consumers
+    type: textarea
+    placeholder: Which services or components listen for this event?
+  - key: broker
+    label: Broker
+    type: select
+    options:
+      - value: kafka
+        label: Kafka
+      - value: rabbitmq
+        label: RabbitMQ
+      - value: aws-sns
+        label: AWS SNS
+      - value: aws-sqs
+        label: AWS SQS
+      - value: gcp-pubsub
+        label: Google Pub/Sub
+      - value: redis-pubsub
+        label: Redis Pub/Sub
+      - value: custom
+        label: Custom
+      - value: none
+        label: None
+  - key: payloadSchema
+    label: Payload Schema
+    type: code
+    placeholder: |-
+      {
+        "orderId": "uuid",
+        "userId": "uuid",
+        "total": "number",
+        "createdAt": "ISO8601"
+      }
+  - key: notes
+    label: Notes
+    type: textarea

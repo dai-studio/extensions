@@ -1,0 +1,51 @@
+# dai.types.ai.tool
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/tool.ts
+name: Tool
+version: 1.1.0
+description: A callable function with a concrete implementation. The AI reads the description to understand what it does, then executes the code.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+stepType: tool
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000009
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Tool name (used as the function name)
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: What does this tool do and what does it return? The AI will use this to decide when and how to invoke it.
+  - key: language
+    label: Language
+    type: select
+    options:
+      - value: python
+        label: Python
+      - value: javascript
+        label: JavaScript
+      - value: typescript
+        label: TypeScript
+      - value: shell
+        label: Shell
+      - value: sql
+        label: SQL
+      - value: other
+        label: Other
+  - key: properties
+    label: Parameters
+    type: key-value
+  - key: returns
+    label: Returns
+    type: text
+    placeholder: e.g. string, JSON object, number, void
+  - key: code
+    label: Code
+    type: code
+    placeholder: Paste or write the implementation code for this tool…

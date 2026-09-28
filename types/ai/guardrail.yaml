@@ -1,0 +1,50 @@
+# dai.types.ai.guardrail
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/guardrail.ts
+name: Guardrail
+version: 1.0.0
+description: 'A runtime enforcement or detection mechanism. Distinct from Rule (policy-level constraint) — a Guardrail is actively applied at inference time: content filters, output validators, safety classifiers.'
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l4 -14" /><path d="M16 5l4 14" /><path d="M12 8v-2" /><path d="M12 13v-2" /><path d="M12 18v-2" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+stepType: guardrail
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000017
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Guardrail name
+  - key: guardrailType
+    label: Type
+    type: select
+    options:
+      - value: input
+        label: Input — applied to incoming messages
+      - value: output
+        label: Output — applied to generated responses
+      - value: both
+        label: Both — input and output
+  - key: action
+    label: Action
+    type: select
+    options:
+      - value: block
+        label: Block — reject and halt
+      - value: warn
+        label: Warn — flag but continue
+      - value: redact
+        label: Redact — remove offending content
+      - value: flag
+        label: Flag — log for review
+  - key: trigger
+    label: Trigger
+    type: textarea
+    placeholder: What pattern, condition, or classifier activates this guardrail?
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the enforcement logic and any exceptions.

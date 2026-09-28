@@ -1,0 +1,64 @@
+# dai.types.ai.dataset
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/dataset.ts
+name: Dataset
+version: 1.0.0
+description: A training, fine-tuning, or evaluation dataset. Distinct from Context (runtime grounding) — a Dataset is a corpus artifact used to shape or evaluate model behaviour offline.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+stepType: dataset
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000014
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Dataset name
+  - key: source
+    label: Source
+    type: select
+    options:
+      - value: curated
+        label: Curated
+      - value: generated
+        label: Generated
+      - value: scraped
+        label: Scraped
+      - value: synthetic
+        label: Synthetic
+  - key: split
+    label: Split
+    type: select
+    options:
+      - value: train
+        label: Train
+      - value: eval
+        label: Eval
+      - value: test
+        label: Test
+      - value: all
+        label: All
+  - key: format
+    label: Format
+    type: select
+    options:
+      - value: jsonl
+        label: JSONL
+      - value: csv
+        label: CSV
+      - value: parquet
+        label: Parquet
+      - value: text
+        label: Text
+  - key: size
+    label: Size
+    type: text
+    placeholder: e.g. 10k examples, 2GB
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what this dataset contains and how it is used.

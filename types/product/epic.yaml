@@ -1,0 +1,47 @@
+# dai.types.product.epic
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/product/epic.ts
+name: Epic
+version: 1.0.0
+description: A large body of work grouping multiple features or stories under a common strategic theme. Epics represent a significant product investment and typically span multiple sprints or quarters.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1l0 -2" /><path d="M12 8l0 13" /><path d="M19 12v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7" /><path d="M7.5 8a2.5 2.5 0 0 1 0 -5a4.8 8 0 0 1 4.5 5a4.8 8 0 0 1 4.5 -5a2.5 2.5 0 0 1 0 5" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+stepType: epic
+license: free
+aliases:
+  - a1b2c3d4-0005-0001-0001-000000000002
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Epic name
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: draft
+        label: Draft
+      - value: active
+        label: Active
+      - value: complete
+        label: Complete
+      - value: cancelled
+        label: Cancelled
+  - key: theme
+    label: Strategic Theme
+    type: text
+    placeholder: The strategic initiative this epic advances
+  - key: goal
+    label: Goal
+    type: textarea
+    placeholder: What outcome does this epic achieve? Why does it matter to the business and users?
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Product owner or team
+  - key: notes
+    label: Notes
+    type: textarea

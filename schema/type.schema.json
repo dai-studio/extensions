@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dai.studio/schema/extensions/type.schema.json",
+  "title": "dai.studio type definition (source YAML)",
+  "description": "types/<category>/<leaf>.yaml. The id (dai.types.<category>.<leaf>) and category come from the file path; kid and signature are added by CI.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "version", "description", "icon", "colors", "bpmnType", "license", "form"],
+  "properties": {
+    "name": { "type": "string", "minLength": 1, "maxLength": 60 },
+    "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
+    "description": { "type": "string", "minLength": 1, "maxLength": 1000 },
+    "icon": { "type": "string", "minLength": 1, "maxLength": 8, "pattern": "^[^<>&\"']+$" },
+    "quickicon": { "type": "string", "minLength": 1 },
+    "iconClass": { "type": "string", "pattern": "^bpmn-icon-[a-z0-9-]+$" },
+    "order": { "type": "integer", "minimum": 0, "maximum": 10000 },
+    "colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fill", "stroke"],
+      "properties": {
+        "fill": { "$ref": "#/definitions/hexColor" },
+        "stroke": { "$ref": "#/definitions/hexColor" }
+      }
+    },
+    "bpmnType": {
+      "type": "string",
+      "enum": [
+        "bpmn:Task", "bpmn:SubProcess",
+        "bpmn:StartEvent", "bpmn:EndEvent", "bpmn:IntermediateCatchEvent", "bpmn:IntermediateThrowEvent",
+        "bpmn:ExclusiveGateway", "bpmn:ParallelGateway",
+        "bpmn:TextAnnotation", "bpmn:DataStoreReference", "bpmn:Group"
+      ]
+    },
+    "stepType": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$", "maxLength": 64 },
+    "eventDefinitionType": {
+      "type": "string",
+      "enum": [
+        "bpmn:MessageEventDefinition", "bpmn:TimerEventDefinition",
+        "bpmn:ConditionalEventDefinition", "bpmn:SignalEventDefinition"
+      ]
+    },
+    "isExpanded": { "type": "boolean" },
+    "defaultWidth": { "type": "integer", "minimum": 20, "maximum": 2000 },
+    "defaultHeight": { "type": "integer", "minimum": 20, "maximum": 2000 },
+    "license": { "type": "string", "const": "free" },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[A-Za-z0-9-]+$" }
+    },
+    "deprecated": { "type": "boolean" },
+    "replacedBy": { "type": "string", "pattern": "^dai\\.types\\.[a-z0-9-]+\\.[a-z0-9-]+$" },
+    "form": {
+      "type": "array",
+      "maxItems": 50,
+      "items": { "$ref": "#/definitions/field" }
+    }
+  },
+  "definitions": {
+    "hexColor": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["key", "label", "type"],
+      "properties": {
+        "key": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9_]*$", "maxLength": 64 },
+        "label": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "type": {
+          "type": "string",
+          "enum": ["text", "textarea", "code", "select", "number", "range", "boolean", "model-selector", "key-value", "list", "markdown"]
+        },
+        "storage": { "type": "string", "enum": ["native", "attr", "field", "properties"] },
+        "placeholder": { "type": "string", "maxLength": 200 },
+        "defaultValue": { "type": ["string", "number", "boolean"] },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["value", "label"],
+            "properties": {
+              "value": { "type": "string", "maxLength": 100 },
+              "label": { "type": "string", "maxLength": 100 }
+            }
+          }
+        },
+        "rows": { "type": "integer", "minimum": 1, "maximum": 40 },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "step": { "type": "number" },
+        "required": { "type": "boolean" },
+        "hint": { "type": "string", "maxLength": 300 }
+      }
+    }
+  }
+}

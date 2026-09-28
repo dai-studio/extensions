@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dai.studio/schema/extensions/catalog.schema.json",
+  "title": "Published catalog (R2 catalog/builds/<sha>/catalog.json, served at GET /api/catalog)",
+  "description": "Each types[] entry is individually signed over canonicalJson(entry minus signature). The catalog is signed over canonicalJson(catalog minus top-level signature). Pattern bodies live at catalog/builds/<sha>/patterns/<id>.dai and must match their sha256.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "build", "publishedAt", "categories", "types", "patterns", "kid", "signature"],
+  "properties": {
+    "format": { "const": 1 },
+    "build": { "type": "string", "pattern": "^[a-zA-Z0-9._-]{1,64}$" },
+    "publishedAt": { "type": "string" },
+    "categories": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["types", "patterns"],
+      "properties": {
+        "types": { "type": "object", "additionalProperties": { "$ref": "type-category.schema.json" } },
+        "patterns": { "type": "object", "additionalProperties": { "$ref": "pattern-category.schema.json" } }
+      }
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "category", "name", "version", "bpmnType", "form", "license", "kid", "signature"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^dai\\.types\\.[a-z0-9-]+\\.[a-z0-9-]+$" },
+          "category": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "kid": { "type": "string" },
+          "signature": { "type": "string" }
+        }
+      }
+    },
+    "patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "category", "name", "description", "version", "sha256"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^dai\\.patterns\\.[a-z0-9-]+\\.[a-z0-9-]+$" },
+          "category": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "version": { "type": "string" },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "aliases": { "type": "array", "items": { "type": "string" } },
+          "deprecated": { "type": "boolean" }
+        }
+      }
+    },
+    "kid": { "type": "string" },
+    "signature": { "type": "string" }
+  }
+}

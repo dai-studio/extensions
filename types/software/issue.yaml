@@ -1,0 +1,80 @@
+# dai.types.software.issue
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/issue.ts
+name: Issue
+version: 1.1.0
+description: A bug, defect, or blocker that needs to be tracked and resolved. Captures severity, type, reproduction steps, and expected vs actual behaviour.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14.083c0 4.154 -2.966 6.74 -7 6.917c-4.2 0 -7 -2.763 -7 -6.917c0 -5.538 3.5 -11.09 7 -11.083c3.5 .007 7 5.545 7 11.083" /><path d="M12 3l-1.5 5l3.5 2.5l-2 3.5" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: issue
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000011
+form:
+  - key: name
+    label: Title
+    type: text
+    placeholder: Issue title
+  - key: issueType
+    label: Type
+    type: select
+    options:
+      - value: bug
+        label: Bug
+      - value: enhancement
+        label: Enhancement
+      - value: blocker
+        label: Blocker
+      - value: question
+        label: Question
+  - key: severity
+    label: Severity
+    type: select
+    options:
+      - value: critical
+        label: Critical
+      - value: high
+        label: High
+      - value: medium
+        label: Medium
+      - value: low
+        label: Low
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: open
+        label: Open
+      - value: in-progress
+        label: In Progress
+      - value: resolved
+        label: Resolved
+      - value: closed
+        label: Closed
+      - value: wont-fix
+        label: Won't Fix
+  - key: stepsToReproduce
+    label: Steps to Reproduce
+    type: textarea
+    placeholder: |-
+      1. Go to…
+      2. Click on…
+      3. Observe…
+  - key: expectedResult
+    label: Expected
+    type: textarea
+    placeholder: What should happen?
+  - key: actualResult
+    label: Actual
+    type: textarea
+    placeholder: What actually happens?
+  - key: assignee
+    label: Assignee
+    type: text
+    placeholder: Who is fixing this?
+  - key: notes
+    label: Notes
+    type: textarea

@@ -1,0 +1,46 @@
+# dai.types.ai.evaluation
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/evaluation.ts
+name: Evaluation
+version: 1.0.0
+description: An evaluation suite or benchmark for AI behaviour. Distinct from a generic Test — defines metrics, benchmarks, or scoring criteria used to assess model outputs.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h-1a2 2 0 0 0 -2 2v3.5a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1" /><path d="M8 15a6 6 0 1 0 12 0v-3" /><path d="M11 3v2" /><path d="M6 3v2" /><path d="M18 10a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+stepType: evaluation
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000015
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Evaluation name
+  - key: metric
+    label: Metric
+    type: text
+    placeholder: e.g. BLEU, ROUGE, accuracy, F1
+  - key: benchmark
+    label: Benchmark
+    type: text
+    placeholder: e.g. MMLU, HumanEval, HellaSwag
+  - key: threshold
+    label: Pass Threshold
+    type: text
+    placeholder: e.g. ≥ 0.85, top-5%
+  - key: method
+    label: Method
+    type: select
+    options:
+      - value: automated
+        label: Automated
+      - value: human
+        label: Human
+      - value: hybrid
+        label: Hybrid
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what this evaluation measures and how results should be interpreted.

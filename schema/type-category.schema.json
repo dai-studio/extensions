@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dai.studio/schema/extensions/type-category.schema.json",
+  "title": "Type category (types/<category>/_category.yaml)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["label", "order"],
+  "properties": {
+    "label": { "type": "string", "minLength": 1, "maxLength": 40 },
+    "order": { "type": "integer", "minimum": 0, "maximum": 10000 },
+    "columns": { "type": "integer", "minimum": 1, "maximum": 4 }
+  }
+}

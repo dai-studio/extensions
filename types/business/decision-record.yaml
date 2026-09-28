@@ -1,0 +1,47 @@
+# dai.types.business.decision-record
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/business/decision-record.ts
+name: Decision
+version: 1.0.0
+description: An Architecture Decision Record (ADR) — documents the context, decision made, and its consequences for future reference.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5" /><path d="M8 3h-5v5" /><path d="M21 3l-7.536 7.536a5 5 0 0 0 -1.464 3.534v6.93" /><path d="M3 3l7.536 7.536a5 5 0 0 1 1.464 3.534v.93" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+stepType: decision-record
+license: free
+aliases:
+  - a1b2c3d4-0003-0001-0001-000000000002
+form:
+  - key: name
+    label: Title
+    type: text
+    placeholder: Decision title
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: proposed
+        label: Proposed
+      - value: accepted
+        label: Accepted
+      - value: deprecated
+        label: Deprecated
+      - value: superseded
+        label: Superseded
+  - key: context
+    label: Context
+    type: textarea
+    placeholder: What is the issue, situation, or problem that motivated this decision?
+  - key: decision
+    label: Decision
+    type: textarea
+    placeholder: What was decided? State the choice clearly.
+  - key: consequences
+    label: Consequences
+    type: textarea
+    placeholder: What are the resulting trade-offs, positive or negative?
+  - key: notes
+    label: Notes
+    type: textarea

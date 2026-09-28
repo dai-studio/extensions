@@ -1,0 +1,63 @@
+# dai.types.software.test
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/test.ts
+name: Test
+version: 1.1.0
+description: A test case or verification condition — documents what is being tested, how to run it, and what constitutes a pass.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" /><path d="M9 5a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2" /><path d="M9 14l2 2l4 -4" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: test
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000010
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Test name
+  - key: testType
+    label: Type
+    type: select
+    options:
+      - value: unit
+        label: Unit
+      - value: integration
+        label: Integration
+      - value: e2e
+        label: End-to-End
+      - value: acceptance
+        label: Acceptance
+      - value: performance
+        label: Performance
+      - value: security
+        label: Security
+  - key: testStatus
+    label: Status
+    type: select
+    options:
+      - value: not-run
+        label: Not Run
+      - value: passing
+        label: Passing
+      - value: failing
+        label: Failing
+      - value: skipped
+        label: Skipped
+  - key: testSteps
+    label: Steps
+    type: textarea
+    placeholder: How do you run this test? List the steps.
+  - key: expectedResult
+    label: Expected Result
+    type: textarea
+    placeholder: What should happen when the test passes?
+  - key: actualResult
+    label: Actual Result
+    type: textarea
+    placeholder: What actually happened? (fill in after running)
+  - key: notes
+    label: Notes
+    type: textarea

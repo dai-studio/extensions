@@ -1,0 +1,20 @@
+# dai.types.bpmn.text-annotation
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/text-annotation.ts
+name: Annotation
+version: 1.0.0
+description: A text note attached to any element for documentation purposes.
+icon: ✎
+iconClass: bpmn-icon-text-annotation
+order: 190
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:TextAnnotation
+license: free
+aliases:
+  - a1b2c3d4-0001-0006-0001-000000000001
+form:
+  - key: text
+    label: Text
+    type: textarea
+    placeholder: Annotation text...

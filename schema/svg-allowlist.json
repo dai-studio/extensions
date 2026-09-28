@@ -1,0 +1,14 @@
+{
+  "$comment": "Allowlist for type `quickicon` SVG. Mirrored by ws-dai-studio/editor-src/src/lib/types/sanitizeSvg.ts — keep both in sync.",
+  "maxBytes": 4096,
+  "elements": ["svg", "g", "path", "circle", "ellipse", "rect", "line", "polyline", "polygon"],
+  "attributes": [
+    "xmlns", "width", "height", "viewBox",
+    "fill", "fill-opacity", "fill-rule", "clip-rule",
+    "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin", "stroke-opacity", "stroke-dasharray", "stroke-miterlimit",
+    "opacity", "transform",
+    "d", "cx", "cy", "r", "rx", "ry", "x", "y", "x1", "y1", "x2", "y2", "points"
+  ],
+  "xmlnsValue": "http://www.w3.org/2000/svg",
+  "forbiddenValuePatterns": ["url\\s*\\(", "javascript:", "data:", "expression\\s*\\(", "[<>]"]
+}

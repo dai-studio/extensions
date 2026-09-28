@@ -1,0 +1,64 @@
+# dai.types.product.story
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/story.ts
+name: Story
+version: 1.1.0
+description: A user story that defines a desired outcome from a specific persona's perspective. Includes acceptance criteria to make it testable and a priority to make it actionable.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 7v14l-6 -4l-6 4v-14a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+stepType: story
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000008
+form:
+  - key: name
+    label: Title
+    type: text
+    placeholder: Story title
+  - key: persona
+    label: Persona
+    type: text
+    placeholder: Which persona does this story belong to?
+    hint: Type the name of a Persona, or draw a connection from a Persona element on canvas to this Story to link them.
+  - key: notes
+    label: Story
+    type: textarea
+    placeholder: As a [persona], I want [goal] so that [reason].
+  - key: priority
+    label: Priority
+    type: select
+    options:
+      - value: must
+        label: Must Have
+      - value: should
+        label: Should Have
+      - value: could
+        label: Could Have
+      - value: wont
+        label: Won't Have
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: backlog
+        label: Backlog
+      - value: ready
+        label: Ready
+      - value: in-progress
+        label: In Progress
+      - value: done
+        label: Done
+      - value: rejected
+        label: Rejected
+  - key: acceptanceCriteria
+    label: Acceptance Criteria
+    type: textarea
+    placeholder: What conditions must be true for this story to be considered done?
+  - key: storyPoints
+    label: Story Points
+    type: number
+    min: 0
+    placeholder: Effort estimate

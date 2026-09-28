@@ -1,0 +1,51 @@
+# dai.types.product.experiment
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/product/experiment.ts
+name: Experiment
+version: 1.0.0
+description: A product experiment or A/B test — a structured hypothesis with a success metric, audience, and captured result. Essential for product-led teams running continuous discovery.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8.04l-12.122 12.124a2.857 2.857 0 1 1 -4.041 -4.04l12.122 -12.124" /><path d="M7 13h8" /><path d="M19 15l1.5 1.6a2 2 0 1 1 -3 0l1.5 -1.6" /><path d="M15 3l6 6" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+stepType: experiment
+license: free
+aliases:
+  - a1b2c3d4-0005-0001-0001-000000000004
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Experiment name
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: draft
+        label: Draft
+      - value: running
+        label: Running
+      - value: complete
+        label: Complete
+      - value: abandoned
+        label: Abandoned
+  - key: hypothesis
+    label: Hypothesis
+    type: textarea
+    placeholder: We believe that [change] will result in [outcome] because [rationale].
+  - key: audience
+    label: Audience
+    type: text
+    placeholder: Who is included in this experiment? (e.g. "New users, 50/50 split")
+  - key: successMetric
+    label: Success Metric
+    type: text
+    placeholder: What measurement determines success? (e.g. "≥10% increase in activation rate")
+  - key: result
+    label: Result
+    type: textarea
+    placeholder: What did you learn? Was the hypothesis validated or invalidated?
+  - key: notes
+    label: Notes
+    type: textarea

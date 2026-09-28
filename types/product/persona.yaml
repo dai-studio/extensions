@@ -1,0 +1,48 @@
+# dai.types.product.persona
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/ai/persona.ts
+name: Persona
+version: 1.1.0
+description: A research-based user archetype that represents a segment of your target audience. Use it to ground product decisions in real user needs and connect to Stories, Features, and Journeys.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11v-3c0 -.53 -.211 -1.039 -.586 -1.414c-.375 -.375 -.884 -.586 -1.414 -.586h-6m0 0l3 3m-3 -3l3 -3" /><path d="M3 13.013v3c0 .53 .211 1.039 .586 1.414c.375 .375 .884 .586 1.414 .586h6m0 0l-3 -3m3 3l-3 3" /><path d="M16 16.502c0 .53 .211 1.039 .586 1.414c.375 .375 .884 .586 1.414 .586c.53 0 1.039 -.211 1.414 -.586c.375 -.375 .586 -.884 .586 -1.414c0 -.53 -.211 -1.039 -.586 -1.414c-.375 -.375 -.884 -.586 -1.414 -.586c-.53 0 -1.039 .211 -1.414 .586c-.375 .375 -.586 .884 -.586 1.414" /><path d="M4 4.502c0 .53 .211 1.039 .586 1.414c.375 .375 .884 .586 1.414 .586c.53 0 1.039 -.211 1.414 -.586c.375 -.375 .586 -.884 .586 -1.414c0 -.53 -.211 -1.039 -.586 -1.414c-.375 -.375 -.884 -.586 -1.414 -.586c-.53 0 -1.039 .211 -1.414 .586c-.375 .375 -.586 .884 -.586 1.414" /><path d="M21 21.499c0 -.53 -.211 -1.039 -.586 -1.414c-.375 -.375 -.884 -.586 -1.414 -.586h-2c-.53 0 -1.039 .211 -1.414 .586c-.375 .375 -.586 .884 -.586 1.414" /><path d="M9 9.499c0 -.53 -.211 -1.039 -.586 -1.414c-.375 -.375 -.884 -.586 -1.414 -.586h-2c-.53 0 -1.039 .211 -1.414 .586c-.375 .375 -.586 .884 -.586 1.414" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+stepType: persona
+license: free
+aliases:
+  - a1b2c3d4-0002-0001-0001-000000000006
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: e.g. "Sarah the Startup Founder"
+  - key: role
+    label: Role
+    type: text
+    placeholder: Job title or life role
+    hint: Connect this Persona to Stories, Features, and Journeys on canvas by drawing connections from this element to link them to this user archetype.
+  - key: age
+    label: Age Range
+    type: text
+    placeholder: e.g. 28–35
+  - key: goals
+    label: Goals
+    type: textarea
+    placeholder: What are they trying to achieve?
+  - key: frustrations
+    label: Frustrations
+    type: textarea
+    placeholder: What gets in their way?
+  - key: behaviours
+    label: Behaviours
+    type: textarea
+    placeholder: How do they currently solve the problem?
+  - key: quote
+    label: Quote
+    type: text
+    placeholder: A representative verbatim quote
+  - key: notes
+    label: Notes
+    type: textarea

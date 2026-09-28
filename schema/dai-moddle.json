@@ -1,0 +1,363 @@
+{
+  "name": "DAIStudio",
+  "prefix": "dai",
+  "uri": "https://dai.studio/schema/dai/1.0",
+  "xml": {
+    "tagAlias": "lowerCase"
+  },
+  "associations": [],
+  "types": [
+    {
+      "name": "TypedExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:FlowElement", "bpmn:Artifact"],
+      "properties": [
+        { "name": "type", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "Fields",
+      "superClass": ["Element"],
+      "properties": [
+        { "name": "values", "isMany": true, "type": "dai:Field" }
+      ]
+    },
+    {
+      "name": "Field",
+      "superClass": ["Element"],
+      "properties": [
+        { "name": "key",   "isAttr": true, "type": "String" },
+        { "name": "value", "isBody": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "TaskExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:Task"],
+      "properties": [
+        { "name": "stepType", "isAttr": true, "type": "String" },
+        { "name": "notes",    "isAttr": true, "type": "String" },
+        { "name": "code",     "isAttr": true, "type": "String" },
+        { "name": "version",  "isAttr": true, "type": "String" },
+
+        { "name": "timerDefinition", "isAttr": true, "type": "String" },
+        { "name": "condition",       "isAttr": true, "type": "String" },
+
+        { "name": "probability", "isAttr": true, "type": "String" },
+        { "name": "impact",      "isAttr": true, "type": "String" },
+        { "name": "mitigation",  "isAttr": true, "type": "String" },
+        { "name": "owner",       "isAttr": true, "type": "String" },
+
+        { "name": "status",       "isAttr": true, "type": "String" },
+        { "name": "context",      "isAttr": true, "type": "String" },
+        { "name": "decision",     "isAttr": true, "type": "String" },
+        { "name": "consequences", "isAttr": true, "type": "String" },
+
+        { "name": "target",    "isAttr": true, "type": "String" },
+        { "name": "unit",      "isAttr": true, "type": "String" },
+        { "name": "formula",   "isAttr": true, "type": "String" },
+        { "name": "frequency", "isAttr": true, "type": "String" },
+
+        { "name": "method",       "isAttr": true, "type": "String" },
+        { "name": "path",         "isAttr": true, "type": "String" },
+        { "name": "authType",     "isAttr": true, "type": "String" },
+        { "name": "requestBody",  "isAttr": true, "type": "String" },
+        { "name": "responseBody", "isAttr": true, "type": "String" },
+
+        { "name": "systemPrompt", "isAttr": true, "type": "String" },
+        { "name": "userPrompt",   "isAttr": true, "type": "String" },
+        { "name": "outputFormat", "isAttr": true, "type": "String" },
+
+        { "name": "timeframe",            "isAttr": true, "type": "String" },
+        { "name": "keyResults",           "isAttr": true, "type": "String" },
+        { "name": "interest",             "isAttr": true, "type": "String" },
+        { "name": "influence",            "isAttr": true, "type": "String" },
+        { "name": "engagementStrategy",   "isAttr": true, "type": "String" },
+        { "name": "priority",             "isAttr": true, "type": "String" },
+        { "name": "source",               "isAttr": true, "type": "String" },
+        { "name": "acceptanceCriteria",   "isAttr": true, "type": "String" },
+        { "name": "basis",                "isAttr": true, "type": "String" },
+        { "name": "ifWrong",              "isAttr": true, "type": "String" },
+
+        { "name": "valueStatement", "isAttr": true, "type": "String" },
+        { "name": "theme",          "isAttr": true, "type": "String" },
+        { "name": "goal",           "isAttr": true, "type": "String" },
+        { "name": "steps",          "isAttr": true, "type": "String" },
+        { "name": "painPoints",     "isAttr": true, "type": "String" },
+        { "name": "opportunities",  "isAttr": true, "type": "String" },
+        { "name": "hypothesis",     "isAttr": true, "type": "String" },
+        { "name": "audience",       "isAttr": true, "type": "String" },
+        { "name": "successMetric",  "isAttr": true, "type": "String" },
+        { "name": "result",         "isAttr": true, "type": "String" },
+
+        { "name": "role",         "isAttr": true, "type": "String" },
+        { "name": "age",          "isAttr": true, "type": "String" },
+        { "name": "goals",        "isAttr": true, "type": "String" },
+        { "name": "frustrations", "isAttr": true, "type": "String" },
+        { "name": "behaviours",   "isAttr": true, "type": "String" },
+        { "name": "quote",        "isAttr": true, "type": "String" },
+        { "name": "storyPoints",  "isAttr": true, "type": "String" },
+
+        { "name": "baseUrl",        "isAttr": true, "type": "String" },
+        { "name": "engine",         "isAttr": true, "type": "String" },
+        { "name": "host",           "isAttr": true, "type": "String" },
+        { "name": "accessPattern",  "isAttr": true, "type": "String" },
+        { "name": "componentType",  "isAttr": true, "type": "String" },
+        { "name": "propsInterface", "isAttr": true, "type": "String" },
+        { "name": "producer",       "isAttr": true, "type": "String" },
+        { "name": "consumers",      "isAttr": true, "type": "String" },
+        { "name": "payloadSchema",  "isAttr": true, "type": "String" },
+        { "name": "broker",         "isAttr": true, "type": "String" },
+
+        { "name": "package",          "isAttr": true, "type": "String" },
+        { "name": "dependencyType",   "isAttr": true, "type": "String" },
+        { "name": "license",          "isAttr": true, "type": "String" },
+        { "name": "purpose",          "isAttr": true, "type": "String" },
+        { "name": "severity",         "isAttr": true, "type": "String" },
+        { "name": "assignee",         "isAttr": true, "type": "String" },
+        { "name": "issueType",        "isAttr": true, "type": "String" },
+        { "name": "stepsToReproduce", "isAttr": true, "type": "String" },
+        { "name": "modelFormat",      "isAttr": true, "type": "String" },
+        { "name": "testType",         "isAttr": true, "type": "String" },
+        { "name": "testStatus",       "isAttr": true, "type": "String" },
+        { "name": "testSteps",        "isAttr": true, "type": "String" },
+        { "name": "statusCode",       "isAttr": true, "type": "String" },
+
+        { "name": "format",       "isAttr": true, "type": "String" },
+        { "name": "scope",        "isAttr": true, "type": "String" },
+        { "name": "content",      "isAttr": true, "type": "String" },
+        { "name": "rulePriority", "isAttr": true, "type": "String" },
+        { "name": "enforcement",  "isAttr": true, "type": "String" },
+        { "name": "trigger",      "isAttr": true, "type": "String" },
+        { "name": "examples",     "isAttr": true, "type": "String" },
+        { "name": "language",     "isAttr": true, "type": "String" },
+        { "name": "returns",      "isAttr": true, "type": "String" },
+        { "name": "temperature",  "isAttr": true, "type": "String" },
+
+        { "name": "targetDate",       "isAttr": true, "type": "String" },
+        { "name": "deliverables",     "isAttr": true, "type": "String" },
+        { "name": "amount",           "isAttr": true, "type": "String" },
+        { "name": "currency",         "isAttr": true, "type": "String" },
+        { "name": "costType",         "isAttr": true, "type": "String" },
+        { "name": "authority",        "isAttr": true, "type": "String" },
+        { "name": "enforcementLevel", "isAttr": true, "type": "String" },
+        { "name": "markdown",         "isAttr": true, "type": "String" },
+        { "name": "agent_ignore",     "isAttr": true, "type": "String" },
+        { "name": "zoom",             "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "SubProcessExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:SubProcess"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "AgentExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:SubProcess"],
+      "properties": [
+        { "name": "stepType",      "isAttr": true, "type": "String" },
+        { "name": "agentRole",     "isAttr": true, "type": "String" },
+        { "name": "defaultModel",  "isAttr": true, "type": "String" },
+        { "name": "agentType",     "isAttr": true, "type": "String" },
+        { "name": "memoryType",    "isAttr": true, "type": "String" },
+        { "name": "maxIterations", "isAttr": true, "type": "String" },
+        { "name": "stopCondition", "isAttr": true, "type": "String" },
+        { "name": "outputSchema",  "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "GroupExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:Group"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "StartEventExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:StartEvent"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "EndEventExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:EndEvent"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "IntermediateThrowEventExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:IntermediateThrowEvent"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "IntermediateCatchEventExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:IntermediateCatchEvent"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "ExclusiveGatewayExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:ExclusiveGateway"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "ParallelGatewayExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:ParallelGateway"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "DataStoreReferenceExtension",
+      "isAbstract": true,
+      "extends": ["bpmn:DataStoreReference"],
+      "properties": [
+        { "name": "notes", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "WorkflowMeta",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:Process", "bpmn:Collaboration"]
+      },
+      "properties": [
+        { "name": "description", "isAttr": true, "type": "String" },
+        { "name": "defaultModel", "isAttr": true, "type": "String" },
+        { "name": "targetLanguage", "isAttr": true, "type": "String" },
+        { "name": "targetFramework", "isAttr": true, "type": "String" },
+        { "name": "version", "isAttr": true, "type": "String" },
+        { "name": "taskTypeEntries", "isMany": true, "type": "dai:TaskTypeEntry" }
+      ]
+    },
+    {
+      "name": "TaskTypeEntry",
+      "superClass": ["Element"],
+      "properties": [
+        { "name": "type",        "isAttr": true, "type": "String" },
+        { "name": "stepType",    "isAttr": true, "type": "String" },
+        { "name": "description", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "AiTask",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:ServiceTask", "bpmn:Task"]
+      },
+      "properties": [
+        { "name": "stepType", "isAttr": true, "type": "String", "default": "ai" },
+        { "name": "model", "isAttr": true, "type": "String" },
+        { "name": "temperature", "isAttr": true, "type": "String" },
+        { "name": "maxTokens", "isAttr": true, "type": "Integer" },
+        { "name": "outputFormat", "isAttr": true, "type": "String" },
+        { "name": "prompt", "type": "dai:Prompt" },
+        { "name": "outputSchema", "type": "dai:OutputSchema" }
+      ]
+    },
+    {
+      "name": "Prompt",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["dai:AiTask"]
+      },
+      "properties": [
+        { "name": "value", "isBody": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "OutputSchema",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["dai:AiTask"]
+      },
+      "properties": [
+        { "name": "value", "isBody": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "HumanReview",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:UserTask"]
+      },
+      "properties": [
+        { "name": "instructions", "isAttr": true, "type": "String" },
+        { "name": "approveLabel", "isAttr": true, "type": "String" },
+        { "name": "rejectLabel", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "Validation",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:BusinessRuleTask"]
+      },
+      "properties": [
+        { "name": "validationType", "isAttr": true, "type": "String" },
+        { "name": "rules", "isAttr": true, "type": "String" },
+        { "name": "failBehavior", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "ToolExecution",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:ServiceTask", "bpmn:ScriptTask"]
+      },
+      "properties": [
+        { "name": "toolType", "isAttr": true, "type": "String" },
+        { "name": "command", "isAttr": true, "type": "String" },
+        { "name": "args", "isAttr": true, "type": "String" },
+        { "name": "workingDir", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "ConditionLabel",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:SequenceFlow"]
+      },
+      "properties": [
+        { "name": "label", "isAttr": true, "type": "String" },
+        { "name": "expression", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "Property",
+      "superClass": ["Element"],
+      "properties": [
+        { "name": "name", "isAttr": true, "type": "String" },
+        { "name": "type", "isAttr": true, "type": "String" }
+      ]
+    },
+    {
+      "name": "Properties",
+      "superClass": ["Element"],
+      "meta": {
+        "allowedIn": ["bpmn:Task", "bpmn:SubProcess"]
+      },
+      "properties": [
+        { "name": "values", "isMany": true, "type": "dai:Property" }
+      ]
+    }
+  ]
+}

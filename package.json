@@ -1,0 +1,31 @@
+{
+  "name": "dai-extensions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Open source types and patterns for dai.studio",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "validate": "node tools/validate.ts",
+    "build": "node tools/build.ts",
+    "sign": "node tools/sign.ts",
+    "publish:r2": "node tools/publish.ts",
+    "dry-run": "node tools/dry-run.ts",
+    "keygen": "node tools/generate-keypair.ts",
+    "test": "node --test tools/test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test && npm run validate && npm run build"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "bpmn-moddle": "^10.3.1",
+    "saxen": "^11.2.0",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.2"
+  }
+}

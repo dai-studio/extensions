@@ -1,0 +1,51 @@
+# dai.types.software.component
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/software/component.ts
+name: Component
+version: 1.0.0
+description: A UI or software component — its type, props/interface, and usage description. Use it to document your component library, design system elements, or reusable building blocks.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.008v-8.018a1.98 1.98 0 0 0 -1 -1.717l-7 -4.008a2.016 2.016 0 0 0 -2 0l-7 4.008c-.619 .355 -1 1.01 -1 1.718v8.018c0 .709 .381 1.363 1 1.717l7 4.008a2.016 2.016 0 0 0 2 0l7 -4.008c.619 -.355 1 -1.01 1 -1.718" /><path d="M12 22v-10" /><path d="M12 12l8.73 -5.04" /><path d="M3.27 6.96l8.73 5.04" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: component
+license: free
+aliases:
+  - a1b2c3d4-0006-0001-0001-000000000002
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Component name (e.g. "DatePicker", "AuthGuard")
+  - key: componentType
+    label: Type
+    type: select
+    options:
+      - value: ui
+        label: UI Component
+      - value: layout
+        label: Layout
+      - value: page
+        label: Page
+      - value: hook
+        label: Hook
+      - value: utility
+        label: Utility
+      - value: service
+        label: Service
+      - value: library
+        label: Library
+  - key: propsInterface
+    label: Props / Interface
+    type: code
+    placeholder: |-
+      interface Props {
+        value: string;
+        onChange: (v: string) => void;
+        disabled?: boolean;
+      }
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: What does this component do? Include usage examples and important behaviour.

@@ -1,0 +1,23 @@
+# dai.types.bpmn.data-store
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/data-store.ts
+name: Data Store
+version: 1.0.0
+description: Represents a persistent data store or database referenced by the process.
+icon: ■
+iconClass: bpmn-icon-data-store
+order: 180
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:DataStoreReference
+license: free
+aliases:
+  - a1b2c3d4-0001-0007-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Data store name
+  - key: notes
+    label: Description
+    type: textarea

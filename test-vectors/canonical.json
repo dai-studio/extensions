@@ -1,0 +1,128 @@
+{
+  "$comment": "Shared with ws-dai-studio. \"__undefined__\" string values stand for JS undefined and must be dropped by canonicalJson. The signing key is TEST-ONLY.",
+  "testPublicKey": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "b8m-FV28DDQMzejMz7VloIBXuxyNgusT6xL2AF7IrOg",
+    "y": "8E4RgQjuGR3ePEvF_pLL3hJ-HV89mLH_4t7u_3Q3AUk"
+  },
+  "canonical": [
+    {
+      "input": {
+        "b": 1,
+        "a": 2
+      },
+      "canonical": "{\"a\":2,\"b\":1}"
+    },
+    {
+      "input": {
+        "z": {
+          "y": [
+            3,
+            1,
+            {
+              "d": true,
+              "c": false
+            }
+          ],
+          "x": "é \"quoted\" \\ /"
+        },
+        "a": []
+      },
+      "canonical": "{\"a\":[],\"z\":{\"x\":\"é \\\"quoted\\\" \\\\ /\",\"y\":[3,1,{\"c\":false,\"d\":true}]}}"
+    },
+    {
+      "input": {
+        "9": 1,
+        "10": 1,
+        "Z": 1,
+        "a": 1,
+        "_": 1
+      },
+      "canonical": "{\"10\":1,\"9\":1,\"Z\":1,\"_\":1,\"a\":1}"
+    },
+    {
+      "input": {
+        "nested": {
+          "undef": "__undefined__",
+          "keep": 0,
+          "empty": ""
+        }
+      },
+      "canonical": "{\"nested\":{\"empty\":\"\",\"keep\":0}}"
+    },
+    {
+      "input": [
+        1,
+        "two",
+        {
+          "three": 3
+        }
+      ],
+      "canonical": "[1,\"two\",{\"three\":3}]"
+    },
+    {
+      "input": "plain",
+      "canonical": "\"plain\""
+    },
+    {
+      "input": 12.5,
+      "canonical": "12.5"
+    },
+    {
+      "input": {
+        "unicode": "□◆⬡ 📁",
+        "emoji": "🚀",
+        "newline": "a\nb\tc"
+      },
+      "canonical": "{\"emoji\":\"🚀\",\"newline\":\"a\\nb\\tc\",\"unicode\":\"□◆⬡ 📁\"}"
+    },
+    {
+      "input": {
+        "id": "dai.types.test.sample",
+        "version": "1.0.0",
+        "name": "Sample",
+        "kid": "test",
+        "form": [
+          {
+            "key": "name",
+            "label": "Name",
+            "type": "text",
+            "storage": "native"
+          }
+        ],
+        "colors": {
+          "stroke": "#000",
+          "fill": "#fff"
+        }
+      },
+      "canonical": "{\"colors\":{\"fill\":\"#fff\",\"stroke\":\"#000\"},\"form\":[{\"key\":\"name\",\"label\":\"Name\",\"storage\":\"native\",\"type\":\"text\"}],\"id\":\"dai.types.test.sample\",\"kid\":\"test\",\"name\":\"Sample\",\"version\":\"1.0.0\"}"
+    }
+  ],
+  "signed": [
+    {
+      "payload": "{\"a\":2,\"b\":1}",
+      "signature": "qpCWmCVnZF6IkYgc4PLlmCb5ev2x6lk95RBzGaJejg4LroSIdrwNwqKpxGNrOvd5WRljDh1dLjCWUQzwN7_M1A"
+    },
+    {
+      "payload": "{\"a\":[],\"z\":{\"x\":\"é \\\"quoted\\\" \\\\ /\",\"y\":[3,1,{\"c\":false,\"d\":true}]}}",
+      "signature": "iD3w1QCxVwmUYX7UgjB0XzxvO0_Z_PN-glrPbT13YCJKopHoBupm-MTtiwVTHq6f5WEGQMhEXFfOYkVi6mBZhg"
+    },
+    {
+      "payload": "{\"10\":1,\"9\":1,\"Z\":1,\"_\":1,\"a\":1}",
+      "signature": "lAX3JKyW5gLL9JhvlmpBy0XqJAh91fDf2sKmd-nE5igp8aXMe0VjBcNEwo-z8ztqYpyefJApEft6cAqkHqM--Q"
+    },
+    {
+      "payload": "{\"nested\":{\"empty\":\"\",\"keep\":0}}",
+      "signature": "-FSUOdHjqio9fCl1vU9A_hMDS3-GeWSnfC5hlLjiOScQvfQ6kTlsNEIB5kRVvpCy7zvA-23Wmt91z8DroNoWmQ"
+    },
+    {
+      "payload": "{\"emoji\":\"🚀\",\"newline\":\"a\\nb\\tc\",\"unicode\":\"□◆⬡ 📁\"}",
+      "signature": "9MIf0UzJ3hwJzxPQClYh25D2pweyx0dItWd7SHCNPGpmlw_GvQrlF_8n7KG3wgSjAAATMy5Zh0u1nsRIMc151A"
+    },
+    {
+      "payload": "{\"colors\":{\"fill\":\"#fff\",\"stroke\":\"#000\"},\"form\":[{\"key\":\"name\",\"label\":\"Name\",\"storage\":\"native\",\"type\":\"text\"}],\"id\":\"dai.types.test.sample\",\"kid\":\"test\",\"name\":\"Sample\",\"version\":\"1.0.0\"}",
+      "signature": "esyZ6kAs5mAU0JE_MSPQxQoBB4NlW7Jjjjjxwg8k4kZHHP9tEy0QGYxxkuXL8V-qtOsuvCZpJDeFC5Up0hlyrQ"
+    }
+  ]
+}

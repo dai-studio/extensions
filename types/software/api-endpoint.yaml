@@ -1,0 +1,81 @@
+# dai.types.software.api-endpoint
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/software/api-endpoint.ts
+name: Endpoint
+version: 1.1.0
+description: Defines a REST or GraphQL API endpoint — its method, path, auth, and request/response schemas.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h5" /><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3" /><path d="M20 8v8" /><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: api-endpoint
+license: free
+aliases:
+  - a1b2c3d4-0004-0001-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Endpoint name (e.g. "Create Order")
+  - key: service
+    label: Service
+    type: text
+    placeholder: Which service owns this endpoint?
+    hint: Type the name of a Service, or draw a connection from a Service element on canvas to this endpoint to link them.
+  - key: method
+    label: HTTP Method
+    type: select
+    options:
+      - value: GET
+        label: GET
+      - value: POST
+        label: POST
+      - value: PUT
+        label: PUT
+      - value: PATCH
+        label: PATCH
+      - value: DELETE
+        label: DELETE
+      - value: OPTIONS
+        label: OPTIONS
+  - key: path
+    label: Path
+    type: text
+    placeholder: /api/v1/resource/{id}
+  - key: statusCode
+    label: Status Code
+    type: text
+    placeholder: e.g. 200, 201, 204
+  - key: authType
+    label: Auth
+    type: select
+    options:
+      - value: none
+        label: None
+      - value: bearer
+        label: Bearer Token
+      - value: api-key
+        label: API Key
+      - value: oauth2
+        label: OAuth 2.0
+      - value: basic
+        label: Basic Auth
+  - key: requestBody
+    label: Request Schema
+    type: code
+    placeholder: |-
+      {
+        "field": "type"
+      }
+  - key: responseBody
+    label: Response Schema
+    type: code
+    placeholder: |-
+      {
+        "field": "type"
+      }
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: What does this endpoint do? Include any important behaviour or limitations.

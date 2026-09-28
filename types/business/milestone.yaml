@@ -1,0 +1,44 @@
+# dai.types.business.milestone
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/business/milestone.ts
+name: Milestone
+version: 1.0.0
+description: A significant checkpoint or delivery target on the project timeline. Documents the target date, acceptance criteria, and the deliverables required to consider it complete.
+icon: ■
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16l3.644 3.644a1.21 1.21 0 0 0 1.712 0l2.288 -2.288a1.21 1.21 0 0 0 0 -1.712l-3.644 -3.644l3.644 -3.644a1.21 1.21 0 0 0 0 -1.712l-2.288 -2.288a1.21 1.21 0 0 0 -1.712 0l-3.644 3.644l-3.644 -3.644a1.21 1.21 0 0 0 -1.712 0l-2.288 2.288a1.21 1.21 0 0 0 0 1.712l3.644 3.644l-3.644 3.644a1.21 1.21 0 0 0 0 1.712l2.288 2.288a1.21 1.21 0 0 0 1.712 0l3.644 -3.644" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+stepType: milestone
+license: free
+aliases:
+  - a1b2c3d4-0003-0001-0001-000000000008
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Milestone name
+  - key: targetDate
+    label: Target Date
+    type: text
+    placeholder: e.g. 2025-Q3, 2025-09-30
+  - key: deliverables
+    label: Deliverables
+    type: textarea
+    placeholder: What must be completed or delivered to achieve this milestone?
+  - key: status
+    label: Status
+    type: select
+    options:
+      - value: planned
+        label: Planned
+      - value: in-progress
+        label: In Progress
+      - value: achieved
+        label: Achieved
+      - value: missed
+        label: Missed
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Additional context, dependencies, or risks related to this milestone.

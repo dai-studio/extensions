@@ -1,0 +1,55 @@
+# dai.types.software.database
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/software/database.ts
+name: Database
+version: 1.0.0
+description: A database or data store — its engine, host, schema name, and access patterns. Documents the data layer alongside Models and API Endpoints.
+icon: ⬢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+stepType: database
+license: free
+aliases:
+  - a1b2c3d4-0006-0001-0001-000000000003
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Database name (e.g. "Users DB", "Analytics Store")
+  - key: engine
+    label: Engine
+    type: select
+    options:
+      - value: postgresql
+        label: PostgreSQL
+      - value: mysql
+        label: MySQL
+      - value: sqlite
+        label: SQLite
+      - value: mongodb
+        label: MongoDB
+      - value: redis
+        label: Redis
+      - value: dynamodb
+        label: DynamoDB
+      - value: firestore
+        label: Firestore
+      - value: other
+        label: Other
+  - key: host
+    label: Host
+    type: text
+    placeholder: e.g. db.example.com or localhost
+  - key: schema
+    label: Schema
+    type: text
+    placeholder: Database or schema name
+  - key: accessPattern
+    label: Access Pattern
+    type: textarea
+    placeholder: How is this database accessed? Read-heavy? Write-heavy? Used as a cache? Any connection pooling or replication notes?
+  - key: notes
+    label: Notes
+    type: textarea

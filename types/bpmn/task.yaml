@@ -1,0 +1,24 @@
+# dai.types.bpmn.task
+# Migrated from ws-dai-studio editor-src/src/lib/types/builtin/bpmn/task.ts
+name: Task
+version: 1.0.0
+description: A generic work item or activity in the process flow.
+icon: ■
+iconClass: bpmn-icon-task
+order: 150
+colors:
+  fill: '#ffffff'
+  stroke: '#374151'
+bpmnType: bpmn:Task
+license: free
+aliases:
+  - a1b2c3d4-0001-0005-0001-000000000001
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Task name
+  - key: notes
+    label: Description
+    type: textarea
+    placeholder: What should this step do?
