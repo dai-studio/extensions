@@ -67,7 +67,7 @@ values by `key` and `storage`. CI rejects any change that would break an existin
 - Types and patterns are never deleted. Mark them `deprecated: true`, and set `replacedBy` for types.
 - `bpmnType`, `eventDefinitionType`, `stepType` and aliases can't change.
 - Form fields can't be removed, and their `type` and `storage` can't change.
-- Any content change needs a higher `version`.
+- `version` is informational; it may be bumped but never lowered.
 
 ## Setting up signing (maintainers)
 

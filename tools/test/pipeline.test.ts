@@ -114,9 +114,11 @@ test('compat: additive changes pass, destructive ones fail', () => {
   const added = clone();
   const obj = added.find(t => t.id === 'dai.types.business.objective')!;
   obj.form.push({ key: 'extra', label: 'Extra', type: 'text', storage: 'field' });
-  assert.match(checkCompat(prev, { types: added, patterns: [] }).join('\n'), /bump version/);
+  assert.deepEqual(checkCompat(prev, { types: added, patterns: [] }), [], 'content changes need no version bump');
   obj.version = '9.0.0';
   assert.deepEqual(checkCompat(prev, { types: added, patterns: [] }), []);
+  obj.version = '0.9.0';
+  assert.match(checkCompat(prev, { types: added, patterns: [] }).join('\n'), /version cannot go backwards/);
 
   const removed = clone().filter(t => t.id !== 'dai.types.business.objective');
   assert.match(checkCompat(prev, { types: removed, patterns: [] }).join('\n'), /cannot be removed/);

@@ -2,8 +2,9 @@
  * Additive-only compatibility against the last published catalog.
  * Documents in the wild reference types/patterns by id, alias and stepType,
  * and store field values by key + storage — none of that may change.
+ * `version` is informational: content may change without a bump, but a
+ * version may never go backwards.
  */
-import { canonicalJson } from './canonical.ts';
 import type { Catalog, CatalogPattern, CatalogType } from './catalog.ts';
 
 export function compareSemver(a: string, b: string): number {
@@ -13,11 +14,6 @@ export function compareSemver(a: string, b: string): number {
     if (pa[i] !== pb[i]) return (pa[i] ?? 0) - (pb[i] ?? 0);
   }
   return 0;
-}
-
-function contentOf(obj: Record<string, unknown>): string {
-  const { kid: _k, signature: _s, ...rest } = obj;
-  return canonicalJson(rest);
 }
 
 export function checkCompat(
@@ -49,9 +45,7 @@ export function checkCompat(
       if (c.type !== f.type) errors.push(`${old.id}: form field "${f.key}" type cannot change (${f.type} → ${c.type})`);
       if (c.storage !== f.storage) errors.push(`${old.id}: form field "${f.key}" storage cannot change (${f.storage} → ${c.storage}); pin "storage: ${f.storage}" in the YAML`);
     }
-    const cmp = compareSemver(cur.version, old.version);
-    if (cmp < 0) errors.push(`${old.id}: version cannot go backwards (${old.version} → ${cur.version})`);
-    else if (cmp === 0 && contentOf(old) !== contentOf(cur)) errors.push(`${old.id}: content changed — bump version (currently ${cur.version})`);
+    if (compareSemver(cur.version, old.version) < 0) errors.push(`${old.id}: version cannot go backwards (${old.version} → ${cur.version})`);
   }
 
   const nextPatterns = new Map(next.patterns.map(p => [p.id, p]));
@@ -64,9 +58,7 @@ export function checkCompat(
     for (const alias of old.aliases ?? []) {
       if (!(cur.aliases ?? []).includes(alias)) errors.push(`${old.id}: alias "${alias}" cannot be removed`);
     }
-    const cmp = compareSemver(cur.version, old.version);
-    if (cmp < 0) errors.push(`${old.id}: version cannot go backwards (${old.version} → ${cur.version})`);
-    else if (cmp === 0 && cur.sha256 && cur.sha256 !== old.sha256) errors.push(`${old.id}: pattern body changed — bump version (currently ${cur.version})`);
+    if (compareSemver(cur.version, old.version) < 0) errors.push(`${old.id}: version cannot go backwards (${old.version} → ${cur.version})`);
   }
   return errors;
 }

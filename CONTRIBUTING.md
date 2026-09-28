@@ -69,6 +69,6 @@ and trim it down.
 
 ## Changing something that's already published
 
-Bump `version`. Adding form fields, options and aliases is fine. Removing or renaming a
+You don't need to bump `version` (you may, but it can't go down). Adding form fields, options and aliases is fine. Removing or renaming a
 type, pattern, field, alias or stepType is not allowed; deprecate it instead. CI checks
 every PR against the catalog that's currently published.
