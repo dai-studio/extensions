@@ -97,6 +97,7 @@ test('rejects nulls, bad storage, colliding keys, duplicate stepTypes and aliase
     typeById(r, 'dai.types.business.objective').data.aliases = ['dai.types.x'];
   }).join('\n'), /must match pattern/);
   assert.match(mutate(r => { (r.typeCategories.aws.data as any).view = 'Cloud'; }).join('\n'), /must match pattern/);
+  assert.match(mutate(r => { (r.typeCategories.aws.data as any).columns = 9; }).join('\n'), /columns must be <= 8/);
   assert.match(mutate(r => { typeById(r, 'dai.types.business.objective').data.bpmnType = 'bpmn:StartEvent'; }).join('\n'), /bpmnType must be bpmn:Task or bpmn:SubProcess/);
   assert.match(mutate(r => { typeById(r, 'dai.types.business.objective').data.license = 'paid'; }).join('\n'), /must be equal to constant/);
   assert.match(mutate(r => {

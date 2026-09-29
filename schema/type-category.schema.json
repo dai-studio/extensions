@@ -8,7 +8,7 @@
   "properties": {
     "label": { "type": "string", "minLength": 1, "maxLength": 40 },
     "order": { "type": "integer", "minimum": 0, "maximum": 10000 },
-    "columns": { "type": "integer", "minimum": 1, "maximum": 4 },
+    "columns": { "type": "integer", "minimum": 1, "maximum": 8 },
     "view": { "type": "string", "pattern": "^[a-z0-9-]+$", "maxLength": 32, "description": "Types overlay view this category appears in (basic, cloud, …). Defaults to basic." }
   }
 }
