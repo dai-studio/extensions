@@ -1,5 +1,5 @@
 # dai.types.cloud.aws-eventbridge-bus
-name: AWS EventBridge Event Bus
+name: AWS EventBridge
 version: 1.0.0
 description: An AWS EventBridge event bus and its routing rules.
 icon: ▣
