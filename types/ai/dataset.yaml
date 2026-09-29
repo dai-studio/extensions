@@ -3,7 +3,7 @@
 name: Dataset
 version: 1.0.0
 description: A training, fine-tuning, or evaluation dataset. Distinct from Context (runtime grounding) — a Dataset is a corpus artifact used to shape or evaluate model behaviour offline.
-icon: ■
+icon: ▣
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
 colors:
   fill: '#F5F3FF'

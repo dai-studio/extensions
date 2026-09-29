@@ -3,7 +3,7 @@
 name: Task
 version: 1.0.0
 description: A generic work item or activity in the process flow.
-icon: ■
+icon: ▣
 iconClass: bpmn-icon-task
 order: 150
 colors:
