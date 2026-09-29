@@ -1,0 +1,59 @@
+# dai.types.aws.vpc
+name: AWS VPC
+version: 1.0.0
+description: "An Amazon Virtual Private Cloud, a logically isolated network. Put it inside an AWS Region; it contains Availability Zones or Subnets."
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" /><path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" /><path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" /><path d="M6 9h12" /><path d="M3 20h7" /><path d="M14 20h7" /><path d="M10 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M12 15v3" /></svg>
+order: 40
+colors:
+  fill: '#F7F3FF'
+  stroke: '#8C4FFF'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: VPC name
+  - key: vpcId
+    label: VPC ID
+    type: text
+    placeholder: vpc-0123456789abcdef0
+  - key: cidrBlock
+    label: IPv4 CIDR
+    type: text
+    placeholder: 10.0.0.0/16
+  - key: ipv6Cidr
+    label: IPv6 CIDR
+    type: text
+    placeholder: "2600:1f18::/56"
+  - key: tenancy
+    label: Tenancy
+    type: select
+    defaultValue: default
+    options:
+      - value: default
+        label: Default
+      - value: dedicated
+        label: Dedicated
+  - key: enableDnsHostnames
+    label: DNS hostnames
+    type: boolean
+    defaultValue: true
+  - key: enableDnsSupport
+    label: DNS resolution
+    type: boolean
+    defaultValue: true
+  - key: flowLogs
+    label: Flow logs enabled
+    type: boolean
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: "Describe the addressing plan, peering and connectivity."

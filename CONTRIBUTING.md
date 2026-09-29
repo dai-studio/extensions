@@ -6,7 +6,9 @@ contribution is safe. So reviews focus on content, and CI enforces strict allowl
 
 ## Add a type
 
-1. Choose a category under `types/`, or add a new one with a `_category.yaml`.
+1. Choose a category under `types/`, or add a new one with a `_category.yaml`
+   (`label`, `order`, optional `columns`, and `view`: `basic` (default) or `cloud`, which
+   picks the Types overlay tab the category appears under).
 2. Create `types/<category>/<leaf>.yaml`. That file becomes `dai.types.<category>.<leaf>`.
 
 ```yaml
@@ -71,6 +73,6 @@ and trim it down.
 
 You don't need to bump `version` (you may, but it can't go down). Adding form fields, options and aliases is fine. Deleting a type
 is allowed: it disappears from the next published build (documents that use it lose the
-definition, so prefer `deprecated: true` + `replacedBy` if it may be in use). Renaming a
-type, or removing or renaming a pattern, field, alias or stepType, is not allowed; deprecate
+definition, so prefer `deprecated: true` + `replacedBy` if it may be in use). To rename or
+move a type, move the file and add the old id to its `aliases`. Removing or renaming a pattern, field, alias or stepType, is not allowed; deprecate
 it instead. CI checks every PR against the catalog that's currently published.

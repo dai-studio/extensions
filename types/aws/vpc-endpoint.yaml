@@ -1,0 +1,51 @@
+# dai.types.aws.vpc-endpoint
+name: AWS VPC Endpoint
+version: 1.0.0
+description: "A private connection from a VPC to an AWS service or a PrivateLink service, without going over the internet."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" /><path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" /><path d="M3 21l2.5 -2.5" /><path d="M18.5 5.5l2.5 -2.5" /><path d="M10 11l-2 2" /><path d="M13 14l-2 2" /></svg>
+order: 240
+colors:
+  fill: '#F7F3FF'
+  stroke: '#8C4FFF'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: VPC Endpoint name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: endpointType
+    label: Endpoint type
+    type: select
+    options:
+      - value: interface
+        label: Interface
+      - value: gateway
+        label: Gateway
+      - value: gateway-load-balancer
+        label: Gateway Load Balancer
+  - key: serviceName
+    label: Service name
+    type: text
+    placeholder: com.amazonaws.us-east-1.s3
+  - key: privateDns
+    label: Private DNS
+    type: boolean
+    defaultValue: true
+  - key: securityGroups
+    label: Security groups
+    type: list
+    placeholder: sg-0123456789abcdef0
+    hint: Security groups attached to this resource. Model each one as an AWS Security Group node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Notes about this endpoint.

@@ -1,0 +1,40 @@
+# dai.types.aws.security-group
+name: AWS Security Group
+version: 1.0.0
+description: "A stateful virtual firewall for resources in a VPC. Connect it to the resources it protects, and list it in their Security groups field."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /><path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12l0 2.5" /></svg>
+order: 200
+colors:
+  fill: '#FDF1F2'
+  stroke: '#DD344C'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Security Group name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: groupId
+    label: Group ID
+    type: text
+    placeholder: sg-0123456789abcdef0
+  - key: ingressRules
+    label: Inbound rules
+    type: list
+    placeholder: tcp 443 from 0.0.0.0/0
+  - key: egressRules
+    label: Outbound rules
+    type: list
+    placeholder: all to 0.0.0.0/0
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe why these rules exist.

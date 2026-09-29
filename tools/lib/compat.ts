@@ -71,6 +71,21 @@ export function removedTypes(
   return prev.types.filter(t => !ids.has(t.id)).map(t => t.id);
 }
 
+/**
+ * Removed ids that a new type lists in `aliases` — a rename (file moved).
+ * Documents that stored the old id keep resolving through the alias.
+ */
+export function renamedTypes(
+  prev: Pick<Catalog, 'types'>,
+  next: { types: Array<Pick<CatalogType, 'id' | 'aliases'>> },
+): Array<{ from: string; to: string }> {
+  const byAlias = new Map<string, string>();
+  for (const t of next.types) for (const a of t.aliases ?? []) byAlias.set(a, t.id);
+  return removedTypes(prev, next)
+    .filter(id => byAlias.has(id))
+    .map(id => ({ from: id, to: byAlias.get(id)! }));
+}
+
 export type PublishedLookup =
   | { status: 'found'; catalog: Catalog }
   | { status: 'none'; reason: string };

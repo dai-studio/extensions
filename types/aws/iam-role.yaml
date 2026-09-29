@@ -1,0 +1,41 @@
+# dai.types.aws.iam-role
+name: AWS IAM Role
+version: 1.0.0
+description: An AWS IAM role that trusted principals can assume.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21v-2a4 4 0 0 1 4 -4h2" /><path d="M22 16c0 4 -2.5 6 -3.5 6s-3.5 -2 -3.5 -6c1 0 2.5 -.5 3.5 -1.5c1 1 2.5 1.5 3.5 1.5" /><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /></svg>
+order: 600
+colors:
+  fill: '#FDF1F2'
+  stroke: '#DD344C'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: IAM Role name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: trustedEntities
+    label: Trusted entities
+    type: list
+    placeholder: "lambda.amazonaws.com / arn:aws:iam::…:root"
+  - key: managedPolicies
+    label: Managed policies
+    type: list
+    placeholder: "arn:aws:iam::aws:policy/ReadOnlyAccess"
+  - key: inlinePolicy
+    label: Inline policy (JSON)
+    type: code
+    placeholder: "{ \"Version\": \"2012-10-17\", \"Statement\": [ … ] }"
+    rows: 10
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe who assumes this role and why.

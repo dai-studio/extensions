@@ -1,0 +1,57 @@
+# dai.types.aws.eks-cluster
+name: AWS EKS Cluster
+version: 1.0.0
+description: An AWS Elastic Kubernetes Service cluster. Put it inside a VPC or Region; it contains the workloads that run on it.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-5l4 -2l4 2v5l-4 2l-4 -2" /><path d="M8 11v-5l4 -2l4 2v5" /><path d="M12 13l4 -2l4 2v5l-4 2l-4 -2" /></svg>
+order: 90
+colors:
+  fill: '#FEF5ED'
+  stroke: '#ED7100'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: EKS Cluster name
+  - key: clusterArn
+    label: Cluster ARN
+    type: text
+    placeholder: "arn:aws:eks:…:cluster/…"
+  - key: k8sVersion
+    label: Kubernetes version
+    type: text
+    placeholder: "1.33"
+  - key: computeMode
+    label: Compute
+    type: select
+    options:
+      - value: managed-node-groups
+        label: Managed node groups
+      - value: fargate
+        label: Fargate
+      - value: auto-mode
+        label: EKS Auto Mode
+      - value: self-managed
+        label: Self-managed nodes
+  - key: endpointAccess
+    label: API endpoint access
+    type: select
+    options:
+      - value: public
+        label: Public
+      - value: private
+        label: Private
+      - value: public-and-private
+        label: Public and private
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: "Describe the add-ons, node groups and access model."

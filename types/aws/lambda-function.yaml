@@ -1,0 +1,87 @@
+# dai.types.aws.lambda-function
+name: AWS Lambda Function
+version: 1.0.0
+description: A serverless function on AWS Lambda.
+icon: λ
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20l6.5 -9" /><path d="M19 20c-6 0 -6 -16 -12 -16" /></svg>
+order: 110
+colors:
+  fill: '#FEF5ED'
+  stroke: '#ED7100'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Lambda Function name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: runtime
+    label: Runtime
+    type: select
+    options:
+      - value: nodejs22.x
+        label: nodejs22.x
+      - value: nodejs20.x
+        label: nodejs20.x
+      - value: python3.13
+        label: python3.13
+      - value: python3.12
+        label: python3.12
+      - value: java21
+        label: java21
+      - value: dotnet8
+        label: dotnet8
+      - value: ruby3.3
+        label: ruby3.3
+      - value: provided.al2023
+        label: provided.al2023
+      - value: container-image
+        label: Container image
+  - key: architecture
+    label: Architecture
+    type: select
+    defaultValue: arm64
+    options:
+      - value: x86_64
+        label: x86_64
+      - value: arm64
+        label: arm64
+  - key: memoryMb
+    label: Memory (MB)
+    type: number
+    defaultValue: 128
+    min: 128
+    max: 10240
+  - key: timeoutSeconds
+    label: Timeout (s)
+    type: number
+    defaultValue: 3
+    min: 1
+    max: 900
+  - key: handler
+    label: Handler
+    type: text
+    placeholder: index.handler
+  - key: trigger
+    label: Trigger
+    type: text
+    placeholder: "e.g. API Gateway, SQS, S3 event, schedule"
+  - key: vpcAttached
+    label: Attached to VPC
+    type: boolean
+  - key: securityGroups
+    label: Security groups
+    type: list
+    placeholder: sg-0123456789abcdef0
+    hint: Security groups attached to this resource. Model each one as an AWS Security Group node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: "Describe what the function does, its inputs and its outputs."

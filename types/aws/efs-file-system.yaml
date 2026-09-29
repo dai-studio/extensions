@@ -1,0 +1,52 @@
+# dai.types.aws.efs-file-system
+name: AWS EFS File System
+version: 1.0.0
+description: An AWS EFS shared NFS file system.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" /><path d="M17 16v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" /></svg>
+order: 320
+colors:
+  fill: '#F6F8EF'
+  stroke: '#7AA116'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: EFS File System name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: performanceMode
+    label: Performance mode
+    type: select
+    defaultValue: generalPurpose
+    options:
+      - value: generalPurpose
+        label: General Purpose
+      - value: maxIO
+        label: Max I/O
+  - key: throughputMode
+    label: Throughput mode
+    type: select
+    defaultValue: elastic
+    options:
+      - value: elastic
+        label: Elastic
+      - value: bursting
+        label: Bursting
+      - value: provisioned
+        label: Provisioned
+  - key: encrypted
+    label: Encrypted
+    type: boolean
+    defaultValue: true
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Notes about this file system.

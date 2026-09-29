@@ -1,0 +1,61 @@
+# dai.types.aws.ecs-service
+name: AWS ECS Service
+version: 1.0.0
+description: An AWS ECS service that runs and maintains copies of a task definition. Usually placed inside an ECS Cluster.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 120
+colors:
+  fill: '#FEF5ED'
+  stroke: '#ED7100'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: ECS Service name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: launchType
+    label: Launch type
+    type: select
+    defaultValue: FARGATE
+    options:
+      - value: FARGATE
+        label: Fargate
+      - value: EC2
+        label: EC2
+      - value: EXTERNAL
+        label: External
+  - key: taskDefinition
+    label: Task definition
+    type: text
+    placeholder: "family:revision"
+  - key: desiredCount
+    label: Desired count
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: cpu
+    label: CPU
+    type: text
+    placeholder: "256, 512, 1024 … (units) or 0.25 vCPU"
+  - key: memory
+    label: Memory
+    type: text
+    placeholder: 512 MiB
+  - key: securityGroups
+    label: Security groups
+    type: list
+    placeholder: sg-0123456789abcdef0
+    hint: Security groups attached to this resource. Model each one as an AWS Security Group node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: "Describe the containers, ports and dependencies."

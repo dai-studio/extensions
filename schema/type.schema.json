@@ -47,7 +47,7 @@
     "aliases": {
       "type": "array",
       "uniqueItems": true,
-      "items": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^[A-Za-z0-9-]+$" }
+      "items": { "type": "string", "minLength": 1, "maxLength": 64, "pattern": "^([A-Za-z0-9-]+|dai\\.types\\.[a-z0-9-]+\\.[a-z0-9-]+)$" }
     },
     "deprecated": { "type": "boolean" },
     "replacedBy": { "type": "string", "pattern": "^dai\\.types\\.[a-z0-9-]+\\.[a-z0-9-]+$" },

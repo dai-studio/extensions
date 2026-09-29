@@ -1,0 +1,74 @@
+# dai.types.aws.cloudwatch-alarm
+name: AWS CloudWatch Alarm
+version: 1.0.0
+description: An AWS CloudWatch alarm that watches a metric and triggers actions.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M12 10l0 3l2 0" /><path d="M7 4l-2.75 2" /><path d="M17 4l2.75 2" /></svg>
+order: 700
+colors:
+  fill: '#FDEFF6'
+  stroke: '#E7157B'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: CloudWatch Alarm name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: metric
+    label: Metric
+    type: text
+    placeholder: AWS/EC2 CPUUtilization
+  - key: statistic
+    label: Statistic
+    type: select
+    defaultValue: average
+    options:
+      - value: average
+        label: Average
+      - value: sum
+        label: Sum
+      - value: minimum
+        label: Minimum
+      - value: maximum
+        label: Maximum
+      - value: sample-count
+        label: Sample count
+      - value: p99
+        label: p99
+  - key: comparison
+    label: Comparison
+    type: select
+    defaultValue: greater-than
+    options:
+      - value: greater-than
+        label: Greater than
+      - value: greater-or-equal
+        label: Greater than or equal
+      - value: less-than
+        label: Less than
+      - value: less-or-equal
+        label: Less than or equal
+  - key: threshold
+    label: Threshold
+    type: number
+  - key: periodSeconds
+    label: Period (s)
+    type: number
+    defaultValue: 300
+    min: 10
+  - key: alarmActions
+    label: Actions
+    type: list
+    placeholder: "sns:ops-alerts"
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what this alarm means and how to respond (runbook).

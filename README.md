@@ -18,7 +18,7 @@ Names are permanent (see [compatibility](#compatibility)).
 
 | Path | Contents |
 | --- | --- |
-| `types/<category>/_category.yaml` | Column label, order and tiles per row in the Types overlay |
+| `types/<category>/_category.yaml` | Column label, order, tiles per row and `view` (`basic` by default, or `cloud`) in the Types overlay |
 | `types/<category>/<leaf>.yaml` | One type (see `schema/type.schema.json`) |
 | `patterns/<category>/_category.yaml` | Label, order, colour and `iconType` (a `dai.types.*` id) |
 | `patterns/<category>/<leaf>.yaml` + `.dai` | Pattern metadata plus a BPMN fragment |
@@ -67,6 +67,8 @@ values by `key` and `storage`. CI rejects any change that would break an existin
 - Types may be deleted: they drop out of the next published build, and documents that
   still use them lose the definition. If documents may still use a type, prefer
   `deprecated: true` with `replacedBy`.
+- To rename a type (for example to move it to another category), move the file and list
+  the old id in its `aliases`. Documents saved with the old id keep resolving.
 - Patterns are never deleted. Mark them `deprecated: true`.
 - `bpmnType`, `eventDefinitionType`, `stepType` and aliases can't change.
 - Form fields can't be removed, and their `type` and `storage` can't change.

@@ -7,7 +7,7 @@ import {
   generateKeyPair, importPrivateKey, importPublicKey, signObject, verifyObject, verifyString,
 } from '../lib/crypto.ts';
 import { checkSvg } from '../lib/svg.ts';
-import { checkCompat, removedTypes } from '../lib/compat.ts';
+import { checkCompat, removedTypes, renamedTypes } from '../lib/compat.ts';
 import { validatePatterns, validateRepo } from '../lib/validate.ts';
 import { loadRepo, ROOT, type Repo } from '../lib/repo.ts';
 import { buildType, type CatalogType } from '../lib/catalog.ts';
@@ -87,6 +87,16 @@ test('rejects nulls, bad storage, colliding keys, duplicate stepTypes and aliase
   assert.match(mutate(r => {
     typeById(r, 'dai.types.business.objective').data.aliases = [...(typeById(r, 'dai.types.ai.agent').data.aliases as string[])];
   }).join('\n'), /alias .* already used/);
+  assert.deepEqual(mutate(r => {
+    typeById(r, 'dai.types.business.objective').data.aliases = ['dai.types.old-cat.objective'];
+  }), [], 'a full type id is a valid alias (rename)');
+  assert.match(mutate(r => {
+    typeById(r, 'dai.types.business.objective').data.aliases = ['dai.types.ai.agent'];
+  }).join('\n'), /alias "dai.types.ai.agent" is already used/);
+  assert.match(mutate(r => {
+    typeById(r, 'dai.types.business.objective').data.aliases = ['dai.types.x'];
+  }).join('\n'), /must match pattern/);
+  assert.match(mutate(r => { (r.typeCategories.aws.data as any).view = 'Cloud'; }).join('\n'), /must match pattern/);
   assert.match(mutate(r => { typeById(r, 'dai.types.business.objective').data.bpmnType = 'bpmn:StartEvent'; }).join('\n'), /bpmnType must be bpmn:Task or bpmn:SubProcess/);
   assert.match(mutate(r => { typeById(r, 'dai.types.business.objective').data.license = 'paid'; }).join('\n'), /must be equal to constant/);
   assert.match(mutate(r => {
@@ -123,6 +133,13 @@ test('compat: additive changes pass, destructive ones fail', () => {
   const removed = clone().filter(t => t.id !== 'dai.types.business.objective');
   assert.deepEqual(checkCompat(prev, { types: removed, patterns: [] }), [], 'types may be removed');
   assert.deepEqual(removedTypes(prev, { types: removed }), ['dai.types.business.objective']);
+  assert.deepEqual(renamedTypes(prev, { types: removed }), []);
+
+  const moved = clone();
+  const mv = moved.find(t => t.id === 'dai.types.business.objective')!;
+  mv.id = 'dai.types.strategy.objective';
+  mv.aliases = [...(mv.aliases ?? []), 'dai.types.business.objective'];
+  assert.deepEqual(renamedTypes(prev, { types: moved }), [{ from: 'dai.types.business.objective', to: 'dai.types.strategy.objective' }]);
 
   const retyped = clone();
   const agent = retyped.find(t => t.id === 'dai.types.ai.agent')!;

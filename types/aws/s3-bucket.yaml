@@ -1,0 +1,71 @@
+# dai.types.aws.s3-bucket
+name: AWS S3 Bucket
+version: 1.0.0
+description: An AWS S3 bucket for object storage.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a8 4 0 1 0 16 0a8 4 0 1 0 -16 0" /><path d="M4 7c0 .664 .088 1.324 .263 1.965l2.737 10.035c.5 1.5 2.239 2 5 2s4.5 -.5 5 -2c.333 -1 1.246 -4.345 2.737 -10.035a7.45 7.45 0 0 0 .263 -1.965" /></svg>
+order: 300
+colors:
+  fill: '#F6F8EF'
+  stroke: '#7AA116'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: S3 Bucket name
+  - key: arn
+    label: ARN
+    type: text
+    placeholder: "arn:aws:…"
+  - key: bucketName
+    label: Bucket name
+    type: text
+    placeholder: my-globally-unique-bucket
+  - key: storageClass
+    label: Default storage class
+    type: select
+    defaultValue: standard
+    options:
+      - value: standard
+        label: Standard
+      - value: intelligent-tiering
+        label: Intelligent-Tiering
+      - value: standard-ia
+        label: Standard-IA
+      - value: one-zone-ia
+        label: One Zone-IA
+      - value: glacier-ir
+        label: Glacier Instant Retrieval
+      - value: glacier-flexible
+        label: Glacier Flexible Retrieval
+      - value: glacier-deep-archive
+        label: Glacier Deep Archive
+      - value: express-one-zone
+        label: Express One Zone
+  - key: versioning
+    label: Versioning
+    type: boolean
+  - key: encryption
+    label: Encryption
+    type: select
+    defaultValue: sse-s3
+    options:
+      - value: sse-s3
+        label: SSE-S3
+      - value: sse-kms
+        label: SSE-KMS
+      - value: dsse-kms
+        label: DSSE-KMS
+  - key: blockPublicAccess
+    label: Block public access
+    type: boolean
+    defaultValue: true
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what is stored here and the lifecycle rules.
