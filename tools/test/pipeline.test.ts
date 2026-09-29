@@ -7,7 +7,7 @@ import {
   generateKeyPair, importPrivateKey, importPublicKey, signObject, verifyObject, verifyString,
 } from '../lib/crypto.ts';
 import { checkSvg } from '../lib/svg.ts';
-import { checkCompat } from '../lib/compat.ts';
+import { checkCompat, removedTypes } from '../lib/compat.ts';
 import { validatePatterns, validateRepo } from '../lib/validate.ts';
 import { loadRepo, ROOT, type Repo } from '../lib/repo.ts';
 import { buildType, type CatalogType } from '../lib/catalog.ts';
@@ -121,7 +121,8 @@ test('compat: additive changes pass, destructive ones fail', () => {
   assert.match(checkCompat(prev, { types: added, patterns: [] }).join('\n'), /version cannot go backwards/);
 
   const removed = clone().filter(t => t.id !== 'dai.types.business.objective');
-  assert.match(checkCompat(prev, { types: removed, patterns: [] }).join('\n'), /cannot be removed/);
+  assert.deepEqual(checkCompat(prev, { types: removed, patterns: [] }), [], 'types may be removed');
+  assert.deepEqual(removedTypes(prev, { types: removed }), ['dai.types.business.objective']);
 
   const retyped = clone();
   const agent = retyped.find(t => t.id === 'dai.types.ai.agent')!;

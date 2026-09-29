@@ -2,6 +2,8 @@
  * Additive-only compatibility against the last published catalog.
  * Documents in the wild reference types/patterns by id, alias and stepType,
  * and store field values by key + storage — none of that may change.
+ * Exception: a type may be deleted outright; it simply drops out of the next
+ * published build (reported as a note, not an error). Patterns may not.
  * `version` is informational: content may change without a bump, but a
  * version may never go backwards.
  */
@@ -25,10 +27,7 @@ export function checkCompat(
 
   for (const old of prev.types) {
     const cur = nextTypes.get(old.id);
-    if (!cur) {
-      errors.push(`${old.id}: types cannot be removed — mark it deprecated: true (and set replacedBy) instead`);
-      continue;
-    }
+    if (!cur) continue; // removal is allowed; reported via removedTypes()
     for (const prop of ['bpmnType', 'eventDefinitionType', 'stepType', 'category'] as const) {
       if (old[prop] !== cur[prop]) errors.push(`${old.id}: ${prop} cannot change (${String(old[prop])} → ${String(cur[prop])})`);
     }
@@ -61,6 +60,15 @@ export function checkCompat(
     if (compareSemver(cur.version, old.version) < 0) errors.push(`${old.id}: version cannot go backwards (${old.version} → ${cur.version})`);
   }
   return errors;
+}
+
+/** Ids of published types that no longer exist (they drop out of the next build). */
+export function removedTypes(
+  prev: Pick<Catalog, 'types'>,
+  next: { types: Array<Pick<CatalogType, 'id'>> },
+): string[] {
+  const ids = new Set(next.types.map(t => t.id));
+  return prev.types.filter(t => !ids.has(t.id)).map(t => t.id);
 }
 
 export type PublishedLookup =

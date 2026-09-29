@@ -1,7 +1,7 @@
 import { execFileSync } from 'node:child_process';
 import { sha256Hex } from './crypto.ts';
 import { buildCatalog, type Catalog } from './catalog.ts';
-import { checkCompat, fetchPublished } from './compat.ts';
+import { checkCompat, fetchPublished, removedTypes } from './compat.ts';
 import { loadRepo, ROOT, type Repo } from './repo.ts';
 import { validatePatterns, validateRepo } from './validate.ts';
 
@@ -46,6 +46,9 @@ export async function checkAll(opts: { compatUrl?: string } = {}): Promise<Check
     const published = await fetchPublished(opts.compatUrl);
     if (published.status === 'found') {
       errors.push(...checkCompat(published.catalog, catalog));
+      for (const id of removedTypes(published.catalog, catalog)) {
+        notes.push(`type removed: ${id} (will be dropped from the published catalog)`);
+      }
       notes.push(`compatibility checked against build ${published.catalog.build} (${opts.compatUrl})`);
     } else {
       notes.push(`compatibility check skipped: ${published.reason}`);

@@ -64,7 +64,10 @@ npm test
 Documents saved in dai.studio refer to types by id, alias and `stepType`, and store field
 values by `key` and `storage`. CI rejects any change that would break an existing document:
 
-- Types and patterns are never deleted. Mark them `deprecated: true`, and set `replacedBy` for types.
+- Types may be deleted: they drop out of the next published build, and documents that
+  still use them lose the definition. If documents may still use a type, prefer
+  `deprecated: true` with `replacedBy`.
+- Patterns are never deleted. Mark them `deprecated: true`.
 - `bpmnType`, `eventDefinitionType`, `stepType` and aliases can't change.
 - Form fields can't be removed, and their `type` and `storage` can't change.
 - `version` is informational; it may be bumped but never lowered.
