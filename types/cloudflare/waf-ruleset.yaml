@@ -1,0 +1,39 @@
+# dai.types.cloudflare.waf-ruleset
+name: WAF Ruleset
+version: 1.0.0
+description: Cloudflare WAF managed and custom rules that protect a Zone.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /></svg>
+order: 600
+colors:
+  fill: '#FDF3F4'
+  stroke: '#D13438'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: WAF Ruleset name
+  - key: managedRulesets
+    label: Managed rulesets
+    type: list
+    placeholder: Cloudflare Managed Ruleset
+  - key: customRules
+    label: Custom rules
+    type: list
+    placeholder: "block if not ip.src.country in {\"US\" \"CA\"}"
+  - key: defaultAction
+    label: Default action
+    type: select
+    options:
+      - value: log
+        label: Log
+      - value: block
+        label: Block
+      - value: managed-challenge
+        label: Managed challenge
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the exceptions and why each custom rule exists.

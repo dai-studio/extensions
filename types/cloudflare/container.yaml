@@ -1,0 +1,56 @@
+# dai.types.cloudflare.container
+name: Container
+version: 1.0.0
+description: A Cloudflare Container, a container image run on demand and controlled from a Worker through a Durable Object class.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 140
+colors:
+  fill: '#FEF3E8'
+  stroke: '#F38020'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Container name
+  - key: className
+    label: Class name
+    type: text
+    placeholder: MyContainer
+  - key: image
+    label: Image
+    type: text
+    placeholder: ./Dockerfile
+  - key: instanceType
+    label: Instance type
+    type: select
+    options:
+      - value: lite
+        label: lite
+      - value: basic
+        label: basic
+      - value: standard-1
+        label: standard-1
+      - value: standard-2
+        label: standard-2
+      - value: standard-3
+        label: standard-3
+      - value: standard-4
+        label: standard-4
+      - value: other
+        label: Other
+  - key: maxInstances
+    label: Max instances
+    type: number
+    min: 1
+  - key: defaultPort
+    label: Default port
+    type: number
+    min: 1
+    max: 65535
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what runs in the container and when it sleeps.

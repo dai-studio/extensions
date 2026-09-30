@@ -1,0 +1,51 @@
+# dai.types.cloudflare.access-application
+name: Access Application
+version: 1.0.0
+description: A Cloudflare Access application that puts identity-aware Zero Trust policies in front of an app or network.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+order: 630
+colors:
+  fill: '#FDF3F4'
+  stroke: '#D13438'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Access Application name
+  - key: appType
+    label: Type
+    type: select
+    options:
+      - value: self-hosted
+        label: Self-hosted
+      - value: saas
+        label: SaaS
+      - value: private-network
+        label: Private network
+      - value: infrastructure
+        label: Infrastructure
+      - value: other
+        label: Other
+  - key: domain
+    label: Domain
+    type: text
+    placeholder: admin.example.com
+  - key: policies
+    label: Policies
+    type: list
+    placeholder: "Allow: emails ending in @example.com"
+  - key: identityProviders
+    label: Identity providers
+    type: list
+    placeholder: Okta
+  - key: sessionDuration
+    label: Session duration
+    type: text
+    placeholder: 24h
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe who can reach this app and why.

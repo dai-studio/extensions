@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  xmlns:dai="https://dai.studio/schema/dai/1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  id="Definitions_cfr2"
+  name="Cloudflare R2 pattern"
+  targetNamespace="https://dai.studio/workflow">
+
+  <bpmn:process id="Process_cfr2" name="Cloudflare R2" isExecutable="false">
+
+    <bpmn:task id="Task_cfr2_create" name="Create R2 Bucket"
+      dai:type="dai.types.cloudflare.r2-bucket"
+      dai:notes="Create an R2 bucket (wrangler r2 bucket create &lt;name&gt;). Set a location hint, or a jurisdiction such as EU if data residency matters, and keep public access off." />
+
+    <bpmn:task id="Task_cfr2_bind" name="Bind to Worker"
+      dai:type="dai.types.cloudflare.worker"
+      dai:notes="Add an r2_buckets binding (e.g. BUCKET) to the Worker's wrangler config, run wrangler types to regenerate the Env type, then deploy." />
+
+    <bpmn:task id="Task_cfr2_upload" name="Upload Object"
+      dai:type="dai.types.software.component" dai:stepType="component" dai:componentType="infra"
+      dai:notes="Write objects from the Worker with env.BUCKET.put(key, body, { httpMetadata: { contentType } }). Serve reads through the Worker with authorization checks rather than making the bucket public." />
+
+    <bpmn:sequenceFlow id="Flow_cfr2_1" sourceRef="Task_cfr2_create" targetRef="Task_cfr2_bind" />
+    <bpmn:sequenceFlow id="Flow_cfr2_2" sourceRef="Task_cfr2_bind" targetRef="Task_cfr2_upload" />
+
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_cfr2">
+    <bpmndi:BPMNPlane id="BPMNPlane_cfr2" bpmnElement="Process_cfr2">
+
+      <bpmndi:BPMNShape id="Task_cfr2_create_di" bpmnElement="Task_cfr2_create">
+        <dc:Bounds x="0" y="0" width="100" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Task_cfr2_bind_di" bpmnElement="Task_cfr2_bind">
+        <dc:Bounds x="180" y="0" width="100" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Task_cfr2_upload_di" bpmnElement="Task_cfr2_upload">
+        <dc:Bounds x="360" y="0" width="100" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="Flow_cfr2_1_di" bpmnElement="Flow_cfr2_1">
+        <di:waypoint x="100" y="40" />
+        <di:waypoint x="180" y="40" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_cfr2_2_di" bpmnElement="Flow_cfr2_2">
+        <di:waypoint x="280" y="40" />
+        <di:waypoint x="360" y="40" />
+      </bpmndi:BPMNEdge>
+
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</bpmn:definitions>

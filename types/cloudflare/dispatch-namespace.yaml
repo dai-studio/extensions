@@ -1,0 +1,36 @@
+# dai.types.cloudflare.dispatch-namespace
+name: Dispatch Namespace
+version: 1.0.0
+description: A Workers for Platforms dispatch namespace that holds customer (user) Workers. Put it inside a Cloudflare Account; it contains Workers.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2l0 -10" /><path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" /></svg>
+order: 40
+colors:
+  fill: '#FFF6ED'
+  stroke: '#C2570C'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Dispatch Namespace name
+  - key: namespaceName
+    label: Namespace
+    type: text
+    placeholder: customers-prod
+  - key: dispatchWorker
+    label: Dispatch Worker
+    type: text
+    placeholder: dispatcher
+  - key: outboundWorker
+    label: Outbound Worker
+    type: text
+    placeholder: egress-filter
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe how user Workers are uploaded, routed and limited.

@@ -1,0 +1,44 @@
+# dai.types.cloudflare.hyperdrive
+name: Hyperdrive
+version: 1.0.0
+description: A Cloudflare Hyperdrive config that pools connections and caches queries to an existing PostgreSQL or MySQL database.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" /></svg>
+order: 410
+colors:
+  fill: '#EDF1FA'
+  stroke: '#3A5BB8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Hyperdrive name
+  - key: configId
+    label: Config ID
+    type: text
+    placeholder: 0123456789abcdef0123456789abcdef
+  - key: originEngine
+    label: Origin database
+    type: select
+    options:
+      - value: postgres
+        label: PostgreSQL
+      - value: mysql
+        label: MySQL
+  - key: originHost
+    label: Origin host
+    type: text
+    placeholder: db.example.com:5432
+  - key: caching
+    label: Query caching
+    type: boolean
+    defaultValue: true
+  - key: viaTunnel
+    label: Connect via Tunnel
+    type: boolean
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the origin database and which Workers use it.

@@ -1,0 +1,65 @@
+# dai.types.cloudflare.load-balancer
+name: Load Balancer
+version: 1.0.0
+description: A Cloudflare Load Balancer that steers traffic for a hostname across Origin Pools.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /><path d="M21 7h-8l-3.495 5" /><path d="M18 10l3 -3l-3 -3" /><path d="M18 20l3 -3l-3 -3" /></svg>
+order: 210
+colors:
+  fill: '#EEF3FB'
+  stroke: '#0051C3'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Load Balancer name
+  - key: hostname
+    label: Hostname
+    type: text
+    placeholder: app.example.com
+  - key: steeringPolicy
+    label: Steering policy
+    type: select
+    defaultValue: "off"
+    options:
+      - value: "off"
+        label: Off (failover)
+      - value: geo
+        label: Geo
+      - value: random
+        label: Random
+      - value: dynamic-latency
+        label: Dynamic latency
+      - value: proximity
+        label: Proximity
+      - value: least-outstanding-requests
+        label: Least outstanding requests
+      - value: least-connections
+        label: Least connections
+  - key: pools
+    label: Pools
+    type: list
+    placeholder: pool-us-east
+  - key: fallbackPool
+    label: Fallback pool
+    type: text
+    placeholder: pool-eu-west
+  - key: sessionAffinity
+    label: Session affinity
+    type: select
+    defaultValue: none
+    options:
+      - value: none
+        label: None
+      - value: cookie
+        label: Cookie
+      - value: ip-cookie
+        label: IP cookie
+      - value: header
+        label: Header
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the failover and steering behaviour.

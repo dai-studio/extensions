@@ -1,0 +1,46 @@
+# dai.types.cloudflare.spectrum-app
+name: Spectrum App
+version: 1.0.0
+description: A Cloudflare Spectrum application that proxies TCP or UDP traffic for a hostname.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10h-16l5.5 -6" /><path d="M4 14h16l-5.5 6" /></svg>
+order: 240
+colors:
+  fill: '#EEF3FB'
+  stroke: '#0051C3'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Spectrum App name
+  - key: hostname
+    label: Hostname
+    type: text
+    placeholder: ssh.example.com
+  - key: protocol
+    label: Protocol / port
+    type: text
+    placeholder: tcp/22
+  - key: originDirect
+    label: Origins
+    type: list
+    placeholder: tcp://192.0.2.1:22
+  - key: proxyProtocol
+    label: Proxy Protocol
+    type: select
+    defaultValue: "off"
+    options:
+      - value: "off"
+        label: "Off"
+      - value: v1
+        label: v1
+      - value: v2
+        label: v2
+      - value: simple
+        label: Simple
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the service and who connects to it.

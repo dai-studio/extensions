@@ -1,0 +1,37 @@
+# dai.types.cloudflare.tunnel
+name: Tunnel
+version: 1.0.0
+description: A Cloudflare Tunnel (cloudflared) that connects private services and networks to Cloudflare without opening inbound ports.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" /><path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" /><path d="M3 21l2.5 -2.5" /><path d="M18.5 5.5l2.5 -2.5" /><path d="M10 11l-2 2" /><path d="M13 14l-2 2" /></svg>
+order: 230
+colors:
+  fill: '#EEF3FB'
+  stroke: '#0051C3'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Tunnel name
+  - key: tunnelId
+    label: Tunnel ID
+    type: text
+    placeholder: "00000000-0000-0000-0000-000000000000"
+  - key: publicHostnames
+    label: Public hostnames
+    type: list
+    placeholder: app.example.com → http://localhost:8080
+  - key: privateNetworks
+    label: Private networks
+    type: list
+    placeholder: 10.0.0.0/16
+  - key: connectorHosts
+    label: Connector hosts
+    type: list
+    placeholder: "k8s: cloudflared deployment"
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe where the connectors run and what they expose.

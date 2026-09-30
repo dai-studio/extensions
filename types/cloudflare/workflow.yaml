@@ -1,0 +1,41 @@
+# dai.types.cloudflare.workflow
+name: Workflow
+version: 1.0.0
+description: A Cloudflare Workflow, a durable multi-step program with automatic retries and state.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M10 20h-6" /><path d="M14 20h6" /><path d="M12 15l-2 -2h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-3l-2 2" /></svg>
+order: 130
+colors:
+  fill: '#FEF3E8'
+  stroke: '#F38020'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Workflow name
+  - key: workflowName
+    label: Workflow name
+    type: text
+    placeholder: order-fulfilment
+  - key: className
+    label: Class name
+    type: text
+    placeholder: OrderWorkflow
+  - key: scriptName
+    label: Script name
+    type: text
+    placeholder: orders
+  - key: steps
+    label: Steps
+    type: list
+    placeholder: charge-card
+  - key: retryLimit
+    label: Retry limit
+    type: number
+    min: 0
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the steps, what triggers the workflow and how failures are handled.

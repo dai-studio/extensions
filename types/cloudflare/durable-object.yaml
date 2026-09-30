@@ -1,0 +1,76 @@
+# dai.types.cloudflare.durable-object
+name: Durable Object
+version: 1.0.0
+description: A Cloudflare Durable Object class, single-threaded stateful compute with its own storage. Connect it to the Workers that bind to it.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14" /><path d="M3 10h18" /><path d="M10 3v18" /></svg>
+order: 120
+colors:
+  fill: '#FEF3E8'
+  stroke: '#F38020'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Durable Object name
+  - key: className
+    label: Class name
+    type: text
+    placeholder: ChatRoom
+  - key: scriptName
+    label: Script name
+    type: text
+    placeholder: chat
+    hint: The Worker that exports the class.
+  - key: storageBackend
+    label: Storage backend
+    type: select
+    defaultValue: sqlite
+    options:
+      - value: sqlite
+        label: SQLite
+      - value: key-value
+        label: Key-value (legacy)
+  - key: locationHint
+    label: Location hint
+    type: select
+    defaultValue: auto
+    hint: A hint only; ignored when a jurisdiction is set.
+    options:
+      - value: auto
+        label: Automatic
+      - value: wnam
+        label: wnam — Western North America
+      - value: enam
+        label: enam — Eastern North America
+      - value: sam
+        label: sam — South America
+      - value: weur
+        label: weur — Western Europe
+      - value: eeur
+        label: eeur — Eastern Europe
+      - value: apac
+        label: apac — Asia-Pacific
+      - value: oc
+        label: oc — Oceania
+      - value: afr
+        label: afr — Africa
+      - value: me
+        label: me — Middle East
+  - key: jurisdiction
+    label: Jurisdiction
+    type: select
+    defaultValue: none
+    options:
+      - value: none
+        label: None
+      - value: eu
+        label: EU
+      - value: fedramp
+        label: FedRAMP
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what one object instance represents and how it is addressed.

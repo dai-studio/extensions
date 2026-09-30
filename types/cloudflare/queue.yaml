@@ -1,0 +1,58 @@
+# dai.types.cloudflare.queue
+name: Queue
+version: 1.0.0
+description: A Cloudflare Queue for guaranteed-delivery messaging between Workers.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" /><path d="M4 13h3l3 3h4l3 -3h3" /></svg>
+order: 500
+colors:
+  fill: '#FBEFF8'
+  stroke: '#B4009E'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Queue name
+  - key: queueName
+    label: Queue name
+    type: text
+    placeholder: emails
+  - key: producers
+    label: Producers
+    type: list
+    placeholder: api
+  - key: consumerType
+    label: Consumer type
+    type: select
+    defaultValue: worker
+    options:
+      - value: worker
+        label: Worker
+      - value: http-pull
+        label: HTTP pull
+  - key: consumer
+    label: Consumer
+    type: text
+    placeholder: email-sender
+  - key: maxBatchSize
+    label: Max batch size
+    type: number
+    defaultValue: 10
+    min: 1
+    max: 100
+  - key: maxRetries
+    label: Max retries
+    type: number
+    defaultValue: 3
+    min: 0
+    max: 100
+  - key: deadLetterQueue
+    label: Dead-letter queue
+    type: text
+    placeholder: emails-dlq
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the message format and what the consumer does.

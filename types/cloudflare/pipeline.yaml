@@ -1,0 +1,57 @@
+# dai.types.cloudflare.pipeline
+name: Pipeline
+version: 1.0.0
+description: A Cloudflare Pipeline that ingests streaming events and writes them to R2.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12h-2c-.894 0 -1.662 -.857 -1.761 -2c-.296 -3.45 -.749 -6 -2.749 -6s-2.5 3.582 -2.5 8s-.5 8 -2.5 8s-2.452 -2.547 -2.749 -6c-.1 -1.147 -.867 -2 -1.763 -2h-2" /></svg>
+order: 510
+colors:
+  fill: '#FBEFF8'
+  stroke: '#B4009E'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Pipeline name
+  - key: pipelineName
+    label: Pipeline name
+    type: text
+    placeholder: clickstream
+  - key: source
+    label: Source
+    type: select
+    options:
+      - value: http
+        label: HTTP endpoint
+      - value: worker-binding
+        label: Worker binding
+      - value: other
+        label: Other
+  - key: sink
+    label: Sink
+    type: select
+    options:
+      - value: r2
+        label: R2 bucket
+      - value: r2-data-catalog
+        label: R2 Data Catalog (Iceberg)
+      - value: other
+        label: Other
+  - key: format
+    label: Format
+    type: select
+    options:
+      - value: json
+        label: JSON
+      - value: parquet
+        label: Parquet
+  - key: transform
+    label: Transform
+    type: text
+    placeholder: SQL or transform Worker
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the events and who queries the output.

@@ -1,0 +1,63 @@
+# dai.types.cloudflare.dns-record
+name: DNS Record
+version: 1.0.0
+description: A DNS record in a Cloudflare Zone. Proxied records route traffic through Cloudflare.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28" /></svg>
+order: 200
+colors:
+  fill: '#EEF3FB'
+  stroke: '#0051C3'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: DNS Record name
+  - key: recordType
+    label: Type
+    type: select
+    options:
+      - value: A
+        label: A
+      - value: AAAA
+        label: AAAA
+      - value: CNAME
+        label: CNAME
+      - value: MX
+        label: MX
+      - value: TXT
+        label: TXT
+      - value: NS
+        label: NS
+      - value: SRV
+        label: SRV
+      - value: CAA
+        label: CAA
+      - value: HTTPS
+        label: HTTPS
+      - value: other
+        label: Other
+  - key: recordName
+    label: Record name
+    type: text
+    placeholder: www
+  - key: content
+    label: Content
+    type: text
+    placeholder: 192.0.2.1 or origin.example.com
+  - key: proxied
+    label: Proxied
+    type: boolean
+    defaultValue: true
+  - key: ttl
+    label: TTL (s)
+    type: number
+    defaultValue: 1
+    min: 1
+    hint: 1 = automatic.
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what this record points to and why.

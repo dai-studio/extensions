@@ -1,0 +1,59 @@
+# dai.types.cloudflare.account
+name: Account
+version: 1.0.0
+description: A Cloudflare account, the boundary for billing, members and resources. It contains Zones, Workers, storage, AI and Zero Trust resources.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.555 3.843l3.602 3.602a2.877 2.877 0 0 1 0 4.069l-2.643 2.643a2.877 2.877 0 0 1 -4.069 0l-.301 -.301l-6.558 6.558a2 2 0 0 1 -1.239 .578l-.175 .008h-1.172a1 1 0 0 1 -.993 -.883l-.007 -.117v-1.172a2 2 0 0 1 .467 -1.284l.119 -.13l.414 -.414h2v-2h2v-2l2.144 -2.144l-.301 -.301a2.877 2.877 0 0 1 0 -4.069l2.643 -2.643a2.877 2.877 0 0 1 4.069 0" /><path d="M15 9h.01" /></svg>
+order: 20
+colors:
+  fill: '#FEF3E8'
+  stroke: '#F38020'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Account name
+  - key: accountId
+    label: Account ID
+    type: text
+    placeholder: 0123456789abcdef0123456789abcdef
+  - key: accountType
+    label: Plan
+    type: select
+    hint: Highest plan in the account.
+    options:
+      - value: free
+        label: Free
+      - value: pro
+        label: Pro
+      - value: business
+        label: Business
+      - value: enterprise
+        label: Enterprise
+  - key: environment
+    label: Environment
+    type: select
+    options:
+      - value: development
+        label: Development
+      - value: staging
+        label: Staging
+      - value: production
+        label: Production
+      - value: testing
+        label: Testing
+      - value: other
+        label: Other
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Team or person accountable for this account
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what runs in this account and who has access.

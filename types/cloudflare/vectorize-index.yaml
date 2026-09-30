@@ -1,0 +1,45 @@
+# dai.types.cloudflare.vectorize-index
+name: Vectorize Index
+version: 1.0.0
+description: A Cloudflare Vectorize index for storing and querying vector embeddings.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M7 9a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 7a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M12 15a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M10.16 10.62l2.34 2.88" /><path d="M15.088 13.328l2.837 -4.586" /></svg>
+order: 820
+colors:
+  fill: '#F3EEFB'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Vectorize Index name
+  - key: indexName
+    label: Index name
+    type: text
+    placeholder: docs-embeddings
+  - key: dimensions
+    label: Dimensions
+    type: number
+    min: 1
+    max: 1536
+  - key: metric
+    label: Distance metric
+    type: select
+    defaultValue: cosine
+    options:
+      - value: cosine
+        label: Cosine
+      - value: euclidean
+        label: Euclidean
+      - value: dot-product
+        label: Dot product
+  - key: metadataIndexes
+    label: Metadata indexes
+    type: list
+    placeholder: "category: string"
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what is embedded and which model produces the vectors.

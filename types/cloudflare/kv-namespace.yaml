@@ -1,0 +1,33 @@
+# dai.types.cloudflare.kv-namespace
+name: KV Namespace
+version: 1.0.0
+description: A Cloudflare Workers KV namespace, a global, eventually consistent key-value store for read-heavy data.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l11 0" /><path d="M9 12l11 0" /><path d="M9 18l11 0" /><path d="M5 6l0 .01" /><path d="M5 12l0 .01" /><path d="M5 18l0 .01" /></svg>
+order: 310
+colors:
+  fill: '#EAF7F5'
+  stroke: '#0B8577'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: KV Namespace name
+  - key: namespaceId
+    label: Namespace ID
+    type: text
+    placeholder: 0123456789abcdef0123456789abcdef
+  - key: keyPrefixes
+    label: Key prefixes
+    type: list
+    placeholder: "session:"
+  - key: defaultTtlSeconds
+    label: Default TTL (s)
+    type: number
+    min: 60
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the keys, values and who writes them.

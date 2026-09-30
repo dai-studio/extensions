@@ -1,0 +1,69 @@
+# dai.types.cloudflare.d1-database
+name: D1 Database
+version: 1.0.0
+description: A Cloudflare D1 serverless SQLite database.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
+order: 400
+colors:
+  fill: '#EDF1FA'
+  stroke: '#3A5BB8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: D1 Database name
+  - key: databaseId
+    label: Database ID
+    type: text
+    placeholder: "00000000-0000-0000-0000-000000000000"
+  - key: locationHint
+    label: Location hint
+    type: select
+    defaultValue: auto
+    hint: A hint only; ignored when a jurisdiction is set.
+    options:
+      - value: auto
+        label: Automatic
+      - value: wnam
+        label: wnam — Western North America
+      - value: enam
+        label: enam — Eastern North America
+      - value: sam
+        label: sam — South America
+      - value: weur
+        label: weur — Western Europe
+      - value: eeur
+        label: eeur — Eastern Europe
+      - value: apac
+        label: apac — Asia-Pacific
+      - value: oc
+        label: oc — Oceania
+      - value: afr
+        label: afr — Africa
+      - value: me
+        label: me — Middle East
+  - key: jurisdiction
+    label: Jurisdiction
+    type: select
+    defaultValue: none
+    options:
+      - value: none
+        label: None
+      - value: eu
+        label: EU
+      - value: fedramp
+        label: FedRAMP
+  - key: readReplication
+    label: Read replication
+    type: boolean
+  - key: migrationsDir
+    label: Migrations directory
+    type: text
+    placeholder: migrations
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the schema and who writes to it.

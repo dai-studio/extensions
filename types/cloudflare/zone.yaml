@@ -1,0 +1,72 @@
+# dai.types.cloudflare.zone
+name: Zone
+version: 1.0.0
+description: A Cloudflare zone, one domain and its settings. Put it inside a Cloudflare Account; it contains DNS records, WAF and rate-limiting rules, load balancers, certificates and other traffic settings.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+order: 30
+colors:
+  fill: '#EEF3FB'
+  stroke: '#0051C3'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Zone name
+  - key: zoneName
+    label: Domain
+    type: text
+    placeholder: example.com
+  - key: zoneId
+    label: Zone ID
+    type: text
+    placeholder: 0123456789abcdef0123456789abcdef
+  - key: plan
+    label: Plan
+    type: select
+    options:
+      - value: free
+        label: Free
+      - value: pro
+        label: Pro
+      - value: business
+        label: Business
+      - value: enterprise
+        label: Enterprise
+  - key: setupType
+    label: Setup
+    type: select
+    defaultValue: full
+    options:
+      - value: full
+        label: Full
+      - value: partial
+        label: Partial (CNAME)
+      - value: secondary
+        label: Secondary DNS
+  - key: sslMode
+    label: SSL/TLS mode
+    type: select
+    defaultValue: strict
+    options:
+      - value: "off"
+        label: "Off"
+      - value: flexible
+        label: Flexible
+      - value: full
+        label: Full
+      - value: strict
+        label: Full (strict)
+  - key: nameservers
+    label: Nameservers
+    type: list
+    placeholder: ada.ns.cloudflare.com
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the domain, its origins and the key traffic settings.

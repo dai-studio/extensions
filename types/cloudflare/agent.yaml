@@ -1,0 +1,48 @@
+# dai.types.cloudflare.agent
+name: Agent
+version: 1.0.0
+description: An AI agent built with the Cloudflare Agents SDK. Each agent instance is backed by a Durable Object with its own state.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4" /><path d="M12 2v2" /><path d="M9 12v9" /><path d="M15 12v9" /><path d="M5 16l4 -2" /><path d="M15 14l4 2" /><path d="M9 18h6" /><path d="M10 8v.01" /><path d="M14 8v.01" /></svg>
+order: 150
+colors:
+  fill: '#FEF3E8'
+  stroke: '#F38020'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Agent name
+  - key: className
+    label: Class name
+    type: text
+    placeholder: SupportAgent
+  - key: model
+    label: Model
+    type: text
+    placeholder: "@cf/meta/llama-3.3-70b-instruct-fp8-fast"
+  - key: tools
+    label: Tools
+    type: list
+    placeholder: lookupOrder
+  - key: bindings
+    label: Bindings
+    type: list
+    placeholder: "KV: CACHE → kv-sessions"
+    hint: Model each binding as a connection to its resource node.
+  - key: transport
+    label: Transport
+    type: select
+    options:
+      - value: websocket
+        label: WebSocket
+      - value: http
+        label: HTTP
+      - value: mcp
+        label: MCP server
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the agent's goal, its tools and its state.

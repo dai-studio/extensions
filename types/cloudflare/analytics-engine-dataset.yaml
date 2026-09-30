@@ -1,0 +1,37 @@
+# dai.types.cloudflare.analytics-engine-dataset
+name: Analytics Engine Dataset
+version: 1.0.0
+description: A Cloudflare Workers Analytics Engine dataset for high-cardinality time-series events, queried with SQL.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /><path d="M4 15l4 -6l4 2l4 -5l4 4" /></svg>
+order: 420
+colors:
+  fill: '#EDF1FA'
+  stroke: '#3A5BB8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Analytics Engine Dataset name
+  - key: dataset
+    label: Dataset
+    type: text
+    placeholder: api_requests
+  - key: blobs
+    label: Blobs
+    type: list
+    placeholder: "blob1: path"
+  - key: doubles
+    label: Doubles
+    type: list
+    placeholder: "double1: latency_ms"
+  - key: indexes
+    label: Indexes
+    type: list
+    placeholder: "index1: customer_id"
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what is recorded and the queries that read it.

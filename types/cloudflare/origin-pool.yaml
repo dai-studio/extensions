@@ -1,0 +1,38 @@
+# dai.types.cloudflare.origin-pool
+name: Origin Pool
+version: 1.0.0
+description: A Cloudflare origin pool, a group of origin servers with a health monitor, used by Load Balancers.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></svg>
+order: 220
+colors:
+  fill: '#EEF3FB'
+  stroke: '#0051C3'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Origin Pool name
+  - key: origins
+    label: Origins
+    type: list
+    placeholder: origin-1.example.com
+  - key: monitor
+    label: Health monitor
+    type: text
+    placeholder: HTTPS GET /health
+  - key: minimumOrigins
+    label: Minimum healthy origins
+    type: number
+    defaultValue: 1
+    min: 1
+  - key: checkRegions
+    label: Check regions
+    type: list
+    placeholder: WNAM
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the origins and what counts as healthy.

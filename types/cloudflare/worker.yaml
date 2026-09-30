@@ -1,0 +1,59 @@
+# dai.types.cloudflare.worker
+name: Worker
+version: 1.0.0
+description: A Cloudflare Worker, serverless code that runs on the Cloudflare network. Put it inside an Account or Dispatch Namespace, and connect it to the resources it binds to.
+icon: λ
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20l6.5 -9" /><path d="M19 20c-6 0 -6 -16 -12 -16" /></svg>
+order: 100
+colors:
+  fill: '#FEF3E8'
+  stroke: '#F38020'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Worker name
+  - key: scriptName
+    label: Script name
+    type: text
+    placeholder: api
+  - key: compatibilityDate
+    label: Compatibility date
+    type: text
+    placeholder: "2026-09-01"
+  - key: routes
+    label: Routes
+    type: list
+    placeholder: example.com/api/*
+  - key: customDomains
+    label: Custom domains
+    type: list
+    placeholder: api.example.com
+  - key: cronTriggers
+    label: Cron triggers
+    type: list
+    placeholder: "*/5 * * * *"
+  - key: bindings
+    label: Bindings
+    type: list
+    placeholder: "KV: CACHE → kv-sessions"
+    hint: Model each binding as a connection to its resource node.
+  - key: placement
+    label: Placement
+    type: select
+    defaultValue: default
+    options:
+      - value: default
+        label: Default (closest to user)
+      - value: smart
+        label: Smart placement
+  - key: observability
+    label: Observability (logs)
+    type: boolean
+    defaultValue: true
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what the Worker does, its inputs and its outputs.
