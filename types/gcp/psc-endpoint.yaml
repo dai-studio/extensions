@@ -1,0 +1,40 @@
+# dai.types.gcp.psc-endpoint
+name: Private Service Connect Endpoint
+version: 1.0.0
+description: A Google Cloud Private Service Connect endpoint that reaches Google APIs or a published service over a private IP.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" /><path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" /><path d="M3 21l2.5 -2.5" /><path d="M18.5 5.5l2.5 -2.5" /><path d="M10 11l-2 2" /><path d="M13 14l-2 2" /></svg>
+order: 240
+colors:
+  fill: '#E6F4EA'
+  stroke: '#188038'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Private Service Connect Endpoint name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: target
+    label: Target
+    type: text
+    placeholder: all-apis or a service attachment
+  - key: ipAddress
+    label: IP address
+    type: text
+    placeholder: "10.0.5.10"
+  - key: dnsName
+    label: DNS name
+    type: text
+    placeholder: storage-psc.p.googleapis.com
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe which clients use this endpoint.

@@ -1,0 +1,60 @@
+# dai.types.gcp.vertex-ai-model
+name: Vertex AI Model
+version: 1.0.0
+description: "A model on Google Vertex AI: a Gemini model, a Model Garden model, or a custom model on an endpoint."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 13a3.5 3.5 0 0 0 -3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8" /><path d="M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1 -7 0v-1.8" /><path d="M17.5 16a3.5 3.5 0 0 0 0 -7h-.5" /><path d="M19 9.3v-2.8a3.5 3.5 0 0 0 -7 0" /><path d="M6.5 16a3.5 3.5 0 0 1 0 -7h.5" /><path d="M5 9.3v-2.8a3.5 3.5 0 0 1 7 0v10" /></svg>
+order: 800
+colors:
+  fill: '#E4F7FB'
+  stroke: '#007B83'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Vertex AI Model name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: model
+    label: Model
+    type: text
+    placeholder: gemini-2.5-pro
+  - key: source
+    label: Source
+    type: select
+    defaultValue: gemini
+    options:
+      - value: gemini
+        label: Gemini
+      - value: model-garden
+        label: Model Garden
+      - value: custom
+        label: Custom model
+  - key: endpoint
+    label: Endpoint
+    type: text
+    placeholder: projects/…/locations/…/endpoints/…
+  - key: throughput
+    label: Throughput
+    type: select
+    defaultValue: pay-as-you-go
+    options:
+      - value: pay-as-you-go
+        label: Pay-as-you-go
+      - value: provisioned
+        label: Provisioned Throughput
+  - key: location
+    label: Location
+    type: text
+    placeholder: us-central1
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the prompts, inputs, outputs and safety settings.

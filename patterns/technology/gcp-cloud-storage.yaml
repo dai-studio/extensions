@@ -1,0 +1,3 @@
+name: Cloud Storage
+description: Create a bucket, upload an object, and grant IAM access.
+version: 1.0.0

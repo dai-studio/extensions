@@ -1,0 +1,68 @@
+# dai.types.gcp.load-balancer
+name: Load Balancer
+version: 1.0.0
+description: A Google Cloud Load Balancer (application or network, external or internal).
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /><path d="M21 7h-8l-3.495 5" /><path d="M18 10l3 -3l-3 -3" /><path d="M18 20l3 -3l-3 -3" /></svg>
+order: 250
+colors:
+  fill: '#E6F4EA'
+  stroke: '#188038'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Load Balancer name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: lbType
+    label: Type
+    type: select
+    options:
+      - value: global-external-application
+        label: Global external Application
+      - value: regional-external-application
+        label: Regional external Application
+      - value: regional-internal-application
+        label: Regional internal Application
+      - value: cross-region-internal-application
+        label: Cross-region internal Application
+      - value: external-proxy-network
+        label: External proxy Network
+      - value: internal-proxy-network
+        label: Internal proxy Network
+      - value: external-passthrough-network
+        label: External passthrough Network
+      - value: internal-passthrough-network
+        label: Internal passthrough Network
+  - key: frontendIp
+    label: Frontend IP
+    type: text
+    placeholder: lb-ip or 10.0.1.10
+  - key: backends
+    label: Backends
+    type: list
+    placeholder: mig-web or serverless NEG
+  - key: healthCheck
+    label: Health check
+    type: text
+    placeholder: HTTP /healthz
+  - key: cdnEnabled
+    label: Cloud CDN enabled
+    type: boolean
+  - key: securityPolicy
+    label: Security policy
+    type: text
+    placeholder: armor-web
+    hint: Model it as a Cloud Armor Policy node.
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the routing rules and backends.

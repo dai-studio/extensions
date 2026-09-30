@@ -1,0 +1,92 @@
+# dai.types.gcp.cloud-run-service
+name: Cloud Run Service
+version: 1.0.0
+description: A Google Cloud Run service, a serverless container that serves requests and scales to zero.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 110
+colors:
+  fill: '#E8F0FE'
+  stroke: '#1A73E8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud Run Service name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: image
+    label: Image
+    type: text
+    placeholder: us-docker.pkg.dev/project/repo/app:1.0
+  - key: cpu
+    label: CPU
+    type: text
+    placeholder: "1"
+  - key: memory
+    label: Memory
+    type: text
+    placeholder: 512Mi
+  - key: minInstances
+    label: Min instances
+    type: number
+    defaultValue: 0
+    min: 0
+  - key: maxInstances
+    label: Max instances
+    type: number
+    defaultValue: 100
+    min: 1
+  - key: concurrency
+    label: Concurrency
+    type: number
+    defaultValue: 80
+    min: 1
+    max: 1000
+  - key: ingress
+    label: Ingress
+    type: select
+    defaultValue: all
+    options:
+      - value: all
+        label: All
+      - value: internal
+        label: Internal
+      - value: internal-and-cloud-load-balancing
+        label: Internal and Cloud Load Balancing
+  - key: authentication
+    label: Authentication
+    type: select
+    defaultValue: require
+    options:
+      - value: require
+        label: Require authentication
+      - value: allow-unauthenticated
+        label: Allow unauthenticated
+  - key: vpcEgress
+    label: VPC egress
+    type: select
+    defaultValue: none
+    options:
+      - value: none
+        label: None
+      - value: direct-vpc
+        label: Direct VPC egress
+      - value: connector
+        label: Serverless VPC Access connector
+  - key: serviceAccount
+    label: Service account
+    type: text
+    placeholder: app@project.iam.gserviceaccount.com
+    hint: Model it as a Service Account node.
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what the service does and who calls it.

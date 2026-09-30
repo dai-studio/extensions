@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  xmlns:dai="https://dai.studio/schema/dai/1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  id="Definitions_gcpgcs"
+  name="Google Cloud Storage pattern"
+  targetNamespace="https://dai.studio/workflow">
+
+  <bpmn:process id="Process_gcpgcs" name="Google Cloud Storage" isExecutable="false">
+
+    <bpmn:task id="Task_gcpgcs_create" name="Create Bucket"
+      dai:type="dai.types.gcp.storage-bucket"
+      dai:notes="Create a Cloud Storage bucket with a globally-unique name and the right location type (region, dual-region or multi-region). Enable uniform bucket-level access and public access prevention, and turn on object versioning if you need to recover overwrites." />
+
+    <bpmn:task id="Task_gcpgcs_upload" name="Upload Object"
+      dai:type="dai.types.software.component" dai:stepType="component" dai:componentType="infra"
+      dai:notes="Upload an object to the bucket, setting the correct Content-Type and any required custom metadata." />
+
+    <bpmn:task id="Task_gcpgcs_access" name="Grant Access"
+      dai:type="dai.types.software.component" dai:stepType="component" dai:componentType="infra"
+      dai:notes="Grant least-privilege IAM on the bucket — e.g. roles/storage.objectViewer to the service account that reads it. Avoid allUsers and allAuthenticatedUsers unless the bucket is intentionally public." />
+
+    <bpmn:sequenceFlow id="Flow_gcpgcs_1" sourceRef="Task_gcpgcs_create" targetRef="Task_gcpgcs_upload" />
+    <bpmn:sequenceFlow id="Flow_gcpgcs_2" sourceRef="Task_gcpgcs_upload" targetRef="Task_gcpgcs_access" />
+
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_gcpgcs">
+    <bpmndi:BPMNPlane id="BPMNPlane_gcpgcs" bpmnElement="Process_gcpgcs">
+
+      <bpmndi:BPMNShape id="Task_gcpgcs_create_di" bpmnElement="Task_gcpgcs_create">
+        <dc:Bounds x="0" y="0" width="100" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Task_gcpgcs_upload_di" bpmnElement="Task_gcpgcs_upload">
+        <dc:Bounds x="180" y="0" width="100" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Task_gcpgcs_access_di" bpmnElement="Task_gcpgcs_access">
+        <dc:Bounds x="360" y="0" width="100" height="80" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="Flow_gcpgcs_1_di" bpmnElement="Flow_gcpgcs_1">
+        <di:waypoint x="100" y="40" />
+        <di:waypoint x="180" y="40" />
+      </bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Flow_gcpgcs_2_di" bpmnElement="Flow_gcpgcs_2">
+        <di:waypoint x="280" y="40" />
+        <di:waypoint x="360" y="40" />
+      </bpmndi:BPMNEdge>
+
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+
+</bpmn:definitions>

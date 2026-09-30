@@ -1,0 +1,46 @@
+# dai.types.gcp.folder
+name: Folder
+version: 1.0.0
+description: A Google Cloud folder that groups Projects and other Folders to share IAM and org policies. Put it inside an Organization or another Folder; it contains Folders and Projects.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" /></svg>
+order: 15
+colors:
+  fill: '#FEF7E0'
+  stroke: '#B06000'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Folder name
+  - key: folderId
+    label: Folder ID
+    type: text
+    placeholder: "123456789012"
+  - key: purpose
+    label: Purpose
+    type: select
+    options:
+      - value: platform
+        label: Platform
+      - value: shared-services
+        label: Shared services
+      - value: workloads
+        label: Workloads
+      - value: sandbox
+        label: Sandbox
+      - value: other
+        label: Other
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Team or person accountable for this folder
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what belongs in this folder and the policies applied to it.

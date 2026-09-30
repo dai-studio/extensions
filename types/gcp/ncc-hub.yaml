@@ -1,0 +1,41 @@
+# dai.types.gcp.ncc-hub
+name: Network Connectivity Center Hub
+version: 1.0.0
+description: A Google Cloud Network Connectivity Center hub that connects VPC networks and hybrid spokes.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4" /><path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5" /></svg>
+order: 230
+colors:
+  fill: '#E6F4EA'
+  stroke: '#188038'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Network Connectivity Center Hub name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: spokes
+    label: Spokes
+    type: list
+    placeholder: vpc-prod
+  - key: topology
+    label: Topology
+    type: select
+    defaultValue: mesh
+    options:
+      - value: mesh
+        label: Mesh
+      - value: star
+        label: Star
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the spokes and routing between them.

@@ -1,0 +1,49 @@
+# dai.types.gcp.cloud-armor-policy
+name: Cloud Armor Policy
+version: 1.0.0
+description: A Google Cloud Armor security policy (WAF and DDoS protection) attached to load balancer backends.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /></svg>
+order: 640
+colors:
+  fill: '#FCE8E6'
+  stroke: '#C5221F'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud Armor Policy name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: tier
+    label: Tier
+    type: select
+    defaultValue: standard
+    options:
+      - value: standard
+        label: Standard
+      - value: enterprise
+        label: Enterprise
+  - key: preconfiguredRules
+    label: Preconfigured WAF rules
+    type: list
+    placeholder: sqli-v33-stable
+  - key: customRules
+    label: Custom rules
+    type: list
+    placeholder: "1000 deny origin.region_code == \"XX\""
+  - key: adaptiveProtection
+    label: Adaptive Protection
+    type: boolean
+  - key: attachedTo
+    label: Attached to
+    type: text
+    placeholder: backend-web
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the exceptions and why each custom rule exists.

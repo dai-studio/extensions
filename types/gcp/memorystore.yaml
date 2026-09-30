@@ -1,0 +1,52 @@
+# dai.types.gcp.memorystore
+name: Memorystore
+version: 1.0.0
+description: A Google Cloud Memorystore in-memory cache (Valkey, Redis or Memcached).
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" /></svg>
+order: 430
+colors:
+  fill: '#EDF1FA'
+  stroke: '#3A5BB8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Memorystore name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: engine
+    label: Engine
+    type: select
+    options:
+      - value: valkey
+        label: Valkey
+      - value: redis
+        label: Redis
+      - value: redis-cluster
+        label: Redis Cluster
+      - value: memcached
+        label: Memcached
+  - key: tier
+    label: Tier
+    type: text
+    placeholder: Standard (HA)
+  - key: capacityGb
+    label: Capacity (GB)
+    type: number
+    min: 1
+  - key: network
+    label: Network
+    type: text
+    placeholder: vpc-prod
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what is cached and the eviction policy.

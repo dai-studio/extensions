@@ -1,0 +1,62 @@
+# dai.types.gcp.alert-policy
+name: Alert Policy
+version: 1.0.0
+description: A Google Cloud Monitoring alerting policy that watches metrics or logs and notifies channels.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M12 10l0 3l2 0" /><path d="M7 4l-2.75 2" /><path d="M17 4l2.75 2" /></svg>
+order: 700
+colors:
+  fill: '#FEEFE3'
+  stroke: '#C26401'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Alert Policy name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: conditionType
+    label: Condition type
+    type: select
+    options:
+      - value: metric-threshold
+        label: Metric threshold
+      - value: metric-absence
+        label: Metric absence
+      - value: log-match
+        label: Log match
+      - value: promql
+        label: PromQL
+  - key: metric
+    label: Metric
+    type: text
+    placeholder: run.googleapis.com/request_latencies
+  - key: condition
+    label: Condition
+    type: text
+    placeholder: p99 > 1s for 5 min
+  - key: severity
+    label: Severity
+    type: select
+    options:
+      - value: critical
+        label: Critical
+      - value: error
+        label: Error
+      - value: warning
+        label: Warning
+  - key: notificationChannels
+    label: Notification channels
+    type: list
+    placeholder: pagerduty-oncall
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe who is notified and the runbook to follow.

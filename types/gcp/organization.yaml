@@ -1,0 +1,36 @@
+# dai.types.gcp.organization
+name: Organization
+version: 1.0.0
+description: A Google Cloud organization, the root of the resource hierarchy for a Google Workspace or Cloud Identity domain. It contains Folders and Projects.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0" /><path d="M9 8l1 0" /><path d="M9 12l1 0" /><path d="M9 16l1 0" /><path d="M14 8l1 0" /><path d="M14 12l1 0" /><path d="M14 16l1 0" /><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" /></svg>
+order: 10
+colors:
+  fill: '#F1F3F4'
+  stroke: '#3C4043'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Organization name
+  - key: organizationId
+    label: Organization ID
+    type: text
+    placeholder: "123456789012"
+  - key: domain
+    label: Domain
+    type: text
+    placeholder: example.com
+  - key: owner
+    label: Owner
+    type: text
+    placeholder: Team or person accountable for the organization
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the org policies and who administers the organization.

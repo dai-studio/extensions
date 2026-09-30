@@ -1,0 +1,54 @@
+# dai.types.gcp.filestore
+name: Filestore
+version: 1.0.0
+description: A Google Cloud Filestore instance, a managed NFS file share.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" /><path d="M17 16v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" /></svg>
+order: 320
+colors:
+  fill: '#FEF7E0'
+  stroke: '#B06000'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Filestore name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: tier
+    label: Tier
+    type: select
+    options:
+      - value: basic-hdd
+        label: Basic HDD
+      - value: basic-ssd
+        label: Basic SSD
+      - value: zonal
+        label: Zonal
+      - value: regional
+        label: Regional
+      - value: enterprise
+        label: Enterprise
+  - key: capacityGb
+    label: Capacity (GB)
+    type: number
+    min: 1
+  - key: shareName
+    label: Share name
+    type: text
+    placeholder: vol1
+  - key: network
+    label: Network
+    type: text
+    placeholder: vpc-prod
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe who mounts this share and what it holds.

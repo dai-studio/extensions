@@ -1,0 +1,65 @@
+# dai.types.gcp.pubsub-subscription
+name: Pub/Sub Subscription
+version: 1.0.0
+description: A Google Cloud Pub/Sub subscription that delivers a Topic's messages by pull, push or export.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" /><path d="M4 13h3l3 3h4l3 -3h3" /></svg>
+order: 510
+colors:
+  fill: '#F3E8FD'
+  stroke: '#8430CE'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Pub/Sub Subscription name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: topic
+    label: Topic
+    type: text
+    placeholder: orders
+  - key: deliveryType
+    label: Delivery type
+    type: select
+    defaultValue: pull
+    options:
+      - value: pull
+        label: Pull
+      - value: push
+        label: Push
+      - value: bigquery
+        label: Export to BigQuery
+      - value: cloud-storage
+        label: Export to Cloud Storage
+  - key: pushEndpoint
+    label: Push endpoint
+    type: text
+    placeholder: https://service-abc.run.app/push
+  - key: ackDeadlineSeconds
+    label: Ack deadline (s)
+    type: number
+    defaultValue: 10
+    min: 10
+    max: 600
+  - key: exactlyOnce
+    label: Exactly-once delivery
+    type: boolean
+  - key: ordering
+    label: Message ordering
+    type: boolean
+  - key: deadLetterTopic
+    label: Dead-letter topic
+    type: text
+    placeholder: orders-dlq
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the subscriber and how failures are handled.

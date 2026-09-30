@@ -1,0 +1,61 @@
+# dai.types.gcp.firewall-rule
+name: Firewall Rule
+version: 1.0.0
+description: A Google Cloud VPC firewall rule (or network firewall policy rule) that allows or denies traffic to instances. Connect it to the resources whose network tags it targets.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /><path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12l0 2.5" /></svg>
+order: 200
+colors:
+  fill: '#FCE8E6'
+  stroke: '#C5221F'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Firewall Rule name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/global/firewalls/…
+  - key: direction
+    label: Direction
+    type: select
+    defaultValue: ingress
+    options:
+      - value: ingress
+        label: Ingress
+      - value: egress
+        label: Egress
+  - key: action
+    label: Action
+    type: select
+    defaultValue: allow
+    options:
+      - value: allow
+        label: Allow
+      - value: deny
+        label: Deny
+  - key: priority
+    label: Priority
+    type: number
+    defaultValue: 1000
+    min: 0
+    max: 65535
+  - key: sourceRanges
+    label: Source ranges
+    type: list
+    placeholder: 0.0.0.0/0
+  - key: targetTags
+    label: Target tags
+    type: list
+    placeholder: web
+  - key: protocolsPorts
+    label: Protocols and ports
+    type: list
+    placeholder: tcp:443
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe why this rule exists.

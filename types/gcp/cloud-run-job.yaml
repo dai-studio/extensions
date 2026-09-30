@@ -1,0 +1,60 @@
+# dai.types.gcp.cloud-run-job
+name: Cloud Run Job
+version: 1.0.0
+description: A Google Cloud Run job, a container that runs to completion, on demand or on a schedule.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 120
+colors:
+  fill: '#E8F0FE'
+  stroke: '#1A73E8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud Run Job name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: image
+    label: Image
+    type: text
+    placeholder: us-docker.pkg.dev/project/repo/job:1.0
+  - key: tasks
+    label: Tasks
+    type: number
+    defaultValue: 1
+    min: 1
+  - key: parallelism
+    label: Parallelism
+    type: number
+    min: 0
+  - key: maxRetries
+    label: Max retries
+    type: number
+    defaultValue: 3
+    min: 0
+  - key: timeout
+    label: Task timeout
+    type: text
+    placeholder: 10m
+  - key: schedule
+    label: Schedule
+    type: text
+    placeholder: 0 3 * * *
+    hint: Model the trigger as a Cloud Scheduler Job node.
+  - key: serviceAccount
+    label: Service account
+    type: text
+    placeholder: app@project.iam.gserviceaccount.com
+    hint: Model it as a Service Account node.
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what the job does and its inputs.

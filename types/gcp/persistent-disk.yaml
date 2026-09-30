@@ -1,0 +1,63 @@
+# dai.types.gcp.persistent-disk
+name: Persistent Disk
+version: 1.0.0
+description: A Google Compute Engine Persistent Disk or Hyperdisk volume attached to an instance.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+order: 310
+colors:
+  fill: '#FEF7E0'
+  stroke: '#B06000'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Persistent Disk name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: diskType
+    label: Disk type
+    type: select
+    options:
+      - value: pd-balanced
+        label: pd-balanced
+      - value: pd-ssd
+        label: pd-ssd
+      - value: pd-standard
+        label: pd-standard
+      - value: pd-extreme
+        label: pd-extreme
+      - value: hyperdisk-balanced
+        label: Hyperdisk Balanced
+      - value: hyperdisk-throughput
+        label: Hyperdisk Throughput
+      - value: hyperdisk-extreme
+        label: Hyperdisk Extreme
+  - key: sizeGb
+    label: Size (GB)
+    type: number
+    min: 1
+  - key: scope
+    label: Scope
+    type: select
+    defaultValue: zonal
+    options:
+      - value: zonal
+        label: Zonal
+      - value: regional
+        label: Regional
+  - key: attachedTo
+    label: Attached to
+    type: text
+    placeholder: vm-web-01
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what the disk holds and its snapshot schedule.

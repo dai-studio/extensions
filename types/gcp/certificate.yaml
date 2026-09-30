@@ -1,0 +1,53 @@
+# dai.types.gcp.certificate
+name: Certificate
+version: 1.0.0
+description: A Google Cloud Certificate Manager TLS certificate for load balancers.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M13 17.5v4.5l2 -1.5l2 1.5v-4.5" /><path d="M10 19h-5a2 2 0 0 1 -2 -2v-10c0 -1.1 .9 -2 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -1 1.73" /><path d="M6 9l12 0" /><path d="M6 12l3 0" /><path d="M6 15l2 0" /></svg>
+order: 650
+colors:
+  fill: '#FCE8E6'
+  stroke: '#C5221F'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Certificate name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: certType
+    label: Type
+    type: select
+    defaultValue: google-managed
+    options:
+      - value: google-managed
+        label: Google-managed
+      - value: self-managed
+        label: Self-managed
+  - key: domains
+    label: Domains
+    type: list
+    placeholder: www.example.com
+  - key: authorization
+    label: Authorization
+    type: select
+    options:
+      - value: load-balancer
+        label: Load balancer
+      - value: dns
+        label: DNS
+  - key: certificateMap
+    label: Certificate map
+    type: text
+    placeholder: web-cert-map
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe where the certificate is used and how it renews.

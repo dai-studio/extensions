@@ -1,0 +1,81 @@
+# dai.types.gcp.cloud-run-function
+name: Cloud Run Function
+version: 1.0.0
+description: A Google Cloud Run function (formerly Cloud Functions), event-driven code deployed from source.
+icon: λ
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20l6.5 -9" /><path d="M19 20c-6 0 -6 -16 -12 -16" /></svg>
+order: 130
+colors:
+  fill: '#E8F0FE'
+  stroke: '#1A73E8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud Run Function name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: runtime
+    label: Runtime
+    type: select
+    options:
+      - value: nodejs22
+        label: nodejs22
+      - value: python313
+        label: python313
+      - value: go124
+        label: go124
+      - value: java21
+        label: java21
+      - value: dotnet8
+        label: dotnet8
+      - value: ruby34
+        label: ruby34
+      - value: php84
+        label: php84
+      - value: other
+        label: Other
+  - key: entryPoint
+    label: Entry point
+    type: text
+    placeholder: handler
+  - key: trigger
+    label: Trigger
+    type: select
+    options:
+      - value: http
+        label: HTTP
+      - value: pubsub
+        label: Pub/Sub
+      - value: storage
+        label: Cloud Storage
+      - value: eventarc
+        label: Eventarc
+      - value: other
+        label: Other
+  - key: memory
+    label: Memory
+    type: text
+    placeholder: 256Mi
+  - key: timeoutSeconds
+    label: Timeout (s)
+    type: number
+    defaultValue: 60
+    min: 1
+    max: 3600
+  - key: serviceAccount
+    label: Service account
+    type: text
+    placeholder: app@project.iam.gserviceaccount.com
+    hint: Model it as a Service Account node.
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what the function does, its inputs and its outputs.

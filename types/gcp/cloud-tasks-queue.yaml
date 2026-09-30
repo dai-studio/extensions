@@ -1,0 +1,42 @@
+# dai.types.gcp.cloud-tasks-queue
+name: Cloud Tasks Queue
+version: 1.0.0
+description: A Google Cloud Tasks queue that dispatches HTTP tasks with rate limits and retries.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" /><path d="M4 13h3l3 3h4l3 -3h3" /></svg>
+order: 530
+colors:
+  fill: '#F3E8FD'
+  stroke: '#8430CE'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud Tasks Queue name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: target
+    label: Target
+    type: text
+    placeholder: https://worker-abc.run.app/task
+  - key: maxDispatchesPerSecond
+    label: Max dispatches/s
+    type: number
+    min: 0
+  - key: maxConcurrentDispatches
+    label: Max concurrent dispatches
+    type: number
+    min: 1
+  - key: maxAttempts
+    label: Max attempts
+    type: number
+    min: -1
+    hint: "-1 = unlimited."
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what enqueues tasks and what they do.

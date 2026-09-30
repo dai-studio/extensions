@@ -1,0 +1,48 @@
+# dai.types.gcp.cloud-scheduler-job
+name: Cloud Scheduler Job
+version: 1.0.0
+description: A Google Cloud Scheduler cron job that calls an HTTP target, Pub/Sub topic or App Engine.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M12 10l0 3l2 0" /><path d="M7 4l-2.75 2" /><path d="M17 4l2.75 2" /></svg>
+order: 540
+colors:
+  fill: '#F3E8FD'
+  stroke: '#8430CE'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud Scheduler Job name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: schedule
+    label: Schedule
+    type: text
+    placeholder: 0 * * * *
+  - key: timeZone
+    label: Time zone
+    type: text
+    placeholder: Etc/UTC
+  - key: targetType
+    label: Target type
+    type: select
+    defaultValue: http
+    options:
+      - value: http
+        label: HTTP
+      - value: pubsub
+        label: Pub/Sub
+      - value: app-engine
+        label: App Engine HTTP
+  - key: target
+    label: Target
+    type: text
+    placeholder: Cloud Run job or URL
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what runs on this schedule and why.

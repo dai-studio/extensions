@@ -1,0 +1,55 @@
+# dai.types.gcp.subnet
+name: Subnet
+version: 1.0.0
+description: A regional subnet of a Google Cloud VPC network; it spans every zone in its region. Put it inside a Region; it contains Zones, instances and other resources.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /></svg>
+order: 50
+colors:
+  fill: '#F1F8F3'
+  stroke: '#188038'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Subnet name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/regions/…/subnetworks/…
+  - key: ipCidrRange
+    label: Primary range
+    type: text
+    placeholder: 10.0.1.0/24
+  - key: secondaryRanges
+    label: Secondary ranges
+    type: list
+    placeholder: "pods: 10.4.0.0/14"
+  - key: purpose
+    label: Purpose
+    type: select
+    defaultValue: private
+    options:
+      - value: private
+        label: Private
+      - value: regional-managed-proxy
+        label: Regional managed proxy
+      - value: private-service-connect
+        label: Private Service Connect
+      - value: other
+        label: Other
+  - key: privateGoogleAccess
+    label: Private Google Access
+    type: boolean
+  - key: flowLogs
+    label: Flow logs enabled
+    type: boolean
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe routing, firewall rules and what runs in this subnet.

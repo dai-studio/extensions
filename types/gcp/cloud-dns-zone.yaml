@@ -1,0 +1,48 @@
+# dai.types.gcp.cloud-dns-zone
+name: Cloud DNS Zone
+version: 1.0.0
+description: A Google Cloud DNS managed zone, public or private, which holds the DNS records for a domain.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28" /></svg>
+order: 270
+colors:
+  fill: '#E6F4EA'
+  stroke: '#188038'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud DNS Zone name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: dnsName
+    label: DNS name
+    type: text
+    placeholder: example.com.
+  - key: visibility
+    label: Visibility
+    type: select
+    options:
+      - value: public
+        label: Public
+      - value: private
+        label: Private
+  - key: networks
+    label: Networks
+    type: list
+    placeholder: vpc-prod
+    hint: Private zones only.
+  - key: dnssec
+    label: DNSSEC
+    type: boolean
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the key records and who manages them.

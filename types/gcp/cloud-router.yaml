@@ -1,0 +1,37 @@
+# dai.types.gcp.cloud-router
+name: Cloud Router
+version: 1.0.0
+description: A Google Cloud Router that exchanges routes over BGP for VPN, Interconnect and Cloud NAT.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M19 7a2 2 0 1 0 0 -4a2 2 0 0 0 0 4" /><path d="M11 19h5.5a3.5 3.5 0 0 0 0 -7h-8a3.5 3.5 0 0 1 0 -7h4.5" /></svg>
+order: 220
+colors:
+  fill: '#E6F4EA'
+  stroke: '#188038'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud Router name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: asn
+    label: ASN
+    type: number
+    min: 1
+  - key: bgpPeers
+    label: BGP peers
+    type: list
+    placeholder: "on-prem-1: 169.254.0.2"
+  - key: advertisedRanges
+    label: Advertised ranges
+    type: list
+    placeholder: 10.0.0.0/16
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what this router connects.

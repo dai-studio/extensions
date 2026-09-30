@@ -1,0 +1,46 @@
+# dai.types.gcp.cloud-nat
+name: Cloud NAT
+version: 1.0.0
+description: A Google Cloud NAT gateway that gives private instances outbound internet access. Configured on a Cloud Router.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10h-16l5.5 -6" /><path d="M4 14h16l-5.5 6" /></svg>
+order: 210
+colors:
+  fill: '#E6F4EA'
+  stroke: '#188038'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cloud NAT name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: router
+    label: Cloud Router
+    type: text
+    placeholder: router-us-central1
+  - key: natIpAllocation
+    label: NAT IP allocation
+    type: select
+    defaultValue: auto
+    options:
+      - value: auto
+        label: Automatic
+      - value: manual
+        label: Manual
+  - key: natIps
+    label: NAT IPs
+    type: list
+    placeholder: nat-ip-1
+  - key: subnets
+    label: Subnets
+    type: list
+    placeholder: All subnets
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe which workloads egress through this gateway.

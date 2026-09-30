@@ -1,0 +1,58 @@
+# dai.types.gcp.log-sink
+name: Log Sink
+version: 1.0.0
+description: A Google Cloud Logging sink that routes log entries to a log bucket, BigQuery, Cloud Storage or Pub/Sub.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /><path d="M9 9l1 0" /><path d="M9 13l6 0" /><path d="M9 17l6 0" /></svg>
+order: 710
+colors:
+  fill: '#FEEFE3'
+  stroke: '#C26401'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Log Sink name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: scope
+    label: Scope
+    type: select
+    defaultValue: project
+    options:
+      - value: project
+        label: Project
+      - value: folder
+        label: Folder
+      - value: organization
+        label: Organization
+  - key: destinationType
+    label: Destination type
+    type: select
+    options:
+      - value: log-bucket
+        label: Log bucket
+      - value: bigquery
+        label: BigQuery
+      - value: cloud-storage
+        label: Cloud Storage
+      - value: pubsub
+        label: Pub/Sub
+      - value: other
+        label: Other
+  - key: destination
+    label: Destination
+    type: text
+    placeholder: logging.googleapis.com/projects/…/locations/global/buckets/audit
+  - key: filter
+    label: Filter
+    type: text
+    placeholder: severity>=ERROR
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe who uses these logs and how long they are kept.

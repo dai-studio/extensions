@@ -1,0 +1,67 @@
+# dai.types.gcp.vpc-network
+name: VPC Network
+version: 1.0.0
+description: A Google Cloud VPC network, a global private network. Put it inside a Project; it contains Regions and their Subnets.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" /><path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" /><path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" /><path d="M6 9h12" /><path d="M3 20h7" /><path d="M14 20h7" /><path d="M10 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M12 15v3" /></svg>
+order: 30
+colors:
+  fill: '#E6F4EA'
+  stroke: '#188038'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: VPC Network name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/global/networks/…
+  - key: subnetMode
+    label: Subnet mode
+    type: select
+    defaultValue: custom
+    options:
+      - value: custom
+        label: Custom
+      - value: auto
+        label: Auto
+  - key: routingMode
+    label: Dynamic routing
+    type: select
+    defaultValue: regional
+    options:
+      - value: regional
+        label: Regional
+      - value: global
+        label: Global
+  - key: sharedVpc
+    label: Shared VPC
+    type: select
+    defaultValue: none
+    options:
+      - value: none
+        label: None
+      - value: host
+        label: Host project
+      - value: service
+        label: Service project
+  - key: mtu
+    label: MTU
+    type: number
+    defaultValue: 1460
+    min: 1300
+    max: 8896
+  - key: peerings
+    label: Peerings
+    type: list
+    placeholder: vpc-shared-services
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the addressing plan, peering and connectivity.

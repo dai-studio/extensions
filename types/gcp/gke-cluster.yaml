@@ -1,0 +1,73 @@
+# dai.types.gcp.gke-cluster
+name: GKE Cluster
+version: 1.0.0
+description: A Google Kubernetes Engine cluster. Put it inside a Subnet or Region; it contains workloads and node pools.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-5l4 -2l4 2v5l-4 2l-4 -2" /><path d="M8 11v-5l4 -2l4 2v5" /><path d="M12 13l4 -2l4 2v5l-4 2l-4 -2" /></svg>
+order: 80
+colors:
+  fill: '#EEF0FD'
+  stroke: '#3F51B5'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: GKE Cluster name
+  - key: resourceName
+    label: Resource name
+    type: text
+    placeholder: projects/…/locations/…/…
+  - key: mode
+    label: Mode
+    type: select
+    defaultValue: autopilot
+    options:
+      - value: autopilot
+        label: Autopilot
+      - value: standard
+        label: Standard
+  - key: releaseChannel
+    label: Release channel
+    type: select
+    defaultValue: regular
+    options:
+      - value: rapid
+        label: Rapid
+      - value: regular
+        label: Regular
+      - value: stable
+        label: Stable
+      - value: extended
+        label: Extended
+  - key: location
+    label: Location
+    type: text
+    placeholder: us-central1
+  - key: nodePools
+    label: Node pools
+    type: list
+    placeholder: "default: e2-standard-4 x3"
+  - key: privateCluster
+    label: Private cluster
+    type: boolean
+  - key: workloadIdentity
+    label: Workload Identity
+    type: boolean
+    defaultValue: true
+  - key: serviceAccount
+    label: Service account
+    type: text
+    placeholder: app@project.iam.gserviceaccount.com
+    hint: Model it as a Service Account node.
+  - key: labels
+    label: Labels
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the workloads, ingress and upgrade policy.
