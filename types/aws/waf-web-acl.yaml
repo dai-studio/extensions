@@ -1,5 +1,5 @@
 # dai.types.aws.waf-web-acl
-name: AWS WAF Web ACL
+name: WAF Web ACL
 version: 1.0.0
 description: "An AWS WAF web ACL that filters HTTP requests to CloudFront, an ALB or API Gateway."
 icon: ▣

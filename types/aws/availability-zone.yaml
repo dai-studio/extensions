@@ -1,5 +1,5 @@
 # dai.types.aws.availability-zone
-name: AWS Availability Zone
+name: Availability Zone
 version: 1.0.0
 description: "An Availability Zone, one or more isolated data centres within a Region. Put it inside an AWS VPC; it contains Subnets."
 icon: ▢

@@ -1,5 +1,5 @@
 # dai.types.aws.region
-name: AWS Region
+name: Region
 version: 1.0.0
 description: "An AWS Region, a separate geographic area. Put it inside an AWS Account; it contains VPCs and regional services."
 icon: ▢

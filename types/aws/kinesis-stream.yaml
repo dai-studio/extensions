@@ -1,5 +1,5 @@
 # dai.types.aws.kinesis-stream
-name: AWS Kinesis Data Stream
+name: Kinesis Data Stream
 version: 1.0.0
 description: An AWS Kinesis data stream for real-time streaming data.
 icon: ▣

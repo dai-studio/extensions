@@ -1,5 +1,5 @@
 # dai.types.aws.ecs-cluster
-name: AWS ECS Cluster
+name: ECS Cluster
 version: 1.0.0
 description: An AWS Elastic Container Service cluster. Put it inside a VPC or Region; it contains ECS Services.
 icon: ▢

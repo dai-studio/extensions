@@ -1,5 +1,5 @@
 # dai.types.aws.cloudfront-distribution
-name: AWS CloudFront
+name: CloudFront
 version: 1.0.0
 description: A CloudFront content delivery network (CDN) distribution.
 icon: ▣

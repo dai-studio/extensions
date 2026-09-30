@@ -1,5 +1,5 @@
 # dai.types.aws.acm-certificate
-name: AWS Certificate
+name: Certificate
 version: 1.0.0
 description: A TLS certificate issued or imported by AWS Certificate Manager.
 icon: ▣

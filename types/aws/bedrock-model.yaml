@@ -1,5 +1,5 @@
 # dai.types.aws.bedrock-model
-name: AWS Bedrock Model
+name: Bedrock Model
 version: 1.0.0
 description: A foundation model invoked through AWS Bedrock.
 icon: ▣

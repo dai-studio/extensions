@@ -1,5 +1,5 @@
 # dai.types.aws.eks-cluster
-name: AWS EKS Cluster
+name: EKS Cluster
 version: 1.0.0
 description: An AWS Elastic Kubernetes Service cluster. Put it inside a VPC or Region; it contains the workloads that run on it.
 icon: ▢

@@ -1,5 +1,5 @@
 # dai.types.aws.elasticache-cluster
-name: AWS ElastiCache
+name: ElastiCache
 version: 1.0.0
 description: "An AWS ElastiCache in-memory cache (Valkey, Redis OSS or Memcached)."
 icon: ▣

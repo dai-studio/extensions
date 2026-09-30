@@ -1,5 +1,5 @@
 # dai.types.aws.transit-gateway
-name: AWS Transit Gateway
+name: Transit Gateway
 version: 1.0.0
 description: "A regional network hub that connects VPCs, VPNs and Direct Connect."
 icon: ▣

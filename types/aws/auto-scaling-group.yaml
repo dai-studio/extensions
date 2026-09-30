@@ -1,5 +1,5 @@
 # dai.types.aws.auto-scaling-group
-name: AWS Auto Scaling Group
+name: Auto Scaling Group
 version: 1.0.0
 description: An EC2 Auto Scaling group that keeps a fleet of instances at the desired size. Put it inside a Subnet (or a VPC for groups that span AZs); it contains EC2 Instances.
 icon: ▢

@@ -1,5 +1,5 @@
 # dai.types.aws.dynamodb-table
-name: AWS DynamoDB Table
+name: DynamoDB Table
 version: 1.0.0
 description: An AWS DynamoDB key-value and document table.
 icon: ▣

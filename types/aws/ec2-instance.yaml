@@ -1,5 +1,5 @@
 # dai.types.aws.ec2-instance
-name: AWS EC2 Instance
+name: EC2 Instance
 version: 1.0.0
 description: A virtual server in AWS EC2. Usually placed inside a Subnet or Auto Scaling Group.
 icon: ▣

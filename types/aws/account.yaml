@@ -1,5 +1,5 @@
 # dai.types.aws.account
-name: AWS Account
+name: Account
 version: 1.0.0
 description: "An AWS account, the boundary for billing, IAM and resource isolation. Put it inside an AWS Organization; it contains AWS Regions."
 icon: ▢

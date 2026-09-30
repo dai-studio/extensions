@@ -1,5 +1,5 @@
 # dai.types.aws.ebs-volume
-name: AWS EBS Volume
+name: EBS Volume
 version: 1.0.0
 description: An AWS EBS block storage volume attached to an EC2 instance.
 icon: ▣

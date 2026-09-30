@@ -1,5 +1,5 @@
 # dai.types.aws.security-group
-name: AWS Security Group
+name: Security Group
 version: 1.0.0
 description: "A stateful virtual firewall for resources in a VPC. Connect it to the resources it protects, and list it in their Security groups field."
 icon: ▣

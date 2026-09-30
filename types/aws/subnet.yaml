@@ -1,5 +1,5 @@
 # dai.types.aws.subnet
-name: AWS Subnet
+name: Subnet
 version: 1.0.0
 description: "A range of IP addresses in a VPC, bound to one Availability Zone. Put it inside an AWS VPC or Availability Zone; it contains instances, databases and other resources."
 icon: ▢

@@ -1,5 +1,5 @@
 # dai.types.aws.rds-database
-name: AWS RDS Database
+name: RDS Database
 version: 1.0.0
 description: An AWS RDS or Aurora relational database.
 icon: ▣

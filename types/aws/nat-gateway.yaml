@@ -1,5 +1,5 @@
 # dai.types.aws.nat-gateway
-name: AWS NAT Gateway
+name: NAT Gateway
 version: 1.0.0
 description: A managed NAT gateway that lets private subnets make outbound connections. Usually placed in a public Subnet.
 icon: ▣

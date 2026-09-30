@@ -1,5 +1,5 @@
 # dai.types.aws.ecs-service
-name: AWS ECS Service
+name: ECS Service
 version: 1.0.0
 description: An AWS ECS service that runs and maintains copies of a task definition. Usually placed inside an ECS Cluster.
 icon: ▣

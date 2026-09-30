@@ -1,5 +1,5 @@
 # dai.types.aws.efs-file-system
-name: AWS EFS File System
+name: EFS File System
 version: 1.0.0
 description: An AWS EFS shared NFS file system.
 icon: ▣

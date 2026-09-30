@@ -1,5 +1,5 @@
 # dai.types.aws.iam-role
-name: AWS IAM Role
+name: IAM Role
 version: 1.0.0
 description: An AWS IAM role that trusted principals can assume.
 icon: ▣

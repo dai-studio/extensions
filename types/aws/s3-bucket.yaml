@@ -1,5 +1,5 @@
 # dai.types.aws.s3-bucket
-name: AWS S3 Bucket
+name: S3 Bucket
 version: 1.0.0
 description: An AWS S3 bucket for object storage.
 icon: ▣

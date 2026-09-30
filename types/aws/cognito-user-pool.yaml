@@ -1,5 +1,5 @@
 # dai.types.aws.cognito-user-pool
-name: AWS Cognito User Pool
+name: Cognito User Pool
 version: 1.0.0
 description: An AWS Cognito user directory for app sign-up and sign-in.
 icon: ▣

@@ -1,5 +1,5 @@
 # dai.types.aws.route53-zone
-name: AWS Route 53 Hosted Zone
+name: Route 53 Hosted Zone
 version: 1.0.0
 description: "An AWS Route 53 hosted zone, which holds the DNS records for a domain."
 icon: ▣

@@ -1,5 +1,5 @@
 # dai.types.aws.internet-gateway
-name: AWS Internet Gateway
+name: Internet Gateway
 version: 1.0.0
 description: "An internet gateway, which lets a VPC reach the internet. Attach one per VPC."
 icon: ▣

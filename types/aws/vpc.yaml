@@ -1,5 +1,5 @@
 # dai.types.aws.vpc
-name: AWS VPC
+name: VPC
 version: 1.0.0
 description: "An Amazon Virtual Private Cloud, a logically isolated network. Put it inside an AWS Region; it contains Availability Zones or Subnets."
 icon: ▢

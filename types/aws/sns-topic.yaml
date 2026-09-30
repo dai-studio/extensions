@@ -1,5 +1,5 @@
 # dai.types.aws.sns-topic
-name: AWS SNS Topic
+name: SNS Topic
 version: 1.0.0
 description: An AWS SNS publish/subscribe topic.
 icon: ▣

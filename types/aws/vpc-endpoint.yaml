@@ -1,5 +1,5 @@
 # dai.types.aws.vpc-endpoint
-name: AWS VPC Endpoint
+name: VPC Endpoint
 version: 1.0.0
 description: "A private connection from a VPC to an AWS service or a PrivateLink service, without going over the internet."
 icon: ▣

@@ -1,5 +1,5 @@
 # dai.types.aws.lambda-function
-name: AWS Lambda Function
+name: Lambda Function
 version: 1.0.0
 description: A serverless function on AWS Lambda.
 icon: λ

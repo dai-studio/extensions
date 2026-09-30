@@ -1,5 +1,5 @@
 # dai.types.aws.cloudwatch-log-group
-name: AWS CloudWatch Log Group
+name: CloudWatch Log Group
 version: 1.0.0
 description: An AWS CloudWatch Logs log group.
 icon: ▣
