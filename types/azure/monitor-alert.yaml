@@ -1,0 +1,64 @@
+# dai.types.azure.monitor-alert
+name: Monitor Alert
+version: 1.0.0
+description: An Azure Monitor alert rule that watches a metric, log query or activity log and triggers an action group.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M12 10l0 3l2 0" /><path d="M7 4l-2.75 2" /><path d="M17 4l2.75 2" /></svg>
+order: 700
+colors:
+  fill: '#FFF4EC'
+  stroke: '#CA5010'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Monitor Alert name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: alertType
+    label: Alert type
+    type: select
+    options:
+      - value: metric
+        label: Metric
+      - value: log
+        label: Log search
+      - value: activity-log
+        label: Activity log
+  - key: signal
+    label: Signal
+    type: text
+    placeholder: Percentage CPU
+  - key: condition
+    label: Condition
+    type: text
+    placeholder: Average > 80 for 5 min
+  - key: severity
+    label: Severity
+    type: select
+    options:
+      - value: "0"
+        label: Sev 0 — Critical
+      - value: "1"
+        label: Sev 1 — Error
+      - value: "2"
+        label: Sev 2 — Warning
+      - value: "3"
+        label: Sev 3 — Informational
+      - value: "4"
+        label: Sev 4 — Verbose
+  - key: actionGroup
+    label: Action group
+    type: text
+    placeholder: ag-oncall
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe who is notified and the runbook to follow.

@@ -1,0 +1,35 @@
+# dai.types.azure.availability-zone
+name: Availability Zone
+version: 1.0.0
+description: An Azure availability zone, one or more isolated data centres within a Region. Put it inside a Region or Resource Group; it contains zonal resources such as VMs and managed disks. Subnets span all zones, so put Subnets in the Virtual Network instead.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18.5l-3 -1.5l-6 3v-13l6 -3l6 3l6 -3v7.5" /><path d="M9 4v13" /><path d="M15 7v5.5" /><path d="M21.121 20.121a3 3 0 1 0 -4.242 0c.418 .419 1.125 1.045 2.121 1.879c1.051 -.89 1.759 -1.516 2.121 -1.879" /><path d="M19 18v.01" /></svg>
+order: 60
+colors:
+  fill: '#EAF4FC'
+  stroke: '#0078D4'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Availability Zone name
+  - key: zone
+    label: Zone
+    type: select
+    hint: Logical zone numbers map to different physical zones in each subscription.
+    options:
+      - value: "1"
+        label: Zone 1
+      - value: "2"
+        label: Zone 2
+      - value: "3"
+        label: Zone 3
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what is pinned to this zone and why.

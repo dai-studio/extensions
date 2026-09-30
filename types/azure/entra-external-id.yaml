@@ -1,0 +1,36 @@
+# dai.types.azure.entra-external-id
+name: Entra External ID
+version: 1.0.0
+description: A Microsoft Entra External ID tenant for customer sign-up and sign-in.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+order: 630
+colors:
+  fill: '#FDF3F4'
+  stroke: '#D13438'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Entra External ID name
+  - key: tenantDomain
+    label: Tenant domain
+    type: text
+    placeholder: contoso.ciamlogin.com
+  - key: userFlows
+    label: User flows
+    type: list
+    placeholder: signup-signin
+  - key: identityProviders
+    label: Identity providers
+    type: list
+    placeholder: Google
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the apps, user attributes and sign-in methods.

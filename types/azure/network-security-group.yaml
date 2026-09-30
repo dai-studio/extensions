@@ -1,0 +1,36 @@
+# dai.types.azure.network-security-group
+name: Network Security Group
+version: 1.0.0
+description: An Azure network security group, a set of allow/deny rules for traffic to a subnet or network interface. Connect it to the resources it protects, and name it in their Network security group field.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /><path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12l0 2.5" /></svg>
+order: 200
+colors:
+  fill: '#FDF3F4'
+  stroke: '#D13438'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Network Security Group name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: inboundRules
+    label: Inbound rules
+    type: list
+    placeholder: 100 Allow TCP 443 from Internet
+  - key: outboundRules
+    label: Outbound rules
+    type: list
+    placeholder: 100 Allow TCP 443 to AzureCloud
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe why these rules exist.

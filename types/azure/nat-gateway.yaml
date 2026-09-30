@@ -1,0 +1,38 @@
+# dai.types.azure.nat-gateway
+name: NAT Gateway
+version: 1.0.0
+description: An Azure NAT Gateway, giving subnets outbound internet access through static public IPs.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10h-16l5.5 -6" /><path d="M4 14h16l-5.5 6" /></svg>
+order: 220
+colors:
+  fill: '#F1F8EA'
+  stroke: '#5E9C00'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: NAT Gateway name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: publicIps
+    label: Public IPs
+    type: list
+    placeholder: pip-egress-1
+  - key: idleTimeoutMinutes
+    label: Idle timeout (min)
+    type: number
+    defaultValue: 4
+    min: 4
+    max: 120
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe which subnets egress through this gateway.

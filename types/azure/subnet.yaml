@@ -1,0 +1,74 @@
+# dai.types.azure.subnet
+name: Subnet
+version: 1.0.0
+description: A range of IP addresses in a Virtual Network. Put it inside an Azure Virtual Network; it contains VMs, scale sets, private endpoints and other resources.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /></svg>
+order: 70
+colors:
+  fill: '#F6FAF0'
+  stroke: '#5E9C00'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Subnet name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: addressPrefix
+    label: Address prefix
+    type: text
+    placeholder: 10.0.1.0/24
+  - key: subnetRole
+    label: Role
+    type: select
+    options:
+      - value: workload
+        label: Workload
+      - value: gateway
+        label: GatewaySubnet
+      - value: firewall
+        label: AzureFirewallSubnet
+      - value: bastion
+        label: AzureBastionSubnet
+      - value: private-endpoints
+        label: Private endpoints
+      - value: delegated
+        label: Delegated
+      - value: other
+        label: Other
+  - key: networkSecurityGroup
+    label: Network security group
+    type: text
+    placeholder: nsg-web
+    hint: Model it as a Network Security Group node.
+  - key: routeTable
+    label: Route table
+    type: text
+    placeholder: rt-spoke
+  - key: natGateway
+    label: NAT gateway
+    type: text
+    placeholder: ng-egress
+  - key: delegation
+    label: Delegation
+    type: text
+    placeholder: Microsoft.Web/serverFarms
+  - key: serviceEndpoints
+    label: Service endpoints
+    type: list
+    placeholder: Microsoft.Storage
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe routing, NSG rules and what runs in this subnet.

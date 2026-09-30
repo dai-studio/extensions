@@ -1,0 +1,58 @@
+# dai.types.azure.aks-cluster
+name: AKS Cluster
+version: 1.0.0
+description: An Azure Kubernetes Service cluster. Put it inside a Subnet or Resource Group; it contains workloads and node pools.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-5l4 -2l4 2v5l-4 2l-4 -2" /><path d="M8 11v-5l4 -2l4 2v5" /><path d="M12 13l4 -2l4 2v5l-4 2l-4 -2" /></svg>
+order: 90
+colors:
+  fill: '#F3EEFB'
+  stroke: '#773ADC'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: AKS Cluster name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: kubernetesVersion
+    label: Kubernetes version
+    type: text
+    placeholder: "1.33"
+  - key: networkPlugin
+    label: Network plugin
+    type: select
+    defaultValue: azure-cni-overlay
+    options:
+      - value: azure-cni-overlay
+        label: Azure CNI Overlay
+      - value: azure-cni
+        label: Azure CNI
+      - value: kubenet
+        label: kubenet
+  - key: nodePools
+    label: Node pools
+    type: list
+    placeholder: "system: Standard_D4s_v5 x3"
+  - key: privateCluster
+    label: Private cluster
+    type: boolean
+  - key: managedIdentity
+    label: Managed identity
+    type: text
+    placeholder: Identity name or resource ID
+    hint: Model it as a Managed Identity node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the workloads, ingress and upgrade policy.

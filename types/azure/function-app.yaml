@@ -1,0 +1,69 @@
+# dai.types.azure.function-app
+name: Function App
+version: 1.0.0
+description: A serverless function app on Azure Functions.
+icon: λ
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20l6.5 -9" /><path d="M19 20c-6 0 -6 -16 -12 -16" /></svg>
+order: 110
+colors:
+  fill: '#E8F3FC'
+  stroke: '#005BA1'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Function App name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: runtime
+    label: Runtime
+    type: select
+    options:
+      - value: node
+        label: Node.js
+      - value: python
+        label: Python
+      - value: dotnet-isolated
+        label: .NET (isolated)
+      - value: java
+        label: Java
+      - value: powershell
+        label: PowerShell
+      - value: custom
+        label: Custom handler
+  - key: hostingPlan
+    label: Hosting plan
+    type: select
+    defaultValue: flex-consumption
+    options:
+      - value: flex-consumption
+        label: Flex Consumption
+      - value: consumption
+        label: Consumption
+      - value: premium
+        label: Premium
+      - value: dedicated
+        label: Dedicated (App Service plan)
+  - key: trigger
+    label: Trigger
+    type: text
+    placeholder: e.g. HTTP, Service Bus, Blob, timer
+  - key: vnetIntegrated
+    label: VNet integrated
+    type: boolean
+  - key: managedIdentity
+    label: Managed identity
+    type: text
+    placeholder: Identity name or resource ID
+    hint: Model it as a Managed Identity node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what the functions do, their inputs and their outputs.

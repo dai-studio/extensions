@@ -1,0 +1,47 @@
+# dai.types.azure.container-apps-environment
+name: Container Apps Environment
+version: 1.0.0
+description: An Azure Container Apps environment, a shared boundary for container apps. Put it inside a Subnet or Resource Group; it contains Container Apps.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2l0 -10" /><path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" /></svg>
+order: 95
+colors:
+  fill: '#F3EEFB'
+  stroke: '#773ADC'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Container Apps Environment name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: workloadProfile
+    label: Workload profile
+    type: select
+    defaultValue: consumption
+    options:
+      - value: consumption
+        label: Consumption
+      - value: dedicated
+        label: Dedicated
+  - key: vnetIntegrated
+    label: VNet integrated
+    type: boolean
+  - key: logAnalyticsWorkspace
+    label: Log Analytics workspace
+    type: text
+    placeholder: log-platform
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the apps hosted here and how they are exposed.

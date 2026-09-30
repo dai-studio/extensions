@@ -1,0 +1,50 @@
+# dai.types.azure.managed-disk
+name: Managed Disk
+version: 1.0.0
+description: An Azure managed disk, block storage attached to a virtual machine.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+order: 310
+colors:
+  fill: '#E9F7FA'
+  stroke: '#0F8A9D'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Managed Disk name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: diskSku
+    label: Disk type
+    type: select
+    options:
+      - value: premium-ssd-v2
+        label: Premium SSD v2
+      - value: premium-ssd
+        label: Premium SSD
+      - value: standard-ssd
+        label: Standard SSD
+      - value: standard-hdd
+        label: Standard HDD
+      - value: ultra
+        label: Ultra Disk
+  - key: sizeGiB
+    label: Size (GiB)
+    type: number
+    min: 1
+  - key: attachedTo
+    label: Attached to
+    type: text
+    placeholder: vm-web-01
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what the disk holds and its backup policy.

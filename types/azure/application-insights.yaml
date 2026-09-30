@@ -1,0 +1,38 @@
+# dai.types.azure.application-insights
+name: Application Insights
+version: 1.0.0
+description: An Azure Application Insights resource for application performance monitoring and tracing.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /><path d="M4 15l4 -6l4 2l4 -5l4 4" /></svg>
+order: 720
+colors:
+  fill: '#FFF4EC'
+  stroke: '#CA5010'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Application Insights name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: workspace
+    label: Log Analytics workspace
+    type: text
+    placeholder: log-platform
+  - key: samplingPercentage
+    label: Sampling (%)
+    type: number
+    defaultValue: 100
+    min: 0
+    max: 100
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the instrumented apps and key dashboards.

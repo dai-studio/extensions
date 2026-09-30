@@ -1,0 +1,58 @@
+# dai.types.azure.app-service
+name: App Service
+version: 1.0.0
+description: An Azure App Service web app, API or site running on an App Service plan.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -10" /><path d="M6 8h.01" /><path d="M9 8h.01" /><path d="M3 11h18" /></svg>
+order: 120
+colors:
+  fill: '#E8F3FC'
+  stroke: '#005BA1'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: App Service name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: runtimeStack
+    label: Runtime stack
+    type: text
+    placeholder: NODE|22-lts
+  - key: planSku
+    label: Plan SKU
+    type: text
+    placeholder: P1v3
+  - key: osType
+    label: OS
+    type: select
+    defaultValue: linux
+    options:
+      - value: linux
+        label: Linux
+      - value: windows
+        label: Windows
+  - key: instanceCount
+    label: Instances
+    type: number
+    defaultValue: 1
+    min: 1
+  - key: vnetIntegrated
+    label: VNet integrated
+    type: boolean
+  - key: managedIdentity
+    label: Managed identity
+    type: text
+    placeholder: Identity name or resource ID
+    hint: Model it as a Managed Identity node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the app, its custom domains and deployment slots.

@@ -1,0 +1,51 @@
+# dai.types.azure.event-grid-topic
+name: Event Grid Topic
+version: 1.0.0
+description: An Azure Event Grid topic and its event subscriptions.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M10 20h-6" /><path d="M14 20h6" /><path d="M12 15l-2 -2h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-3l-2 2" /></svg>
+order: 520
+colors:
+  fill: '#FBEFF8'
+  stroke: '#B4009E'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Event Grid Topic name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: topicType
+    label: Topic type
+    type: select
+    options:
+      - value: custom
+        label: Custom topic
+      - value: system
+        label: System topic
+      - value: namespace
+        label: Namespace topic
+  - key: eventSchema
+    label: Event schema
+    type: select
+    defaultValue: cloudevents
+    options:
+      - value: cloudevents
+        label: CloudEvents 1.0
+      - value: event-grid
+        label: Event Grid schema
+  - key: subscriptions
+    label: Subscriptions
+    type: list
+    placeholder: orders-to-function
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the event types and where they are routed.

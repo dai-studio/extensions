@@ -1,0 +1,57 @@
+# dai.types.azure.load-balancer
+name: Load Balancer
+version: 1.0.0
+description: An Azure Load Balancer, a layer-4 load balancer for TCP and UDP traffic.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /><path d="M21 7h-8l-3.495 5" /><path d="M18 10l3 -3l-3 -3" /><path d="M18 20l3 -3l-3 -3" /></svg>
+order: 250
+colors:
+  fill: '#F1F8EA'
+  stroke: '#5E9C00'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Load Balancer name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: sku
+    label: SKU
+    type: select
+    defaultValue: standard
+    options:
+      - value: standard
+        label: Standard
+      - value: gateway
+        label: Gateway
+  - key: scheme
+    label: Scheme
+    type: select
+    options:
+      - value: public
+        label: Public
+      - value: internal
+        label: Internal
+  - key: frontendIp
+    label: Frontend IP
+    type: text
+    placeholder: pip-lb or 10.0.1.10
+  - key: backendPool
+    label: Backend pool
+    type: text
+    placeholder: vmss-web
+  - key: healthProbes
+    label: Health probes
+    type: list
+    placeholder: tcp 443
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the load-balancing rules and backends.

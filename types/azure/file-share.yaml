@@ -1,0 +1,45 @@
+# dai.types.azure.file-share
+name: File Share
+version: 1.0.0
+description: An Azure Files share, a managed SMB or NFS file share.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" /><path d="M17 16v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" /></svg>
+order: 320
+colors:
+  fill: '#E9F7FA'
+  stroke: '#0F8A9D'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: File Share name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: storageAccount
+    label: Storage account
+    type: text
+    placeholder: stcontosofiles
+  - key: protocol
+    label: Protocol
+    type: select
+    defaultValue: smb
+    options:
+      - value: smb
+        label: SMB
+      - value: nfs
+        label: NFS
+  - key: quotaGiB
+    label: Quota (GiB)
+    type: number
+    min: 1
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe who mounts this share and what it holds.

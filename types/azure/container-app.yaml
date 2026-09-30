@@ -1,0 +1,74 @@
+# dai.types.azure.container-app
+name: Container App
+version: 1.0.0
+description: An Azure Container App. Put it inside a Container Apps Environment.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 130
+colors:
+  fill: '#F3EEFB'
+  stroke: '#773ADC'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Container App name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: image
+    label: Image
+    type: text
+    placeholder: myregistry.azurecr.io/app:1.0
+  - key: cpu
+    label: CPU (cores)
+    type: number
+    defaultValue: 0.5
+    min: 0.25
+    step: 0.25
+  - key: memoryGi
+    label: Memory (Gi)
+    type: number
+    defaultValue: 1
+    min: 0.5
+    step: 0.5
+  - key: minReplicas
+    label: Min replicas
+    type: number
+    defaultValue: 0
+    min: 0
+  - key: maxReplicas
+    label: Max replicas
+    type: number
+    defaultValue: 10
+    min: 1
+  - key: ingress
+    label: Ingress
+    type: select
+    options:
+      - value: external
+        label: External
+      - value: internal
+        label: Internal
+      - value: none
+        label: None
+  - key: targetPort
+    label: Target port
+    type: number
+    min: 1
+    max: 65535
+  - key: managedIdentity
+    label: Managed identity
+    type: text
+    placeholder: Identity name or resource ID
+    hint: Model it as a Managed Identity node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what the app does and how it scales.

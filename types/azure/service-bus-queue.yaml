@@ -1,0 +1,53 @@
+# dai.types.azure.service-bus-queue
+name: Service Bus Queue
+version: 1.0.0
+description: An Azure Service Bus queue for reliable point-to-point messaging.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" /><path d="M4 13h3l3 3h4l3 -3h3" /></svg>
+order: 500
+colors:
+  fill: '#FBEFF8'
+  stroke: '#B4009E'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Service Bus Queue name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: namespace
+    label: Namespace
+    type: text
+    placeholder: sb-contoso
+  - key: tier
+    label: Tier
+    type: select
+    options:
+      - value: basic
+        label: Basic
+      - value: standard
+        label: Standard
+      - value: premium
+        label: Premium
+  - key: sessions
+    label: Sessions (FIFO)
+    type: boolean
+  - key: deadLettering
+    label: Dead-letter on expiry
+    type: boolean
+  - key: maxDeliveryCount
+    label: Max delivery count
+    type: number
+    defaultValue: 10
+    min: 1
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the producers, consumers and message format.

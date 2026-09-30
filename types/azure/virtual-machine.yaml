@@ -1,0 +1,72 @@
+# dai.types.azure.virtual-machine
+name: Virtual Machine
+version: 1.0.0
+description: An Azure virtual machine. Usually placed inside a Subnet, Availability Zone or VM Scale Set.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2" /><path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /><path d="M7 8l0 .01" /><path d="M7 16l0 .01" /></svg>
+order: 100
+colors:
+  fill: '#E8F3FC'
+  stroke: '#005BA1'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Virtual Machine name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: vmSize
+    label: VM size
+    type: text
+    placeholder: Standard_D4s_v5
+  - key: image
+    label: Image
+    type: text
+    placeholder: Ubuntu 24.04 LTS
+  - key: osType
+    label: OS
+    type: select
+    defaultValue: linux
+    options:
+      - value: linux
+        label: Linux
+      - value: windows
+        label: Windows
+  - key: purchaseOption
+    label: Purchase option
+    type: select
+    defaultValue: pay-as-you-go
+    options:
+      - value: pay-as-you-go
+        label: Pay-as-you-go
+      - value: spot
+        label: Spot
+      - value: reserved
+        label: Reserved instance
+      - value: savings-plan
+        label: Savings plan
+  - key: zone
+    label: Zone
+    type: text
+    placeholder: "1"
+  - key: networkSecurityGroup
+    label: Network security group
+    type: text
+    placeholder: nsg-web
+    hint: Model it as a Network Security Group node.
+  - key: managedIdentity
+    label: Managed identity
+    type: text
+    placeholder: Identity name or resource ID
+    hint: Model it as a Managed Identity node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what runs on this VM.

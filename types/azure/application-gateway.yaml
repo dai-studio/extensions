@@ -1,0 +1,46 @@
+# dai.types.azure.application-gateway
+name: Application Gateway
+version: 1.0.0
+description: An Azure Application Gateway, a regional layer-7 load balancer with optional WAF.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /><path d="M21 7h-8l-3.495 5" /><path d="M18 10l3 -3l-3 -3" /><path d="M18 20l3 -3l-3 -3" /></svg>
+order: 255
+colors:
+  fill: '#F1F8EA'
+  stroke: '#5E9C00'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Application Gateway name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: tier
+    label: Tier
+    type: select
+    defaultValue: standard-v2
+    options:
+      - value: standard-v2
+        label: Standard_v2
+      - value: waf-v2
+        label: WAF_v2
+  - key: listeners
+    label: Listeners
+    type: list
+    placeholder: https app.example.com
+  - key: wafPolicy
+    label: WAF policy
+    type: text
+    placeholder: waf-appgw
+    hint: Model it as a WAF Policy node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the routing rules and backend pools.

@@ -1,0 +1,61 @@
+# dai.types.azure.vm-scale-set
+name: VM Scale Set
+version: 1.0.0
+description: An Azure Virtual Machine Scale Set, a group of identical, autoscaling VMs. Put it inside a Subnet or Resource Group; it contains Virtual Machines.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></svg>
+order: 80
+colors:
+  fill: '#E8F3FC'
+  stroke: '#005BA1'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 150
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: VM Scale Set name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: vmSize
+    label: VM size
+    type: text
+    placeholder: Standard_D4s_v5
+  - key: orchestrationMode
+    label: Orchestration mode
+    type: select
+    defaultValue: flexible
+    options:
+      - value: flexible
+        label: Flexible
+      - value: uniform
+        label: Uniform
+  - key: minInstances
+    label: Min instances
+    type: number
+    min: 0
+  - key: maxInstances
+    label: Max instances
+    type: number
+    min: 0
+  - key: zones
+    label: Zones
+    type: list
+    placeholder: "1"
+  - key: networkSecurityGroup
+    label: Network security group
+    type: text
+    placeholder: nsg-web
+    hint: Model it as a Network Security Group node.
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the autoscale rules and what the instances run.

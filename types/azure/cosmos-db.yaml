@@ -1,0 +1,75 @@
+# dai.types.azure.cosmos-db
+name: Cosmos DB
+version: 1.0.0
+description: An Azure Cosmos DB account, a globally distributed NoSQL database.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14" /><path d="M3 10h18" /><path d="M10 3v18" /></svg>
+order: 410
+colors:
+  fill: '#EDF1FA'
+  stroke: '#3A5BB8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Cosmos DB name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: api
+    label: API
+    type: select
+    defaultValue: nosql
+    options:
+      - value: nosql
+        label: NoSQL
+      - value: mongodb
+        label: MongoDB
+      - value: cassandra
+        label: Cassandra
+      - value: gremlin
+        label: Gremlin
+      - value: table
+        label: Table
+  - key: capacityMode
+    label: Capacity mode
+    type: select
+    options:
+      - value: provisioned
+        label: Provisioned throughput
+      - value: autoscale
+        label: Autoscale
+      - value: serverless
+        label: Serverless
+  - key: consistency
+    label: Consistency
+    type: select
+    defaultValue: session
+    options:
+      - value: strong
+        label: Strong
+      - value: bounded-staleness
+        label: Bounded staleness
+      - value: session
+        label: Session
+      - value: consistent-prefix
+        label: Consistent prefix
+      - value: eventual
+        label: Eventual
+  - key: regions
+    label: Regions
+    type: list
+    placeholder: eastus
+  - key: multiRegionWrites
+    label: Multi-region writes
+    type: boolean
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the containers, partition keys and access patterns.

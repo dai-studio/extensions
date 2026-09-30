@@ -1,0 +1,53 @@
+# dai.types.azure.waf-policy
+name: WAF Policy
+version: 1.0.0
+description: An Azure Web Application Firewall policy attached to Front Door or Application Gateway.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /></svg>
+order: 640
+colors:
+  fill: '#FDF3F4'
+  stroke: '#D13438'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: WAF Policy name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: mode
+    label: Mode
+    type: select
+    defaultValue: prevention
+    options:
+      - value: detection
+        label: Detection
+      - value: prevention
+        label: Prevention
+  - key: attachedTo
+    label: Attached to
+    type: select
+    options:
+      - value: front-door
+        label: Front Door
+      - value: application-gateway
+        label: Application Gateway
+  - key: managedRuleSets
+    label: Managed rule sets
+    type: list
+    placeholder: Microsoft_DefaultRuleSet 2.1
+  - key: customRules
+    label: Custom rules
+    type: list
+    placeholder: rate-limit 1000/min
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the exclusions and why each custom rule exists.

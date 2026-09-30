@@ -1,0 +1,159 @@
+# dai.types.azure.region
+name: Region
+version: 1.0.0
+description: An Azure region, a set of data centres in one geography. Put it inside an Azure Subscription; it contains Resource Groups and Availability Zones.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" /></svg>
+order: 30
+colors:
+  fill: '#EAF4FC'
+  stroke: '#0078D4'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Region name
+  - key: regionCode
+    label: Region
+    type: select
+    hint: Choose Other for a region that is not listed and give its name in Notes.
+    options:
+      - value: eastus
+        label: East US
+      - value: eastus2
+        label: East US 2
+      - value: centralus
+        label: Central US
+      - value: northcentralus
+        label: North Central US
+      - value: southcentralus
+        label: South Central US
+      - value: westcentralus
+        label: West Central US
+      - value: westus
+        label: West US
+      - value: westus2
+        label: West US 2
+      - value: westus3
+        label: West US 3
+      - value: canadacentral
+        label: Canada Central
+      - value: canadaeast
+        label: Canada East
+      - value: mexicocentral
+        label: Mexico Central
+      - value: brazilsouth
+        label: Brazil South
+      - value: brazilsoutheast
+        label: Brazil Southeast
+      - value: chilecentral
+        label: Chile Central
+      - value: northeurope
+        label: North Europe
+      - value: westeurope
+        label: West Europe
+      - value: uksouth
+        label: UK South
+      - value: ukwest
+        label: UK West
+      - value: francecentral
+        label: France Central
+      - value: francesouth
+        label: France South
+      - value: germanywestcentral
+        label: Germany West Central
+      - value: germanynorth
+        label: Germany North
+      - value: switzerlandnorth
+        label: Switzerland North
+      - value: switzerlandwest
+        label: Switzerland West
+      - value: austriaeast
+        label: Austria East
+      - value: belgiumcentral
+        label: Belgium Central
+      - value: denmarkeast
+        label: Denmark East
+      - value: italynorth
+        label: Italy North
+      - value: norwayeast
+        label: Norway East
+      - value: norwaywest
+        label: Norway West
+      - value: polandcentral
+        label: Poland Central
+      - value: spaincentral
+        label: Spain Central
+      - value: swedencentral
+        label: Sweden Central
+      - value: israelcentral
+        label: Israel Central
+      - value: qatarcentral
+        label: Qatar Central
+      - value: uaenorth
+        label: UAE North
+      - value: uaecentral
+        label: UAE Central
+      - value: southafricanorth
+        label: South Africa North
+      - value: southafricawest
+        label: South Africa West
+      - value: centralindia
+        label: Central India
+      - value: southindia
+        label: South India
+      - value: westindia
+        label: West India
+      - value: indiasouthcentral
+        label: India South Central
+      - value: eastasia
+        label: East Asia (Hong Kong)
+      - value: southeastasia
+        label: Southeast Asia (Singapore)
+      - value: japaneast
+        label: Japan East
+      - value: japanwest
+        label: Japan West
+      - value: koreacentral
+        label: Korea Central
+      - value: koreasouth
+        label: Korea South
+      - value: indonesiacentral
+        label: Indonesia Central
+      - value: malaysiawest
+        label: Malaysia West
+      - value: australiaeast
+        label: Australia East
+      - value: australiasoutheast
+        label: Australia Southeast
+      - value: australiacentral
+        label: Australia Central
+      - value: australiacentral2
+        label: Australia Central 2
+      - value: newzealandnorth
+        label: New Zealand North
+      - value: usgovvirginia
+        label: US Gov Virginia
+      - value: usgovarizona
+        label: US Gov Arizona
+      - value: usgovtexas
+        label: US Gov Texas
+      - value: chinanorth3
+        label: China North 3
+      - value: chinaeast3
+        label: China East 3
+      - value: other
+        label: Other
+  - key: pairedRegion
+    label: Paired region
+    type: text
+    placeholder: westus
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Why this region was chosen, plus any data residency or latency requirements.

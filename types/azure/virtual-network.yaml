@@ -1,0 +1,50 @@
+# dai.types.azure.virtual-network
+name: Virtual Network
+version: 1.0.0
+description: An Azure Virtual Network (VNet), an isolated private network. Put it inside a Resource Group; it contains Subnets.
+icon: ▢
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 0 12 0a6 6 0 0 0 -12 0" /><path d="M12 3c1.333 .333 2 2.333 2 6s-.667 5.667 -2 6" /><path d="M12 3c-1.333 .333 -2 2.333 -2 6s.667 5.667 2 6" /><path d="M6 9h12" /><path d="M3 20h7" /><path d="M14 20h7" /><path d="M10 20a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M12 15v3" /></svg>
+order: 50
+colors:
+  fill: '#F1F8EA'
+  stroke: '#5E9C00'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Virtual Network name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: addressSpace
+    label: Address space
+    type: list
+    placeholder: 10.0.0.0/16
+  - key: dnsServers
+    label: DNS servers
+    type: list
+    placeholder: "10.0.0.4"
+    hint: Leave empty to use Azure-provided DNS.
+  - key: peerings
+    label: Peerings
+    type: list
+    placeholder: vnet-hub
+  - key: ddosProtection
+    label: DDoS Network Protection
+    type: boolean
+  - key: flowLogs
+    label: Flow logs enabled
+    type: boolean
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe the addressing plan, peering and connectivity.

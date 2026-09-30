@@ -1,0 +1,80 @@
+# dai.types.azure.storage-account
+name: Storage Account
+version: 1.0.0
+description: An Azure Storage account for blobs, files, queues and tables.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a8 4 0 1 0 16 0a8 4 0 1 0 -16 0" /><path d="M4 7c0 .664 .088 1.324 .263 1.965l2.737 10.035c.5 1.5 2.239 2 5 2s4.5 -.5 5 -2c.333 -1 1.246 -4.345 2.737 -10.035a7.45 7.45 0 0 0 .263 -1.965" /></svg>
+order: 300
+colors:
+  fill: '#E9F7FA'
+  stroke: '#0F8A9D'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Storage Account name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: accountName
+    label: Account name
+    type: text
+    placeholder: stcontosodata
+    hint: 3–24 lowercase letters and numbers, globally unique.
+  - key: performance
+    label: Performance
+    type: select
+    defaultValue: standard
+    options:
+      - value: standard
+        label: Standard
+      - value: premium
+        label: Premium
+  - key: redundancy
+    label: Redundancy
+    type: select
+    options:
+      - value: lrs
+        label: LRS
+      - value: zrs
+        label: ZRS
+      - value: grs
+        label: GRS
+      - value: gzrs
+        label: GZRS
+      - value: ra-grs
+        label: RA-GRS
+      - value: ra-gzrs
+        label: RA-GZRS
+  - key: accessTier
+    label: Access tier
+    type: select
+    defaultValue: hot
+    options:
+      - value: hot
+        label: Hot
+      - value: cool
+        label: Cool
+      - value: cold
+        label: Cold
+  - key: hierarchicalNamespace
+    label: Hierarchical namespace
+    type: boolean
+    hint: Data Lake Storage Gen2.
+  - key: publicNetworkAccess
+    label: Public network access
+    type: boolean
+  - key: containers
+    label: Containers
+    type: list
+    placeholder: uploads
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what is stored and the lifecycle rules.

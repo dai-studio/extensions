@@ -1,0 +1,44 @@
+# dai.types.azure.managed-identity
+name: Managed Identity
+version: 1.0.0
+description: An Azure managed identity that lets a resource authenticate to other services without secrets.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21v-2a4 4 0 0 1 4 -4h2" /><path d="M22 16c0 4 -2.5 6 -3.5 6s-3.5 -2 -3.5 -6c1 0 2.5 -.5 3.5 -1.5c1 1 2.5 1.5 3.5 1.5" /><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /></svg>
+order: 600
+colors:
+  fill: '#FDF3F4'
+  stroke: '#D13438'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Managed Identity name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: identityType
+    label: Identity type
+    type: select
+    options:
+      - value: system-assigned
+        label: System-assigned
+      - value: user-assigned
+        label: User-assigned
+  - key: clientId
+    label: Client ID
+    type: text
+    placeholder: "00000000-0000-0000-0000-000000000000"
+  - key: roleAssignments
+    label: Role assignments
+    type: list
+    placeholder: Storage Blob Data Reader on stcontosodata
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe who uses this identity and what it can access.

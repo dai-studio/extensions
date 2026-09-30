@@ -1,0 +1,38 @@
+# dai.types.azure.redis-cache
+name: Redis Cache
+version: 1.0.0
+description: An Azure Cache for Redis or Azure Managed Redis in-memory cache.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" /></svg>
+order: 420
+colors:
+  fill: '#EDF1FA'
+  stroke: '#3A5BB8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Redis Cache name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: tier
+    label: Tier
+    type: text
+    placeholder: Premium P1 / Balanced B5
+  - key: clustering
+    label: Clustering
+    type: boolean
+  - key: privateAccess
+    label: Private access only
+    type: boolean
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe what is cached and the eviction policy.

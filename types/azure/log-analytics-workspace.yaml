@@ -1,0 +1,42 @@
+# dai.types.azure.log-analytics-workspace
+name: Log Analytics Workspace
+version: 1.0.0
+description: An Azure Monitor Log Analytics workspace that collects logs and metrics for querying.
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /><path d="M9 9l1 0" /><path d="M9 13l6 0" /><path d="M9 17l6 0" /></svg>
+order: 710
+colors:
+  fill: '#FFF4EC'
+  stroke: '#CA5010'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: Name
+    type: text
+    placeholder: Log Analytics Workspace name
+  - key: resourceId
+    label: Resource ID
+    type: text
+    placeholder: /subscriptions/…/resourceGroups/…/providers/…
+  - key: workspaceId
+    label: Workspace ID
+    type: text
+    placeholder: "00000000-0000-0000-0000-000000000000"
+  - key: retentionDays
+    label: Retention (days)
+    type: number
+    defaultValue: 30
+    min: 4
+    max: 730
+  - key: dailyCapGb
+    label: Daily cap (GB)
+    type: number
+    min: 0
+  - key: tags
+    label: Tags
+    type: key-value
+  - key: notes
+    label: Notes
+    type: textarea
+    placeholder: Describe which resources send data here and who queries it.
