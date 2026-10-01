@@ -1,0 +1,50 @@
+# dai.types.cloud.cache
+name: "Cache"
+version: 1.0.0
+description: "An in-memory cache or data store, such as ElastiCache, Azure Cache for Redis or Memorystore."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" /></svg>
+order: 420
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Cache name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: engine
+    label: "Engine"
+    type: select
+    defaultValue: "redis"
+    options:
+      - value: "redis"
+        label: "Redis"
+      - value: "valkey"
+        label: "Valkey"
+      - value: "memcached"
+        label: "Memcached"
+      - value: "other"
+        label: "Other"
+  - key: memoryGb
+    label: "Memory (GB)"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: clusterMode
+    label: "Cluster mode"
+    type: boolean
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What is cached, TTLs and eviction policy."

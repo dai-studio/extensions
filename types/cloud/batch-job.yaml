@@ -1,0 +1,47 @@
+# dai.types.cloud.batch-job
+name: "Batch Job"
+version: 1.0.0
+description: "A job that runs to completion, on a schedule or on demand, such as AWS Batch, Cloud Run jobs or a Kubernetes Job."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 140
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Batch Job name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: image
+    label: "Image or command"
+    type: text
+    placeholder: "registry/repository:tag"
+  - key: schedule
+    label: "Schedule"
+    type: text
+    placeholder: "e.g. 0 2 * * * or on demand"
+  - key: parallelism
+    label: "Parallel tasks"
+    type: number
+    defaultValue: 1
+    min: 1
+  - key: maxRuntimeMinutes
+    label: "Max runtime (min)"
+    type: number
+    defaultValue: 60
+    min: 1
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What the job processes, its inputs, outputs and retry behaviour."

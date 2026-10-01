@@ -1,0 +1,43 @@
+# dai.types.cloud.file-storage
+name: "File Storage"
+version: 1.0.0
+description: "A shared network file system, such as EFS, Azure Files or Filestore."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" /><path d="M17 16v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" /></svg>
+order: 320
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "File Storage name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: protocol
+    label: "Protocol"
+    type: select
+    defaultValue: "nfs"
+    options:
+      - value: "nfs"
+        label: "NFS"
+      - value: "smb"
+        label: "SMB"
+  - key: sizeGb
+    label: "Size (GB)"
+    type: number
+    defaultValue: 1024
+    min: 1
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Who mounts the share and how it is backed up."

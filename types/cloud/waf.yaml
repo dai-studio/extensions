@@ -1,0 +1,42 @@
+# dai.types.cloud.waf
+name: "Web Application Firewall"
+version: 1.0.0
+description: "Inspects HTTP traffic and blocks attacks before they reach an application. Attach it to a Load Balancer, CDN or API Gateway."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /></svg>
+order: 640
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Web Application Firewall name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: mode
+    label: "Mode"
+    type: select
+    defaultValue: "block"
+    options:
+      - value: "block"
+        label: "Block"
+      - value: "detect"
+        label: "Detect only"
+  - key: ruleSets
+    label: "Rule sets"
+    type: list
+    placeholder: "OWASP core rules"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Custom rules, exclusions and how false positives are handled."

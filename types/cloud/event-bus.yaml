@@ -1,0 +1,37 @@
+# dai.types.cloud.event-bus
+name: "Event Bus"
+version: 1.0.0
+description: "Routes events from sources to targets using rules, such as EventBridge, Event Grid or Eventarc."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M10 20h-6" /><path d="M14 20h6" /><path d="M12 15l-2 -2h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-3l-2 2" /></svg>
+order: 520
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Event Bus name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: eventSources
+    label: "Event sources"
+    type: list
+    placeholder: "orders.created"
+  - key: rules
+    label: "Rules"
+    type: list
+    placeholder: "orders.* → fulfilment-service"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Event schemas, sources and targets."

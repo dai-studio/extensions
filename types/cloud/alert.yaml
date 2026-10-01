@@ -1,0 +1,56 @@
+# dai.types.cloud.alert
+name: "Alert"
+version: 1.0.0
+description: "Notifies people or systems when a metric or log condition is met."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M12 10l0 3l2 0" /><path d="M7 4l-2.75 2" /><path d="M17 4l2.75 2" /></svg>
+order: 700
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Alert name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: metric
+    label: "Metric"
+    type: text
+    placeholder: "e.g. p95 latency, 5xx rate, queue depth"
+  - key: condition
+    label: "Condition"
+    type: text
+    placeholder: "e.g. > 500 ms for 5 min"
+  - key: severity
+    label: "Severity"
+    type: select
+    defaultValue: "high"
+    options:
+      - value: "critical"
+        label: "Critical"
+      - value: "high"
+        label: "High"
+      - value: "medium"
+        label: "Medium"
+      - value: "low"
+        label: "Low"
+      - value: "info"
+        label: "Info"
+  - key: notify
+    label: "Notify"
+    type: list
+    placeholder: "on-call pager"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Runbook link and the expected response."

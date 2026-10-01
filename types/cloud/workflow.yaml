@@ -1,0 +1,37 @@
+# dai.types.cloud.workflow
+name: "Workflow Orchestrator"
+version: 1.0.0
+description: "Coordinates multi-step processes across services, such as Step Functions, Logic Apps, Workflows or Temporal."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M10 20h-6" /><path d="M14 20h6" /><path d="M12 15l-2 -2h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-3l-2 2" /></svg>
+order: 550
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Workflow Orchestrator name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: trigger
+    label: "Trigger"
+    type: text
+    placeholder: "e.g. API call, event, schedule"
+  - key: workflowSteps
+    label: "Steps"
+    type: list
+    placeholder: "validate order"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Steps, error handling and compensation logic."

@@ -1,0 +1,55 @@
+# dai.types.cloud.load-balancer
+name: "Load Balancer"
+version: 1.0.0
+description: "Distributes traffic across backends. Connect it to the services it fronts."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /><path d="M21 7h-8l-3.495 5" /><path d="M18 10l3 -3l-3 -3" /><path d="M18 20l3 -3l-3 -3" /></svg>
+order: 250
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Load Balancer name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: layer
+    label: "Layer"
+    type: select
+    defaultValue: "l7"
+    options:
+      - value: "l7"
+        label: "Application (L7)"
+      - value: "l4"
+        label: "Network (L4)"
+  - key: scheme
+    label: "Scheme"
+    type: select
+    defaultValue: "public"
+    options:
+      - value: "public"
+        label: "Internet-facing"
+      - value: "internal"
+        label: "Internal"
+  - key: listeners
+    label: "Listeners"
+    type: list
+    placeholder: "HTTPS :443 → backend :8080"
+  - key: healthCheck
+    label: "Health check"
+    type: text
+    placeholder: "/healthz"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Routing rules, TLS termination and backends."

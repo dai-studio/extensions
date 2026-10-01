@@ -1,0 +1,37 @@
+# dai.types.cloud.data-warehouse
+name: "Data Warehouse"
+version: 1.0.0
+description: "An analytical data store, such as BigQuery, Redshift, Synapse, Snowflake or Databricks."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /><path d="M4 15l4 -6l4 2l4 -5l4 4" /></svg>
+order: 430
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Data Warehouse name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: engine
+    label: "Engine"
+    type: text
+    placeholder: "e.g. BigQuery, Snowflake"
+  - key: datasets
+    label: "Datasets"
+    type: list
+    placeholder: "analytics.events"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Sources, refresh schedule and who queries it."

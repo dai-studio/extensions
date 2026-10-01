@@ -1,0 +1,56 @@
+# dai.types.cloud.api-gateway
+name: "API Gateway"
+version: 1.0.0
+description: "A managed front door for APIs that handles routing, authentication, throttling and versioning."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h5" /><path d="M12 16v-8h3a2 2 0 0 1 2 2v1a2 2 0 0 1 -2 2h-3" /><path d="M20 8v8" /><path d="M9 16v-5.5a2.5 2.5 0 0 0 -5 0v5.5" /></svg>
+order: 280
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "API Gateway name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: protocol
+    label: "Protocol"
+    type: select
+    defaultValue: "rest"
+    options:
+      - value: "rest"
+        label: "REST"
+      - value: "http"
+        label: "HTTP"
+      - value: "graphql"
+        label: "GraphQL"
+      - value: "websocket"
+        label: "WebSocket"
+      - value: "grpc"
+        label: "gRPC"
+  - key: basePath
+    label: "Base path"
+    type: text
+    placeholder: "/v1"
+  - key: auth
+    label: "Authentication"
+    type: text
+    placeholder: "e.g. JWT, API key, OAuth 2.0"
+  - key: rateLimit
+    label: "Rate limit"
+    type: text
+    placeholder: "e.g. 100 req/s per client"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Routes, backends and the API contract."

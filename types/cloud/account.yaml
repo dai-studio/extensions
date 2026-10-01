@@ -1,0 +1,49 @@
+# dai.types.cloud.account
+name: "Account"
+version: 1.0.0
+description: "A billing and isolation boundary at a cloud provider, such as an AWS account, Azure subscription or Google Cloud project. Put it inside a Cloud; it contains Regions."
+icon: "▢"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0" /><path d="M9 8l1 0" /><path d="M9 12l1 0" /><path d="M9 16l1 0" /><path d="M14 8l1 0" /><path d="M14 12l1 0" /><path d="M14 16l1 0" /><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" /></svg>
+order: 20
+colors:
+  fill: '#F8FAFC'
+  stroke: '#64748B'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Account name"
+  - key: accountId
+    label: "Account ID"
+    type: text
+    placeholder: "Account, subscription or project ID"
+  - key: environment
+    label: "Environment"
+    type: select
+    options:
+      - value: "production"
+        label: "Production"
+      - value: "staging"
+        label: "Staging"
+      - value: "development"
+        label: "Development"
+      - value: "shared"
+        label: "Shared services"
+      - value: "sandbox"
+        label: "Sandbox"
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Team responsible for this account"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What runs in this account and who has access."

@@ -1,0 +1,47 @@
+# dai.types.cloud.identity-provider
+name: "Identity Provider"
+version: 1.0.0
+description: "Authenticates end users, such as Cognito, Entra ID, Identity Platform, Auth0 or Okta."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+order: 630
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Identity Provider name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: protocol
+    label: "Protocol"
+    type: select
+    defaultValue: "oidc"
+    options:
+      - value: "oidc"
+        label: "OpenID Connect"
+      - value: "saml"
+        label: "SAML 2.0"
+      - value: "oauth2"
+        label: "OAuth 2.0"
+  - key: socialProviders
+    label: "Federated providers"
+    type: list
+    placeholder: "Google"
+  - key: mfa
+    label: "MFA required"
+    type: boolean
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "User populations, sign-up flow and token lifetimes."

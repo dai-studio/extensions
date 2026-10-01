@@ -1,0 +1,41 @@
+# dai.types.cloud.static-site
+name: "Static Site"
+version: 1.0.0
+description: "Static web hosting with a build step, such as Cloudflare Pages, Netlify, Vercel, Amplify Hosting or Azure Static Web Apps."
+icon: "{ }"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" /><path d="M10 13l-1 2l1 2" /><path d="M14 13l1 2l-1 2" /></svg>
+order: 150
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Static Site name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: framework
+    label: "Framework"
+    type: text
+    placeholder: "e.g. Astro, Next.js (static), Hugo"
+  - key: buildCommand
+    label: "Build command"
+    type: text
+    placeholder: "npm run build"
+  - key: url
+    label: "URL"
+    type: text
+    placeholder: "https://…"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What the site serves and how it is built and deployed."

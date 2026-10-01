@@ -1,0 +1,47 @@
+# dai.types.cloud.subnet
+name: "Subnet"
+version: 1.0.0
+description: "An IP range within a Virtual Network. Put it inside a Virtual Network or Availability Zone; it contains Virtual Machines, Container Services and other network-attached resources."
+icon: "▢"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M14 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M4 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /><path d="M14 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4" /></svg>
+order: 60
+colors:
+  fill: '#F8FAFC'
+  stroke: '#64748B'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 200
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Subnet name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: cidrBlock
+    label: "IPv4 CIDR"
+    type: text
+    placeholder: "10.0.1.0/24"
+  - key: visibility
+    label: "Visibility"
+    type: select
+    defaultValue: "private"
+    options:
+      - value: "public"
+        label: "Public (routes to the internet)"
+      - value: "private"
+        label: "Private (outbound via NAT)"
+      - value: "isolated"
+        label: "Isolated (no internet)"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What runs in this subnet and how it is routed."

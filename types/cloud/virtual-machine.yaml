@@ -1,0 +1,52 @@
+# dai.types.cloud.virtual-machine
+name: "Virtual Machine"
+version: 1.0.0
+description: "A virtual server. Put it inside a Subnet or Instance Group."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-2" /><path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -2" /><path d="M7 8l0 .01" /><path d="M7 16l0 .01" /></svg>
+order: 100
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Virtual Machine name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: os
+    label: "Operating system"
+    type: text
+    placeholder: "e.g. Ubuntu 24.04, Windows Server 2022"
+  - key: vcpu
+    label: "vCPUs"
+    type: number
+    defaultValue: 2
+    min: 1
+  - key: memoryGb
+    label: "Memory (GB)"
+    type: number
+    defaultValue: 4
+    min: 1
+  - key: architecture
+    label: "Architecture"
+    type: select
+    defaultValue: "x86_64"
+    options:
+      - value: "x86_64"
+        label: "x86_64"
+      - value: "arm64"
+        label: "arm64"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What the machine runs and how it is patched and backed up."

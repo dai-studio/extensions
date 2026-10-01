@@ -1,0 +1,52 @@
+# dai.types.cloud.vpn-gateway
+name: "VPN / Interconnect"
+version: 1.0.0
+description: "Private connectivity between networks: a site-to-site VPN, dedicated interconnect, client VPN or tunnel. Connect it to the Virtual Network and the Data Center or network on the other side."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" /><path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" /><path d="M3 21l2.5 -2.5" /><path d="M18.5 5.5l2.5 -2.5" /><path d="M10 11l-2 2" /><path d="M13 14l-2 2" /></svg>
+order: 230
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "VPN / Interconnect name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: connectionType
+    label: "Connection type"
+    type: select
+    defaultValue: "site-to-site"
+    options:
+      - value: "site-to-site"
+        label: "Site-to-site VPN"
+      - value: "dedicated"
+        label: "Dedicated interconnect"
+      - value: "client"
+        label: "Client VPN"
+      - value: "tunnel"
+        label: "Tunnel"
+      - value: "peering"
+        label: "Network peering"
+  - key: peer
+    label: "Peer"
+    type: text
+    placeholder: "Remote network, site or CIDR"
+  - key: bandwidth
+    label: "Bandwidth"
+    type: text
+    placeholder: "e.g. 1 Gbps"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Routing, redundancy and encryption for this connection."

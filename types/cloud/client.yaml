@@ -1,0 +1,43 @@
+# dai.types.cloud.client
+name: "Client / User"
+version: 1.0.0
+description: "A person or device that uses the system, such as a browser, mobile app, desktop app, IoT device or another service."
+icon: "▭"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l18 0" /><path d="M5 7a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" /></svg>
+order: 910
+colors:
+  fill: '#FFFFFF'
+  stroke: '#94A3B8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Client / User name"
+  - key: clientType
+    label: "Client type"
+    type: select
+    defaultValue: "browser"
+    options:
+      - value: "browser"
+        label: "Web browser"
+      - value: "mobile"
+        label: "Mobile app"
+      - value: "desktop"
+        label: "Desktop app"
+      - value: "iot"
+        label: "IoT device"
+      - value: "service"
+        label: "Service / machine"
+  - key: audience
+    label: "Audience"
+    type: text
+    placeholder: "e.g. customers, admins, partners"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Who the users are and how they authenticate."

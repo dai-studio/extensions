@@ -1,0 +1,48 @@
+# dai.types.cloud.data-center
+name: "Data Center"
+version: 1.0.0
+description: "An on-premises data center or colocation facility in a hybrid architecture. It contains Virtual Networks, Virtual Machines and other self-hosted resources."
+icon: "▤"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /><path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /><path d="M7 8v.01" /><path d="M7 16v.01" /></svg>
+order: 15
+colors:
+  fill: '#F8FAFC'
+  stroke: '#64748B'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 600
+defaultHeight: 400
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Data Center name"
+  - key: location
+    label: "Location"
+    type: text
+    placeholder: "City or facility name"
+  - key: operator
+    label: "Operator"
+    type: text
+    placeholder: "Who runs the facility"
+  - key: connectivity
+    label: "Connectivity to cloud"
+    type: select
+    defaultValue: "none"
+    options:
+      - value: "none"
+        label: "None"
+      - value: "vpn"
+        label: "Site-to-site VPN"
+      - value: "dedicated"
+        label: "Dedicated interconnect"
+      - value: "internet"
+        label: "Public internet"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Hardware, capacity and how this site connects to the cloud."

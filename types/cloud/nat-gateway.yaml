@@ -1,0 +1,36 @@
+# dai.types.cloud.nat-gateway
+name: "NAT Gateway"
+version: 1.0.0
+description: "Outbound-only internet access for private Subnets. Put it in a public Subnet."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10h-16l5.5 -6" /><path d="M4 14h16l-5.5 6" /></svg>
+order: 220
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "NAT Gateway name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: publicIp
+    label: "Public IP"
+    type: text
+    placeholder: "203.0.113.20"
+  - key: highlyAvailable
+    label: "One per zone"
+    type: boolean
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Which subnets use this gateway and the expected egress volume."

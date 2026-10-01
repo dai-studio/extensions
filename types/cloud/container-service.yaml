@@ -1,0 +1,54 @@
+# dai.types.cloud.container-service
+name: "Container Service"
+version: 1.0.0
+description: "A long-running containerised service, such as an ECS service, Cloud Run service, Azure Container App or Kubernetes Deployment."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 120
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Container Service name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: image
+    label: "Image"
+    type: text
+    placeholder: "registry/repository:tag"
+  - key: replicas
+    label: "Replicas"
+    type: number
+    defaultValue: 2
+    min: 0
+  - key: cpu
+    label: "CPU (vCPU)"
+    type: number
+    defaultValue: 0.5
+    min: 0
+  - key: memoryMb
+    label: "Memory (MB)"
+    type: number
+    defaultValue: 512
+    min: 64
+  - key: port
+    label: "Port"
+    type: number
+    defaultValue: 8080
+    min: 1
+    max: 65535
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What the service does, how it scales and how it is deployed."

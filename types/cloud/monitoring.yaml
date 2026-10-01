@@ -1,0 +1,40 @@
+# dai.types.cloud.monitoring
+name: "Monitoring / APM"
+version: 1.0.0
+description: "Metrics, dashboards and tracing for applications and infrastructure, such as CloudWatch, Azure Monitor, Cloud Monitoring, Datadog or Grafana."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l16 0" /><path d="M4 15l4 -6l4 2l4 -5l4 4" /></svg>
+order: 720
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Monitoring / APM name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: tool
+    label: "Tool"
+    type: text
+    placeholder: "e.g. Datadog, Grafana, Azure Monitor"
+  - key: dashboards
+    label: "Dashboards"
+    type: list
+    placeholder: "Service overview"
+  - key: tracing
+    label: "Distributed tracing"
+    type: boolean
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Key SLOs and what is monitored."

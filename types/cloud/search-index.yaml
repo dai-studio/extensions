@@ -1,0 +1,54 @@
+# dai.types.cloud.search-index
+name: "Search Index"
+version: 1.0.0
+description: "A full-text search engine or index, such as OpenSearch, Elasticsearch, Azure AI Search or Algolia."
+icon: "⌕"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+order: 440
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Search Index name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: engine
+    label: "Engine"
+    type: select
+    defaultValue: "opensearch"
+    options:
+      - value: "opensearch"
+        label: "OpenSearch"
+      - value: "elasticsearch"
+        label: "Elasticsearch"
+      - value: "azure-ai-search"
+        label: "Azure AI Search"
+      - value: "algolia"
+        label: "Algolia"
+      - value: "other"
+        label: "Other"
+  - key: shards
+    label: "Shards"
+    type: number
+    defaultValue: 1
+    min: 1
+  - key: replicas
+    label: "Replicas"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What is indexed, how it is kept in sync, and the queries it serves."

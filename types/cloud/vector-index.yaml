@@ -1,0 +1,49 @@
+# dai.types.cloud.vector-index
+name: "Vector Index"
+version: 1.0.0
+description: "Stores embeddings for similarity search and retrieval-augmented generation, such as Vectorize, pgvector, Pinecone or Vertex AI Vector Search."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="M7 9a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 7a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M12 15a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M10.16 10.62l2.34 2.88" /><path d="M15.088 13.328l2.837 -4.586" /></svg>
+order: 820
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Vector Index name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: dimensions
+    label: "Dimensions"
+    type: number
+    defaultValue: 1024
+    min: 1
+  - key: metric
+    label: "Distance metric"
+    type: select
+    defaultValue: "cosine"
+    options:
+      - value: "cosine"
+        label: "Cosine"
+      - value: "euclidean"
+        label: "Euclidean"
+      - value: "dot-product"
+        label: "Dot product"
+  - key: embeddingModel
+    label: "Embedding model"
+    type: text
+    placeholder: "Model used to create the vectors"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What is embedded, chunking strategy and how the index is refreshed."

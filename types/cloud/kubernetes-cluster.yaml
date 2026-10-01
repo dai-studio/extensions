@@ -1,0 +1,45 @@
+# dai.types.cloud.kubernetes-cluster
+name: "Kubernetes Cluster"
+version: 1.0.0
+description: "A Kubernetes cluster, managed (EKS, AKS, GKE) or self-hosted. Put it inside a Subnet or Virtual Network; it contains Container Services."
+icon: "▢"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-5l4 -2l4 2v5l-4 2l-4 -2" /><path d="M8 11v-5l4 -2l4 2v5" /><path d="M12 13l4 -2l4 2v5l-4 2l-4 -2" /></svg>
+order: 80
+colors:
+  fill: '#F8FAFC'
+  stroke: '#64748B'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+defaultWidth: 250
+defaultHeight: 200
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Kubernetes Cluster name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: version
+    label: "Kubernetes version"
+    type: text
+    placeholder: "1.31"
+  - key: nodeCount
+    label: "Nodes"
+    type: number
+    defaultValue: 3
+    min: 0
+  - key: managed
+    label: "Managed control plane"
+    type: boolean
+    defaultValue: true
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Node pools, add-ons, ingress and how workloads are deployed."

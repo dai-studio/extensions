@@ -1,0 +1,40 @@
+# dai.types.cloud.external-service
+name: "External Service"
+version: 1.0.0
+description: "A third-party API or SaaS product that the system depends on, such as Stripe, Twilio or Salesforce."
+icon: "↗"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+order: 920
+colors:
+  fill: '#FFFFFF'
+  stroke: '#94A3B8'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "External Service name"
+  - key: vendor
+    label: "Vendor"
+    type: text
+    placeholder: "e.g. Stripe"
+  - key: url
+    label: "URL"
+    type: text
+    placeholder: "https://api.example.com"
+  - key: auth
+    label: "Authentication"
+    type: text
+    placeholder: "e.g. API key, OAuth 2.0"
+  - key: sla
+    label: "SLA"
+    type: text
+    placeholder: "e.g. 99.9%"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "What the dependency is used for and what happens when it is down."

@@ -1,0 +1,47 @@
+# dai.types.cloud.function
+name: "Serverless Function"
+version: 1.0.0
+description: "A function that runs on demand, such as AWS Lambda, Azure Functions, Cloud Run functions or Cloudflare Workers."
+icon: "λ"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20l6.5 -9" /><path d="M19 20c-6 0 -6 -16 -12 -16" /></svg>
+order: 110
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Serverless Function name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: runtime
+    label: "Runtime"
+    type: text
+    placeholder: "e.g. nodejs22, python3.13"
+  - key: memoryMb
+    label: "Memory (MB)"
+    type: number
+    defaultValue: 256
+    min: 64
+  - key: timeoutSeconds
+    label: "Timeout (s)"
+    type: number
+    defaultValue: 30
+    min: 1
+  - key: trigger
+    label: "Trigger"
+    type: text
+    placeholder: "e.g. HTTP, queue message, schedule, object upload"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Describe what the function does, its inputs and its outputs."

@@ -1,0 +1,47 @@
+# dai.types.cloud.queue
+name: "Message Queue"
+version: 1.0.0
+description: "A point-to-point message queue, such as SQS, Service Bus queues, Cloud Tasks or RabbitMQ."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2l0 -12" /><path d="M4 13h3l3 3h4l3 -3h3" /></svg>
+order: 500
+colors:
+  fill: '#F1F5F9'
+  stroke: '#475569'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Message Queue name"
+  - key: resourceId
+    label: "Resource ID"
+    type: text
+    placeholder: "Provider-specific ID, ARN or URI"
+    hint: "Fill this in once the resource exists or a provider is chosen."
+  - key: ordering
+    label: "Ordering"
+    type: select
+    defaultValue: "standard"
+    options:
+      - value: "standard"
+        label: "Standard (at least once)"
+      - value: "fifo"
+        label: "FIFO (ordered)"
+  - key: visibilityTimeoutSeconds
+    label: "Visibility timeout (s)"
+    type: number
+    defaultValue: 30
+    min: 0
+  - key: deadLetterQueue
+    label: "Dead-letter queue"
+    type: text
+    placeholder: "Name of the dead-letter queue"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Message schema, producers, consumers and retry policy."
