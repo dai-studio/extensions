@@ -6,8 +6,8 @@ icon: "λ"
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20l6.5 -9" /><path d="M19 20c-6 0 -6 -16 -12 -16" /></svg>
 order: 110
 colors:
-  fill: '#F1F5F9'
-  stroke: '#475569'
+  fill: '#FFF7ED'
+  stroke: '#EA580C'
 bpmnType: bpmn:Task
 license: free
 form:
