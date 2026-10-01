@@ -7,7 +7,7 @@ import {
   generateKeyPair, importPrivateKey, importPublicKey, signObject, verifyObject, verifyString,
 } from '../lib/crypto.ts';
 import { checkSvg } from '../lib/svg.ts';
-import { checkCompat, removedTypes, renamedTypes } from '../lib/compat.ts';
+import { checkCompat, removedPatterns, removedTypes, renamedTypes } from '../lib/compat.ts';
 import { validatePatterns, validateRepo } from '../lib/validate.ts';
 import { loadRepo, ROOT, type Repo } from '../lib/repo.ts';
 import { buildType, type CatalogType } from '../lib/catalog.ts';
@@ -150,4 +150,17 @@ test('compat: additive changes pass, destructive ones fail', () => {
   const errs = checkCompat(prev, { types: retyped, patterns: [] }).join('\n');
   assert.match(errs, /form field "agentRole" cannot be removed/);
   assert.match(errs, /bpmnType cannot change/);
+});
+
+test('compat: patterns may be removed, but not lose aliases or go backwards', () => {
+  const pat = { id: 'dai.patterns.x.y', category: 'x', name: 'Y', description: '', version: '1.0.0', sha256: '', aliases: ['y'] };
+  const prev = { types: [] as CatalogType[], patterns: [pat] };
+
+  assert.deepEqual(checkCompat(prev, { types: [], patterns: [] }), [], 'patterns may be removed');
+  assert.deepEqual(removedPatterns(prev, { patterns: [] }), ['dai.patterns.x.y']);
+  assert.deepEqual(removedPatterns(prev, { patterns: [pat] }), []);
+
+  const errs = checkCompat(prev, { types: [], patterns: [{ ...pat, version: '0.9.0', aliases: [] }] }).join('\n');
+  assert.match(errs, /alias "y" cannot be removed/);
+  assert.match(errs, /version cannot go backwards/);
 });

@@ -72,7 +72,7 @@ and trim it down.
 ## Changing something that's already published
 
 You don't need to bump `version` (you may, but it can't go down). Adding form fields, options and aliases is fine. Deleting a type
-is allowed: it disappears from the next published build (documents that use it lose the
-definition, so prefer `deprecated: true` + `replacedBy` if it may be in use). To rename or
-move a type, move the file and add the old id to its `aliases`. Removing or renaming a pattern, field, alias or stepType, is not allowed; deprecate
-it instead. CI checks every PR against the catalog that's currently published.
+or pattern is allowed: it disappears from the next published build (documents that use a
+deleted type lose the definition, so prefer `deprecated: true` + `replacedBy` if it may be in
+use). To rename or move a type, move the file and add the old id to its `aliases`. Removing
+or renaming a field, alias or stepType is not allowed; deprecate it instead. CI checks every PR against the catalog that's currently published.

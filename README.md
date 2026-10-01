@@ -69,7 +69,8 @@ values by `key` and `storage`. CI rejects any change that would break an existin
   `deprecated: true` with `replacedBy`.
 - To rename a type (for example to move it to another category), move the file and list
   the old id in its `aliases`. Documents saved with the old id keep resolving.
-- Patterns are never deleted. Mark them `deprecated: true`.
+- Patterns may be deleted: they drop out of the next published build. To keep one
+  available but discourage new use, mark it `deprecated: true` instead.
 - `bpmnType`, `eventDefinitionType`, `stepType` and aliases can't change.
 - Form fields can't be removed, and their `type` and `storage` can't change.
 - `version` is informational; it may be bumped but never lowered.

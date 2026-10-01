@@ -2,8 +2,8 @@
  * Additive-only compatibility against the last published catalog.
  * Documents in the wild reference types/patterns by id, alias and stepType,
  * and store field values by key + storage — none of that may change.
- * Exception: a type may be deleted outright; it simply drops out of the next
- * published build (reported as a note, not an error). Patterns may not.
+ * Exception: a type or pattern may be deleted outright; it simply drops out of
+ * the next published build (reported as a note, not an error).
  * `version` is informational: content may change without a bump, but a
  * version may never go backwards.
  */
@@ -50,10 +50,7 @@ export function checkCompat(
   const nextPatterns = new Map(next.patterns.map(p => [p.id, p]));
   for (const old of prev.patterns) {
     const cur = nextPatterns.get(old.id);
-    if (!cur) {
-      errors.push(`${old.id}: patterns cannot be removed — mark it deprecated: true instead`);
-      continue;
-    }
+    if (!cur) continue; // removal is allowed; reported via removedPatterns()
     for (const alias of old.aliases ?? []) {
       if (!(cur.aliases ?? []).includes(alias)) errors.push(`${old.id}: alias "${alias}" cannot be removed`);
     }
@@ -69,6 +66,15 @@ export function removedTypes(
 ): string[] {
   const ids = new Set(next.types.map(t => t.id));
   return prev.types.filter(t => !ids.has(t.id)).map(t => t.id);
+}
+
+/** Ids of published patterns that no longer exist (they drop out of the next build). */
+export function removedPatterns(
+  prev: Pick<Catalog, 'patterns'>,
+  next: { patterns: Array<Pick<CatalogPattern, 'id'>> },
+): string[] {
+  const ids = new Set(next.patterns.map(p => p.id));
+  return prev.patterns.filter(p => !ids.has(p.id)).map(p => p.id);
 }
 
 /**
