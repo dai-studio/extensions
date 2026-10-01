@@ -1,5 +1,0 @@
-name: Kubernetes
-description: Create a Deployment and expose it with a Service.
-version: 1.0.0
-aliases:
-  - k8s

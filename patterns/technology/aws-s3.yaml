@@ -1,5 +1,0 @@
-name: S3
-description: Create a bucket, upload an object, and set a bucket policy.
-version: 1.0.0
-aliases:
-  - aws-s3
