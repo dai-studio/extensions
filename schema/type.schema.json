@@ -41,8 +41,6 @@
       ]
     },
     "isExpanded": { "type": "boolean" },
-    "defaultWidth": { "type": "integer", "minimum": 20, "maximum": 2000 },
-    "defaultHeight": { "type": "integer", "minimum": 20, "maximum": 2000 },
     "license": { "type": "string", "const": "free" },
     "aliases": {
       "type": "array",

@@ -10,8 +10,6 @@ colors:
   stroke: '#7C3AED'
 bpmnType: bpmn:Task
 stepType: markdown-note
-defaultWidth: 240
-defaultHeight: 160
 license: free
 aliases:
   - a1b2c3d4-0002-0001-0001-000000000018
