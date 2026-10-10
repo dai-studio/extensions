@@ -25,6 +25,7 @@ form:
     type: text
     placeholder: example.com
   - key: owner
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: Owner
     type: text
     placeholder: Team or person accountable for the organization

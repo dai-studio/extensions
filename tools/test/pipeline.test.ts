@@ -113,6 +113,18 @@ test('rejects patterns referencing unknown types', async () => {
   assert.match((await validatePatterns(repo, types)).join('\n'), /does not exist/);
 });
 
+test('patterns may put SubProcess-declared types on a bpmn:task (Task/SubProcess are interchangeable)', async () => {
+  const repo = structuredClone(loadRepo());
+  const p = repo.patterns.find(x => x.xml.includes('dai:type="dai.types.azure.storage-account"'))!;
+  p.xml = p.xml.replace('dai:type="dai.types.azure.storage-account"', 'dai:type="dai.types.azure.resource-group"');
+  const { types } = validateRepo(repo);
+  assert.deepEqual(await validatePatterns(repo, types), []);
+
+  // A non-task-like type on a task is still an error.
+  p.xml = p.xml.replace('dai:type="dai.types.azure.resource-group"', 'dai:type="dai.types.bpmn.start-event"');
+  assert.match((await validatePatterns(repo, types)).join('\n'), /is bpmn:Task but dai\.types\.bpmn\.start-event is bpmn:StartEvent/);
+});
+
 // ── compatibility ───────────────────────────────────────────────────────────
 
 test('compat: additive changes pass, destructive ones fail', () => {

@@ -21,6 +21,7 @@ form:
     type: text
     placeholder: "123456789012"
   - key: purpose
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: Purpose
     type: select
     options:
@@ -35,6 +36,7 @@ form:
       - value: other
         label: Other
   - key: owner
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: Owner
     type: text
     placeholder: Team or person accountable for this folder

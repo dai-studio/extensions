@@ -33,7 +33,7 @@
     {
       "name": "TaskExtension",
       "isAbstract": true,
-      "extends": ["bpmn:Task"],
+      "extends": ["bpmn:Task", "bpmn:SubProcess"],
       "properties": [
         { "name": "stepType", "isAttr": true, "type": "String" },
         { "name": "notes",    "isAttr": true, "type": "String" },
@@ -143,23 +143,8 @@
         { "name": "enforcementLevel", "isAttr": true, "type": "String" },
         { "name": "markdown",         "isAttr": true, "type": "String" },
         { "name": "agent_ignore",     "isAttr": true, "type": "String" },
-        { "name": "zoom",             "isAttr": true, "type": "String" }
-      ]
-    },
-    {
-      "name": "SubProcessExtension",
-      "isAbstract": true,
-      "extends": ["bpmn:SubProcess"],
-      "properties": [
-        { "name": "notes", "isAttr": true, "type": "String" }
-      ]
-    },
-    {
-      "name": "AgentExtension",
-      "isAbstract": true,
-      "extends": ["bpmn:SubProcess"],
-      "properties": [
-        { "name": "stepType",      "isAttr": true, "type": "String" },
+        { "name": "zoom",             "isAttr": true, "type": "String" },
+
         { "name": "agentRole",     "isAttr": true, "type": "String" },
         { "name": "defaultModel",  "isAttr": true, "type": "String" },
         { "name": "agentType",     "isAttr": true, "type": "String" },

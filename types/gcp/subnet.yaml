@@ -29,6 +29,7 @@ form:
     type: list
     placeholder: "pods: 10.4.0.0/14"
   - key: purpose
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: Purpose
     type: select
     defaultValue: private

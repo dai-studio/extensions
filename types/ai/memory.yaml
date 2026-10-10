@@ -19,6 +19,7 @@ form:
     type: text
     placeholder: Memory store name
   - key: memoryType
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: Type
     type: select
     options:

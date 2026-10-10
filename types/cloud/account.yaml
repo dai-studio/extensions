@@ -35,6 +35,7 @@ form:
       - value: "sandbox"
         label: "Sandbox"
   - key: owner
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: "Owner"
     type: text
     placeholder: "Team responsible for this account"

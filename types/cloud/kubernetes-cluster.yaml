@@ -22,6 +22,7 @@ form:
     placeholder: "Provider-specific ID, ARN or URI"
     hint: "Fill this in once the resource exists or a provider is chosen."
   - key: version
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: "Kubernetes version"
     type: text
     placeholder: "1.31"

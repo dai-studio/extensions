@@ -24,10 +24,12 @@ form:
     type: text
     placeholder: e.g. H1 2026, Q3–Q4 2025
   - key: theme
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: Theme
     type: text
     placeholder: e.g. Growth, Platform stability
   - key: status
+    storage: field  # pinned: published storage (key is now also a dai: attribute on this element kind)
     label: Status
     type: select
     options:

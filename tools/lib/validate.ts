@@ -89,7 +89,10 @@ export function validateRepo(repo: Repo): { errors: string[]; types: CatalogType
       if (field.type === 'key-value' && storage !== 'properties') errors.push(`${where}: key-value fields must use storage "properties"`);
       if (storage === 'native' && kind !== 'native') errors.push(`${where}: storage "native" is only valid for name/text where ${d.bpmnType} declares them`);
       if (storage === 'attr' && kind !== 'dai-attr') errors.push(`${where}: storage "attr" requires a dai: attribute declared for ${d.bpmnType} (see schema/dai-moddle.json)`);
-      if (storage === 'field' && kind !== 'none' && field.type !== 'key-value') errors.push(`${where}: key is already declared on ${d.bpmnType}; use storage "${inferred}" or another key`);
+      // A dai: attribute key may keep a pinned "field" storage: Task and
+      // SubProcess share their dai: attributes, so keys published as fields on
+      // one kind can now also be attributes — the published storage wins.
+      if (storage === 'field' && kind !== 'none' && kind !== 'dai-attr' && field.type !== 'key-value') errors.push(`${where}: key is already declared on ${d.bpmnType}; use storage "${inferred}" or another key`);
     }
     if (keyValueCount > 1) errors.push(`${f}: at most one key-value field per type`);
 
@@ -209,7 +212,10 @@ export async function validatePatterns(repo: Repo, types: CatalogType[]): Promis
         const t = typeIds.get(typeRef);
         if (!t) errors.push(`${df}: ${el.id} dai:type "${typeRef}" does not exist`);
         else {
-          if (t.bpmnType !== el.$type) errors.push(`${df}: ${el.id} is ${el.$type} but ${t.id} is ${t.bpmnType}`);
+          // Task and SubProcess are interchangeable: the editor makes a typed
+          // element a SubProcess while it has children, a Task otherwise.
+          const sameKind = t.bpmnType === el.$type || (TASKLIKE.has(t.bpmnType) && TASKLIKE.has(el.$type));
+          if (!sameKind) errors.push(`${df}: ${el.id} is ${el.$type} but ${t.id} is ${t.bpmnType}`);
           if (stepType && t.stepType !== stepType) errors.push(`${df}: ${el.id} dai:stepType "${stepType}" disagrees with dai:type ${t.id}`);
         }
       } else if (stepType && !stepTypes.has(stepType)) {
