@@ -1,0 +1,69 @@
+# dai.types.design.typography
+name: "Typography"
+version: 1.0.0
+description: "A typography token or text style: font family, size, weight, line height and letter spacing. Nest text styles inside a type scale or design system. Nest it anywhere: an element applies within its parent."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l3 0" /><path d="M14 20l7 0" /><path d="M6.9 15l6.9 0" /><path d="M10.2 6.3l5.8 13.7" /><path d="M5 20l6 -16l2 0l7 16" /></svg>
+order: 40
+colors:
+  fill: '#FFF1F2'
+  stroke: '#E11D48'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Text style name"
+  - key: tokenName
+    label: "Token name"
+    type: text
+    placeholder: "e.g. --dai-text-md"
+    hint: "CSS custom property or DTCG path."
+  - key: fontFamily
+    label: "Font family"
+    type: text
+    placeholder: "e.g. Inter, system-ui, sans-serif"
+  - key: fontSize
+    label: "Size"
+    type: text
+    placeholder: "e.g. 1rem / 16px"
+  - key: fontWeight
+    label: "Weight"
+    type: text
+    placeholder: "e.g. 400, 600"
+  - key: lineHeight
+    label: "Line height"
+    type: text
+    placeholder: "e.g. 1.5"
+  - key: usage
+    label: "Usage"
+    type: markdown
+    placeholder: "Which content uses this style (headings, body, captions, code)."
+  - key: css
+    label: "CSS"
+    type: css
+    rows: 10
+    example: |-
+      :root {
+        --dai-font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --dai-text-md: 1rem;
+        --dai-text-xl: 1.75rem;
+        --dai-leading: 1.5;
+      }
+
+      .dai-heading {
+        font: 700 var(--dai-text-xl) / 1.2 var(--dai-font-sans);
+        letter-spacing: -0.01em;
+      }
+
+      .dai-body {
+        font: 400 var(--dai-text-md) / var(--dai-leading) var(--dai-font-sans);
+      }
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Licensing, fallbacks and responsive behaviour."

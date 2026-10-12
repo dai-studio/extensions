@@ -1,0 +1,59 @@
+# dai.types.design.motion
+name: "Motion"
+version: 1.0.0
+description: "A motion token: duration, easing or a named transition/animation. Always pair with a reduced-motion fallback. Nest it anywhere: an element applies within its parent."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" /><path d="M15 6l6 6l-6 6" /><path d="M3 8h4" /><path d="M3 16h4" /></svg>
+order: 80
+colors:
+  fill: '#FFF1F2'
+  stroke: '#E11D48'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Motion name"
+  - key: tokenName
+    label: "Token name"
+    type: text
+    placeholder: "e.g. --dai-duration-base"
+    hint: "CSS custom property or DTCG path."
+  - key: value
+    label: "Value"
+    type: text
+    placeholder: "e.g. 200ms or cubic-bezier(0.2, 0, 0, 1)"
+  - key: usage
+    label: "Usage"
+    type: markdown
+    placeholder: "What moves with this token and why."
+  - key: css
+    label: "CSS"
+    type: css
+    rows: 10
+    example: |-
+      :root {
+        --dai-duration-fast: 120ms;
+        --dai-duration-base: 200ms;
+        --dai-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+      }
+
+      @keyframes dai-fade-in {
+        from { opacity: 0; transform: translateY(4px); }
+        to { opacity: 1; transform: none; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Reduced-motion behaviour and performance notes."

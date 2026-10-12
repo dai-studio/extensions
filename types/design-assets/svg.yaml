@@ -1,0 +1,39 @@
+# dai.types.design-assets.svg
+name: "SVG"
+version: 1.0.0
+description: "A reusable SVG asset: icon, illustration or pattern. Nested in a component it is that component's graphic."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 19a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 5h4a6 6 0 0 1 6 6v6" /><path d="M5 7v12h12" /></svg>
+order: 10
+colors:
+  fill: '#F0FDF4'
+  stroke: '#16A34A'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Asset name"
+  - key: svg
+    label: "SVG"
+    type: svg
+    rows: 10
+    example: |-
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Rocket">
+        <title>Rocket</title>
+        <path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" />
+        <path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" />
+        <circle cx="15" cy="9" r="1" />
+      </svg>
+  - key: usage
+    label: "Usage"
+    type: markdown
+    placeholder: "Where it is used, sizes and colour rules."
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Source, author and licence."

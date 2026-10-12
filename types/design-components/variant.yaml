@@ -1,0 +1,51 @@
+# dai.types.design-components.variant
+name: "Variant"
+version: 1.0.0
+description: "A variant of its parent component, e.g. secondary, danger, compact. Nest it inside the component it modifies; its CSS layers on top of the parent."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8v-2a2 2 0 0 0 -2 -2h-8a2 2 0 0 0 -2 2v8a2 2 0 0 0 2 2h2" /></svg>
+order: 20
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Variant name"
+  - key: modifier
+    label: "Modifier"
+    type: text
+    placeholder: "e.g. .dai-button--danger or data-variant=\"danger\""
+  - key: html
+    label: "HTML"
+    type: html
+    rows: 10
+    example: |-
+      <button class="dai-button dai-button--danger" type="button">Delete</button>
+  - key: css
+    label: "CSS"
+    type: css
+    rows: 10
+    example: |-
+      .dai-button--danger {
+        font: 500 1rem / 1.25 var(--dai-font-sans, system-ui, sans-serif);
+        padding: var(--dai-space-2, 0.5rem) var(--dai-space-4, 1rem);
+        border: 0;
+        border-radius: var(--dai-radius-md, 8px);
+        background: var(--dai-color-danger, #dc2626);
+        color: var(--dai-color-primary-contrast, #ffffff);
+      }
+  - key: usage
+    label: "Usage"
+    type: markdown
+    placeholder: "When to choose this variant over the default."
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Differences from the default."

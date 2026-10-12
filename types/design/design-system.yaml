@@ -1,0 +1,99 @@
+# dai.types.design.design-system
+name: "Design System"
+version: 1.0.0
+description: "The root of a design system. Nest themes, tokens, brand, components, layouts and guidance inside it: everything nested here is a definition, and its tokens apply to everything below (the nearest definition wins). Agents should treat it as the source of truth for visual decisions."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></svg>
+order: 10
+colors:
+  fill: '#FFF1F2'
+  stroke: '#E11D48'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Design system name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. 1.0.0"
+  - key: tokenFormat
+    label: "Token format"
+    type: select
+    defaultValue: "css-vars"
+    options:
+      - value: "css-vars"
+        label: "CSS custom properties"
+      - value: "dtcg-json"
+        label: "DTCG JSON"
+      - value: "tailwind"
+        label: "Tailwind config"
+      - value: "scss"
+        label: "SCSS variables"
+  - key: principles
+    label: "Principles"
+    type: markdown
+    placeholder: "The 3–5 ideas that settle design arguments, e.g. \"Clarity over density\"."
+  - key: css
+    label: "Base CSS"
+    type: css
+    rows: 10
+    hint: "Root tokens and base styles shared by everything nested inside."
+    example: |-
+      :root {
+        --dai-color-primary: #2563eb;
+        --dai-color-primary-contrast: #ffffff;
+        --dai-color-surface: #ffffff;
+        --dai-color-surface-alt: #f8fafc;
+        --dai-color-text: #0f172a;
+        --dai-color-text-muted: #475569;
+        --dai-color-border: #e2e8f0;
+        --dai-color-danger: #dc2626;
+        --dai-color-success: #16a34a;
+        --dai-color-warning: #d97706;
+
+        --dai-font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        --dai-font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+        --dai-text-sm: 0.875rem;
+        --dai-text-md: 1rem;
+        --dai-text-lg: 1.25rem;
+        --dai-text-xl: 1.75rem;
+        --dai-leading: 1.5;
+
+        --dai-space-1: 0.25rem;
+        --dai-space-2: 0.5rem;
+        --dai-space-3: 0.75rem;
+        --dai-space-4: 1rem;
+        --dai-space-6: 1.5rem;
+        --dai-space-8: 2rem;
+
+        --dai-radius-sm: 4px;
+        --dai-radius-md: 8px;
+        --dai-radius-lg: 16px;
+
+        --dai-shadow-sm: 0 1px 2px rgb(15 23 42 / 0.08);
+        --dai-shadow-md: 0 4px 12px rgb(15 23 42 / 0.12);
+        --dai-shadow-lg: 0 12px 32px rgb(15 23 42 / 0.18);
+
+        --dai-duration-fast: 120ms;
+        --dai-duration-base: 200ms;
+        --dai-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--dai-font-sans);
+        font-size: var(--dai-text-md);
+        line-height: var(--dai-leading);
+        color: var(--dai-color-text);
+        background: var(--dai-color-surface);
+      }
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Scope, owners, platforms covered and how changes are proposed."

@@ -2,15 +2,36 @@
  * Strict SVG allowlist check for `quickicon` (rendered with {@html} in the
  * editor). CI rejects anything outside the allowlist; the editor additionally
  * re-sanitises with the same allowlist before rendering.
+ *
+ * `checkSvg(svg, EXAMPLE_ALLOWLIST)` checks SVG field `example`s against the
+ * wider example allowlist (text, gradients, fragment-only `href`, …).
  */
 import { Parser } from 'saxen';
-import allowlist from '../../schema/svg-allowlist.json' with { type: 'json' };
+import iconAllowlist from '../../schema/svg-allowlist.json' with { type: 'json' };
+import exampleAllowlist from '../../schema/svg-example-allowlist.json' with { type: 'json' };
 
-const ELEMENTS = new Set(allowlist.elements);
-const ATTRIBUTES = new Set(allowlist.attributes);
-const FORBIDDEN = allowlist.forbiddenValuePatterns.map(p => new RegExp(p, 'i'));
+export interface SvgAllowlist {
+  maxBytes: number;
+  elements: string[];
+  attributes: string[];
+  xmlnsValue: string;
+  forbiddenValuePatterns: string[];
+  /** Attributes whose value must be a same-document fragment (`#id`). */
+  fragmentOnlyAttributes?: string[];
+}
 
-export function checkSvg(svg: string): string[] {
+/** Elements whose text content is allowed (when the allowlist includes them). */
+const TEXT_ELEMENTS = new Set(['text', 'tspan', 'title', 'desc']);
+
+export const ICON_ALLOWLIST: SvgAllowlist = iconAllowlist;
+export const EXAMPLE_ALLOWLIST: SvgAllowlist = exampleAllowlist;
+
+export function checkSvg(svg: string, allowlist: SvgAllowlist = ICON_ALLOWLIST): string[] {
+  const elements = new Set(allowlist.elements);
+  const attributes = new Set(allowlist.attributes);
+  const forbidden = allowlist.forbiddenValuePatterns.map(p => new RegExp(p, 'i'));
+  const fragmentOnly = new Set(allowlist.fragmentOnlyAttributes ?? []);
+
   const errors: string[] = [];
   const bytes = Buffer.byteLength(svg, 'utf8');
   if (bytes > allowlist.maxBytes) errors.push(`SVG is ${bytes} bytes (max ${allowlist.maxBytes})`);
@@ -18,6 +39,7 @@ export function checkSvg(svg: string): string[] {
 
   let depth = 0;
   let roots = 0;
+  const stack: string[] = [];
   const parser = new Parser();
 
   // saxen fires closeTag for self-closing tags too, so depth is balanced by
@@ -27,25 +49,34 @@ export function checkSvg(svg: string): string[] {
       roots++;
       if (name !== 'svg') errors.push(`root element must be <svg>, got <${name}>`);
     }
-    if (!ELEMENTS.has(name)) errors.push(`element <${name}> is not allowed`);
+    if (!elements.has(name)) errors.push(`element <${name}> is not allowed`);
     const attrs = getAttrs();
     for (const [attr, value] of Object.entries(attrs)) {
-      if (!ATTRIBUTES.has(attr)) {
+      if (!attributes.has(attr)) {
         errors.push(`attribute "${attr}" on <${name}> is not allowed`);
         continue;
       }
       if (attr === 'xmlns' && value !== allowlist.xmlnsValue) {
         errors.push(`xmlns must be ${allowlist.xmlnsValue}`);
       }
-      for (const re of FORBIDDEN) {
+      if (fragmentOnly.has(attr) && !/^#[A-Za-z][\w.-]*$/.test(value)) {
+        errors.push(`attribute "${attr}" on <${name}> must be a #fragment`);
+      }
+      for (const re of forbidden) {
         if (re.test(value)) errors.push(`attribute "${attr}" on <${name}> has a forbidden value`);
       }
     }
+    stack.push(name);
     depth++;
   });
-  parser.on('closeTag', () => { depth--; });
+  parser.on('closeTag', () => { depth--; stack.pop(); });
   parser.on('text', (text: string) => {
-    if (text.trim()) errors.push('text content is not allowed in SVG');
+    if (!text.trim()) return;
+    const parent = stack[stack.length - 1];
+    // Only text-bearing elements may hold text, and only if the allowlist has them.
+    if (!(parent && TEXT_ELEMENTS.has(parent) && elements.has(parent))) {
+      errors.push('text content is not allowed in SVG');
+    }
   });
   parser.on('cdata', () => { errors.push('CDATA is not allowed in SVG'); });
   parser.on('comment', () => { errors.push('comments are not allowed in SVG'); });

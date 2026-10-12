@@ -1,0 +1,85 @@
+# dai.types.design-components.navigation
+name: "Navigation"
+version: 1.0.0
+description: "Navigation: top bar, sidebar, tabs, breadcrumbs or pagination. Nest its items or a breakpoint (mobile behaviour) inside it."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16" /><path d="M4 12h16" /><path d="M4 18h16" /></svg>
+order: 80
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Navigation name"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "draft"
+    options:
+      - value: "draft"
+        label: "Draft"
+      - value: "beta"
+        label: "Beta"
+      - value: "stable"
+        label: "Stable"
+      - value: "deprecated"
+        label: "Deprecated"
+  - key: html
+    label: "HTML"
+    type: html
+    rows: 10
+    example: |-
+      <nav class="dai-nav" aria-label="Main">
+        <a class="dai-nav__brand" href="#">Acme</a>
+        <ul class="dai-nav__list">
+          <li><a class="dai-nav__link" href="#" aria-current="page">Dashboard</a></li>
+          <li><a class="dai-nav__link" href="#">Projects</a></li>
+          <li><a class="dai-nav__link" href="#">Settings</a></li>
+        </ul>
+      </nav>
+  - key: css
+    label: "CSS"
+    type: css
+    rows: 10
+    example: |-
+      .dai-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--dai-space-6, 1.5rem);
+        padding: var(--dai-space-3, 0.75rem) var(--dai-space-6, 1.5rem);
+        border-bottom: 1px solid var(--dai-color-border, #e2e8f0);
+        font-family: var(--dai-font-sans, system-ui, sans-serif);
+      }
+
+      .dai-nav__brand { font-weight: 700; color: var(--dai-color-text, #0f172a); text-decoration: none; }
+      .dai-nav__list { display: flex; gap: var(--dai-space-1, 0.25rem); margin: 0; padding: 0; list-style: none; }
+
+      .dai-nav__link {
+        display: block;
+        padding: var(--dai-space-2, 0.5rem) var(--dai-space-3, 0.75rem);
+        border-radius: var(--dai-radius-md, 8px);
+        color: var(--dai-color-text-muted, #475569);
+        text-decoration: none;
+      }
+
+      .dai-nav__link:hover { background: var(--dai-color-surface-alt, #f8fafc); }
+      .dai-nav__link[aria-current="page"] { color: var(--dai-color-primary, #2563eb); font-weight: 600; }
+  - key: accessibility
+    label: "Accessibility"
+    type: markdown
+    placeholder: "Role, keyboard behaviour, ARIA attributes, focus handling and contrast requirements."
+  - key: usage
+    label: "Usage"
+    type: markdown
+    placeholder: "When to use it, when not to, and do/don't guidance."
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Open questions, links to code and design files."

@@ -1,0 +1,76 @@
+# dai.types.design-guidance.do-dont
+name: "Do / Don't"
+version: 1.0.0
+description: "A paired good and bad example that shows a rule in practice. It applies to whatever it is nested in (at the root: the whole document)."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l3 3l5 -6" /><path d="M14 8l6 6" /><path d="M20 8l-6 6" /></svg>
+order: 50
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Do / don't name"
+  - key: instruction
+    label: "Instruction"
+    type: markdown
+    placeholder: "What the example teaches."
+  - key: priority
+    label: "Priority"
+    type: select
+    defaultValue: "should"
+    hint: "RFC 2119 strength. Agents treat \"must\" as non-negotiable."
+    options:
+      - value: "must"
+        label: "Must"
+      - value: "should"
+        label: "Should"
+      - value: "may"
+        label: "May"
+  - key: doHtml
+    label: "Do"
+    type: html
+    rows: 10
+    example: |-
+      <button class="dai-button" type="button">Save changes</button>
+  - key: dontHtml
+    label: "Don't"
+    type: html
+    rows: 10
+    example: |-
+      <div class="fake-button">Click here</div>
+  - key: css
+    label: "CSS"
+    type: css
+    rows: 10
+    example: |-
+      .dai-button {
+        font: 500 1rem / 1.25 var(--dai-font-sans, system-ui, sans-serif);
+        padding: var(--dai-space-2, 0.5rem) var(--dai-space-4, 1rem);
+        border: 0;
+        border-radius: var(--dai-radius-md, 8px);
+        background: var(--dai-color-primary, #2563eb);
+        color: var(--dai-color-primary-contrast, #ffffff);
+      }
+
+      .fake-button {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        color: var(--dai-color-text-muted, #475569);
+        background: var(--dai-color-surface-alt, #f8fafc);
+      }
+  - key: rationale
+    label: "Rationale"
+    type: textarea
+    placeholder: "Why this matters. Helps agents apply it to cases it does not spell out."
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Related rules."

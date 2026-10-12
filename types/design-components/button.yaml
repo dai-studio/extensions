@@ -1,0 +1,83 @@
+# dai.types.design-components.button
+name: "Button"
+version: 1.0.0
+description: "A button that triggers an action. Nest variants (primary, secondary, danger) and states (loading, disabled) inside it."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4" /><path d="M9 12h6" /></svg>
+order: 40
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Button name"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "draft"
+    options:
+      - value: "draft"
+        label: "Draft"
+      - value: "beta"
+        label: "Beta"
+      - value: "stable"
+        label: "Stable"
+      - value: "deprecated"
+        label: "Deprecated"
+  - key: html
+    label: "HTML"
+    type: html
+    rows: 10
+    example: |-
+      <button class="dai-button" type="button">Save changes</button>
+      <button class="dai-button dai-button--secondary" type="button">Cancel</button>
+      <button class="dai-button" type="button" disabled>Disabled</button>
+  - key: css
+    label: "CSS"
+    type: css
+    rows: 10
+    example: |-
+      .dai-button {
+        font: 500 var(--dai-text-md, 1rem) / 1.25 var(--dai-font-sans, system-ui, sans-serif);
+        padding: var(--dai-space-2, 0.5rem) var(--dai-space-4, 1rem);
+        border: 1px solid transparent;
+        border-radius: var(--dai-radius-md, 8px);
+        background: var(--dai-color-primary, #2563eb);
+        color: var(--dai-color-primary-contrast, #ffffff);
+        cursor: pointer;
+        transition: filter var(--dai-duration-fast, 120ms) var(--dai-ease-standard, ease);
+      }
+
+      .dai-button:hover { filter: brightness(0.94); }
+
+      .dai-button:focus-visible {
+        outline: 2px solid var(--dai-color-primary, #2563eb);
+        outline-offset: 2px;
+      }
+
+      .dai-button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+      .dai-button--secondary {
+        background: var(--dai-color-surface, #ffffff);
+        color: var(--dai-color-text, #0f172a);
+        border-color: var(--dai-color-border, #e2e8f0);
+      }
+  - key: accessibility
+    label: "Accessibility"
+    type: markdown
+    placeholder: "Role, keyboard behaviour, ARIA attributes, focus handling and contrast requirements."
+  - key: usage
+    label: "Usage"
+    type: markdown
+    placeholder: "When to use it, when not to, and do/don't guidance."
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Open questions, links to code and design files."

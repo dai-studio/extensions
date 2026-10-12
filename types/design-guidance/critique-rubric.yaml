@@ -1,0 +1,61 @@
+# dai.types.design-guidance.critique-rubric
+name: "Critique Rubric"
+version: 1.0.0
+description: "Criteria an agent or reviewer uses to score design work, e.g. hierarchy, consistency, accessibility, copy. It reviews whatever it is nested in."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 11.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 17.5l1.5 1.5l2.5 -2.5" /><path d="M11 6l9 0" /><path d="M11 12l9 0" /><path d="M11 18l9 0" /></svg>
+order: 60
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Rubric name"
+  - key: instruction
+    label: "Instruction"
+    type: markdown
+    placeholder: "How to run the critique and what output to produce."
+  - key: priority
+    label: "Priority"
+    type: select
+    defaultValue: "should"
+    hint: "RFC 2119 strength. Agents treat \"must\" as non-negotiable."
+    options:
+      - value: "must"
+        label: "Must"
+      - value: "should"
+        label: "Should"
+      - value: "may"
+        label: "May"
+  - key: criteria
+    label: "Criteria"
+    type: list
+    placeholder: "e.g. Visual hierarchy guides the eye to the primary action"
+  - key: scale
+    label: "Scale"
+    type: select
+    defaultValue: "1-5"
+    options:
+      - value: "pass-fail"
+        label: "Pass / fail"
+      - value: "1-3"
+        label: "1–3"
+      - value: "1-5"
+        label: "1–5"
+      - value: "1-10"
+        label: "1–10"
+  - key: rationale
+    label: "Rationale"
+    type: textarea
+    placeholder: "Why this matters. Helps agents apply it to cases it does not spell out."
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Sources, owners and history."

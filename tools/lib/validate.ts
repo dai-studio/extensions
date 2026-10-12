@@ -8,6 +8,7 @@ import typeCategorySchema from '../../schema/type-category.schema.json' with { t
 import patternSchema from '../../schema/pattern.schema.json' with { type: 'json' };
 import patternCategorySchema from '../../schema/pattern-category.schema.json' with { type: 'json' };
 import { checkSvg } from './svg.ts';
+import { checkExample, EXAMPLE_FIELD_TYPES, MAX_TYPE_EXAMPLE_BYTES } from './embed.ts';
 import { declaredKind, moddle } from './moddle.ts';
 import { buildType, inferStorage, type CatalogType } from './catalog.ts';
 import { rel, type Repo } from './repo.ts';
@@ -115,8 +116,17 @@ export function validateRepo(repo: Repo): { errors: string[]; types: CatalogType
 
     const keys = new Set<string>();
     let keyValueCount = 0;
+    let exampleBytes = 0;
     for (const field of d.form as Record<string, any>[]) {
       const where = `${f}: form.${field.key}`;
+      if (field.example !== undefined) {
+        if (!EXAMPLE_FIELD_TYPES.has(field.type)) {
+          errors.push(`${where}: example is only valid on ${[...EXAMPLE_FIELD_TYPES].join(', ')} fields`);
+        } else {
+          for (const e of checkExample(field.type, field.example)) errors.push(`${where}: example: ${e}`);
+          exampleBytes += Buffer.byteLength(field.example, 'utf8');
+        }
+      }
       if (keys.has(field.key)) errors.push(`${where}: duplicate key`);
       keys.add(field.key);
       if (field.type === 'select' && !(field.options?.length > 0)) errors.push(`${where}: select fields need options`);
@@ -140,6 +150,7 @@ export function validateRepo(repo: Repo): { errors: string[]; types: CatalogType
       if (storage === 'field' && kind !== 'none' && kind !== 'dai-attr' && field.type !== 'key-value') errors.push(`${where}: key is already declared on ${d.bpmnType}; use storage "${inferred}" or another key`);
     }
     if (keyValueCount > 1) errors.push(`${f}: at most one key-value field per type`);
+    if (exampleBytes > MAX_TYPE_EXAMPLE_BYTES) errors.push(`${f}: examples total ${exampleBytes} bytes (max ${MAX_TYPE_EXAMPLE_BYTES})`);
 
     if (errors.length === before) validTypes.push(buildType(t));
   }

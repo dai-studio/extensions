@@ -67,7 +67,13 @@
         "label": { "type": "string", "minLength": 1, "maxLength": 80 },
         "type": {
           "type": "string",
-          "enum": ["text", "textarea", "code", "select", "number", "range", "boolean", "model-selector", "key-value", "list", "markdown"]
+          "enum": ["text", "textarea", "code", "select", "number", "range", "boolean", "model-selector", "key-value", "list", "markdown", "html", "css", "svg"]
+        },
+        "example": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16384,
+          "description": "Example content copied into the element when it is created (html, css, svg, code, markdown fields only). Checked against the embed rules in tools/lib/embed.ts."
         },
         "storage": { "type": "string", "enum": ["native", "attr", "field", "properties"] },
         "placeholder": { "type": "string", "maxLength": 200 },

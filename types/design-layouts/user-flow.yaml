@@ -1,0 +1,40 @@
+# dai.types.design-layouts.user-flow
+name: "User Flow"
+version: 1.0.0
+description: "A user journey through screens toward a goal. Nest screens inside it and connect them with sequence flows in the order a user moves through them."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2" /><circle cx="19" cy="18" r="2" /><rect x="10" y="10" width="4" height="4" rx="1" /><path d="M7 6h3a2 2 0 0 1 2 2v2" /><path d="M12 14v2a2 2 0 0 0 2 2h3" /></svg>
+order: 40
+colors:
+  fill: '#ECFEFF'
+  stroke: '#0891B2'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "User flow name"
+  - key: actor
+    label: "Actor"
+    type: text
+    placeholder: "Who is doing this, e.g. a new admin"
+  - key: entry
+    label: "Entry point"
+    type: text
+    placeholder: "Where the flow starts"
+  - key: outcome
+    label: "Outcome"
+    type: text
+    placeholder: "What success looks like"
+  - key: usage
+    label: "Usage"
+    type: markdown
+    placeholder: "Edge cases, drop-off points and alternatives."
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Metrics and research links."

@@ -1,0 +1,21 @@
+{
+  "$comment": "Allowlist for SVG field `example`s (html/css/svg embeds). Previews render inside a sandboxed iframe with a no-network CSP; this list is defence in depth. Superset of svg-allowlist.json.",
+  "maxBytes": 16384,
+  "elements": [
+    "svg", "g", "path", "circle", "ellipse", "rect", "line", "polyline", "polygon",
+    "text", "tspan", "defs", "linearGradient", "radialGradient", "stop", "clipPath", "mask", "use", "symbol", "title", "desc"
+  ],
+  "attributes": [
+    "xmlns", "width", "height", "viewBox", "preserveAspectRatio", "role", "aria-label", "aria-hidden",
+    "fill", "fill-opacity", "fill-rule", "clip-rule", "clip-path", "mask",
+    "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin", "stroke-opacity", "stroke-dasharray", "stroke-miterlimit",
+    "opacity", "transform", "id",
+    "d", "cx", "cy", "r", "rx", "ry", "x", "y", "x1", "y1", "x2", "y2", "fx", "fy", "points",
+    "offset", "stop-color", "stop-opacity", "gradientUnits", "gradientTransform",
+    "font-family", "font-size", "font-weight", "text-anchor", "dominant-baseline", "letter-spacing",
+    "href"
+  ],
+  "xmlnsValue": "http://www.w3.org/2000/svg",
+  "forbiddenValuePatterns": ["url\\s*\\((?!\\s*#)", "javascript:", "data:", "expression\\s*\\(", "[<>]"],
+  "fragmentOnlyAttributes": ["href"]
+}

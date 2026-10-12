@@ -1,0 +1,44 @@
+# dai.types.design-guidance.design-principle
+name: "Design Principle"
+version: 1.0.0
+description: "A principle that settles design trade-offs, e.g. \"Clarity over density\". It applies to whatever it is nested in (at the root: the whole document)."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l2 -6l6 -2l-2 6l-6 2" /><circle cx="12" cy="12" r="9" /></svg>
+order: 20
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Principle name"
+  - key: instruction
+    label: "Instruction"
+    type: markdown
+    placeholder: "State the principle and how to apply it when choices conflict."
+  - key: priority
+    label: "Priority"
+    type: select
+    defaultValue: "should"
+    hint: "RFC 2119 strength. Agents treat \"must\" as non-negotiable."
+    options:
+      - value: "must"
+        label: "Must"
+      - value: "should"
+        label: "Should"
+      - value: "may"
+        label: "May"
+  - key: rationale
+    label: "Rationale"
+    type: textarea
+    placeholder: "Why this matters. Helps agents apply it to cases it does not spell out."
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Sources, owners and history."

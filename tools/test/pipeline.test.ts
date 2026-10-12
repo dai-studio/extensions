@@ -6,7 +6,8 @@ import { canonicalJson } from '../lib/canonical.ts';
 import {
   generateKeyPair, importPrivateKey, importPublicKey, signObject, verifyObject, verifyString,
 } from '../lib/crypto.ts';
-import { checkSvg } from '../lib/svg.ts';
+import { checkSvg, EXAMPLE_ALLOWLIST } from '../lib/svg.ts';
+import { checkCss, checkHtml } from '../lib/embed.ts';
 import { checkCompat, removedPatterns, removedTypes, renamedTypes } from '../lib/compat.ts';
 import { validatePatterns, validateRepo } from '../lib/validate.ts';
 import { loadRepo, ROOT, type Repo } from '../lib/repo.ts';
@@ -159,6 +160,96 @@ test('rejects off-palette type colours and diverging group palettes', () => {
     const g = ((r.typeCategories.gcp.data as any).groups as any[]).find(x => x.key === 'compute');
     g.colors = { fill: '#E8F0FE', stroke: '#1A73E8' };
   }).join('\n'), /group "compute" colors .* differ from/);
+});
+
+// ── design types + embeds ───────────────────────────────────────────────────
+
+const DESIGN = ['design', 'design-brand', 'design-components', 'design-layouts', 'design-guidance', 'design-assets'];
+
+test('design categories live in the design view and their types are plain Tasks', () => {
+  const repo = loadRepo();
+  for (const cat of DESIGN) {
+    assert.equal((repo.typeCategories[cat]?.data as any)?.view, 'design', `${cat} has view: design`);
+  }
+  const design = repo.types.filter(t => DESIGN.includes(t.category));
+  assert.equal(design.length, 38);
+  for (const t of design) {
+    const d = t.data as any;
+    assert.equal(d.bpmnType, 'bpmn:Task', `${t.id} is a bpmn:Task`);
+    assert.equal(d.isExpanded, undefined, `${t.id} has no isExpanded`);
+  }
+});
+
+test('design components ship html + css examples; guidance carries instruction, priority, rationale', () => {
+  const repo = loadRepo();
+  const field = (t: Repo['types'][number], key: string) => ((t.data as any).form as any[]).find(f => f.key === key);
+  for (const t of repo.types.filter(x => x.category === 'design-components')) {
+    assert.equal(field(t, 'html')?.type, 'html', `${t.id} html field`);
+    assert.ok(field(t, 'html')?.example, `${t.id} html example`);
+    assert.equal(field(t, 'css')?.type, 'css', `${t.id} css field`);
+    assert.ok(field(t, 'css')?.example, `${t.id} css example`);
+  }
+  for (const t of repo.types.filter(x => x.category === 'design-guidance' && x.leaf !== 'agent-role')) {
+    assert.equal(field(t, 'instruction')?.type, 'markdown', `${t.id} instruction`);
+    if (t.leaf !== 'design-brief') assert.equal(field(t, 'priority')?.type, 'select', `${t.id} priority`);
+    assert.ok(field(t, 'rationale'), `${t.id} rationale`);
+  }
+  // Embed fields store as <dai:field> bodies.
+  const css = buildType(typeById(repo, 'dai.types.design-components.button')).form.find(f => f.key === 'css')!;
+  assert.equal(css.storage, 'field');
+});
+
+test('embed examples: accepted when safe', () => {
+  assert.deepEqual(checkHtml('<button class="b" type="button" aria-label="x">Go</button><a href="#top">Top</a><style>.b{color:red}</style>'), []);
+  assert.deepEqual(checkCss('.a{background:url(#grad);color:var(--x, #fff)} @keyframes s{to{opacity:1}}'), []);
+  assert.deepEqual(checkSvg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><title>T</title><defs><linearGradient id="g"><stop offset="0" stop-color="#fff" /></linearGradient></defs><rect fill="url(#g)" width="10" height="10" /><use href="#g" /><text x="1" y="9">Hi</text></svg>', EXAMPLE_ALLOWLIST), []);
+});
+
+test('embed examples: unsafe html, css and svg are rejected', () => {
+  const html = [
+    '<script>alert(1)</script>',
+    '<img src="x" onerror="alert(1)">',
+    '<a href="javascript:alert(1)">x</a>',
+    '<img src="https://evil.example/p.gif">',
+    '<img src="//evil.example/p.gif">',
+    '<iframe srcdoc="x"></iframe>',
+    '<link rel="stylesheet" href="a.css">',
+    '<form action="/x"></form>',
+    '<div style="background:url(https://evil.example)"></div>',
+    '<style>@import "x.css";</style>',
+    '<!-- hidden -->',
+  ];
+  for (const h of html) assert.notDeepEqual(checkHtml(h), [], h);
+  const css = ['@import url(x.css);', '.a{background:url(https://e.x/a.png)}', '.a{background:url(data:image/png;base64,AA)}', '.a{width:expression(alert(1))}', '.a{behavior:url(x.htc)}', '</style><script>', '@font-face{font-family:x;src:local(x)}'];
+  for (const c of css) assert.notDeepEqual(checkCss(c), [], c);
+  const svg = [
+    '<svg xmlns="http://www.w3.org/2000/svg"><script>1</script></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg"><use href="https://e.x/s.svg#a" /></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg"><rect fill="url(https://e.x)" /></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg"><foreignObject /></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg" onload="x()"></svg>',
+    '<svg xmlns="http://www.w3.org/2000/svg"><g>loose text</g></svg>',
+  ];
+  for (const s of svg) assert.notDeepEqual(checkSvg(s, EXAMPLE_ALLOWLIST), [], s);
+  // Quickicons keep the strict allowlist: no text, no url(#…).
+  assert.notDeepEqual(checkSvg('<svg xmlns="http://www.w3.org/2000/svg"><text>x</text></svg>'), []);
+});
+
+test('rejects misplaced, unsafe and oversized examples', () => {
+  const button = 'dai.types.design-components.button';
+  const form = (r: Repo) => (typeById(r, button).data.form as any[]);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'status').example = 'x'; }).join('\n'), /example is only valid on/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'html').example = '<script>x</script>'; }).join('\n'), /form\.html: example: <script> is not allowed/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'css').example = '@import "x";'; }).join('\n'), /form\.css: example: @import/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'html').example = 'x'.repeat(16385); }).join('\n'), /must NOT have more than 16384 characters/);
+  assert.match(mutate(r => {
+    const big = '.a{}'.repeat(4000);
+    for (const k of ['html', 'css', 'usage', 'accessibility']) {
+      const f = form(r).find(x => x.key === k);
+      f.example = k === 'html' ? '<p>' + 'x'.repeat(15000) + '</p>' : big;
+    }
+  }).join('\n'), /examples total \d+ bytes \(max 49152\)/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'html').type = 'nope'; }).join('\n'), /must be equal to one of the allowed values/);
 });
 
 test('rejects patterns referencing unknown types', async () => {

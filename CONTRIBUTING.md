@@ -51,6 +51,46 @@ After a type is published, a field's storage can never change. If a later change
 editor's schema would change the inferred value, CI tells you to set the original value
 explicitly.
 
+### Embed fields (`html`, `css`, `svg`) and `example`
+
+`html`, `css` and `svg` fields hold markup the editor previews inside a sandboxed iframe
+(no scripts, no network). A field of type `html`, `css`, `svg`, `code` or `markdown` may set
+`example` (16 KB max; 48 KB per type). The editor copies it into the element when the element
+is created, so it is saved in the .dai file and agents can read it.
+
+```yaml
+  - key: css
+    label: CSS
+    type: css
+    example: |-
+      .dai-button { background: var(--dai-color-primary, #2563eb); }
+```
+
+CI rejects examples that could run code or reach the network (`tools/lib/embed.ts`):
+
+- **HTML**: no `script iframe frame object embed applet link meta base portal`, no `on*`
+  handlers, `srcdoc`, `action`/`formaction`, comments, or `src`/`href` with a scheme or `//`
+  (use `#fragment` or relative values). `style` attributes and `<style>` blocks follow the CSS rules.
+- **CSS**: no `@import`, `@font-face` sources, `expression()`, `behavior:`, `-moz-binding`,
+  `javascript:` or `</`; `url()` may only point at `#fragment`.
+- **SVG**: `schema/svg-example-allowlist.json` (the quickicon list plus text, gradients,
+  `defs`, `clipPath`, `mask`, `symbol`, `use`, `title`, `desc`); `href` and `url()` must be `#fragment`.
+
+### Design types
+
+The `design-*` categories form the paid **Design** view. Every Design type is a `bpmn:Task`.
+Any type can nest in any other, and the nesting carries the meaning:
+
+- **Scope**: an element applies within its parent. Guidance applies to what it is nested in.
+- **Cascade**: tokens nested higher up apply below them; the nearest wins.
+- **Parts**: children of a component or layout are its parts.
+- **Modifiers**: `variant` and `state` children modify their parent.
+- **Definition vs usage**: anything under a `design-system` is a definition. A component
+  nested elsewhere is a usage of the definition with the same type and name.
+
+Example CSS uses the `--dai-*` custom properties defined by the Foundations examples, with a
+fallback value (`var(--dai-color-primary, #2563eb)`) so each preview renders on its own.
+
 ## Add a pattern
 
 1. Create `patterns/<category>/<leaf>.yaml`:
