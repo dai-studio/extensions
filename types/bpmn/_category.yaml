@@ -1,4 +1,4 @@
-label: BPMN
+label: "Workflow (BPMN)"
 order: 0
 columns: 3
 view: basic
