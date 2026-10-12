@@ -40,8 +40,19 @@ export function validateRepo(repo: Repo): { errors: string[]; types: CatalogType
   const errors = [...repo.errors];
 
   // ── categories ─────────────────────────────────────────────────────────────
-  for (const [, cat] of Object.entries(repo.typeCategories)) {
-    errors.push(...schemaErrors(cat.file, validateTypeCategorySchema, cat.data));
+  /** Declared group keys per type category (only categories with `groups`). */
+  const groupKeys = new Map<string, Set<string>>();
+  for (const [key, cat] of Object.entries(repo.typeCategories)) {
+    const errs = schemaErrors(cat.file, validateTypeCategorySchema, cat.data);
+    errors.push(...errs);
+    const groups = (cat.data as Record<string, any>)?.groups;
+    if (errs.length || !Array.isArray(groups)) continue;
+    const seen = new Set<string>();
+    for (const g of groups) {
+      if (seen.has(g.key)) errors.push(`${rel(cat.file)}: duplicate group key "${g.key}"`);
+      seen.add(g.key);
+    }
+    groupKeys.set(key, seen);
   }
   for (const [, cat] of Object.entries(repo.patternCategories)) {
     errors.push(...schemaErrors(cat.file, validatePatternCategorySchema, cat.data));
@@ -67,6 +78,15 @@ export function validateRepo(repo: Repo): { errors: string[]; types: CatalogType
     if (d.isExpanded !== undefined && d.bpmnType !== 'bpmn:SubProcess') errors.push(`${f}: isExpanded is only valid on bpmn:SubProcess`);
     if (d.quickicon) for (const e of checkSvg(d.quickicon)) errors.push(`${f}: quickicon: ${e}`);
     if (d.replacedBy === t.id) errors.push(`${f}: replacedBy cannot point at itself`);
+
+    // Subcategory: required in categories that declare groups, else forbidden.
+    const catGroups = groupKeys.get(t.category);
+    if (catGroups) {
+      if (!d.group) errors.push(`${f}: group is required (category "${t.category}" declares groups: ${[...catGroups].join(', ')})`);
+      else if (!catGroups.has(d.group)) errors.push(`${f}: unknown group "${d.group}" (category "${t.category}" declares: ${[...catGroups].join(', ')})`);
+    } else if (d.group) {
+      errors.push(`${f}: group "${d.group}" set but category "${t.category}" declares no groups`);
+    }
 
     const keys = new Set<string>();
     let keyValueCount = 0;

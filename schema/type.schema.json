@@ -14,6 +14,7 @@
     "quickicon": { "type": "string", "minLength": 1 },
     "iconClass": { "type": "string", "pattern": "^bpmn-icon-[a-z0-9-]+$" },
     "order": { "type": "integer", "minimum": 0, "maximum": 10000 },
+    "group": { "type": "string", "pattern": "^[a-z0-9-]+$", "maxLength": 32, "description": "Subcategory key within the category; must be one of the category's `groups`." },
     "colors": {
       "type": "object",
       "additionalProperties": false,

@@ -1,3 +1,22 @@
 label: Azure
 order: 70
 view: cloud
+groups:
+  - key: hierarchy
+    label: "Hierarchy"
+  - key: compute
+    label: "Compute"
+  - key: networking
+    label: "Networking"
+  - key: storage
+    label: "Storage"
+  - key: database
+    label: "Database"
+  - key: security
+    label: "Security & Identity"
+  - key: integration
+    label: "Integration & Messaging"
+  - key: monitoring
+    label: "Monitoring & Logging"
+  - key: ai
+    label: "AI / ML"

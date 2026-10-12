@@ -9,6 +9,20 @@
     "label": { "type": "string", "minLength": 1, "maxLength": 40 },
     "order": { "type": "integer", "minimum": 0, "maximum": 10000 },
     "columns": { "type": "integer", "minimum": 1, "maximum": 8 },
-    "view": { "type": "string", "pattern": "^[a-z0-9-]+$", "maxLength": 32, "description": "Types overlay view this category appears in (basic, cloud, …). Defaults to basic." }
+    "view": { "type": "string", "pattern": "^[a-z0-9-]+$", "maxLength": 32, "description": "Types overlay view this category appears in (basic, cloud, …). Defaults to basic." },
+    "groups": {
+      "type": "array",
+      "maxItems": 20,
+      "description": "Named subcategories, in display order. When present, every type in the category must declare one of these keys as its `group`.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "label"],
+        "properties": {
+          "key": { "type": "string", "pattern": "^[a-z0-9-]+$", "maxLength": 32 },
+          "label": { "type": "string", "minLength": 1, "maxLength": 40 }
+        }
+      }
+    }
   }
 }

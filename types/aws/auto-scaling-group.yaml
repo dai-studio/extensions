@@ -5,6 +5,7 @@ description: An EC2 Auto Scaling group that keeps a fleet of instances at the de
 icon: ▢
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></svg>
 order: 70
+group: compute
 colors:
   fill: '#FEF5ED'
   stroke: '#ED7100'

@@ -106,6 +106,33 @@ test('rejects nulls, bad storage, colliding keys, duplicate stepTypes and aliase
   assert.match(mutate(r => { typeById(r, 'dai.types.business.objective').data.colors = { fill: 'red;x', stroke: '#000' }; }).join('\n'), /must match pattern/);
 });
 
+test('cloud types belong to their category\'s named groups', () => {
+  const repo = loadRepo();
+  const cloud = ['cloud', 'aws', 'azure', 'gcp', 'cloudflare'];
+  for (const cat of cloud) {
+    const groups = (repo.typeCategories[cat].data as any).groups as { key: string; label: string }[];
+    assert.ok(groups?.length > 0, `${cat} declares groups`);
+    const keys = new Set(groups.map(g => g.key));
+    for (const t of repo.types.filter(x => x.category === cat)) {
+      assert.ok(keys.has((t.data as any).group), `${t.id} has a declared group`);
+    }
+  }
+  assert.equal(buildType(typeById(repo, 'dai.types.aws.ec2-instance')).group, 'compute');
+  assert.equal(buildType(typeById(repo, 'dai.types.aws.account')).group, 'hierarchy');
+});
+
+test('rejects unknown, missing, misplaced and duplicate groups', () => {
+  assert.match(mutate(r => { typeById(r, 'dai.types.aws.ec2-instance').data.group = 'nope'; }).join('\n'), /unknown group "nope"/);
+  assert.match(mutate(r => { delete typeById(r, 'dai.types.aws.ec2-instance').data.group; }).join('\n'), /group is required/);
+  assert.match(mutate(r => { typeById(r, 'dai.types.business.objective').data.group = 'compute'; }).join('\n'), /declares no groups/);
+  assert.match(mutate(r => {
+    const groups = (r.typeCategories.aws.data as any).groups;
+    groups.push({ ...groups[0] });
+  }).join('\n'), /duplicate group key "hierarchy"/);
+  assert.match(mutate(r => { (r.typeCategories.aws.data as any).groups[0].label = ''; }).join('\n'), /must NOT have fewer than 1 characters/);
+  assert.match(mutate(r => { typeById(r, 'dai.types.aws.ec2-instance').data.group = 'Compute'; }).join('\n'), /must match pattern/);
+});
+
 test('rejects patterns referencing unknown types', async () => {
   const repo = structuredClone(loadRepo());
   repo.patterns[0].xml = repo.patterns[0].xml.replace(/dai:type="[^"]+"/, 'dai:type="dai.types.nope.nothing"');

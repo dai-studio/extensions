@@ -31,6 +31,8 @@ export interface CatalogType {
   form: CatalogField[];
   stepType?: string;
   eventDefinitionType?: string;
+  /** Subcategory key, declared in the category's `groups`. */
+  group?: string;
   aliases?: string[];
   deprecated?: boolean;
   replacedBy?: string;
