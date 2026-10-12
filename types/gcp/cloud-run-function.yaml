@@ -7,8 +7,8 @@ quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
 order: 130
 group: compute
 colors:
-  fill: '#E8F0FE'
-  stroke: '#1A73E8'
+  fill: '#FFF7ED'
+  stroke: '#EA580C'
 bpmnType: bpmn:Task
 license: free
 form:

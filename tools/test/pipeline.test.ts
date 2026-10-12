@@ -133,6 +133,34 @@ test('rejects unknown, missing, misplaced and duplicate groups', () => {
   assert.match(mutate(r => { typeById(r, 'dai.types.aws.ec2-instance').data.group = 'Compute'; }).join('\n'), /must match pattern/);
 });
 
+test('cloud groups share one palette across all providers, and types use it', () => {
+  const repo = loadRepo();
+  const cloud = ['cloud', 'aws', 'azure', 'gcp', 'cloudflare'];
+  const palette = new Map<string, string>();
+  for (const cat of cloud) {
+    for (const g of (repo.typeCategories[cat].data as any).groups as any[]) {
+      const c = `${g.colors.stroke}/${g.colors.fill}`.toUpperCase();
+      if (palette.has(g.key)) assert.equal(c, palette.get(g.key), `${cat}: ${g.key} palette`);
+      else palette.set(g.key, c);
+    }
+  }
+  for (const t of repo.types.filter(x => cloud.includes(x.category))) {
+    const d = t.data as any;
+    assert.equal(`${d.colors.stroke}/${d.colors.fill}`.toUpperCase(), palette.get(d.group), `${t.id} uses its group palette`);
+  }
+  assert.equal(palette.get('compute'), '#EA580C/#FFF7ED');
+});
+
+test('rejects off-palette type colours and diverging group palettes', () => {
+  assert.match(mutate(r => {
+    typeById(r, 'dai.types.aws.ec2-instance').data.colors = { fill: '#FEF5ED', stroke: '#ED7100' };
+  }).join('\n'), /colors must match group "compute"/);
+  assert.match(mutate(r => {
+    const g = ((r.typeCategories.gcp.data as any).groups as any[]).find(x => x.key === 'compute');
+    g.colors = { fill: '#E8F0FE', stroke: '#1A73E8' };
+  }).join('\n'), /group "compute" colors .* differ from/);
+});
+
 test('rejects patterns referencing unknown types', async () => {
   const repo = structuredClone(loadRepo());
   repo.patterns[0].xml = repo.patterns[0].xml.replace(/dai:type="[^"]+"/, 'dai:type="dai.types.nope.nothing"');

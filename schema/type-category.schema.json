@@ -20,7 +20,17 @@
         "required": ["key", "label"],
         "properties": {
           "key": { "type": "string", "pattern": "^[a-z0-9-]+$", "maxLength": 32 },
-          "label": { "type": "string", "minLength": 1, "maxLength": 40 }
+          "label": { "type": "string", "minLength": 1, "maxLength": 40 },
+          "colors": {
+            "type": "object",
+            "description": "Group palette: every type in the group must use exactly these colours.",
+            "additionalProperties": false,
+            "required": ["fill", "stroke"],
+            "properties": {
+              "fill": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" },
+              "stroke": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" }
+            }
+          }
         }
       }
     }

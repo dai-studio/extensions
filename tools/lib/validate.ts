@@ -42,17 +42,36 @@ export function validateRepo(repo: Repo): { errors: string[]; types: CatalogType
   // ── categories ─────────────────────────────────────────────────────────────
   /** Declared group keys per type category (only categories with `groups`). */
   const groupKeys = new Map<string, Set<string>>();
+  /** Declared group palettes per category: category → group key → colours. */
+  const groupColors = new Map<string, Map<string, { fill: string; stroke: string }>>();
+  /** Shared palette per view + group key (first declaration wins; others must match). */
+  const viewPalette = new Map<string, { fill: string; stroke: string; file: string }>();
+  const sameColors = (a: { fill: string; stroke: string }, b: { fill: string; stroke: string }) =>
+    a.fill.toLowerCase() === b.fill.toLowerCase() && a.stroke.toLowerCase() === b.stroke.toLowerCase();
+
   for (const [key, cat] of Object.entries(repo.typeCategories)) {
     const errs = schemaErrors(cat.file, validateTypeCategorySchema, cat.data);
     errors.push(...errs);
-    const groups = (cat.data as Record<string, any>)?.groups;
+    const data = cat.data as Record<string, any>;
+    const groups = data?.groups;
     if (errs.length || !Array.isArray(groups)) continue;
     const seen = new Set<string>();
+    const colors = new Map<string, { fill: string; stroke: string }>();
     for (const g of groups) {
       if (seen.has(g.key)) errors.push(`${rel(cat.file)}: duplicate group key "${g.key}"`);
       seen.add(g.key);
+      if (!g.colors) continue;
+      colors.set(g.key, g.colors);
+      // One palette per group across all categories of the same view (e.g. every cloud).
+      const vk = `${data.view ?? 'basic'}:${g.key}`;
+      const prev = viewPalette.get(vk);
+      if (!prev) viewPalette.set(vk, { ...g.colors, file: rel(cat.file) });
+      else if (!sameColors(prev, g.colors)) {
+        errors.push(`${rel(cat.file)}: group "${g.key}" colors (stroke ${g.colors.stroke}, fill ${g.colors.fill}) differ from ${prev.file} (stroke ${prev.stroke}, fill ${prev.fill}) — groups share one palette per view`);
+      }
     }
     groupKeys.set(key, seen);
+    groupColors.set(key, colors);
   }
   for (const [, cat] of Object.entries(repo.patternCategories)) {
     errors.push(...schemaErrors(cat.file, validatePatternCategorySchema, cat.data));
@@ -84,6 +103,12 @@ export function validateRepo(repo: Repo): { errors: string[]; types: CatalogType
     if (catGroups) {
       if (!d.group) errors.push(`${f}: group is required (category "${t.category}" declares groups: ${[...catGroups].join(', ')})`);
       else if (!catGroups.has(d.group)) errors.push(`${f}: unknown group "${d.group}" (category "${t.category}" declares: ${[...catGroups].join(', ')})`);
+      else {
+        const palette = groupColors.get(t.category)?.get(d.group);
+        if (palette && !sameColors(palette, d.colors)) {
+          errors.push(`${f}: colors must match group "${d.group}" (stroke ${palette.stroke}, fill ${palette.fill})`);
+        }
+      }
     } else if (d.group) {
       errors.push(`${f}: group "${d.group}" set but category "${t.category}" declares no groups`);
     }

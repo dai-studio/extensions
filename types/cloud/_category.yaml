@@ -4,21 +4,51 @@ view: cloud
 groups:
   - key: hierarchy
     label: "Hierarchy"
+    colors:
+      fill: '#F8FAFC'
+      stroke: '#64748B'
   - key: compute
     label: "Compute"
+    colors:
+      fill: '#FFF7ED'
+      stroke: '#EA580C'
   - key: networking
     label: "Networking"
+    colors:
+      fill: '#F0FDF4'
+      stroke: '#16A34A'
   - key: storage
     label: "Storage"
+    colors:
+      fill: '#F0FDFA'
+      stroke: '#0D9488'
   - key: database
     label: "Database"
+    colors:
+      fill: '#EDF1FA'
+      stroke: '#3A5BB8'
   - key: security
     label: "Security & Identity"
+    colors:
+      fill: '#FEF2F2'
+      stroke: '#DC2626'
   - key: integration
     label: "Integration & Messaging"
+    colors:
+      fill: '#FDF2F8'
+      stroke: '#DB2777'
   - key: monitoring
     label: "Monitoring & Logging"
+    colors:
+      fill: '#FEFCE8'
+      stroke: '#A16207'
   - key: ai
     label: "AI / ML"
+    colors:
+      fill: '#F5F3FF'
+      stroke: '#7C3AED'
   - key: external
     label: "External"
+    colors:
+      fill: '#FFFFFF'
+      stroke: '#94A3B8'

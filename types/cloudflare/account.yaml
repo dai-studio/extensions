@@ -7,8 +7,8 @@ quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBo
 order: 20
 group: hierarchy
 colors:
-  fill: '#FEF3E8'
-  stroke: '#F38020'
+  fill: '#F8FAFC'
+  stroke: '#64748B'
 bpmnType: bpmn:SubProcess
 isExpanded: true
 license: free
