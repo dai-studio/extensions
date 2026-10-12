@@ -81,15 +81,37 @@ test('the repository itself validates', async () => {
   assert.deepEqual(validateRepo(loadRepo(ROOT, WITH_UNPUBLISHED)).errors, [], 'types/ + unpublished/ validate together');
 });
 
-test('unpublished types are validated but never published', async () => {
-  const full = loadRepo(ROOT, WITH_UNPUBLISHED);
+/**
+ * A scratch copy of the repo with types/business moved to unpublished/
+ * (no pattern references business, so the published side stays valid).
+ */
+function withUnpublishedBusiness<T>(fn: (root: string) => T): T {
+  const root = mkdtempSync(path.join(tmpdir(), 'dai-ext-'));
+  const done = () => rmSync(root, { recursive: true, force: true });
+  try {
+    for (const dir of ['types', 'patterns', 'schema']) cpSync(path.join(ROOT, dir), path.join(root, dir), { recursive: true });
+    cpSync(path.join(root, 'types/business'), path.join(root, 'unpublished/business'), { recursive: true });
+    rmSync(path.join(root, 'types/business'), { recursive: true });
+    const out = fn(root);
+    if (out instanceof Promise) return out.finally(done) as T;
+    done();
+    return out;
+  } catch (err) {
+    done();
+    throw err;
+  }
+}
+
+test('unpublished types are validated but never published', () => withUnpublishedBusiness(async root => {
+  const full = loadRepo(root, WITH_UNPUBLISHED);
+  assert.deepEqual(full.errors, []);
   const unpublished = full.types.filter(t => t.unpublished);
   assert.ok(unpublished.length > 0, 'unpublished/ has types');
   assert.ok(unpublished.every(t => t.file.includes(`${path.sep}unpublished${path.sep}`)));
-  assert.equal(loadRepo().types.some(t => t.unpublished), false, 'loadRepo() reads types/ only');
+  assert.equal(loadRepo(root).types.some(t => t.unpublished), false, 'loadRepo() reads types/ only');
 
   // The catalog leaves them (and their categories) out.
-  const { catalog, errors, unpublishedTypes } = await checkAll();
+  const { catalog, errors, unpublishedTypes } = await checkAll({ root });
   assert.deepEqual(errors, []);
   assert.equal(unpublishedTypes, unpublished.length);
   const ids = new Set(catalog!.types.map(t => t.id));
@@ -100,15 +122,17 @@ test('unpublished types are validated but never published', async () => {
 
   // …but they are still validated.
   const victim = unpublished[0].id;
-  assert.match(mutate(r => { typeById(r, victim).data.bpmnType = 'bpmn:StartEvent'; }, WITH_UNPUBLISHED).join('\n'), /bpmnType must be bpmn:Task or bpmn:SubProcess/);
+  const mutated = structuredClone(full);
+  typeById(mutated, victim).data.bpmnType = 'bpmn:StartEvent';
+  assert.match(validateRepo(mutated).errors.join('\n'), /bpmnType must be bpmn:Task or bpmn:SubProcess/);
 
   // A pattern may not reference an unpublished type.
-  const repo = structuredClone(loadRepo());
+  const repo = structuredClone(loadRepo(root));
   repo.patterns[0].xml = repo.patterns[0].xml.replace(/dai:type="[^"]+"/, `dai:type="${victim}"`);
   const unpublishedIds = new Set(unpublished.map(t => t.id));
   const published = validateRepo(full).types.filter(t => !unpublishedIds.has(t.id));
   assert.match((await validatePatterns(repo, published)).join('\n'), /does not exist/);
-});
+}));
 
 test('a category may not exist in both types/ and unpublished/', () => {
   const root = mkdtempSync(path.join(tmpdir(), 'dai-ext-'));
@@ -322,42 +346,7 @@ test('open-source types state their license; source-available ones say so', () =
   }
 });
 
-// ── design types + embeds ───────────────────────────────────────────────────
-
-const DESIGN = ['design', 'design-brand', 'design-components', 'design-layouts', 'design-guidance', 'design-assets'];
-
-test('design categories live in the design view and their types are plain Tasks', () => {
-  const repo = loadRepo(ROOT, WITH_UNPUBLISHED);
-  for (const cat of DESIGN) {
-    assert.equal((repo.typeCategories[cat]?.data as any)?.view, 'design', `${cat} has view: design`);
-  }
-  const design = repo.types.filter(t => DESIGN.includes(t.category));
-  assert.equal(design.length, 38);
-  for (const t of design) {
-    const d = t.data as any;
-    assert.equal(d.bpmnType, 'bpmn:Task', `${t.id} is a bpmn:Task`);
-    assert.equal(d.isExpanded, undefined, `${t.id} has no isExpanded`);
-  }
-});
-
-test('design components ship html + css examples; guidance carries instruction, priority, rationale', () => {
-  const repo = loadRepo(ROOT, WITH_UNPUBLISHED);
-  const field = (t: Repo['types'][number], key: string) => ((t.data as any).form as any[]).find(f => f.key === key);
-  for (const t of repo.types.filter(x => x.category === 'design-components')) {
-    assert.equal(field(t, 'html')?.type, 'html', `${t.id} html field`);
-    assert.ok(field(t, 'html')?.example, `${t.id} html example`);
-    assert.equal(field(t, 'css')?.type, 'css', `${t.id} css field`);
-    assert.ok(field(t, 'css')?.example, `${t.id} css example`);
-  }
-  for (const t of repo.types.filter(x => x.category === 'design-guidance' && x.leaf !== 'agent-role')) {
-    assert.equal(field(t, 'instruction')?.type, 'markdown', `${t.id} instruction`);
-    if (t.leaf !== 'design-brief') assert.equal(field(t, 'priority')?.type, 'select', `${t.id} priority`);
-    assert.ok(field(t, 'rationale'), `${t.id} rationale`);
-  }
-  // Embed fields store as <dai:field> bodies.
-  const css = buildType(typeById(repo, 'dai.types.design-components.button')).form.find(f => f.key === 'css')!;
-  assert.equal(css.storage, 'field');
-});
+// ── embeds ──────────────────────────────────────────────────────────────────
 
 test('embed examples: accepted when safe', () => {
   assert.deepEqual(checkHtml('<button class="b" type="button" aria-label="x">Go</button><a href="#top">Top</a><style>.b{color:red}</style>'), []);
@@ -397,20 +386,36 @@ test('embed examples: unsafe html, css and svg are rejected', () => {
 });
 
 test('rejects misplaced, unsafe and oversized examples', () => {
-  const button = 'dai.types.design-components.button';
-  const form = (r: Repo) => (typeById(r, button).data.form as any[]);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'status').example = 'x'; }, WITH_UNPUBLISHED).join('\n'), /example is only valid on/);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'html').example = '<script>x</script>'; }, WITH_UNPUBLISHED).join('\n'), /form\.html: example: <script> is not allowed/);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'css').example = '@import "x";'; }, WITH_UNPUBLISHED).join('\n'), /form\.css: example: @import/);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'html').example = 'x'.repeat(16385); }, WITH_UNPUBLISHED).join('\n'), /must NOT have more than 16384 characters/);
-  assert.match(mutate(r => {
+  const objective = 'dai.types.business.objective';
+  const form = (r: Repo) => (typeById(r, objective).data.form as any[]);
+  /** Give the type html/css/usage/accessibility fields with safe examples, then apply `fn`. */
+  const withEmbeds = (fn: (r: Repo) => void) => mutate(r => {
+    form(r).push(
+      { key: 'html', label: 'HTML', type: 'html', example: '<button type="button">Go</button>' },
+      { key: 'css', label: 'CSS', type: 'css', example: '.a{color:red}' },
+      { key: 'usage', label: 'Usage', type: 'markdown' },
+      { key: 'accessibility', label: 'Accessibility', type: 'markdown' },
+    );
+    fn(r);
+  }).join('\n');
+  assert.equal(withEmbeds(() => {}), '', 'safe examples validate');
+  // Embed fields store as <dai:field> bodies.
+  const repo = structuredClone(loadRepo());
+  form(repo).push({ key: 'css', label: 'CSS', type: 'css', example: '.a{color:red}' });
+  assert.equal(buildType(typeById(repo, objective)).form.find(f => f.key === 'css')!.storage, 'field');
+
+  assert.match(mutate(r => { form(r).find(f => f.key === 'status').example = 'x'; }).join('\n'), /example is only valid on/);
+  assert.match(withEmbeds(r => { form(r).find(f => f.key === 'html').example = '<script>x</script>'; }), /form\.html: example: <script> is not allowed/);
+  assert.match(withEmbeds(r => { form(r).find(f => f.key === 'css').example = '@import "x";'; }), /form\.css: example: @import/);
+  assert.match(withEmbeds(r => { form(r).find(f => f.key === 'html').example = 'x'.repeat(16385); }), /must NOT have more than 16384 characters/);
+  assert.match(withEmbeds(r => {
     const big = '.a{}'.repeat(4000);
     for (const k of ['html', 'css', 'usage', 'accessibility']) {
       const f = form(r).find(x => x.key === k);
       f.example = k === 'html' ? '<p>' + 'x'.repeat(15000) + '</p>' : big;
     }
-  }, WITH_UNPUBLISHED).join('\n'), /examples total \d+ bytes \(max 49152\)/);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'html').type = 'nope'; }, WITH_UNPUBLISHED).join('\n'), /must be equal to one of the allowed values/);
+  }), /examples total \d+ bytes \(max 49152\)/);
+  assert.match(withEmbeds(r => { form(r).find(f => f.key === 'html').type = 'nope'; }), /must be equal to one of the allowed values/);
 });
 
 test('rejects patterns referencing unknown types', async () => {
