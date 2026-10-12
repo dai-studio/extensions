@@ -78,7 +78,9 @@ CI rejects examples that could run code or reach the network (`tools/lib/embed.t
 
 ### Design types
 
-The `design-*` categories form the paid **Design** view. Every Design type is a `bpmn:Task`.
+The `design-*` categories form the paid **Design** view. They currently live in `unpublished/`
+(validated by CI, not in the catalog) until the editor's Design view ships; publish them with
+`git mv unpublished/design* types/`. Every Design type is a `bpmn:Task`.
 Any type can nest in any other, and the nesting carries the meaning:
 
 - **Scope**: an element applies within its parent. Guidance applies to what it is nested in.

@@ -3,6 +3,10 @@
  *
  *   types/<category>/_category.yaml
  *   types/<category>/<leaf>.yaml            -> dai.types.<category>.<leaf>
+ *   unpublished/<category>/…                -> same layout and ids as types/; validated
+ *                                              (with { includeUnpublished }) but never
+ *                                              built into the catalog. Publish with
+ *                                              `git mv unpublished/<cat> types/<cat>`.
  *   patterns/<category>/_category.yaml
  *   patterns/<category>/<leaf>.yaml + .dai  -> dai.patterns.<category>.<leaf>
  */
@@ -17,6 +21,8 @@ export const MAX_PATTERN_BYTES = 256 * 1024;
 export interface Loaded<T = Record<string, unknown>> {
   file: string;
   data: T;
+  /** Loaded from unpublished/ — validated, never published. */
+  unpublished?: true;
 }
 
 export interface LoadedType extends Loaded {
@@ -63,24 +69,26 @@ function listDir(dir: string): string[] {
   return existsSync(dir) ? readdirSync(dir).filter(n => !n.startsWith('.')).sort() : [];
 }
 
-export function loadRepo(root = ROOT): Repo {
-  const repo: Repo = { typeCategories: {}, patternCategories: {}, types: [], patterns: [], errors: [] };
+/** Load one type tree (types/ or unpublished/) into `repo`. */
+function loadTypeTree(dir: string, repo: Repo, unpublished: boolean): void {
   const { errors } = repo;
-
-  // ── types ────────────────────────────────────────────────────────────────
-  const typesDir = path.join(root, 'types');
-  for (const category of listDir(typesDir)) {
-    const catDir = path.join(typesDir, category);
+  const mark = unpublished ? { unpublished: true as const } : {};
+  for (const category of listDir(dir)) {
+    const catDir = path.join(dir, category);
     if (!statSync(catDir).isDirectory()) {
-      errors.push(`${rel(catDir)}: only category directories are allowed under types/`);
+      errors.push(`${rel(catDir)}: only category directories are allowed under ${rel(dir)}/`);
       continue;
     }
     if (!SEGMENT.test(category)) errors.push(`${rel(catDir)}: category name must match ${SEGMENT}`);
+    if (repo.typeCategories[category] || repo.types.some(t => t.category === category)) {
+      errors.push(`${rel(catDir)}: category "${category}" exists in both types/ and unpublished/`);
+      continue;
+    }
     for (const name of listDir(catDir)) {
       const file = path.join(catDir, name);
       if (name === '_category.yaml') {
         const data = readYaml(file, errors);
-        if (data) repo.typeCategories[category] = { file, data };
+        if (data) repo.typeCategories[category] = { file, data, ...mark };
         continue;
       }
       if (!name.endsWith('.yaml')) {
@@ -90,10 +98,24 @@ export function loadRepo(root = ROOT): Repo {
       const leaf = name.slice(0, -'.yaml'.length);
       if (!SEGMENT.test(leaf)) errors.push(`${rel(file)}: file name must match ${SEGMENT}`);
       const data = readYaml(file, errors);
-      if (data) repo.types.push({ file, data, id: `dai.types.${category}.${leaf}`, category, leaf });
+      if (data) repo.types.push({ file, data, id: `dai.types.${category}.${leaf}`, category, leaf, ...mark });
     }
     if (!repo.typeCategories[category]) errors.push(`${rel(catDir)}: missing _category.yaml`);
   }
+}
+
+export interface LoadOptions {
+  /** Also load unpublished/ (for validation and tests — never for the catalog). */
+  includeUnpublished?: boolean;
+}
+
+export function loadRepo(root = ROOT, opts: LoadOptions = {}): Repo {
+  const repo: Repo = { typeCategories: {}, patternCategories: {}, types: [], patterns: [], errors: [] };
+  const { errors } = repo;
+
+  // ── types ────────────────────────────────────────────────────────────────
+  loadTypeTree(path.join(root, 'types'), repo, false);
+  if (opts.includeUnpublished) loadTypeTree(path.join(root, 'unpublished'), repo, true);
 
   // ── patterns ─────────────────────────────────────────────────────────────
   const patternsDir = path.join(root, 'patterns');

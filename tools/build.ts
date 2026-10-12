@@ -15,7 +15,7 @@ const args = process.argv.slice(2);
 const i = args.indexOf('--against');
 const compatUrl = i >= 0 ? args[i + 1] : process.env.CATALOG_COMPAT_URL;
 
-const { repo, catalog, errors, notes } = await checkAll({ compatUrl });
+const { repo, catalog, errors, notes, unpublishedTypes } = await checkAll({ compatUrl });
 for (const n of notes) console.log(`note: ${n}`);
 if (!catalog) {
   for (const e of errors) console.error(`✗ ${e}`);
@@ -35,4 +35,5 @@ const CATALOG_WARN_BYTES = 2 * 1024 * 1024;
 const bytes = Buffer.byteLength(json, 'utf8');
 if (bytes > CATALOG_WARN_BYTES) console.warn(`warning: catalog.json is ${(bytes / 1024 / 1024).toFixed(2)} MB (budget 2 MB)`);
 
-console.log(`✓ built ${catalog.types.length} types, ${catalog.patterns.length} patterns → dist/ (build ${catalog.build}, unsigned)`);
+const skipped = unpublishedTypes ? ` (${unpublishedTypes} unpublished types left out)` : '';
+console.log(`✓ built ${catalog.types.length} types, ${catalog.patterns.length} patterns → dist/ (build ${catalog.build}, unsigned)${skipped}`);

@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { canonicalJson } from '../lib/canonical.ts';
 import {
@@ -10,7 +11,8 @@ import { checkSvg, EXAMPLE_ALLOWLIST } from '../lib/svg.ts';
 import { checkCss, checkHtml } from '../lib/embed.ts';
 import { checkCompat, removedPatterns, removedTypes, renamedTypes } from '../lib/compat.ts';
 import { validatePatterns, validateRepo } from '../lib/validate.ts';
-import { loadRepo, ROOT, type Repo } from '../lib/repo.ts';
+import { loadRepo, ROOT, type LoadOptions, type Repo } from '../lib/repo.ts';
+import { checkAll } from '../lib/pipeline.ts';
 import { buildType, type CatalogType } from '../lib/catalog.ts';
 
 const vectors = JSON.parse(readFileSync(path.join(ROOT, 'test-vectors', 'canonical.json'), 'utf8'));
@@ -62,18 +64,64 @@ test('checkSvg accepts the house style and rejects scripts/handlers/urls', () =>
 
 // ── validation against the real repo + synthetic mutations ─────────────────
 
-function mutate(fn: (repo: Repo) => void): string[] {
-  const repo = structuredClone(loadRepo());
+function mutate(fn: (repo: Repo) => void, opts: LoadOptions = {}): string[] {
+  const repo = structuredClone(loadRepo(ROOT, opts));
   fn(repo);
   return validateRepo(repo).errors;
 }
 const typeById = (repo: Repo, id: string) => repo.types.find(t => t.id === id)!;
+/** types/ + unpublished/ (unpublished types are validated, never published). */
+const WITH_UNPUBLISHED: LoadOptions = { includeUnpublished: true };
 
 test('the repository itself validates', async () => {
   const repo = loadRepo();
   const { errors, types } = validateRepo(repo);
   assert.deepEqual(errors, []);
   assert.deepEqual(await validatePatterns(repo, types), []);
+  assert.deepEqual(validateRepo(loadRepo(ROOT, WITH_UNPUBLISHED)).errors, [], 'types/ + unpublished/ validate together');
+});
+
+test('unpublished types are validated but never published', async () => {
+  const full = loadRepo(ROOT, WITH_UNPUBLISHED);
+  const unpublished = full.types.filter(t => t.unpublished);
+  assert.ok(unpublished.length > 0, 'unpublished/ has types');
+  assert.ok(unpublished.every(t => t.file.includes(`${path.sep}unpublished${path.sep}`)));
+  assert.equal(loadRepo().types.some(t => t.unpublished), false, 'loadRepo() reads types/ only');
+
+  // The catalog leaves them (and their categories) out.
+  const { catalog, errors, unpublishedTypes } = await checkAll();
+  assert.deepEqual(errors, []);
+  assert.equal(unpublishedTypes, unpublished.length);
+  const ids = new Set(catalog!.types.map(t => t.id));
+  for (const t of unpublished) assert.equal(ids.has(t.id), false, `${t.id} is not published`);
+  for (const cat of new Set(unpublished.map(t => t.category))) {
+    assert.equal(cat in catalog!.categories.types, false, `category ${cat} is not published`);
+  }
+
+  // …but they are still validated.
+  const victim = unpublished[0].id;
+  assert.match(mutate(r => { typeById(r, victim).data.bpmnType = 'bpmn:StartEvent'; }, WITH_UNPUBLISHED).join('\n'), /bpmnType must be bpmn:Task or bpmn:SubProcess/);
+
+  // A pattern may not reference an unpublished type.
+  const repo = structuredClone(loadRepo());
+  repo.patterns[0].xml = repo.patterns[0].xml.replace(/dai:type="[^"]+"/, `dai:type="${victim}"`);
+  const unpublishedIds = new Set(unpublished.map(t => t.id));
+  const published = validateRepo(full).types.filter(t => !unpublishedIds.has(t.id));
+  assert.match((await validatePatterns(repo, published)).join('\n'), /does not exist/);
+});
+
+test('a category may not exist in both types/ and unpublished/', () => {
+  const root = mkdtempSync(path.join(tmpdir(), 'dai-ext-'));
+  try {
+    for (const dir of ['types/business', 'unpublished/business']) {
+      cpSync(path.join(ROOT, 'types/business'), path.join(root, dir), { recursive: true });
+    }
+    const errs = loadRepo(root, WITH_UNPUBLISHED).errors.join('\n');
+    assert.match(errs, /category "business" exists in both types\/ and unpublished\//);
+    assert.deepEqual(loadRepo(root).errors, [], 'without unpublished/ there is no conflict');
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test('rejects nulls, bad storage, colliding keys, duplicate stepTypes and aliases', () => {
@@ -167,7 +215,7 @@ test('rejects off-palette type colours and diverging group palettes', () => {
 const DESIGN = ['design', 'design-brand', 'design-components', 'design-layouts', 'design-guidance', 'design-assets'];
 
 test('design categories live in the design view and their types are plain Tasks', () => {
-  const repo = loadRepo();
+  const repo = loadRepo(ROOT, WITH_UNPUBLISHED);
   for (const cat of DESIGN) {
     assert.equal((repo.typeCategories[cat]?.data as any)?.view, 'design', `${cat} has view: design`);
   }
@@ -181,7 +229,7 @@ test('design categories live in the design view and their types are plain Tasks'
 });
 
 test('design components ship html + css examples; guidance carries instruction, priority, rationale', () => {
-  const repo = loadRepo();
+  const repo = loadRepo(ROOT, WITH_UNPUBLISHED);
   const field = (t: Repo['types'][number], key: string) => ((t.data as any).form as any[]).find(f => f.key === key);
   for (const t of repo.types.filter(x => x.category === 'design-components')) {
     assert.equal(field(t, 'html')?.type, 'html', `${t.id} html field`);
@@ -239,18 +287,18 @@ test('embed examples: unsafe html, css and svg are rejected', () => {
 test('rejects misplaced, unsafe and oversized examples', () => {
   const button = 'dai.types.design-components.button';
   const form = (r: Repo) => (typeById(r, button).data.form as any[]);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'status').example = 'x'; }).join('\n'), /example is only valid on/);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'html').example = '<script>x</script>'; }).join('\n'), /form\.html: example: <script> is not allowed/);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'css').example = '@import "x";'; }).join('\n'), /form\.css: example: @import/);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'html').example = 'x'.repeat(16385); }).join('\n'), /must NOT have more than 16384 characters/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'status').example = 'x'; }, WITH_UNPUBLISHED).join('\n'), /example is only valid on/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'html').example = '<script>x</script>'; }, WITH_UNPUBLISHED).join('\n'), /form\.html: example: <script> is not allowed/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'css').example = '@import "x";'; }, WITH_UNPUBLISHED).join('\n'), /form\.css: example: @import/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'html').example = 'x'.repeat(16385); }, WITH_UNPUBLISHED).join('\n'), /must NOT have more than 16384 characters/);
   assert.match(mutate(r => {
     const big = '.a{}'.repeat(4000);
     for (const k of ['html', 'css', 'usage', 'accessibility']) {
       const f = form(r).find(x => x.key === k);
       f.example = k === 'html' ? '<p>' + 'x'.repeat(15000) + '</p>' : big;
     }
-  }).join('\n'), /examples total \d+ bytes \(max 49152\)/);
-  assert.match(mutate(r => { form(r).find(f => f.key === 'html').type = 'nope'; }).join('\n'), /must be equal to one of the allowed values/);
+  }, WITH_UNPUBLISHED).join('\n'), /examples total \d+ bytes \(max 49152\)/);
+  assert.match(mutate(r => { form(r).find(f => f.key === 'html').type = 'nope'; }, WITH_UNPUBLISHED).join('\n'), /must be equal to one of the allowed values/);
 });
 
 test('rejects patterns referencing unknown types', async () => {

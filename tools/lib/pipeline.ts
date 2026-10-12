@@ -23,22 +23,34 @@ export function buildId(): string {
 }
 
 export interface CheckResult {
+  /** Published content only (types/ + patterns/) — what build and publish use. */
   repo: Repo;
   catalog: Catalog | null;
   errors: string[];
   notes: string[];
+  /** Types in unpublished/ that were validated but left out of the catalog. */
+  unpublishedTypes: number;
 }
 
 /**
  * Full validation (schema, semantics, patterns and — when `compatUrl` is set —
  * additive-only compatibility against the published catalog).
+ *
+ * Types in unpublished/ are validated together with types/ (so ids, aliases
+ * and stepTypes stay unique across both), but patterns, the catalog and the
+ * compat check only see published types.
  */
-export async function checkAll(opts: { compatUrl?: string } = {}): Promise<CheckResult> {
-  const repo = loadRepo();
+export async function checkAll(opts: { compatUrl?: string; root?: string } = {}): Promise<CheckResult> {
+  const root = opts.root ?? ROOT;
+  const full = loadRepo(root, { includeUnpublished: true });
+  const repo = loadRepo(root);
   const notes: string[] = [];
-  const { errors, types } = validateRepo(repo);
-  errors.push(...(await validatePatterns(repo, types)));
-  if (errors.length) return { repo, catalog: null, errors, notes };
+  const unpublishedIds = new Set(full.types.filter(t => t.unpublished).map(t => t.id));
+  const unpublishedTypes = unpublishedIds.size;
+  const { errors, types } = validateRepo(full);
+  const publishedTypes = types.filter(t => !unpublishedIds.has(t.id));
+  errors.push(...(await validatePatterns(repo, publishedTypes)));
+  if (errors.length) return { repo, catalog: null, errors, notes, unpublishedTypes };
 
   const catalog = buildCatalog(repo, await patternShas(repo), buildId());
 
@@ -61,5 +73,5 @@ export async function checkAll(opts: { compatUrl?: string } = {}): Promise<Check
       notes.push(`compatibility check skipped: ${published.reason}`);
     }
   }
-  return { repo, catalog: errors.length ? null : catalog, errors, notes };
+  return { repo, catalog: errors.length ? null : catalog, errors, notes, unpublishedTypes };
 }
