@@ -1,0 +1,73 @@
+# dai.types.software.interface
+name: "Interface"
+version: 1.0.0
+description: "A contract between parts of the system that is more than one HTTP endpoint: an OpenAPI, GraphQL, gRPC or AsyncAPI spec, a library or SDK interface, a CLI or a file format. Endpoint is a single operation; Model is a data shape."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v4a1 1 0 0 0 1 1h4" /><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" /><path d="M10 13l-1 2l1 2" /><path d="M14 13l1 2l-1 2" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Interface name"
+  - key: interfaceType
+    label: "Type"
+    type: select
+    options:
+      - value: "rest"
+        label: "REST / HTTP API"
+      - value: "graphql"
+        label: "GraphQL"
+      - value: "grpc"
+        label: "gRPC"
+      - value: "async"
+        label: "Async / messaging"
+      - value: "library"
+        label: "Library / SDK"
+      - value: "cli"
+        label: "CLI"
+      - value: "file"
+        label: "File format"
+      - value: "other"
+        label: "Other"
+  - key: format
+    label: "Spec format"
+    type: select
+    options:
+      - value: "openapi"
+        label: "OpenAPI"
+      - value: "graphql"
+        label: "GraphQL SDL"
+      - value: "protobuf"
+        label: "Protobuf"
+      - value: "asyncapi"
+        label: "AsyncAPI"
+      - value: "typescript"
+        label: "TypeScript"
+      - value: "json-schema"
+        label: "JSON Schema"
+      - value: "other"
+        label: "Other"
+  - key: spec
+    label: "Spec"
+    type: code
+    placeholder: "Paste or summarise the contract"
+    rows: 10
+  - key: version
+    label: "Version"
+    type: text
+  - key: specUrl
+    label: "Spec link"
+    type: text
+    placeholder: "https://…"
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

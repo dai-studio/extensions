@@ -1,0 +1,80 @@
+# dai.types.software.feature-flag
+name: "Feature Flag"
+version: 1.0.0
+description: "A runtime toggle that turns behaviour on or off without a deploy, for releases, experiments, operations or permissions. Records its key, default, rollout and when to remove it."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M2 12a6 6 0 0 1 6 -6h8a6 6 0 0 1 6 6a6 6 0 0 1 -6 6h-8a6 6 0 0 1 -6 -6" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Feature flag name"
+  - key: flagKey
+    label: "Flag key"
+    type: text
+    placeholder: "e.g. new-checkout"
+  - key: flagType
+    label: "Type"
+    type: select
+    defaultValue: "release"
+    options:
+      - value: "release"
+        label: "Release"
+      - value: "experiment"
+        label: "Experiment"
+      - value: "ops"
+        label: "Operational"
+      - value: "permission"
+        label: "Permission"
+  - key: defaultValue
+    label: "Default"
+    type: text
+    placeholder: "e.g. off"
+  - key: rollout
+    label: "Rollout %"
+    type: number
+    min: 0
+    max: 100
+  - key: provider
+    label: "Provider"
+    type: select
+    options:
+      - value: "openfeature"
+        label: "OpenFeature"
+      - value: "launchdarkly"
+        label: "LaunchDarkly"
+      - value: "unleash"
+        label: "Unleash"
+      - value: "flagsmith"
+        label: "Flagsmith"
+      - value: "config"
+        label: "Config file"
+      - value: "other"
+        label: "Other"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "active"
+    options:
+      - value: "active"
+        label: "Active"
+      - value: "rolled-out"
+        label: "Fully rolled out"
+      - value: "removed"
+        label: "Removed"
+  - key: removeBy
+    label: "Remove by"
+    type: text
+    placeholder: "e.g. 2027-01-31"
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

@@ -1,0 +1,60 @@
+# dai.types.product.release
+name: "Release"
+version: 1.0.0
+description: "A versioned delivery to users. Contains the Features and Stories that ship in it; Roadmap stays the longer planning view."
+icon: □
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /><path d="M16 5.25l-8 4.5" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Release name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. 2.4.0"
+  - key: releaseDate
+    label: "Release date"
+    type: text
+    placeholder: "e.g. 2026-12-01"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "planned"
+    options:
+      - value: "planned"
+        label: "Planned"
+      - value: "in-progress"
+        label: "In progress"
+      - value: "released"
+        label: "Released"
+      - value: "rolled-back"
+        label: "Rolled back"
+  - key: channel
+    label: "Channel"
+    type: select
+    options:
+      - value: "beta"
+        label: "Beta"
+      - value: "ga"
+        label: "General availability"
+      - value: "hotfix"
+        label: "Hotfix"
+      - value: "internal"
+        label: "Internal"
+  - key: releaseNotes
+    label: "Release notes"
+    type: textarea
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

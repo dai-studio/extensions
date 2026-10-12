@@ -1,0 +1,49 @@
+# dai.types.product.outcome
+name: "Outcome"
+version: 1.0.0
+description: "The change in user or customer behaviour the product aims for, and how you will measure it. A Key Result is a number for an Objective; AI/ML \u2192 Output is something produced."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" /><path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" /><path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Outcome name"
+  - key: audience
+    label: "Who"
+    type: text
+  - key: behaviourChange
+    label: "Behaviour change"
+    type: textarea
+    placeholder: "What people will do differently"
+  - key: successMetric
+    label: "Measured by"
+    type: text
+  - key: target
+    label: "Target"
+    type: text
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "not-started"
+    options:
+      - value: "not-started"
+        label: "Not started"
+      - value: "in-progress"
+        label: "In progress"
+      - value: "achieved"
+        label: "Achieved"
+      - value: "missed"
+        label: "Missed"
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

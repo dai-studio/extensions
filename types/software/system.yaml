@@ -1,0 +1,52 @@
+# dai.types.software.system
+name: "System"
+version: 1.0.0
+description: "A software system: the Services, Clients, Databases, Queues and Jobs that are owned and released together. Contains its parts; Environment is where they are deployed."
+icon: □
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 19a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" /><path d="M18 5a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" /><path d="M10 5a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" /><path d="M6 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" /><path d="M18 19a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" /><path d="M14 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" /><path d="M22 12a2 2 0 1 0 -4 0a2 2 0 0 0 4 0" /><path d="M6 12h4" /><path d="M14 12h4" /><path d="M15 7l-2 3" /><path d="M9 7l2 3" /><path d="M11 14l-2 3" /><path d="M13 14l2 3" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "System name"
+  - key: boundary
+    label: "Boundary"
+    type: select
+    defaultValue: "internal"
+    options:
+      - value: "internal"
+        label: "Internal"
+      - value: "external"
+        label: "External / third party"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "live"
+    options:
+      - value: "planned"
+        label: "Planned"
+      - value: "building"
+        label: "Building"
+      - value: "live"
+        label: "Live"
+      - value: "deprecated"
+        label: "Deprecated"
+      - value: "retired"
+        label: "Retired"
+  - key: docsUrl
+    label: "Docs"
+    type: text
+    placeholder: "https://…"
+  - key: owner
+    label: "Owning team"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

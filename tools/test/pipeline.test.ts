@@ -239,6 +239,41 @@ test('Business has the planning types; Initiative is an expanded container; note
   }
 });
 
+// ── Product types ───────────────────────────────────────────────────────────
+
+test('Product has the discovery/delivery types; Release is an expanded container; notes come last', () => {
+  const repo = loadRepo();
+  for (const leaf of ['problem', 'hypothesis', 'insight', 'todo', 'criteria', 'release', 'outcome']) {
+    const d = typeById(repo, `dai.types.product.${leaf}`)?.data as any;
+    assert.ok(d, `dai.types.product.${leaf} exists`);
+    const container = leaf === 'release';
+    assert.equal(d.bpmnType, container ? 'bpmn:SubProcess' : 'bpmn:Task', `${leaf} bpmnType`);
+    assert.equal(d.isExpanded, container ? true : undefined, `${leaf} isExpanded`);
+    assert.deepEqual(d.colors, { fill: '#fff7ed', stroke: '#c2410c' }, `${leaf} uses the Product palette`);
+    assert.equal((d.form as any[]).at(-1)?.key, 'notes', `${leaf} ends with notes`);
+  }
+  assert.equal((typeById(repo, 'dai.types.product.todo').data as any).name, 'To-do');
+});
+
+// ── Software types ──────────────────────────────────────────────────────────
+
+test('Software has the system types; System is an expanded container; notes come last; the two Decisions point at each other', () => {
+  const repo = loadRepo();
+  for (const leaf of ['client', 'system', 'queue', 'interface', 'config', 'job', 'decision', 'feature-flag']) {
+    const d = typeById(repo, `dai.types.software.${leaf}`)?.data as any;
+    assert.ok(d, `dai.types.software.${leaf} exists`);
+    const container = leaf === 'system';
+    assert.equal(d.bpmnType, container ? 'bpmn:SubProcess' : 'bpmn:Task', `${leaf} bpmnType`);
+    assert.equal(d.isExpanded, container ? true : undefined, `${leaf} isExpanded`);
+    assert.deepEqual(d.colors, { fill: '#EFF6FF', stroke: '#2563EB' }, `${leaf} uses the Software palette`);
+    assert.equal((d.form as any[]).at(-1)?.key, 'notes', `${leaf} ends with notes`);
+  }
+  const adr = typeById(repo, 'dai.types.software.decision').data as any;
+  const business = typeById(repo, 'dai.types.business.decision-record').data as any;
+  assert.match(adr.description, /Business → Decision/);
+  assert.match(business.description, /Software → Decision/);
+});
+
 // ── open-source types ───────────────────────────────────────────────────────
 
 const OPEN_SOURCE = [

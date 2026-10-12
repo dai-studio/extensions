@@ -1,0 +1,51 @@
+# dai.types.software.decision
+name: "Decision"
+version: 1.0.0
+description: "A technical or architecture decision record (ADR): the context, the options considered, the decision and its consequences. For business decisions use Business → Decision."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 8v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2 -2v-2" /><path d="M12 12l0 4" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Title"
+    type: text
+    placeholder: "Decision title"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "proposed"
+    options:
+      - value: "proposed"
+        label: "Proposed"
+      - value: "accepted"
+        label: "Accepted"
+      - value: "deprecated"
+        label: "Deprecated"
+      - value: "superseded"
+        label: "Superseded"
+  - key: context
+    label: "Context"
+    type: textarea
+  - key: options
+    label: "Options considered"
+    type: textarea
+  - key: decision
+    label: "Decision"
+    type: textarea
+  - key: consequences
+    label: "Consequences"
+    type: textarea
+  - key: deciders
+    label: "Deciders"
+    type: text
+  - key: decidedOn
+    label: "Date"
+    type: text
+    placeholder: "e.g. 2026-10-12"
+  - key: notes
+    label: "Notes"
+    type: textarea

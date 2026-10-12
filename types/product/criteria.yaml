@@ -1,0 +1,49 @@
+# dai.types.product.criteria
+name: "Criteria"
+version: 1.0.0
+description: "The conditions work must meet to count as done: acceptance criteria, success criteria, a definition of done or exit criteria. Connect it to the Feature, Story or Release it applies to."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 11.5l1.5 1.5l2.5 -2.5" /><path d="M3.5 17.5l1.5 1.5l2.5 -2.5" /><path d="M11 6l9 0" /><path d="M11 12l9 0" /><path d="M11 18l9 0" /></svg>
+colors:
+  fill: '#fff7ed'
+  stroke: '#c2410c'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Criteria name"
+  - key: criteriaType
+    label: "Type"
+    type: select
+    defaultValue: "acceptance"
+    options:
+      - value: "acceptance"
+        label: "Acceptance"
+      - value: "success"
+        label: "Success"
+      - value: "done"
+        label: "Definition of done"
+      - value: "exit"
+        label: "Exit"
+  - key: format
+    label: "Format"
+    type: select
+    defaultValue: "checklist"
+    options:
+      - value: "checklist"
+        label: "Checklist"
+      - value: "gherkin"
+        label: "Given / When / Then"
+  - key: acceptanceCriteria
+    label: "Conditions"
+    type: textarea
+    placeholder: "- [ ] \u2026  or  Given \u2026 When \u2026 Then \u2026"
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

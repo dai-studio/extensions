@@ -1,0 +1,64 @@
+# dai.types.software.client
+name: "Client"
+version: 1.0.0
+description: "An application people use to reach the system: a web, mobile or desktop app, a CLI or an SDK. Different from Cloud → Client / User, which models the network actor."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a1 1 0 0 1 1 -1h16a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-16a1 1 0 0 1 -1 -1v-10" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Client name"
+  - key: clientType
+    label: "Type"
+    type: select
+    options:
+      - value: "web"
+        label: "Web"
+      - value: "mobile"
+        label: "Mobile"
+      - value: "desktop"
+        label: "Desktop"
+      - value: "cli"
+        label: "CLI"
+      - value: "sdk"
+        label: "SDK"
+      - value: "other"
+        label: "Other"
+  - key: platform
+    label: "Platform"
+    type: text
+    placeholder: "e.g. iOS, Android, browser, macOS"
+  - key: framework
+    label: "Framework"
+    type: text
+    placeholder: "e.g. React, SwiftUI, Flutter"
+  - key: url
+    label: "URL / store link"
+    type: text
+  - key: auth
+    label: "Auth"
+    type: select
+    options:
+      - value: "none"
+        label: "None"
+      - value: "session"
+        label: "Session"
+      - value: "oauth"
+        label: "OAuth / OIDC"
+      - value: "api-key"
+        label: "API key"
+      - value: "other"
+        label: "Other"
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea
