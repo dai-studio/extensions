@@ -1,0 +1,29 @@
+label: "Networking"
+order: 215
+view: open-source
+groups:
+  - key: dns
+    label: "DNS"
+    colors:
+      fill: '#ECFEFF'
+      stroke: '#0891B2'
+  - key: vpn
+    label: "VPN"
+    colors:
+      fill: '#ECFEFF'
+      stroke: '#0891B2'
+  - key: cni
+    label: "CNI"
+    colors:
+      fill: '#ECFEFF'
+      stroke: '#0891B2'
+  - key: service-mesh
+    label: "Service Mesh"
+    colors:
+      fill: '#ECFEFF'
+      stroke: '#0891B2'
+  - key: firewall
+    label: "Firewall"
+    colors:
+      fill: '#ECFEFF'
+      stroke: '#0891B2'

@@ -1,0 +1,39 @@
+label: "DevOps"
+order: 265
+view: open-source
+groups:
+  - key: scm
+    label: "Source Control"
+    colors:
+      fill: '#FFF7ED'
+      stroke: '#EA580C'
+  - key: ci-cd
+    label: "CI/CD"
+    colors:
+      fill: '#FFF7ED'
+      stroke: '#EA580C'
+  - key: gitops
+    label: "GitOps"
+    colors:
+      fill: '#FFF7ED'
+      stroke: '#EA580C'
+  - key: iac
+    label: "IaC"
+    colors:
+      fill: '#FFF7ED'
+      stroke: '#EA580C'
+  - key: config-mgmt
+    label: "Config Mgmt"
+    colors:
+      fill: '#FFF7ED'
+      stroke: '#EA580C'
+  - key: registry
+    label: "Registry"
+    colors:
+      fill: '#FFF7ED'
+      stroke: '#EA580C'
+  - key: testing
+    label: "Testing"
+    colors:
+      fill: '#FFF7ED'
+      stroke: '#EA580C'

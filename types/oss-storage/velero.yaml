@@ -1,0 +1,51 @@
+# dai.types.oss-storage.velero
+name: "Velero"
+version: 1.0.0
+description: "Velero, backup, restore and migration for Kubernetes resources and volumes. Place it inside a Kubernetes cluster. License: Apache-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" /><path d="M17 16v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" /></svg>
+order: 340
+group: backup
+colors:
+  fill: '#FEFCE8'
+  stroke: '#CA8A04'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Velero name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: deployment
+    label: "Deployment"
+    type: select
+    defaultValue: "container"
+    options:
+      - value: "package"
+        label: "OS package / binary"
+      - value: "container"
+        label: "Container"
+      - value: "kubernetes"
+        label: "Kubernetes (Helm / operator)"
+      - value: "managed"
+        label: "Managed service"
+  - key: replicas
+    label: "Replicas"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: endpoint
+    label: "Endpoint"
+    type: text
+    placeholder: "host:port or URL"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Topology, persistence, backups, scaling and who connects."

@@ -1,0 +1,34 @@
+label: "Data & Analytics"
+order: 245
+view: open-source
+groups:
+  - key: analytics-db
+    label: "Analytics DB"
+    colors:
+      fill: '#EEF2FF'
+      stroke: '#4F46E5'
+  - key: processing
+    label: "Processing"
+    colors:
+      fill: '#EEF2FF'
+      stroke: '#4F46E5'
+  - key: data-orchestration
+    label: "Orchestration"
+    colors:
+      fill: '#EEF2FF'
+      stroke: '#4F46E5'
+  - key: lakehouse
+    label: "Lakehouse"
+    colors:
+      fill: '#EEF2FF'
+      stroke: '#4F46E5'
+  - key: ingestion
+    label: "Ingestion"
+    colors:
+      fill: '#EEF2FF'
+      stroke: '#4F46E5'
+  - key: bi
+    label: "BI"
+    colors:
+      fill: '#EEF2FF'
+      stroke: '#4F46E5'

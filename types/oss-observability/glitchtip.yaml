@@ -1,0 +1,56 @@
+# dai.types.oss-observability.glitchtip
+name: "GlitchTip"
+version: 1.0.0
+description: "GlitchTip, error tracking compatible with the Sentry SDKs. Place it inside an OS, container host or Kubernetes cluster. License: MIT."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14.083c0 4.154 -2.966 6.74 -7 6.917c-4.2 0 -7 -2.763 -7 -6.917c0 -5.538 3.5 -11.09 7 -11.083c3.5 .007 7 5.545 7 11.083" /><path d="M12 3l-1.5 5l3.5 2.5l-2 3.5" /></svg>
+order: 630
+group: apm
+colors:
+  fill: '#FDF2F8'
+  stroke: '#DB2777'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "GlitchTip name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: deployment
+    label: "Deployment"
+    type: select
+    defaultValue: "container"
+    options:
+      - value: "package"
+        label: "OS package / binary"
+      - value: "container"
+        label: "Container"
+      - value: "kubernetes"
+        label: "Kubernetes (Helm / operator)"
+      - value: "managed"
+        label: "Managed service"
+  - key: port
+    label: "Port"
+    type: number
+    defaultValue: 8000
+    min: 0
+  - key: replicas
+    label: "Replicas"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: endpoint
+    label: "Endpoint"
+    type: text
+    placeholder: "host:port or URL"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Topology, persistence, backups, scaling and who connects."

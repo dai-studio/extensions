@@ -1,0 +1,29 @@
+# dai.types.oss-data.apache-hudi
+name: "Apache Hudi"
+version: 1.0.0
+description: "Apache Hudi, an open table format for incremental upserts and deletes on data lakes. Place it inside the service, runtime or host that uses it. License: Apache-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7a8 4 0 1 0 16 0a8 4 0 1 0 -16 0" /><path d="M4 7c0 .664 .088 1.324 .263 1.965l2.737 10.035c.5 1.5 2.239 2 5 2s4.5 -.5 5 -2c.333 -1 1.246 -4.345 2.737 -10.035a7.45 7.45 0 0 0 .263 -1.965" /></svg>
+order: 430
+group: lakehouse
+colors:
+  fill: '#EEF2FF'
+  stroke: '#4F46E5'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Apache Hudi name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Where it is used and any key extensions or plugins."

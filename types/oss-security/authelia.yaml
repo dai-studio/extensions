@@ -1,0 +1,56 @@
+# dai.types.oss-security.authelia
+name: "Authelia"
+version: 1.0.0
+description: "Authelia, an SSO and two-factor authentication portal for reverse proxies. Place it inside an OS, container host or Kubernetes cluster. License: Apache-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+order: 130
+group: identity
+colors:
+  fill: '#FEF2F2'
+  stroke: '#DC2626'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Authelia name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: deployment
+    label: "Deployment"
+    type: select
+    defaultValue: "container"
+    options:
+      - value: "package"
+        label: "OS package / binary"
+      - value: "container"
+        label: "Container"
+      - value: "kubernetes"
+        label: "Kubernetes (Helm / operator)"
+      - value: "managed"
+        label: "Managed service"
+  - key: port
+    label: "Port"
+    type: number
+    defaultValue: 9091
+    min: 0
+  - key: replicas
+    label: "Replicas"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: endpoint
+    label: "Endpoint"
+    type: text
+    placeholder: "host:port or URL"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Topology, persistence, backups, scaling and who connects."

@@ -1,0 +1,56 @@
+# dai.types.oss-storage.glusterfs
+name: "GlusterFS"
+version: 1.0.0
+description: "GlusterFS, a scale-out network filesystem. Place it inside an OS, container host or Kubernetes cluster. License: GPL-2.0 / LGPL-3.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" /><path d="M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M14 4l0 4l-6 0l0 -4" /></svg>
+order: 220
+group: file-block
+colors:
+  fill: '#FEFCE8'
+  stroke: '#CA8A04'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "GlusterFS name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: deployment
+    label: "Deployment"
+    type: select
+    defaultValue: "container"
+    options:
+      - value: "package"
+        label: "OS package / binary"
+      - value: "container"
+        label: "Container"
+      - value: "kubernetes"
+        label: "Kubernetes (Helm / operator)"
+      - value: "managed"
+        label: "Managed service"
+  - key: port
+    label: "Port"
+    type: number
+    defaultValue: 24007
+    min: 0
+  - key: replicas
+    label: "Replicas"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: endpoint
+    label: "Endpoint"
+    type: text
+    placeholder: "host:port or URL"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Topology, persistence, backups, scaling and who connects."

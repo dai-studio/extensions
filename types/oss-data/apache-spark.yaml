@@ -1,0 +1,56 @@
+# dai.types.oss-data.apache-spark
+name: "Apache Spark"
+version: 1.0.0
+description: "Apache Spark, a unified engine for large-scale batch, streaming and ML processing. Place it inside an OS, container host or Kubernetes cluster. License: Apache-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 210
+group: processing
+colors:
+  fill: '#EEF2FF'
+  stroke: '#4F46E5'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Apache Spark name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: deployment
+    label: "Deployment"
+    type: select
+    defaultValue: "container"
+    options:
+      - value: "package"
+        label: "OS package / binary"
+      - value: "container"
+        label: "Container"
+      - value: "kubernetes"
+        label: "Kubernetes (Helm / operator)"
+      - value: "managed"
+        label: "Managed service"
+  - key: port
+    label: "Port"
+    type: number
+    defaultValue: 7077
+    min: 0
+  - key: replicas
+    label: "Replicas"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: endpoint
+    label: "Endpoint"
+    type: text
+    placeholder: "host:port or URL"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Topology, persistence, backups, scaling and who connects."

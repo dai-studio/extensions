@@ -1,0 +1,33 @@
+# dai.types.oss-devops.chef-infra
+name: "Chef Infra"
+version: 1.0.0
+description: "Chef Infra, configuration management defined in Ruby recipes. Connect it to the systems it builds, configures or checks. License: Apache-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14a1 1 0 0 1 1 1v5a1 1 0 0 1 -1 1h-7a1 1 0 0 0 -1 1v7a1 1 0 0 1 -1 1h-5a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1" /><path d="M4 8l2 0" /><path d="M4 12l3 0" /><path d="M4 16l2 0" /><path d="M8 4l0 2" /><path d="M12 4l0 3" /><path d="M16 4l0 2" /></svg>
+order: 540
+group: config-mgmt
+colors:
+  fill: '#FFF7ED'
+  stroke: '#EA580C'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Chef Infra name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: configPath
+    label: "Config / entry file"
+    type: text
+    placeholder: "recipes/default.rb"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "How and where it runs, and what it acts on."

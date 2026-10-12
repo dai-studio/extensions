@@ -1,0 +1,34 @@
+label: "Business Apps"
+order: 280
+view: open-source
+groups:
+  - key: cms
+    label: "CMS"
+    colors:
+      fill: '#FDF4FF'
+      stroke: '#C026D3'
+  - key: collaboration
+    label: "Collaboration"
+    colors:
+      fill: '#FDF4FF'
+      stroke: '#C026D3'
+  - key: erp-crm
+    label: "ERP & CRM"
+    colors:
+      fill: '#FDF4FF'
+      stroke: '#C026D3'
+  - key: commerce
+    label: "Commerce"
+    colors:
+      fill: '#FDF4FF'
+      stroke: '#C026D3'
+  - key: web-analytics
+    label: "Analytics"
+    colors:
+      fill: '#FDF4FF'
+      stroke: '#C026D3'
+  - key: email
+    label: "Email"
+    colors:
+      fill: '#FDF4FF'
+      stroke: '#C026D3'

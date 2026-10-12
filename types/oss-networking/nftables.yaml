@@ -1,0 +1,33 @@
+# dai.types.oss-networking.nftables
+name: "nftables"
+version: 1.0.0
+description: "nftables, the Linux kernel packet filtering framework that replaces iptables. Connect it to the systems it builds, configures or checks. License: GPL-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /><path d="M11 11a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M12 12l0 2.5" /></svg>
+order: 530
+group: firewall
+colors:
+  fill: '#ECFEFF'
+  stroke: '#0891B2'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "nftables name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: configPath
+    label: "Config / entry file"
+    type: text
+    placeholder: "/etc/nftables.conf"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "How and where it runs, and what it acts on."

@@ -1,0 +1,19 @@
+label: "OS"
+order: 200
+view: open-source
+groups:
+  - key: linux
+    label: "Linux"
+    colors:
+      fill: '#FAFAF9'
+      stroke: '#57534E'
+  - key: container-os
+    label: "Container OS"
+    colors:
+      fill: '#FAFAF9'
+      stroke: '#57534E'
+  - key: bsd
+    label: "BSD"
+    colors:
+      fill: '#FAFAF9'
+      stroke: '#57534E'

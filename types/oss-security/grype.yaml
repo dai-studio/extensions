@@ -1,0 +1,33 @@
+# dai.types.oss-security.grype
+name: "Grype"
+version: 1.0.0
+description: "Grype, a vulnerability scanner for container images and SBOMs. Connect it to the systems it builds, configures or checks. License: Apache-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" /></svg>
+order: 520
+group: scanning
+colors:
+  fill: '#FEF2F2'
+  stroke: '#DC2626'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Grype name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: configPath
+    label: "Config / entry file"
+    type: text
+    placeholder: ".grype.yaml"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "How and where it runs, and what it acts on."

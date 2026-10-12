@@ -1,0 +1,35 @@
+# dai.types.oss-virtualization.opennebula
+name: "OpenNebula"
+version: 1.0.0
+description: "OpenNebula, a lightweight platform for private and edge clouds. Contains the hypervisors, networks and virtual machines it manages; place it inside a data center. License: Apache-2.0."
+icon: "▢"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /><path d="M3 15a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" /><path d="M7 8v.01" /><path d="M7 16v.01" /></svg>
+order: 230
+group: private-cloud
+colors:
+  fill: '#F8FAFC'
+  stroke: '#475569'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "OpenNebula name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: nodeCount
+    label: "Nodes"
+    type: number
+    defaultValue: 3
+    min: 0
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Sizing, hardening, patching and what runs on it."

@@ -1,0 +1,29 @@
+# dai.types.oss-ai.dspy
+name: "DSPy"
+version: 1.0.0
+description: "DSPy, a framework for programming and optimizing LM prompts and pipelines. Place it inside the service, runtime or host that uses it. License: MIT."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10h3v-3l-3.5 -3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1 -3 3l-6 -6a6 6 0 0 1 -8 -8l3.5 3.5" /></svg>
+order: 550
+group: llm-framework
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "DSPy name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Where it is used and any key extensions or plugins."

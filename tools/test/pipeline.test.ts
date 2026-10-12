@@ -210,6 +210,54 @@ test('rejects off-palette type colours and diverging group palettes', () => {
   }).join('\n'), /group "compute" colors .* differ from/);
 });
 
+// ── open-source types ───────────────────────────────────────────────────────
+
+const OPEN_SOURCE = [
+  'oss-os', 'oss-virtualization', 'oss-containers', 'oss-networking', 'oss-web', 'oss-runtimes',
+  'oss-frameworks', 'oss-database', 'oss-messaging', 'oss-data', 'oss-storage', 'oss-security',
+  'oss-observability', 'oss-devops', 'oss-integration', 'oss-ai', 'oss-apps',
+];
+/** Source-available (non-OSI) projects; their descriptions must say so. */
+const SOURCE_AVAILABLE = [
+  'oss-containers.nomad', 'oss-networking.consul', 'oss-database.cockroachdb', 'oss-database.mongodb',
+  'oss-database.scylladb', 'oss-database.arangodb', 'oss-messaging.redpanda', 'oss-messaging.emqx',
+  'oss-data.airbyte', 'oss-security.vault', 'oss-observability.sentry', 'oss-devops.terraform',
+  'oss-devops.packer', 'oss-integration.camunda-8', 'oss-integration.n8n', 'oss-ai.llama', 'oss-ai.gemma',
+  'oss-ai.open-webui', 'oss-ai.dify',
+].map(s => `dai.types.${s}`);
+
+test('open-source categories live in the open-source view with view-unique groups', () => {
+  const repo = loadRepo(ROOT, WITH_UNPUBLISHED);
+  const ossCats = Object.keys(repo.typeCategories).filter(c => c.startsWith('oss-')).sort();
+  assert.deepEqual(ossCats, [...OPEN_SOURCE].sort(), 'exactly the planned oss-* categories');
+  const owner = new Map<string, string>();
+  for (const cat of OPEN_SOURCE) {
+    const data = repo.typeCategories[cat].data as any;
+    assert.equal(data.view, 'open-source', `${cat} has view: open-source`);
+    const groups = (data.groups ?? []) as any[];
+    if (cat === 'oss-runtimes') assert.equal(groups.length, 0, 'oss-runtimes has no groups');
+    else assert.ok(groups.length > 0, `${cat} declares groups`);
+    for (const g of groups) {
+      assert.equal(owner.get(g.key), undefined, `group "${g.key}" is unique across the view (also in ${owner.get(g.key)})`);
+      owner.set(g.key, cat);
+    }
+  }
+});
+
+test('open-source types state their license; source-available ones say so', () => {
+  const repo = loadRepo(ROOT, WITH_UNPUBLISHED);
+  const oss = repo.types.filter(t => OPEN_SOURCE.includes(t.category));
+  assert.ok(oss.length >= 300, `${oss.length} open-source types`);
+  for (const id of SOURCE_AVAILABLE) assert.ok(typeById(repo, id), `${id} exists`);
+  for (const t of oss) {
+    const d = t.data as any;
+    assert.match(d.description, /License: [^.]/, `${t.id} names its license`);
+    assert.equal(/\(source-available\)/.test(d.description), SOURCE_AVAILABLE.includes(t.id), `${t.id} source-available marker`);
+    assert.ok(!(d.form as any[]).some(f => f.key === 'license'), `${t.id} has no "license" field`);
+    assert.equal(d.isExpanded === true, d.bpmnType === 'bpmn:SubProcess', `${t.id} containers are expanded`);
+  }
+});
+
 // ── design types + embeds ───────────────────────────────────────────────────
 
 const DESIGN = ['design', 'design-brand', 'design-components', 'design-layouts', 'design-guidance', 'design-assets'];

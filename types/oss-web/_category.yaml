@@ -1,0 +1,24 @@
+label: "Web & Proxy"
+order: 220
+view: open-source
+groups:
+  - key: web-server
+    label: "Web Server"
+    colors:
+      fill: '#F0FDFA'
+      stroke: '#0D9488'
+  - key: app-server
+    label: "App Server"
+    colors:
+      fill: '#F0FDFA'
+      stroke: '#0D9488'
+  - key: reverse-proxy
+    label: "Proxy & LB"
+    colors:
+      fill: '#F0FDFA'
+      stroke: '#0D9488'
+  - key: api-gateway
+    label: "API Gateway"
+    colors:
+      fill: '#F0FDFA'
+      stroke: '#0D9488'

@@ -1,0 +1,24 @@
+label: "Frameworks"
+order: 230
+view: open-source
+groups:
+  - key: backend
+    label: "Backend"
+    colors:
+      fill: '#F0FDF4'
+      stroke: '#16A34A'
+  - key: frontend
+    label: "Frontend"
+    colors:
+      fill: '#F0FDF4'
+      stroke: '#16A34A'
+  - key: fullstack
+    label: "Full-stack"
+    colors:
+      fill: '#F0FDF4'
+      stroke: '#16A34A'
+  - key: mobile-desktop
+    label: "Mobile & Desktop"
+    colors:
+      fill: '#F0FDF4'
+      stroke: '#16A34A'

@@ -1,0 +1,19 @@
+label: "Containers"
+order: 210
+view: open-source
+groups:
+  - key: container-runtime
+    label: "Runtime"
+    colors:
+      fill: '#F0F9FF'
+      stroke: '#0284C7'
+  - key: orchestration
+    label: "Orchestration"
+    colors:
+      fill: '#F0F9FF'
+      stroke: '#0284C7'
+  - key: k8s-tooling
+    label: "Tooling"
+    colors:
+      fill: '#F0F9FF'
+      stroke: '#0284C7'

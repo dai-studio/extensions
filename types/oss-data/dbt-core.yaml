@@ -1,0 +1,33 @@
+# dai.types.oss-data.dbt-core
+name: "dbt Core"
+version: 1.0.0
+description: "dbt Core, SQL-based data transformation with testing and lineage. Connect it to the systems it builds, configures or checks. License: Apache-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /></svg>
+order: 240
+group: processing
+colors:
+  fill: '#EEF2FF'
+  stroke: '#4F46E5'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "dbt Core name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: configPath
+    label: "Config / entry file"
+    type: text
+    placeholder: "dbt_project.yml"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "How and where it runs, and what it acts on."

@@ -18,7 +18,7 @@ Names are permanent (see [compatibility](#compatibility)).
 
 | Path | Contents |
 | --- | --- |
-| `types/<category>/_category.yaml` | Column label, order, tiles per row and `view` (`basic` by default, or `cloud`) in the Types overlay |
+| `types/<category>/_category.yaml` | Column label, order, tiles per row and `view` in the Types overlay: `basic` (default), or one of the paid views `cloud`, `open-source`, `design` |
 | `types/<category>/<leaf>.yaml` | One type (see `schema/type.schema.json`) |
 | `unpublished/<category>/…` | Same layout and ids as `types/`. Validated and tested by CI but **never built into the catalog**. Publish a category with `git mv unpublished/<category> types/<category>`. A category may live in only one of the two trees |
 | `patterns/<category>/_category.yaml` | Label, order, colour and `iconType` (a `dai.types.*` id) |

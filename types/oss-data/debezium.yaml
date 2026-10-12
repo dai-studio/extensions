@@ -1,0 +1,56 @@
+# dai.types.oss-data.debezium
+name: "Debezium"
+version: 1.0.0
+description: "Debezium, change data capture that streams database changes to Kafka and other sinks. Place it inside an OS, container host or Kubernetes cluster. License: Apache-2.0."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h8" /><path d="M4 4v5a6 6 0 0 0 6 6h3a1 1 0 0 1 1 1v4" /><path d="M10 4v4a1 1 0 0 0 1 1h3a6 6 0 0 1 6 6v5" /><path d="M13 20h8" /><path d="M12 9v6" /></svg>
+order: 510
+group: ingestion
+colors:
+  fill: '#EEF2FF'
+  stroke: '#4F46E5'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Debezium name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: deployment
+    label: "Deployment"
+    type: select
+    defaultValue: "container"
+    options:
+      - value: "package"
+        label: "OS package / binary"
+      - value: "container"
+        label: "Container"
+      - value: "kubernetes"
+        label: "Kubernetes (Helm / operator)"
+      - value: "managed"
+        label: "Managed service"
+  - key: port
+    label: "Port"
+    type: number
+    defaultValue: 8083
+    min: 0
+  - key: replicas
+    label: "Replicas"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: endpoint
+    label: "Endpoint"
+    type: text
+    placeholder: "host:port or URL"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Topology, persistence, backups, scaling and who connects."

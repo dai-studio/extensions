@@ -1,0 +1,35 @@
+# dai.types.oss-containers.docker-swarm
+name: "Docker Swarm"
+version: 1.0.0
+description: "Docker Swarm mode, the container orchestration built into Docker Engine. Contains the workloads it schedules; place it inside a private cloud, data center or Cloud network. License: Apache-2.0."
+icon: "▢"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18v-5l4 -2l4 2v5l-4 2l-4 -2" /><path d="M8 11v-5l4 -2l4 2v5" /><path d="M12 13l4 -2l4 2v5l-4 2l-4 -2" /></svg>
+order: 260
+group: orchestration
+colors:
+  fill: '#F0F9FF'
+  stroke: '#0284C7'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Docker Swarm name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: nodeCount
+    label: "Nodes"
+    type: number
+    defaultValue: 3
+    min: 0
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Sizing, hardening, patching and what runs on it."

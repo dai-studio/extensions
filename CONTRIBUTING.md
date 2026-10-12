@@ -7,8 +7,10 @@ contribution is safe. So reviews focus on content, and CI enforces strict allowl
 ## Add a type
 
 1. Choose a category under `types/`, or add a new one with a `_category.yaml`
-   (`label`, `order`, optional `columns`, and `view`: `basic` (default) or `cloud`, which
-   picks the Types overlay tab the category appears under).
+   (`label`, `order`, optional `columns`, and `view`: `basic` (default), `cloud`, `open-source`
+   or `design`, which picks the Types overlay tab the category appears under). `cloud`,
+   `open-source` and `design` are paid views; the editor must know a view before a category
+   using it is published, or the category falls into the free "Other" tab.
 2. Create `types/<category>/<leaf>.yaml`. That file becomes `dai.types.<category>.<leaf>`.
 
 ```yaml
@@ -92,6 +94,34 @@ Any type can nest in any other, and the nesting carries the meaning:
 
 Example CSS uses the `--dai-*` custom properties defined by the Foundations examples, with a
 fallback value (`var(--dai-color-primary, #2563eb)`) so each preview renders on its own.
+
+### Open Source types
+
+The `oss-*` categories (`view: open-source`) form the paid **Open Source** view: one type per
+open-source project, grouped by layer (OS, Virtualization, Containers, Networking, Web & Proxy,
+Runtimes, Frameworks, Database, Messaging, Data & Analytics, Storage, Security & Identity,
+Observability, DevOps, Integration & Platforms, AI & ML, Business Apps). They live in
+`unpublished/oss-*` until the editor's Open Source view and its unlock ship in production;
+publish them with `git mv unpublished/oss-* types/`.
+
+- **Ids**: `dai.types.oss-<category>.<project>`, e.g. `dai.types.oss-database.postgresql`.
+- **Inclusion**: OSI-approved projects plus widely used source-available ones. Every
+  description ends with `License: <SPDX id or name>.`; source-available projects add
+  `(source-available)` (the list is in `tools/test/pipeline.test.ts`). Never add a form field
+  with the key `license`.
+- **Colours**: one palette per category, used by all of its groups. Group keys are unique
+  across the whole view.
+- **Containers** (`bpmn:SubProcess`, `isExpanded: true`): OS distributions, hypervisors and
+  private clouds, container hosts (Docker Engine, Podman, Incus) and orchestrators. Everything
+  else is a `bpmn:Task`. Descriptions say where an element goes ("Place it inside an OS,
+  container host or Kubernetes cluster").
+- **Form profiles**: every type starts with `name` and ends with `tags` and `notes`. In between:
+  - host: `version`, `architecture` (OS only), `nodeCount`
+  - service: `version`, `deployment`, `port` (the project's default), `replicas`, `endpoint`,
+    optional `config`
+  - library: `version`
+  - tool: `version`, `configPath`
+  - model: `variant`, `parameters`, `quantization`, `contextWindow`, `servedBy`
 
 ## Add a pattern
 

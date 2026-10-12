@@ -1,0 +1,19 @@
+label: "Messaging"
+order: 240
+view: open-source
+groups:
+  - key: streaming
+    label: "Streaming"
+    colors:
+      fill: '#FFFBEB'
+      stroke: '#D97706'
+  - key: broker
+    label: "Broker"
+    colors:
+      fill: '#FFFBEB'
+      stroke: '#D97706'
+  - key: iot
+    label: "IoT / MQTT"
+    colors:
+      fill: '#FFFBEB'
+      stroke: '#D97706'

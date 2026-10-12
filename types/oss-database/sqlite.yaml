@@ -1,0 +1,29 @@
+# dai.types.oss-database.sqlite
+name: "SQLite"
+version: 1.0.0
+description: "SQLite, an embedded, serverless, single-file SQL database engine. Place it inside the service, runtime or host that uses it. License: blessing (public domain)."
+icon: "▣"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6a8 3 0 1 0 16 0a8 3 0 1 0 -16 0" /><path d="M4 6v6a8 3 0 0 0 16 0v-6" /><path d="M4 12v6a8 3 0 0 0 16 0v-6" /></svg>
+order: 140
+group: relational
+colors:
+  fill: '#EFF6FF'
+  stroke: '#2563EB'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "SQLite name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Where it is used and any key extensions or plugins."

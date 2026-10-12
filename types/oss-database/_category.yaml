@@ -1,0 +1,39 @@
+label: "Database"
+order: 235
+view: open-source
+groups:
+  - key: relational
+    label: "Relational"
+    colors:
+      fill: '#EFF6FF'
+      stroke: '#2563EB'
+  - key: document
+    label: "Document"
+    colors:
+      fill: '#EFF6FF'
+      stroke: '#2563EB'
+  - key: key-value
+    label: "Key-Value"
+    colors:
+      fill: '#EFF6FF'
+      stroke: '#2563EB'
+  - key: wide-column
+    label: "Wide Column"
+    colors:
+      fill: '#EFF6FF'
+      stroke: '#2563EB'
+  - key: graph
+    label: "Graph"
+    colors:
+      fill: '#EFF6FF'
+      stroke: '#2563EB'
+  - key: time-series
+    label: "Time Series"
+    colors:
+      fill: '#EFF6FF'
+      stroke: '#2563EB'
+  - key: search
+    label: "Search"
+    colors:
+      fill: '#EFF6FF'
+      stroke: '#2563EB'

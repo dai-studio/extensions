@@ -1,0 +1,19 @@
+label: "Integration & Platforms"
+order: 270
+view: open-source
+groups:
+  - key: workflow
+    label: "Workflow & BPM"
+    colors:
+      fill: '#ECFDF5'
+      stroke: '#059669'
+  - key: baas
+    label: "Backend-as-a-Service"
+    colors:
+      fill: '#ECFDF5'
+      stroke: '#059669'
+  - key: paas
+    label: "PaaS & Serverless"
+    colors:
+      fill: '#ECFDF5'
+      stroke: '#059669'

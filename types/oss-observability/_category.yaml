@@ -1,0 +1,34 @@
+label: "Observability"
+order: 260
+view: open-source
+groups:
+  - key: metrics
+    label: "Metrics"
+    colors:
+      fill: '#FDF2F8'
+      stroke: '#DB2777'
+  - key: logs
+    label: "Logs"
+    colors:
+      fill: '#FDF2F8'
+      stroke: '#DB2777'
+  - key: tracing
+    label: "Tracing"
+    colors:
+      fill: '#FDF2F8'
+      stroke: '#DB2777'
+  - key: dashboards
+    label: "Dashboards"
+    colors:
+      fill: '#FDF2F8'
+      stroke: '#DB2777'
+  - key: alerting
+    label: "Alerting"
+    colors:
+      fill: '#FDF2F8'
+      stroke: '#DB2777'
+  - key: apm
+    label: "APM"
+    colors:
+      fill: '#FDF2F8'
+      stroke: '#DB2777'

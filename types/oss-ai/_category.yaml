@@ -1,0 +1,39 @@
+label: "AI & ML"
+order: 275
+view: open-source
+groups:
+  - key: inference
+    label: "Inference"
+    colors:
+      fill: '#F5F3FF'
+      stroke: '#7C3AED'
+  - key: models
+    label: "Models"
+    colors:
+      fill: '#F5F3FF'
+      stroke: '#7C3AED'
+  - key: llm-apps
+    label: "LLM Apps"
+    colors:
+      fill: '#F5F3FF'
+      stroke: '#7C3AED'
+  - key: ml-framework
+    label: "ML Frameworks"
+    colors:
+      fill: '#F5F3FF'
+      stroke: '#7C3AED'
+  - key: llm-framework
+    label: "LLM Frameworks"
+    colors:
+      fill: '#F5F3FF'
+      stroke: '#7C3AED'
+  - key: mlops
+    label: "MLOps"
+    colors:
+      fill: '#F5F3FF'
+      stroke: '#7C3AED'
+  - key: vector-db
+    label: "Vector DB"
+    colors:
+      fill: '#F5F3FF'
+      stroke: '#7C3AED'

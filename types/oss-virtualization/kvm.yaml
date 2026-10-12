@@ -1,0 +1,35 @@
+# dai.types.oss-virtualization.kvm
+name: "KVM"
+version: 1.0.0
+description: "KVM, the hypervisor built into the Linux kernel, usually managed with libvirt or QEMU. Contains the virtual machines (OS types) it runs; place it inside a data center or on an OS host. License: GPL-2.0."
+icon: "▢"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></svg>
+order: 110
+group: hypervisor
+colors:
+  fill: '#F8FAFC'
+  stroke: '#475569'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "KVM name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: nodeCount
+    label: "Nodes"
+    type: number
+    defaultValue: 1
+    min: 0
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Sizing, hardening, patching and what runs on it."

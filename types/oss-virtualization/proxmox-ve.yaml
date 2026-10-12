@@ -1,0 +1,35 @@
+# dai.types.oss-virtualization.proxmox-ve
+name: "Proxmox VE"
+version: 1.0.0
+description: "Proxmox Virtual Environment, a KVM and LXC virtualization platform with clustering, Ceph storage and a web UI. Contains the hypervisors, networks and virtual machines it manages; place it inside a data center. License: AGPL-3.0."
+icon: "▢"
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></svg>
+order: 130
+group: hypervisor
+colors:
+  fill: '#F8FAFC'
+  stroke: '#475569'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Proxmox VE name"
+  - key: version
+    label: "Version"
+    type: text
+    placeholder: "e.g. latest stable release"
+  - key: nodeCount
+    label: "Nodes"
+    type: number
+    defaultValue: 3
+    min: 0
+  - key: tags
+    label: "Tags"
+    type: key-value
+  - key: notes
+    label: "Notes"
+    type: textarea
+    placeholder: "Sizing, hardening, patching and what runs on it."

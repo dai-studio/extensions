@@ -1,0 +1,14 @@
+label: "Virtualization"
+order: 205
+view: open-source
+groups:
+  - key: hypervisor
+    label: "Hypervisor"
+    colors:
+      fill: '#F8FAFC'
+      stroke: '#475569'
+  - key: private-cloud
+    label: "Private Cloud"
+    colors:
+      fill: '#F8FAFC'
+      stroke: '#475569'

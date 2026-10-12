@@ -1,0 +1,34 @@
+label: "Security & Identity"
+order: 255
+view: open-source
+groups:
+  - key: identity
+    label: "Identity"
+    colors:
+      fill: '#FEF2F2'
+      stroke: '#DC2626'
+  - key: secrets
+    label: "Secrets"
+    colors:
+      fill: '#FEF2F2'
+      stroke: '#DC2626'
+  - key: policy
+    label: "Policy"
+    colors:
+      fill: '#FEF2F2'
+      stroke: '#DC2626'
+  - key: certificates
+    label: "Certificates"
+    colors:
+      fill: '#FEF2F2'
+      stroke: '#DC2626'
+  - key: scanning
+    label: "Scanning"
+    colors:
+      fill: '#FEF2F2'
+      stroke: '#DC2626'
+  - key: runtime-security
+    label: "Runtime Security"
+    colors:
+      fill: '#FEF2F2'
+      stroke: '#DC2626'
