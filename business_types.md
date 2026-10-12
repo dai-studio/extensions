@@ -10,8 +10,8 @@
   - The editor's offline snapshot picks up both changes at the next `npm run catalog:snapshot` after a production publish. That refresh is out of scope here.
 - **IDs:** `dai.types.software.{client,system,queue,interface,config,job,decision,feature-flag}`. None collide with existing types.
 - **Bpmn types:**
-  - **System** is a container: `bpmn:SubProcess`, `isExpanded: true`, `icon: □`. It holds the Services, Clients, Databases, Queues and Jobs owned and released together. Environment stays the deployment-target container.
-  - The other seven are `bpmn:Task` with `icon: ▣`.
+  - **System** is a container: `bpmn:SubProcess`, `isExpanded: true`. It holds the Services, Clients, Databases, Queues and Jobs owned and released together. Environment stays the deployment-target container.
+  - The other seven are `bpmn:Task`.
 - **Decision overlap** (user's choice):
   - Software → Decision is the technical/architecture decision record (ADR).
   - Business → Decision keeps its id, name, `stepType: decision-record`, fields and alias. Only its description changes, to a business decision. Changing a description is allowed by the compat check.

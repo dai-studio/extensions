@@ -3,7 +3,6 @@
 name: Timer
 version: 1.0.0
 description: Pauses the flow for a defined duration or until a specific time.
-icon: ○
 iconClass: bpmn-icon-intermediate-event-catch-timer
 order: 80
 colors:

@@ -3,7 +3,6 @@
 name: Group
 version: 1.0.0
 description: An expanded sub-process — a container for a related set of activities.
-icon: □
 iconClass: bpmn-icon-subprocess-expanded
 order: 160
 colors:

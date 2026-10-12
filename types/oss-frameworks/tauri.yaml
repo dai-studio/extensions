@@ -2,7 +2,6 @@
 name: "Tauri"
 version: 1.0.0
 description: "Tauri, which builds small, secure desktop and mobile apps with a Rust core and a web frontend. Place it inside the runtime or service that is built with it. License: Apache-2.0 OR MIT."
-icon: "▣"
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19l18 0" /><path d="M5 7a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" /></svg>
 order: 440
 group: mobile-desktop

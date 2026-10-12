@@ -2,7 +2,6 @@
 name: "Design Principle"
 version: 1.0.0
 description: "A principle that settles design trade-offs, e.g. \"Clarity over density\". It applies to whatever it is nested in (at the root: the whole document)."
-icon: "▣"
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 16l2 -6l6 -2l-2 6l-6 2" /><circle cx="12" cy="12" r="9" /></svg>
 order: 20
 colors:

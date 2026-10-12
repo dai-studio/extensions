@@ -24,7 +24,6 @@ export interface CatalogType {
   name: string;
   version: string;
   description: string;
-  icon: string;
   colors: { fill: string; stroke: string };
   bpmnType: string;
   license: 'free';

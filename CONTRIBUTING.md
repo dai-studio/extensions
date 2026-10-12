@@ -17,7 +17,6 @@ contribution is safe. So reviews focus on content, and CI enforces strict allowl
 name: Objective
 version: 1.0.0
 description: A measurable goal with key results.
-icon: ◎                          # short plain-text glyph (≤ 8 chars)
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0 -18" /></svg>
 colors: { fill: '#eef2ff', stroke: '#4338ca' }
 bpmnType: bpmn:Task              # bpmn:Task or bpmn:SubProcess outside the bpmn category

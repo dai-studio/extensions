@@ -3,7 +3,6 @@
 name: Timer Start
 version: 1.0.0
 description: Process starts at a specific time or after a delay.
-icon: ○
 iconClass: bpmn-icon-start-event-timer
 order: 20
 colors:

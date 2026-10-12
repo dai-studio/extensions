@@ -3,7 +3,6 @@
 name: Signal Catch
 version: 1.0.0
 description: Pauses the flow until a broadcast signal is received.
-icon: ○
 iconClass: bpmn-icon-intermediate-event-catch-signal
 order: 110
 colors:

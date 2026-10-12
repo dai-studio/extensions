@@ -3,7 +3,6 @@
 name: End
 version: 1.0.0
 description: Marks the termination of a process flow path.
-icon: ○
 iconClass: bpmn-icon-end-event-none
 order: 60
 colors:

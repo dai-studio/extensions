@@ -2,7 +2,6 @@
 name: "Design System"
 version: 1.0.0
 description: "The root of a design system. Nest themes, tokens, brand, components, layouts and guidance inside it: everything nested here is a definition, and its tokens apply to everything below (the nearest definition wins). Agents should treat it as the source of truth for visual decisions."
-icon: "▣"
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-8 4l8 4l8 -4l-8 -4" /><path d="M4 12l8 4l8 -4" /><path d="M4 16l8 4l8 -4" /></svg>
 order: 10
 colors:

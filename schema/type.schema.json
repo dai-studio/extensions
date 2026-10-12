@@ -5,12 +5,11 @@
   "description": "types/<category>/<leaf>.yaml. The id (dai.types.<category>.<leaf>) and category come from the file path; kid and signature are added by CI.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["name", "version", "description", "icon", "colors", "bpmnType", "license", "form"],
+  "required": ["name", "version", "description", "colors", "bpmnType", "license", "form"],
   "properties": {
     "name": { "type": "string", "minLength": 1, "maxLength": 60 },
     "version": { "type": "string", "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$" },
     "description": { "type": "string", "minLength": 1, "maxLength": 1000 },
-    "icon": { "type": "string", "minLength": 1, "maxLength": 8, "pattern": "^[^<>&\"']+$" },
     "quickicon": { "type": "string", "minLength": 1 },
     "iconClass": { "type": "string", "pattern": "^bpmn-icon-[a-z0-9-]+$" },
     "order": { "type": "integer", "minimum": 0, "maximum": 10000 },

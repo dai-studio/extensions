@@ -3,7 +3,6 @@
 name: Message Start
 version: 1.0.0
 description: Process starts when a specific message is received.
-icon: ○
 iconClass: bpmn-icon-start-event-message
 order: 30
 colors:

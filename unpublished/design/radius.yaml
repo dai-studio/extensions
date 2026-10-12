@@ -2,7 +2,6 @@
 name: "Radius"
 version: 1.0.0
 description: "A corner radius token. Nest it in a design system for global use or in a component for local overrides."
-icon: "▣"
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-9a7 7 0 0 1 7 -7h9" /></svg>
 order: 60
 colors:

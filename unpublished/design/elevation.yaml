@@ -2,7 +2,6 @@
 name: "Elevation"
 version: 1.0.0
 description: "A shadow or elevation level that expresses depth and layering. Nest it in a design system or theme; dark themes usually need their own values."
-icon: "▣"
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="13" height="13" rx="2" /><path d="M20 8v10a2 2 0 0 1 -2 2h-10" /></svg>
 order: 70
 colors:

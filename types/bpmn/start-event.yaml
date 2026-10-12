@@ -3,7 +3,6 @@
 name: Start
 version: 1.0.0
 description: Marks the beginning of a process flow. Every diagram starts here.
-icon: ○
 iconClass: bpmn-icon-start-event-none
 order: 10
 colors:

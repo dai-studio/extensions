@@ -2,7 +2,6 @@
 name: "OpenFaaS"
 version: 1.0.0
 description: "OpenFaaS, functions as a service on Kubernetes or containerd. Place it inside an OS, container host or Kubernetes cluster. License: MIT (Community Edition)."
-icon: "▣"
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20l6.5 -9" /><path d="M19 20c-6 0 -6 -16 -12 -16" /></svg>
 order: 350
 group: paas

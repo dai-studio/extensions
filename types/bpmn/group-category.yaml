@@ -3,7 +3,6 @@
 name: Category
 version: 1.0.0
 description: A visual boundary group for categorising related elements (does not affect execution).
-icon: □
 iconClass: bpmn-icon-group
 order: 170
 colors:

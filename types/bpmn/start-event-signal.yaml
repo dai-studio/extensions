@@ -3,7 +3,6 @@
 name: Signal Start
 version: 1.0.0
 description: Process starts when a broadcast signal is received.
-icon: ○
 iconClass: bpmn-icon-start-event-signal
 order: 50
 colors:

@@ -3,7 +3,6 @@
 name: Conditional Start
 version: 1.0.0
 description: Process starts when a condition becomes true.
-icon: ○
 iconClass: bpmn-icon-start-event-condition
 order: 40
 colors:

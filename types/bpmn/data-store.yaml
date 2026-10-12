@@ -3,7 +3,6 @@
 name: Data Store
 version: 1.0.0
 description: Represents a persistent data store or database referenced by the process.
-icon: ▣
 iconClass: bpmn-icon-data-store
 order: 180
 colors:

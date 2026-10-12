@@ -3,7 +3,6 @@
 name: Annotation
 version: 1.0.0
 description: A text note attached to any element for documentation purposes.
-icon: ✎
 iconClass: bpmn-icon-text-annotation
 order: 190
 colors:

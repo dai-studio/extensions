@@ -2,7 +2,6 @@
 name: "Screen"
 version: 1.0.0
 description: "A concrete screen or view in a product. Nest components and states (empty, loading, error) inside it; connect screens with sequence flows to show navigation."
-icon: "▣"
 quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1" /><path d="M7 20h10" /><path d="M9 16v4" /><path d="M15 16v4" /></svg>
 order: 30
 colors:

@@ -3,7 +3,6 @@
 name: Parallel
 version: 1.0.0
 description: Parallel gateway — all outgoing paths are taken simultaneously.
-icon: ◇
 iconClass: bpmn-icon-gateway-parallel
 order: 140
 colors:

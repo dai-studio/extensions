@@ -3,7 +3,6 @@
 name: Intermediate
 version: 1.0.0
 description: An intermediate event that occurs mid-flow without a specific trigger type.
-icon: ○
 iconClass: bpmn-icon-intermediate-event-none
 order: 70
 colors:
