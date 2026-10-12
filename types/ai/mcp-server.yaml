@@ -1,0 +1,55 @@
+# dai.types.ai.mcp-server
+name: "MCP Server"
+version: 1.0.0
+description: "A Model Context Protocol (MCP) server that exposes Tools, resources and prompts to AI clients. Contains the Tools it exposes; connect Agents to it."
+icon: □
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 12l5 5l-1.5 1.5a3.536 3.536 0 1 1 -5 -5l1.5 -1.5" /><path d="M17 12l-5 -5l1.5 -1.5a3.536 3.536 0 1 1 5 5l-1.5 1.5" /><path d="M3 21l2.5 -2.5" /><path d="M18.5 5.5l2.5 -2.5" /><path d="M10 11l-2 2" /><path d="M13 14l-2 2" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "MCP Server name"
+  - key: notes
+    label: "Description"
+    type: textarea
+    placeholder: "What is this mcp server for?"
+  - key: transport
+    label: "Transport"
+    type: select
+    defaultValue: "stdio"
+    options:
+      - value: "stdio"
+        label: "Stdio"
+      - value: "http"
+        label: "Streamable HTTP"
+      - value: "sse"
+        label: "SSE (legacy)"
+  - key: command
+    label: "Command"
+    type: text
+    placeholder: "e.g. npx -y @modelcontextprotocol/server-github"
+    hint: "For stdio transport"
+  - key: url
+    label: "URL"
+    type: text
+    placeholder: "https://\u2026/mcp"
+    hint: "For HTTP transports"
+  - key: auth
+    label: "Auth"
+    type: select
+    options:
+      - value: "none"
+        label: "None"
+      - value: "api-key"
+        label: "API key"
+      - value: "oauth"
+        label: "OAuth"
+  - key: env
+    label: "Environment"
+    type: key-value

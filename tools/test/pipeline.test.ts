@@ -210,6 +210,20 @@ test('rejects off-palette type colours and diverging group palettes', () => {
   }).join('\n'), /group "compute" colors .* differ from/);
 });
 
+// ── AI/ML types ─────────────────────────────────────────────────────────────
+
+test('AI/ML has the agent-building types; MCP Server and Session are expanded containers', () => {
+  const repo = loadRepo();
+  const containers = new Set(['mcp-server', 'session']);
+  for (const leaf of ['model', 'knowledge', 'human', 'output', 'mcp-server', 'router', 'session']) {
+    const d = typeById(repo, `dai.types.ai.${leaf}`)?.data as any;
+    assert.ok(d, `dai.types.ai.${leaf} exists`);
+    assert.equal(d.bpmnType, containers.has(leaf) ? 'bpmn:SubProcess' : 'bpmn:Task', `${leaf} bpmnType`);
+    assert.equal(d.isExpanded, containers.has(leaf) ? true : undefined, `${leaf} isExpanded`);
+    assert.deepEqual(d.colors, { fill: '#F5F3FF', stroke: '#7C3AED' }, `${leaf} uses the AI/ML palette`);
+  }
+});
+
 // ── open-source types ───────────────────────────────────────────────────────
 
 const OPEN_SOURCE = [

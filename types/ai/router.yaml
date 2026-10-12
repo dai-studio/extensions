@@ -1,0 +1,45 @@
+# dai.types.ai.router
+name: "Router"
+version: 1.0.0
+description: "Routes a request to one of several Agents, Models or Tools based on intent, rules, similarity, or cost and latency. Connect it to each possible target."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 17h-8l-3.5 -5h-6.5" /><path d="M21 7h-8l-3.495 5" /><path d="M18 10l3 -3l-3 -3" /><path d="M18 20l3 -3l-3 -3" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Router name"
+  - key: notes
+    label: "Description"
+    type: textarea
+    placeholder: "What is this router for?"
+  - key: strategy
+    label: "Strategy"
+    type: select
+    defaultValue: "llm"
+    options:
+      - value: "llm"
+        label: "LLM classifier"
+      - value: "rules"
+        label: "Rules"
+      - value: "semantic"
+        label: "Semantic similarity"
+      - value: "cost"
+        label: "Cost / latency"
+      - value: "fallback"
+        label: "Fallback chain"
+  - key: model
+    label: "Classifier model"
+    type: model-selector
+  - key: routes
+    label: "Routes"
+    type: key-value
+  - key: defaultRoute
+    label: "Default route"
+    type: text
+    placeholder: "Target when no route matches"

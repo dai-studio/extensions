@@ -1,0 +1,69 @@
+# dai.types.ai.human
+name: "Human"
+version: 1.0.0
+description: "A human-in-the-loop step: a person approves, reviews, provides input or handles an escalation before the flow continues."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4" /><path d="M15 19l2 2l4 -4" /></svg>
+colors:
+  fill: '#F5F3FF'
+  stroke: '#7C3AED'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Human name"
+  - key: notes
+    label: "Description"
+    type: textarea
+    placeholder: "What is this human for?"
+  - key: action
+    label: "Action"
+    type: select
+    defaultValue: "approve"
+    options:
+      - value: "approve"
+        label: "Approve"
+      - value: "review"
+        label: "Review"
+      - value: "input"
+        label: "Provide input"
+      - value: "escalation"
+        label: "Handle escalation"
+  - key: assignee
+    label: "Role / assignee"
+    type: text
+    placeholder: "e.g. Support lead"
+  - key: channel
+    label: "Channel"
+    type: select
+    options:
+      - value: "in-app"
+        label: "In-app"
+      - value: "email"
+        label: "Email"
+      - value: "chat"
+        label: "Chat"
+      - value: "ticket"
+        label: "Ticket"
+      - value: "other"
+        label: "Other"
+  - key: instructions
+    label: "Instructions"
+    type: textarea
+    placeholder: "What the person should check or decide"
+  - key: timeout
+    label: "Timeout"
+    type: text
+    placeholder: "e.g. 24h"
+  - key: onTimeout
+    label: "On timeout"
+    type: select
+    options:
+      - value: "proceed"
+        label: "Proceed"
+      - value: "reject"
+        label: "Reject"
+      - value: "escalate"
+        label: "Escalate"
