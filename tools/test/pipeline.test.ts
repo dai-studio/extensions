@@ -202,6 +202,7 @@ test('design components ship html + css examples; guidance carries instruction, 
 test('embed examples: accepted when safe', () => {
   assert.deepEqual(checkHtml('<button class="b" type="button" aria-label="x">Go</button><a href="#top">Top</a><style>.b{color:red}</style>'), []);
   assert.deepEqual(checkCss('.a{background:url(#grad);color:var(--x, #fff)} @keyframes s{to{opacity:1}}'), []);
+  assert.deepEqual(checkCss('html{scroll-behavior:smooth;overscroll-behavior:contain}'), []);
   assert.deepEqual(checkSvg('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><title>T</title><defs><linearGradient id="g"><stop offset="0" stop-color="#fff" /></linearGradient></defs><rect fill="url(#g)" width="10" height="10" /><use href="#g" /><text x="1" y="9">Hi</text></svg>', EXAMPLE_ALLOWLIST), []);
 });
 

@@ -27,7 +27,8 @@ export function checkCss(css: string): string[] {
     if (!m[2].startsWith('#')) errors.push(`url(${m[2].slice(0, 40)}) is not allowed (only url(#fragment))`);
   }
   if (/expression\s*\(/i.test(css)) errors.push('expression() is not allowed');
-  if (/behavior\s*:/i.test(css)) errors.push('behavior: is not allowed');
+  // IE `behavior:` (HTC) — not `scroll-behavior:` / `overscroll-behavior:`.
+  if (/(^|[^\w-])behavior\s*:/i.test(css)) errors.push('behavior: is not allowed');
   if (/-moz-binding/i.test(css)) errors.push('-moz-binding is not allowed');
   if (/javascript:/i.test(css)) errors.push('javascript: is not allowed');
   if (/<\//.test(css)) errors.push('"</" is not allowed in CSS');
