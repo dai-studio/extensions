@@ -1,0 +1,56 @@
+# dai.types.business.initiative
+name: "Initiative"
+version: 1.0.0
+description: "A funded body of work that pursues one or more Objectives. Contains its Milestones, Budget, Requirements and Risks; connect it to the Objectives it serves."
+icon: □
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3 -5a9 9 0 0 0 6 -8a3 3 0 0 0 -3 -3a9 9 0 0 0 -8 6a6 6 0 0 0 -5 3" /><path d="M7 14a6 6 0 0 0 -3 6a6 6 0 0 0 6 -3" /><path d="M14 9a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:SubProcess
+isExpanded: true
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Initiative name"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "proposed"
+    options:
+      - value: "proposed"
+        label: "Proposed"
+      - value: "approved"
+        label: "Approved"
+      - value: "in-progress"
+        label: "In progress"
+      - value: "on-hold"
+        label: "On hold"
+      - value: "done"
+        label: "Done"
+      - value: "cancelled"
+        label: "Cancelled"
+  - key: sponsor
+    label: "Sponsor"
+    type: text
+  - key: timeframe
+    label: "Timeframe"
+    type: text
+    placeholder: "e.g. Q3\u2013Q4 2026"
+  - key: startDate
+    label: "Start"
+    type: text
+    placeholder: "e.g. 2026-07-01"
+  - key: targetDate
+    label: "Target date"
+    type: text
+    placeholder: "e.g. 2026-12-31"
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

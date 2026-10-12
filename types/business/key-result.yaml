@@ -1,0 +1,59 @@
+# dai.types.business.key-result
+name: "Key Result"
+version: 1.0.0
+description: "A measurable outcome that shows progress on an Objective, with a baseline, a target and the current value. Connect it to its Objective."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6 -6l4 4l8 -8" /><path d="M14 7l7 0l0 7" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Key Result name"
+  - key: metric
+    label: "Metric"
+    type: text
+    placeholder: "e.g. Net Promoter Score"
+  - key: baseline
+    label: "Baseline"
+    type: text
+  - key: target
+    label: "Target"
+    type: text
+  - key: current
+    label: "Current"
+    type: text
+  - key: unit
+    label: "Unit"
+    type: text
+    placeholder: "e.g. %, users, $"
+  - key: targetDate
+    label: "Due"
+    type: text
+    placeholder: "e.g. 2026-12-31"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "on-track"
+    options:
+      - value: "on-track"
+        label: "On track"
+      - value: "at-risk"
+        label: "At risk"
+      - value: "off-track"
+        label: "Off track"
+      - value: "achieved"
+        label: "Achieved"
+      - value: "missed"
+        label: "Missed"
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

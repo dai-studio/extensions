@@ -1,0 +1,51 @@
+# dai.types.business.question
+name: "Question"
+version: 1.0.0
+description: "An open question the team needs to answer. Unlike an Assumption it is not taken as true, and unlike a Decision it is not yet resolved."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 16v.01" /><path d="M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Question name"
+  - key: status
+    label: "Status"
+    type: select
+    defaultValue: "open"
+    options:
+      - value: "open"
+        label: "Open"
+      - value: "answered"
+        label: "Answered"
+      - value: "deferred"
+        label: "Deferred"
+  - key: priority
+    label: "Priority"
+    type: select
+    options:
+      - value: "high"
+        label: "High"
+      - value: "medium"
+        label: "Medium"
+      - value: "low"
+        label: "Low"
+  - key: targetDate
+    label: "Answer by"
+    type: text
+    placeholder: "e.g. 2026-11-01"
+  - key: answer
+    label: "Answer"
+    type: textarea
+  - key: owner
+    label: "Owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea

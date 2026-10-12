@@ -224,6 +224,21 @@ test('AI/ML has the agent-building types; MCP Server and Session are expanded co
   }
 });
 
+// ── Business types ──────────────────────────────────────────────────────────
+
+test('Business has the planning types; Initiative is an expanded container; notes come last', () => {
+  const repo = loadRepo();
+  for (const leaf of ['customer', 'constraint', 'key-result', 'initiative', 'dependency', 'competitor', 'partner', 'question']) {
+    const d = typeById(repo, `dai.types.business.${leaf}`)?.data as any;
+    assert.ok(d, `dai.types.business.${leaf} exists`);
+    const container = leaf === 'initiative';
+    assert.equal(d.bpmnType, container ? 'bpmn:SubProcess' : 'bpmn:Task', `${leaf} bpmnType`);
+    assert.equal(d.isExpanded, container ? true : undefined, `${leaf} isExpanded`);
+    assert.deepEqual(d.colors, { fill: '#f0fdf4', stroke: '#15803d' }, `${leaf} uses the Business palette`);
+    assert.equal((d.form as any[]).at(-1)?.key, 'notes', `${leaf} ends with notes`);
+  }
+});
+
 // ── open-source types ───────────────────────────────────────────────────────
 
 const OPEN_SOURCE = [

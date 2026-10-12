@@ -1,0 +1,57 @@
+# dai.types.business.customer
+name: "Customer"
+version: 1.0.0
+description: "A customer segment or named account the business serves. Distinct from Persona (a research archetype) and Stakeholder (someone with influence on the project)."
+icon: ▣
+quickicon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+colors:
+  fill: '#f0fdf4'
+  stroke: '#15803d'
+bpmnType: bpmn:Task
+license: free
+form:
+  - key: name
+    label: "Name"
+    type: text
+    placeholder: "Customer name"
+  - key: customerType
+    label: "Type"
+    type: select
+    defaultValue: "segment"
+    options:
+      - value: "segment"
+        label: "Segment"
+      - value: "account"
+        label: "Named account"
+      - value: "individual"
+        label: "Individual"
+  - key: industry
+    label: "Industry"
+    type: text
+  - key: size
+    label: "Size"
+    type: select
+    options:
+      - value: "consumer"
+        label: "Consumer"
+      - value: "smb"
+        label: "SMB"
+      - value: "mid-market"
+        label: "Mid-market"
+      - value: "enterprise"
+        label: "Enterprise"
+  - key: needs
+    label: "Needs"
+    type: textarea
+    placeholder: "Jobs to be done, problems, buying criteria"
+  - key: value
+    label: "Value"
+    type: text
+    placeholder: "e.g. ARR, LTV, revenue share"
+  - key: owner
+    label: "Account owner"
+    type: text
+    placeholder: "Responsible person or team"
+  - key: notes
+    label: "Notes"
+    type: textarea
